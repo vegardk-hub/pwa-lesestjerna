@@ -199,6 +199,251 @@
       "niva": 3,
       "tekst": "Stjernene er så langt borte at lyset fra dem bruker mange år på å komme fram til oss. Fra den nærmeste stjerna utenom sola bruker lyset over fire år. Når du ser opp på en stjerne, ser du den altså slik den var for lenge siden. Noen av dem finnes kanskje ikke lenger.",
       "vanskeligeOrd": ["fire"]
+    },
+
+    {
+      "id": "tall-01",
+      "emne": "tall",
+      "tittel": "Terningen",
+      "niva": 1,
+      "tekst": "En vanlig terning har seks sider. Prikkene på to sider som ligger rett overfor hverandre, legger alltid sammen til sju. Ligger det tre prikker på den ene siden, ligger det fire på den andre.",
+      "vanskeligeOrd": ["seks", "to", "sju", "tre", "fire"]
+    },
+    {
+      "id": "tall-02",
+      "emne": "tall",
+      "tittel": "Sjakkbrettet",
+      "niva": 2,
+      "tekst": "Et sjakkbrett har sekstifire ruter, satt sammen av åtte rader og åtte kolonner. Halvparten av rutene er lyse og halvparten er mørke, trettito av hver farge. Hver spiller starter med seksten brikker.",
+      "vanskeligeOrd": ["sekstifire", "åtte", "trettito", "seksten"]
+    },
+    {
+      "id": "tall-03",
+      "emne": "tall",
+      "tittel": "Fingrene og tærne",
+      "niva": 1,
+      "tekst": "De fleste mennesker har ti fingre og ti tær, tjue til sammen. Hver finger har tre ledd, bortsett fra tommelen som bare har to. Det gjør at vi kan gripe om ting og telle på en enkel måte.",
+      "vanskeligeOrd": ["ti", "tjue", "tre", "to"]
+    },
+    {
+      "id": "tall-04",
+      "emne": "tall",
+      "tittel": "Romertallene",
+      "niva": 2,
+      "tekst": "Før i tiden brukte mange land romertall i stedet for tallene vi bruker nå. Der vi skriver fire, skrev de IV, og der vi skriver ti, skrev de X. Systemet hadde ikke noe tegn for null, så det var vanskelig å regne med.",
+      "vanskeligeOrd": ["fire", "ti", "null", "romertall"]
+    },
+    {
+      "id": "tall-05",
+      "emne": "tall",
+      "tittel": "Uken og året",
+      "niva": 1,
+      "tekst": "En uke har sju dager, og et år har tolv måneder. De fleste år har tre hundre og sekstifem dager, men hvert fjerde år får februar en ekstra dag, og året får tre hundre og sekstiseks dager i stedet.",
+      "vanskeligeOrd": ["sju", "tolv", "tre", "hundre", "og", "sekstifem", "fjerde", "sekstiseks"]
+    },
+    {
+      "id": "tall-06",
+      "emne": "tall",
+      "tittel": "Klokka",
+      "niva": 2,
+      "tekst": "Et døgn har tjuefire timer, hver time har seksti minutter, og hvert minutt har seksti sekunder. Det betyr at et helt døgn varer i åttiseks tusen fire hundre sekunder.",
+      "vanskeligeOrd": ["tjuefire", "seksti", "åttiseks", "tusen", "fire", "hundre"]
+    },
+    {
+      "id": "tall-07",
+      "emne": "tall",
+      "tittel": "Bokstavene våre",
+      "niva": 2,
+      "tekst": "Det norske alfabetet har tjueni bokstaver, tre flere enn det engelske. De tre siste er æ, ø og å, og de finnes ikke i mange andre språk. Med bare tjueni tegn kan vi likevel skrive alle ordene vi trenger.",
+      "vanskeligeOrd": ["tjueni", "tre"]
+    },
+
+    {
+      "id": "krefter-01",
+      "emne": "krefter",
+      "tittel": "Tyngdekraften på månen",
+      "niva": 2,
+      "tekst": "På månen trekker tyngdekraften mye svakere enn på jorda, bare en sjettedel så sterkt. Det gjør at astronauter kan hoppe mye høyere der enn hjemme. En som veier seksti kilo på jorda, ville bare veid ti kilo på månen.",
+      "vanskeligeOrd": ["sjettedel", "seksti", "ti", "tyngdekraften", "astronauter"]
+    },
+    {
+      "id": "krefter-02",
+      "emne": "krefter",
+      "tittel": "Nordlyset",
+      "niva": 2,
+      "tekst": "Nordlyset oppstår når partikler fra sola treffer lufta høyt over jorda og får den til å lyse grønt, rosa eller lilla. Partiklene er omtrent to døgn på vei fra sola før de når jorda. I Nord-Norge kan man se nordlys mange klare kvelder om vinteren.",
+      "vanskeligeOrd": ["to", "partikler"]
+    },
+    {
+      "id": "krefter-03",
+      "emne": "krefter",
+      "tittel": "Magnetene",
+      "niva": 1,
+      "tekst": "En magnet har to ender, en nordpol og en sørpol. To like poler dytter hverandre bort, mens to ulike poler trekker hverandre til seg. Jorda selv er en kjempestor magnet, og det er derfor et kompass alltid peker mot nord.",
+      "vanskeligeOrd": ["to", "nordpol", "sørpol", "kompass"]
+    },
+    {
+      "id": "krefter-04",
+      "emne": "krefter",
+      "tittel": "Saturns ringer",
+      "niva": 2,
+      "tekst": "Saturn er den eneste planeten i solsystemet med tydelige ringer rundt seg. Ringene består av utallige biter av is og stein, de fleste ikke større enn en snøball. Lagt sammen er ringene likevel over to hundre og femti tusen kilometer brede.",
+      "vanskeligeOrd": ["to", "hundre", "og", "femti", "tusen", "Saturn", "solsystemet"]
+    },
+
+    {
+      "id": "liv-01",
+      "emne": "liv",
+      "tittel": "Giraffen",
+      "niva": 1,
+      "tekst": "Giraffen er verdens høyeste dyr og kan bli nesten seks meter høy. Den har akkurat sju nakkevirvler, nøyaktig like mange som mennesker har, bare mye lengre. Tunga til en giraff kan bli femti centimeter lang, nesten som en linjal og en halv.",
+      "vanskeligeOrd": ["seks", "sju", "femti", "halv", "nakkevirvler"]
+    },
+    {
+      "id": "liv-02",
+      "emne": "liv",
+      "tittel": "Kolibrien",
+      "niva": 2,
+      "tekst": "Kolibrien er så liten at den kan hvile i håndflaten din, men vingene slår opp mot femti ganger i sekundet. Det går så fort at vingene bare ses som en tåke. Den er også den eneste fuglen som kan fly baklengs.",
+      "vanskeligeOrd": ["femti", "kolibrien"]
+    },
+    {
+      "id": "liv-03",
+      "emne": "liv",
+      "tittel": "Bambusen",
+      "niva": 2,
+      "tekst": "Bambus er den raskest voksende planten vi kjenner til. Noen arter kan vokse nesten én hel meter på et eneste døgn. Likevel blomstrer mange bambusplanter bare én gang hvert hundrede år.",
+      "vanskeligeOrd": ["én", "hundrede", "bambus"]
+    },
+
+    {
+      "id": "folk-01",
+      "emne": "folk",
+      "tittel": "Hjernen din",
+      "niva": 2,
+      "tekst": "Hjernen din veier omtrent halvannet kilo, men bruker likevel en femtedel av all energien kroppen trenger. Inni den finnes rundt åtti milliarder nerveceller, som sender beskjeder til hverandre hele tiden. Det er disse cellene som gjør at du kan tenke, huske og føle.",
+      "vanskeligeOrd": ["halvannet", "femtedel", "åtti", "milliarder", "nerveceller"]
+    },
+    {
+      "id": "folk-02",
+      "emne": "folk",
+      "tittel": "Latteren",
+      "niva": 1,
+      "tekst": "Babyer begynner å le allerede etter omtrent fire måneder, lenge før de kan snakke. Voksne ler i gjennomsnitt rundt sytten ganger om dagen. Latter er nesten likt i alle land, selv om språkene er helt forskjellige.",
+      "vanskeligeOrd": ["fire", "sytten"]
+    },
+    {
+      "id": "folk-03",
+      "emne": "folk",
+      "tittel": "Drømmene dine",
+      "niva": 2,
+      "tekst": "De fleste mennesker drømmer flere ganger hver eneste natt, gjerne fire til seks drømmer. Likevel glemmer vi det meste i løpet av bare noen minutter etter at vi våkner. Drømmene kommer særlig i den delen av søvnen der øynene beveger seg raskt bak øyelokkene.",
+      "vanskeligeOrd": ["fire", "seks"]
+    },
+    {
+      "id": "folk-04",
+      "emne": "folk",
+      "tittel": "Pyramidene i Egypt",
+      "niva": 3,
+      "tekst": "Den store pyramiden i Egypt ble bygget for over fire tusen fem hundre år siden, uten maskiner slik vi har i dag. Den er satt sammen av over to millioner steinblokker, og noen av dem veier så mye som en buss. I over tre tusen år var den det høyeste byggverket mennesker hadde laget.",
+      "vanskeligeOrd": ["fire", "tusen", "fem", "hundre", "to", "millioner", "tre", "Egypt", "steinblokker"]
+    },
+    {
+      "id": "folk-05",
+      "emne": "folk",
+      "tittel": "De olympiske leker",
+      "niva": 2,
+      "tekst": "De aller første olympiske lekene ble holdt i Hellas for nesten tre tusen år siden. Da var det bare menn som fikk delta, og de konkurrerte helt nakne. I dag er det over to hundre land med, og lekene arrangeres hvert fjerde år.",
+      "vanskeligeOrd": ["tre", "tusen", "to", "hundre", "fjerde", "Hellas", "olympiske"]
+    },
+    {
+      "id": "folk-06",
+      "emne": "folk",
+      "tittel": "Ansiktet ditt",
+      "niva": 1,
+      "tekst": "Uansett hvor i verden du er født, ser et sint, glad eller redd ansikt nesten helt likt ut. Forskere har funnet de samme seks grunnfølelsene igjen hos mennesker i alle land de har undersøkt. Ansiktet ditt har over førti muskler som jobber sammen for å lage disse uttrykkene.",
+      "vanskeligeOrd": ["seks", "førti", "grunnfølelsene"]
+    },
+    {
+      "id": "folk-07",
+      "emne": "folk",
+      "tittel": "Brevduene",
+      "niva": 2,
+      "tekst": "I tusenvis av år har mennesker brukt brevduer til å sende beskjeder til hverandre. En brevdue kan finne veien hjem selv om den blir sluppet fri over ti mil unna. Under den første verdenskrig reddet én enkelt due livet til nesten to hundre soldater ved å komme fram med en viktig beskjed.",
+      "vanskeligeOrd": ["ti", "to", "hundre", "brevduer", "verdenskrig"]
+    },
+
+    {
+      "id": "oppfinnelser-01",
+      "emne": "oppfinnelser",
+      "tittel": "Boktrykkerkunsten",
+      "niva": 2,
+      "tekst": "Før boktrykkerkunsten kom, måtte hver eneste bok skrives for hånd. Rundt år fjorten hundre og femti laget Johannes Gutenberg en presse som kunne trykke mange sider raskt. Med den kunne han trykke to hundre bøker på like kort tid som det før tok å skrive én for hånd.",
+      "vanskeligeOrd": ["fjorten", "hundre", "og", "femti", "to", "Gutenberg", "boktrykkerkunsten"]
+    },
+    {
+      "id": "oppfinnelser-02",
+      "emne": "oppfinnelser",
+      "tittel": "Telefonen",
+      "niva": 2,
+      "tekst": "Den første telefonsamtalen noensinne ble ringt i atten hundre og syttiseks av Alexander Graham Bell. Han satt i et annet rom enn medhjelperen sin og ba ham komme og hjelpe til. I dag bruker mer enn fem milliarder mennesker en telefon hver dag.",
+      "vanskeligeOrd": ["atten", "hundre", "og", "syttiseks", "fem", "milliarder", "Alexander", "Graham", "Bell"]
+    },
+    {
+      "id": "oppfinnelser-03",
+      "emne": "oppfinnelser",
+      "tittel": "Lyspæren",
+      "niva": 2,
+      "tekst": "Thomas Edison brukte over ett tusen forskjellige materialer før han fant en tråd som kunne gløde lenge nok inni en lyspære. Den første pæren hans lyste i over tretten timer sammenhengende, noe ingen hadde klart før. I dag bytter de fleste til lyspærer som kan vare i tjue år eller mer.",
+      "vanskeligeOrd": ["ett", "tusen", "tretten", "tjue", "Edison"]
+    },
+    {
+      "id": "oppfinnelser-04",
+      "emne": "oppfinnelser",
+      "tittel": "Det første flyet",
+      "niva": 2,
+      "tekst": "Brødrene Wright fløy det aller første motorflyet i nitten hundre og tre. Den første turen varte i bare tolv sekunder og gikk drøye tretti meter, kortere enn en fotballbane. I dag kan fly krysse hele jordkloden uten å lande.",
+      "vanskeligeOrd": ["nitten", "hundre", "og", "tre", "tolv", "tretti", "Wright"]
+    },
+    {
+      "id": "oppfinnelser-05",
+      "emne": "oppfinnelser",
+      "tittel": "Sykkelen",
+      "niva": 1,
+      "tekst": "De første syklene hadde ingen pedaler i det hele tatt. Man måtte sparke fra i bakken med føttene, litt som en løpesykkel for barn i dag. Pedaler ble ikke funnet opp før nesten femti år senere.",
+      "vanskeligeOrd": ["femti", "løpesykkel"]
+    },
+    {
+      "id": "oppfinnelser-06",
+      "emne": "oppfinnelser",
+      "tittel": "Kompasset",
+      "niva": 2,
+      "tekst": "Kompasset ble funnet opp i Kina for over to tusen år siden, lenge før noen visste hvorfor det virket. Inni det henger en liten magnet fritt, slik at den alltid dreier seg mot nord. Sjøfolk brukte kompasset til å finne veien over havet selv når de ikke kunne se land.",
+      "vanskeligeOrd": ["to", "tusen", "Kina", "kompasset"]
+    },
+    {
+      "id": "oppfinnelser-07",
+      "emne": "oppfinnelser",
+      "tittel": "Dampmaskinen",
+      "niva": 3,
+      "tekst": "Dampmaskinen gjorde det mulig å drive fabrikker og tog uten hester eller vannhjul. Den utnytter at damp tar mye større plass enn vannet den kom fra, og dytter derfor et stempel fram med stor kraft. På halvannet hundre år forandret den hvordan folk i hele verden arbeidet og reiste.",
+      "vanskeligeOrd": ["halvannet", "hundre", "dampmaskinen", "stempel"]
+    },
+    {
+      "id": "oppfinnelser-08",
+      "emne": "oppfinnelser",
+      "tittel": "Kikkerten",
+      "niva": 2,
+      "tekst": "De første kikkertene ble laget for over fire hundre år siden ved å sette sammen to glasslinser i et rør. Galileo Galilei brukte en slik kikkert til å se fjell på månen og fire måner rundt Jupiter. Uten den oppdagelsen hadde vi trengt mye lenger tid på å forstå verdensrommet.",
+      "vanskeligeOrd": ["fire", "hundre", "to", "Galileo", "Galilei", "Jupiter"]
+    },
+    {
+      "id": "oppfinnelser-09",
+      "emne": "oppfinnelser",
+      "tittel": "Papiret",
+      "niva": 1,
+      "tekst": "Papir ble funnet opp i Kina for nesten to tusen år siden, laget av knuste planterester og vann. Før den tid skrev folk på stein, tre eller dyreskinn, som var mye tyngre å bære med seg. Nå lager fabrikker papir av tre på under ett sekund per ark.",
+      "vanskeligeOrd": ["to", "tusen", "ett", "tre", "Kina"]
     }
   ]
 }
