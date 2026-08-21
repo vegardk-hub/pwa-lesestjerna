@@ -19,7 +19,7 @@
   // Teksten paa kortet i butikken og samlingen -- se BAKGRUNNSFARGE i
   // styles.css (.vare/.figurkort + kategorinavnet som klasse) for selve
   // fargen. Ukjent/manglende kategori telles som vanlig.
-  var KATEGORINAVN = { vanlig: "Vanlig", sjelden: "Sjelden", legendarisk: "Legendarisk", mytisk: "Mytisk", episke: "Episke" };
+  var KATEGORINAVN = { vanlig: "Vanlig", sjelden: "Sjelden", legendarisk: "Legendarisk", mytisk: "Mytisk", episk: "Episk" };
 
   function antenneSvg(f) {
     if (f.antenne === "kule") {
