@@ -216,6 +216,24 @@
     stemmefanger: function (c, t) {
       sveip(c, t, 1200, 300, .25, "sawtooth", .2);
       tone(c, t + .25, 300, .1, "sine", .16);
+    },
+
+    /* ---------- Episke (skyggeroboter) ---------- */
+    skygge: function (c, t) {
+      // To toner nesten likt i tonehoeyde slaar mot hverandre og lager en
+      // ustoe, urovekkende summing -- ikke en ren tone.
+      tone(c, t, 58, .8, "sawtooth", .22);
+      tone(c, t, 61, .8, "sawtooth", .18);
+      stoy(c, t + .3, .2, 800, .12);
+    },
+    gjenferd: function (c, t) {
+      sveip(c, t, 1400, 350, .9, "sine", .16);
+      knirkelyd(c, t + .1, .6, 500, .12);
+    },
+    morkling: function (c, t) {
+      sveip(c, t, 260, 55, .5, "sawtooth", .25);
+      stoy(c, t + .45, .15, 1200, .18);
+      tone(c, t + .5, 45, .4, "square", .2);
     }
   };
 

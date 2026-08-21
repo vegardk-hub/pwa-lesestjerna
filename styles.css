@@ -322,14 +322,17 @@ button.liten { padding: 6px 12px }
 .vare button { width: 100%; margin-top: 4px }
 
 /* ---------- Sjeldenhet: bakgrunn + kategorinavn ----------
-   Vanlig=hvit, sjelden=graa, legendarisk=gul, mytisk=roed. Samme klasser
-   brukes paa vareRad i butikken og figurkort i samlingen -- se js/butikk.js
-   og js/samling.js, som begge legger klassenavnet paa fra kategorien i
-   data/figurer.json. */
+   Vanlig=hvit, sjelden=graa, legendarisk=gul, mytisk=roed, episke=moerk
+   (skyggeroboter). Samme klasser brukes paa vareRad i butikken og figurkort
+   i samlingen -- se js/butikk.js og js/samling.js, som begge legger
+   klassenavnet paa fra kategorien i data/figurer.json. */
 .vare.vanlig, .figurkort.vanlig { background: #fff }
 .vare.sjelden, .figurkort.sjelden { background: #dcdde2 }
 .vare.legendarisk, .figurkort.legendarisk { background: #fbe9a6 }
 .vare.mytisk, .figurkort.mytisk { background: #f3b6b6 }
+.vare.episke, .figurkort.episke { background: #18151f }
+.vare.episke .navn, .figurkort.episke .navn { color: #fff }
+.vare.episke .merke-kategori, .figurkort.episke .merke-kategori { color: rgba(255, 255, 255, .5) }
 
 /* Kategorinavnet var foerst et bokstav-merke i hjoernet, men "Legendarisk"
    er for langt til det -- en liten etikett oeverst paa kortet i stedet. */
@@ -341,6 +344,23 @@ button.liten { padding: 6px 12px }
 /* Blinkende lys paa hodet/kroppen til sjeldne og legendariske roboter. */
 @keyframes blinkelys { 0%, 100% { opacity: 1 } 50% { opacity: .15 } }
 .blink-lys { animation: blinkelys 1.1s ease-in-out infinite }
+
+/* Skyggerobotene (episke) glitcher hele tiden -- korte, uregelmessige hopp
+   i posisjon og farge, med lange rolige pauser mellom. Bevisst smaa hopp og
+   sjeldne (én gang per runde), ikke rask blinking -- det skal virke
+   uhyggelig, ikke blende noen. */
+@keyframes glitch {
+  0%, 88%, 100% { transform: translate(0, 0) skew(0deg); filter: none }
+  89% { transform: translate(-3px, 1px) skew(-3deg); filter: hue-rotate(40deg) contrast(1.4) }
+  90% { transform: translate(3px, -2px) skew(2deg); filter: hue-rotate(-30deg) brightness(1.3) }
+  91% { transform: translate(-2px, 2px); filter: contrast(1.6) }
+  92%, 96% { transform: translate(0, 0); filter: none }
+  97% { transform: translate(-2px, -1px) skew(1deg); filter: contrast(1.5) }
+  98% { transform: translate(2px, 0); filter: none }
+}
+.vare.episke .figur-ikon, .figurkort.episke .figur-ikon, #samlingDetaljIkon.glitch {
+  animation: glitch 2.4s infinite;
+}
 
 #butikkEideWrap { margin-top: 32px; border-top: 1px solid var(--strek); padding-top: 20px }
 #butikkEideTom:empty, #butikkEideTom[hidden] { display: none }

@@ -9,6 +9,8 @@
  *   sjelden      -- samme lyd, pluss blinkende lys (tegnet i figurer.js)
  *   legendarisk  -- blinkende lys, og trykk gir en frase med robotstemme
  *   mytisk       -- ingen lyd/frase -- to knapper for eget opptak i stedet
+ *   episke       -- glitcher hele tiden (css/.glitch), og trykk gir en
+ *                   skummel robotlyd
  */
 (function (global) {
   "use strict";
@@ -60,6 +62,7 @@
   function visDetalj(v) {
     var ikon = $("#samlingDetaljIkon");
     ikon.innerHTML = Figurer.svg(v.id);
+    ikon.classList.toggle("glitch", v.kategori === "episke");
     ikon.onclick = function () { reager(v); };
     $("#samlingDetaljNavn").textContent = v.navn;
     $("#samlingListe").hidden = true;
