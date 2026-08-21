@@ -1,20 +1,20 @@
 /* Verden: skjermen der han velger hva han vil lese om.
  *
- * Kartet er tegnet av kenney/lag_kart.py -- ett sammenhengende bilde
- * (img/verden-kart.png) i Kenney-grafikk med fem leseemner (skog, fjell, hav,
- * by, stjernetaarnet) pluss huset spilleren selv eier, midt paa kartet. Denne
- * fila legger bare de klikkbare punktene oppaa bildet, paa noeyaktig samme
- * sted som skriptet tegnet hver sone -- se SONER under, som er kopiert fra
- * kenney/verden-soner.json. Skal en sone flyttes, er det der det skjer, ikke
- * her.
+ * Kartet er img/verden-kart.jpg, ett ferdig bilde av en flytende by. Denne
+ * fila legger bare de klikkbare punktene oppaa bildet -- se SONER under, som
+ * er valgt til aa treffe noe som faktisk staar der i bildet (et tarn, broen,
+ * en gronn oy...). Skal en sone flyttes, er det tallene der det skjer.
+ *
+ * De fem emnene er skolefag-bredde, ikke steder: tall og gaater, ting og
+ * krefter, alt som lever, mennesker og tanker, oppfinnelser. Bildet passer
+ * likevel fint -- det er stort nok til aa romme alle fem uten aa se ut som en
+ * meny.
  *
  * Hjemme-punktet er ikke et emne fra tekstbanken -- det foerer alltid rett
- * tilbake til huset (Hus.tegn), samme dør han gikk ut av.
+ * tilbake til huset (Hus.tegn).
  *
  * At det er ett kart og ikke fem kort er et bevisst valg: det skal se ut som
- * han drar til et sted, ikke velger fra en meny. Aa la figuren gaa rundt paa
- * kartet er planlagt, men kommer senere -- inntil da er sonene faste punkter
- * man trykker rett paa.
+ * han drar til et sted, ikke velger fra en meny.
  */
 (function (global) {
   "use strict";
@@ -22,38 +22,51 @@
   var $ = function (v) { return document.querySelector(v); };
 
   // Brøkdel av kartets bredde/hoeyde (0..1), ikke piksler -- da flytter
-  // punktene seg riktig med kortet uansett hvor bredt det vises.
+  // punktene seg riktig med kortet uansett hvor bredt det vises. Tallene er
+  // satt for aa treffe konkrete ting i img/verden-kart.jpg (1280x853):
+  // taarnet med rutemoenster, lysstraalene og stjernehimmelen midt i bildet,
+  // broen over vannet, den store kula nede til venstre, den groenne oeya nede
+  // til hoeyre.
   var SONER = {
-    skog:    { x: 0.1953, y: 0.2639 },
-    fjell:   { x: 0.8203, y: 0.2500 },
-    hav:     { x: 0.1250, y: 0.6944 },
-    by:      { x: 0.7891, y: 0.7917 },
-    stjerne: { x: 0.5078, y: 0.1806 },
-    hjem:    { x: 0.4609, y: 0.5417 }
+    tall:         { x: 0.2852, y: 0.1641 },
+    krefter:      { x: 0.5469, y: 0.2344 },
+    folk:         { x: 0.4922, y: 0.5859 },
+    oppfinnelser: { x: 0.1484, y: 0.6330 },
+    liv:          { x: 0.9063, y: 0.7734 },
+    hjem:         { x: 0.3400, y: 0.9000 }
   };
 
   var FARGER = {
-    skog: "#2f7d4f",
-    fjell: "#5b7a99",
-    hav: "#1f6f8b",
-    by: "#a8652f",
-    stjerne: "#4b3f8f",
+    tall: "#2f6d9d",
+    krefter: "#4b3f8f",
+    folk: "#a8447a",
+    oppfinnelser: "#b3651e",
+    liv: "#2f7d4f",
     hjem: "#c46a2f"
   };
   var RESERVE = "#6b727a";
 
-  /* Samme strekmerker som foer kartet fantes -- nå bare som liten ikon i
-     prikken i stedet for et helt kort. */
+  /* Ett lite ikon per emne i prikken paa kartet. */
   var MERKER = {
-    skog: '<path d="M12 2 L19 12 H15 L21 21 H3 L9 12 H5 Z"/>',
-    fjell: '<path d="M2 20 L9 6 L13 13 L16 9 L22 20 Z"/>',
-    hav: '<path d="M2 9c3-3 5 3 8 0s5 3 8 0 4 0 4 0M2 15c3-3 5 3 8 0s5 3 8 0 4 0 4 0" ' +
-         'fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>',
-    by: '<path d="M4 21V9l5-4 5 4v12z"/><path d="M16 21V12h4v9z"/>',
-    stjerne: '<circle cx="12" cy="12" r="4.6"/>' +
-             '<path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3M4.6 4.6l2.1 2.1' +
-             'M17.3 17.3l2.1 2.1M19.4 4.6l-2.1 2.1M6.7 17.3l-2.1 2.1" ' +
-             'fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"/>',
+    // Tall og gaater: et rutenett, som et lite regnestykke.
+    tall: '<path d="M9 3v18M15 3v18M4 9h16M4 15h16" fill="none" stroke="currentColor" ' +
+          'stroke-width="2.2" stroke-linecap="round"/>',
+    // Ting, krefter og verdensrommet: et atom i bane.
+    krefter: '<circle cx="12" cy="12" r="2.3"/>' +
+             '<ellipse cx="12" cy="12" rx="9" ry="3.6" fill="none" stroke="currentColor" ' +
+             'stroke-width="1.8" transform="rotate(30 12 12)"/>' +
+             '<ellipse cx="12" cy="12" rx="9" ry="3.6" fill="none" stroke="currentColor" ' +
+             'stroke-width="1.8" transform="rotate(-30 12 12)"/>',
+    // Mennesker, tanker og følelser: et menneske.
+    folk: '<circle cx="12" cy="7.2" r="3.4"/><path d="M5 21c0-4.4 3.2-7 7-7s7 2.6 7 7Z"/>',
+    // Oppfinnelser og maskiner: en lyspære.
+    oppfinnelser: '<path d="M12 2a7 7 0 0 0-4 12.7c.8.6 1.3 1.5 1.4 2.5h5.2c.1-1 .6-1.9 ' +
+                  '1.4-2.5A7 7 0 0 0 12 2Z"/>' +
+                  '<rect x="9.3" y="18.2" width="5.4" height="1.8" rx=".9" fill="#fff"/>' +
+                  '<rect x="9.8" y="20.6" width="4.4" height="1.6" rx=".8" fill="#fff"/>',
+    // Alt som lever: et blad.
+    liv: '<path d="M12 3c-5 2-8 6-8 11a8 8 0 0 0 16 0c0-5-3-9-8-11Z"/>' +
+         '<path d="M12 6v13" fill="none" stroke="#fff" stroke-width="1.4" opacity=".7"/>',
     hjem: '<path d="M3 12 12 4l9 8"/><path d="M5 10.5V21h14V10.5"/><path d="M9.5 21v-7h5v7"/>'
   };
 

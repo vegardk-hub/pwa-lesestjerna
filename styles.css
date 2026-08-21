@@ -193,14 +193,14 @@ button.lytter:hover { background: #c8332a }
 #verden h2 { font-size: 22px; margin: 0 0 20px; font-weight: 650 }
 
 /* ---------- Verdenskartet ----------
-   Bildet er tegnet i faste 16:9 av kenney/lag_kart.py, saa prosentplasseringen
-   av sonene (satt i verden.js, hentet fra samme skript) alltid stemmer uansett
-   hvor bredt kortet vises. object-fit:cover fyller boksen helt -- uten den
-   ville et avvik mellom skjermens og bildets fasong lagt en kant rundt bildet,
-   og da ville ikke prosentene lenger truffet der de skal. */
+   img/verden-kart.jpg er 1280x853 -- aspect-ratio staar i samme forhold, saa
+   prosentplasseringen av sonene (satt i verden.js) alltid treffer riktig sted
+   i bildet uansett hvor bredt kortet vises. object-fit:cover fyller boksen
+   helt -- uten den ville et avvik mellom skjermens og bildets fasong lagt en
+   kant rundt bildet, og da ville ikke prosentene lenger truffet der de skal. */
 #kart {
   position: relative;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 1280 / 853;
   border-radius: 18px;
   overflow: hidden;
   border: 1.5px solid var(--strek);

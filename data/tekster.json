@@ -28,17 +28,17 @@
   ],
 
   "emner": [
-    { "id": "skog",    "navn": "Skogen",       "under": "Dyr og småkryp" },
-    { "id": "fjell",   "navn": "Fjellene",     "under": "Vær, snø og stein" },
-    { "id": "hav",     "navn": "Havet",        "under": "Fisk og sjødyr" },
-    { "id": "by",      "navn": "Byen",         "under": "Historie og oppfinnelser" },
-    { "id": "stjerne", "navn": "Stjernetårnet", "under": "Verdensrommet" }
+    { "id": "tall",         "navn": "Tall og gåter",                 "under": "Mål, mengder og mønstre" },
+    { "id": "krefter",      "navn": "Ting, krefter og verdensrommet", "under": "Fysikk, vær og rommet" },
+    { "id": "liv",          "navn": "Alt som lever",                 "under": "Dyr, planter og kropp" },
+    { "id": "folk",         "navn": "Mennesker, tanker og følelser",  "under": "Historie og hvordan vi tenker" },
+    { "id": "oppfinnelser", "navn": "Oppfinnelser og maskiner",      "under": "Ting folk har funnet opp" }
   ],
 
   "tekster": [
     {
       "id": "skog-01",
-      "emne": "skog",
+      "emne": "liv",
       "tittel": "Pinnsvinet",
       "niva": 1,
       "tekst": "Et pinnsvin har omtrent fem tusen pigger på ryggen. Når det blir redd, ruller det seg sammen til en ball. Da stikker piggene ut på alle kanter, og de fleste dyr lar det være i fred.",
@@ -46,7 +46,7 @@
     },
     {
       "id": "skog-02",
-      "emne": "skog",
+      "emne": "liv",
       "tittel": "Ekornet som glemmer",
       "niva": 1,
       "tekst": "Et ekorn kan gjemme flere tusen nøtter i bakken om høsten. Det finner ikke igjen alle sammen. Nøttene det glemmer, kan vokse opp og bli til nye trær.",
@@ -54,7 +54,7 @@
     },
     {
       "id": "skog-03",
-      "emne": "skog",
+      "emne": "liv",
       "tittel": "Elgen",
       "niva": 2,
       "tekst": "Elgen er det største dyret i den norske skogen. En stor okse kan veie sju hundre kilo, og geviret alene kan veie tjue kilo. Elgen feller geviret hver vinter og får et helt nytt til sommeren.",
@@ -62,7 +62,7 @@
     },
     {
       "id": "skog-04",
-      "emne": "skog",
+      "emne": "liv",
       "tittel": "Maurtua",
       "niva": 2,
       "tekst": "En maurtue kan se ut som en haug med barnåler, men inni bor det mange hundre tusen maur. En maur kan bære femti ganger sin egen vekt. Det er som om du skulle løftet en bil.",
@@ -71,7 +71,7 @@
 
     {
       "id": "fjell-01",
-      "emne": "fjell",
+      "emne": "tall",
       "tittel": "Snøkrystallen",
       "niva": 1,
       "tekst": "Et snøfnugg er laget av små krystaller av is. Hver krystall vokser rundt et bittelite støvkorn, og hver eneste en har seks kanter. Ingen har funnet to som er helt like.",
@@ -79,7 +79,7 @@
     },
     {
       "id": "fjell-02",
-      "emne": "fjell",
+      "emne": "krefter",
       "tittel": "Lyn og torden",
       "niva": 2,
       "tekst": "Lyset fra lynet kommer fram til deg med en gang. Lyden bruker mye lengre tid, omtrent tre sekunder på hver kilometer. Teller du til seks etter lynet, er tordenen to kilometer unna.",
@@ -87,7 +87,7 @@
     },
     {
       "id": "fjell-03",
-      "emne": "fjell",
+      "emne": "tall",
       "tittel": "Det høyeste fjellet",
       "niva": 2,
       "tekst": "Galdhøpiggen er det høyeste fjellet i Norge. Toppen ligger to tusen fire hundre og sekstini meter over havet, midt inne i Jotunheimen. Der oppe er det snø hele året, også om sommeren.",
@@ -95,7 +95,7 @@
     },
     {
       "id": "fjell-04",
-      "emne": "fjell",
+      "emne": "krefter",
       "tittel": "Isen som lagde fjordene",
       "niva": 3,
       "tekst": "For lenge siden lå det tykk is over hele Norge. Isen var så tung at den skar seg ned i fjellet mens den sakte gled mot havet. Dalene den grov ut, ble fylt med vann da isen smeltet, og slik ble fjordene til. Sognefjorden er den dypeste, over tusen meter ned til bunnen.",
@@ -104,7 +104,7 @@
 
     {
       "id": "hav-01",
-      "emne": "hav",
+      "emne": "liv",
       "tittel": "Blåhvalen",
       "niva": 1,
       "tekst": "Blåhvalen er det største dyret som noen gang har levd. Den kan bli tretti meter lang, og tunga alene veier like mye som en elefant. Likevel spiser den bare bittesmå krepsdyr, men den spiser fire tonn av dem hver dag.",
@@ -112,7 +112,7 @@
     },
     {
       "id": "hav-02",
-      "emne": "hav",
+      "emne": "liv",
       "tittel": "Blekkspruten",
       "niva": 2,
       "tekst": "Blekkspruten har åtte armer og tre hjerter, og blodet i kroppen er blått. Hver arm har hundrevis av sugekopper som kan smake på det de tar på. Den kan også skifte farge på et blunk og bli helt lik bunnen den ligger på.",
@@ -120,7 +120,7 @@
     },
     {
       "id": "hav-03",
-      "emne": "hav",
+      "emne": "liv",
       "tittel": "Sjøstjerna",
       "niva": 1,
       "tekst": "En sjøstjerne har som regel fem armer, og mister den en, vokser det ut en ny. Den har ingen hjerne i det hele tatt. I stedet kjenner den lys med en liten øyeflekk ytterst på hver arm.",
@@ -128,7 +128,7 @@
     },
     {
       "id": "hav-04",
-      "emne": "hav",
+      "emne": "tall",
       "tittel": "Hvor mye vann finnes det?",
       "niva": 2,
       "tekst": "Sju av ti deler av jorda er dekket av hav. Ser du på en globus, er den derfor mer blå enn grønn. Det dypeste stedet er nesten elleve tusen meter ned, og der nede har mennesker vært bare noen få ganger.",
@@ -137,7 +137,7 @@
 
     {
       "id": "by-01",
-      "emne": "by",
+      "emne": "folk",
       "tittel": "Vikingene i Amerika",
       "niva": 2,
       "tekst": "Vikingene seilte over havet i lange, smale skip. Leiv Eiriksson kom til Amerika for omtrent tusen år siden, nesten fem hundre år før Columbus. De bygde hus der borte, men de ble ikke boende.",
@@ -145,7 +145,7 @@
     },
     {
       "id": "by-02",
-      "emne": "by",
+      "emne": "folk",
       "tittel": "Runer",
       "niva": 2,
       "tekst": "Før folk i Norge skrev med bokstaver som våre, skrev de med runer. Runealfabetet hadde bare seksten tegn, mens vårt har tjueni bokstaver. Runene var laget av rette streker, fordi de var lettere å skjære inn i tre og stein.",
@@ -153,7 +153,7 @@
     },
     {
       "id": "by-03",
-      "emne": "by",
+      "emne": "oppfinnelser",
       "tittel": "Hjulet",
       "niva": 2,
       "tekst": "Hjulet er en av de eldste oppfinnelsene vi kjenner til, og det er over fem tusen år gammelt. De første hjulene ble ikke brukt til å kjøre med. De lå flatt på et bord, og på dem formet folk krukker av leire.",
@@ -161,7 +161,7 @@
     },
     {
       "id": "by-04",
-      "emne": "by",
+      "emne": "folk",
       "tittel": "Byen ved fjorden",
       "niva": 2,
       "tekst": "Oslo har ligget innerst i fjorden i nesten tusen år. Byen har brent ned fjorten ganger og blitt bygd opp igjen hver gang. Etter den siste brannen fikk den navnet Christiania, og det het den i tre hundre år.",
@@ -170,7 +170,7 @@
 
     {
       "id": "stjerne-01",
-      "emne": "stjerne",
+      "emne": "krefter",
       "tittel": "Sola",
       "niva": 2,
       "tekst": "Sola er en stjerne. Den ser mye større ut enn de andre stjernene bare fordi den er så mye nærmere oss. Det er plass til over en million jordkloder inni sola, og lyset derfra bruker åtte minutter på å nå fram til jorda.",
@@ -178,7 +178,7 @@
     },
     {
       "id": "stjerne-02",
-      "emne": "stjerne",
+      "emne": "krefter",
       "tittel": "Månen som aldri snur seg",
       "niva": 2,
       "tekst": "Månen går rundt jorda, men den snurrer akkurat så sakte at den alltid vender den samme siden mot oss. Baksiden hadde ingen mennesker sett før vi sendte opp romskip. Månen er så langt borte at det tok tre dager å fly dit.",
@@ -186,7 +186,7 @@
     },
     {
       "id": "stjerne-03",
-      "emne": "stjerne",
+      "emne": "krefter",
       "tittel": "Den røde planeten",
       "niva": 2,
       "tekst": "Mars ser rød ut fordi bakken der er full av rust. På Mars står det høyeste fjellet i hele solsystemet. Det heter Olympus Mons og er tre ganger så høyt som Mount Everest.",
@@ -194,7 +194,7 @@
     },
     {
       "id": "stjerne-04",
-      "emne": "stjerne",
+      "emne": "krefter",
       "tittel": "Lyset som er gammelt",
       "niva": 3,
       "tekst": "Stjernene er så langt borte at lyset fra dem bruker mange år på å komme fram til oss. Fra den nærmeste stjerna utenom sola bruker lyset over fire år. Når du ser opp på en stjerne, ser du den altså slik den var for lenge siden. Noen av dem finnes kanskje ikke lenger.",
