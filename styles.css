@@ -1,0 +1,428 @@
+/* Lesestjerna. Lys bakgrunn er satt uttrykkelig: uten den staar moerk tekst
+   paa moerk bakgrunn naar Windows er i moerk modus. */
+:root {
+  color-scheme: light;
+  --blekk: #1d2125;
+  --dus: #6b727a;
+  --strek: #dfe3e8;
+  --grøn: #2f7d4f;
+  --grønbakk: #cdeccd;
+  --gul: #f0a202;
+  --stjerne: #f2b705;
+}
+
+* { box-sizing: border-box }
+
+body {
+  margin: 0;
+  background: #fff;
+  color: var(--blekk);
+  font: 17px/1.6 system-ui, "Segoe UI", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- Topp ---------- */
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--strek);
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 5;
+}
+header h1 { font-size: 19px; margin: 0; font-weight: 650; letter-spacing: -.01em }
+#stjerner {
+  margin-left: auto;
+  font-size: 19px;
+  color: var(--stjerne);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+#stjerner.vokser { animation: sprett .5s ease }
+@keyframes sprett {
+  0% { transform: scale(1) }
+  35% { transform: scale(1.45) }
+  100% { transform: scale(1) }
+}
+
+/* ---------- Knapper ---------- */
+
+button {
+  font: inherit;
+  color: var(--blekk);
+  background: #fff;
+  border: 1.5px solid var(--strek);
+  border-radius: 10px;
+  padding: 9px 16px;
+  cursor: pointer;
+}
+button:hover:not(:disabled) { background: #f5f7f9 }
+button:disabled { opacity: .4; cursor: default }
+button.stor { font-size: 20px; padding: 15px 30px; border-radius: 14px; font-weight: 600 }
+button.hoved { background: var(--blekk); color: #fff; border-color: var(--blekk) }
+button.hoved:hover:not(:disabled) { background: #333b44 }
+button.lytter { background: #b3261e; border-color: #b3261e; color: #fff }
+button.lytter:hover { background: #c8332a }
+
+/* ---------- Hvem leser ---------- */
+
+#velgSpiller { padding: 30px 20px 60px; max-width: 780px; margin: 0 auto; width: 100% }
+#velgSpiller h2 { font-size: 22px; margin: 0 0 20px; font-weight: 650 }
+#spillerkort { display: flex; gap: 16px; flex-wrap: wrap }
+
+.spiller {
+  /* Alle tre paa én rad. Med en fast grunnbredde brakk den tredje ned og ble
+     smalere enn de to andre. */
+  flex: 1 1 0;
+  min-width: 128px;
+  border: 1.5px solid var(--strek);
+  border-radius: 16px;
+  padding: 20px 16px 14px;
+  text-align: center;
+  cursor: pointer;
+  background: #fff;
+}
+.spiller:hover { border-color: var(--gul); background: #fffdf7 }
+.spiller.valgt { border-color: var(--gul); border-width: 2.5px; padding: 18.5px 14.5px 12.5px }
+.spiller .figur {
+  width: 64px; height: 64px; margin: 0 auto 12px;
+  border-radius: 50%; background: var(--strek); color: #fff;
+  font-size: 28px; font-weight: 650;
+  display: flex; align-items: center; justify-content: center;
+}
+.spiller.ny .figur { background: #fff; color: var(--dus); border: 2px dashed var(--strek) }
+.spiller .navn { font-size: 18px; font-weight: 600 }
+.spiller .tall { font-size: 13.5px; color: var(--dus); margin-top: 4px }
+.spiller .smaaknapper {
+  display: flex; gap: 8px; justify-content: center;
+  margin-top: 12px; opacity: 0; transition: opacity .15s;
+}
+.spiller:hover .smaaknapper, .spiller.valgt .smaaknapper { opacity: 1 }
+.spiller .smaaknapper button { font-size: 12.5px; padding: 4px 10px; border-radius: 7px }
+
+#byttSpiller { font-size: 14.5px; padding: 6px 12px }
+.liten { font-size: 13.5px }
+#kopibeskjed.feil { color: #b3261e }
+
+/* ---------- Huset ----------
+   Rommet er nå kenney/lag_rom.py sitt bilde (tapet, vindu, teppe og det vesle
+   bordet) -- se img/hus-rom.png. Rommet er med vilje nesten tomt: det eneste
+   som betyr noe aa begynne med er boka. Flere mobler kommer etter hvert som
+   han kjoeper dem for mynter -- det er da lag_rom.py fylles paa, ikke naar
+   rommet virker for stort og tomt i seg selv.
+
+   Det som ligger oppaa bildet er bare det som skal kunne trykkes paa: doera,
+   boka paa bordet, figuren og levelboblen, plassert i prosent av boksen paa
+   noeyaktig samme sted bildet tegnet dem, akkurat som sonene paa
+   verdenskartet. */
+
+#hus { padding: 24px 20px 50px; max-width: 780px; margin: 0 auto; width: 100% }
+#hus h2 { font-size: 22px; margin: 0 0 16px; font-weight: 650 }
+#hushint { margin: 10px 0 0 }
+#hushint:empty { display: none }
+#hus .rad { justify-content: center }
+
+#rom {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1.5px solid var(--strek);
+  user-select: none;
+}
+#romBilde { width: 100%; height: 100%; object-fit: cover; display: block }
+#romInnhold { position: absolute; inset: 0 }
+
+/* Doera staar aapent paa hoeyre vegg i bildet -- ingen mobler er tegnet der. */
+#rom .doer {
+  position: absolute; left: 85%; top: 15%; width: 13%; height: 57%;
+  background: #a4693a; border: 3px solid #7d4e2a; border-radius: 6px 6px 0 0;
+  padding: 0; display: flex; align-items: flex-end; justify-content: center;
+}
+#rom .doer:hover { background: #b8794a }
+#rom .doer .haandtak {
+  position: absolute; left: 12%; top: 52%;
+  width: 9px; height: 9px; border-radius: 50%; background: var(--gul);
+}
+#rom .doer .skilt {
+  margin-bottom: 12%; font-size: 13px; font-weight: 650; color: #fff;
+  letter-spacing: .04em;
+}
+
+/* Selve bordet er malt inn i bildet -- denne knappen er en usynlig flate rett
+   oppaa bordplata, med en liten bok som viser at det er noe aa trykke paa.
+   Boka ligger paa bordet i stedet for i en meny: han skal snuble over den. */
+#rom .bord {
+  position: absolute; left: 68.75%; top: 55.5%; width: 6.25%; height: 13%;
+  background: none; border: none; padding: 0;
+}
+#rom .bord .boka {
+  position: absolute; left: 28%; width: 44%; top: 10%; height: 52%;
+  background: #b3261e; border-radius: 2px 4px 4px 2px;
+  border-left: 3px solid #7d1a15;
+  box-shadow: 0 2px 0 rgba(0,0,0,.25);
+}
+#rom .bord:hover .boka { transform: translateY(-2px) }
+
+#rom .figur { position: absolute; left: 22%; top: 38%; width: 12%; height: 44% }
+#rom .figur svg { width: 100%; height: 100%; display: block }
+
+#rom .levelboble {
+  position: absolute; left: 64%; top: 18%;
+  background: #fff; border: 2px solid var(--gul); border-radius: 12px;
+  padding: 4px 10px; text-align: center; line-height: 1.25;
+  font-variant-numeric: tabular-nums;
+}
+#rom .levelboble b { display: block; font-size: 15px }
+#rom .levelboble span { font-size: 12.5px; color: var(--gul) }
+
+/* Kjoepte moebler, plassert i prosent av samme rutenett som lag_rom.py brukte
+   (16x9). Han kan dra dem dit han vil -- gjorDraggbar() i hus.js flytter
+   dem visuelt, og lagrer foerst naar han slipper. */
+.mobel {
+  position: absolute;
+  object-fit: contain;
+  cursor: grab;
+  touch-action: none;
+}
+.mobel.flyttes { cursor: grabbing; opacity: .85; z-index: 3 }
+
+/* ---------- Boka paa bordet ---------- */
+
+#boka { padding: 40px 20px 60px; max-width: 620px; margin: 0 auto; width: 100% }
+#boka h2 { font-size: 26px; margin: 0 0 22px; font-weight: 650; text-align: center }
+#bokaTall {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+}
+#bokaTall .tall {
+  border: 1.5px solid var(--strek); border-radius: 14px;
+  padding: 14px 10px; text-align: center;
+}
+#bokaTall .tall b {
+  display: block; font-size: 26px; font-weight: 650;
+  font-variant-numeric: tabular-nums;
+}
+#bokaTall .tall span { font-size: 13px; color: var(--dus) }
+
+#bokaUke {
+  display: flex; gap: 10px; align-items: flex-end;
+  margin-top: 22px; height: 96px;
+}
+#bokaUke .dag { flex: 1; display: flex; flex-direction: column; height: 100% }
+#bokaUke .stolpe { flex: 1; display: flex; align-items: flex-end }
+#bokaUke .stolpe i {
+  display: block; width: 100%; background: var(--grøn);
+  border-radius: 5px 5px 0 0; min-height: 4px;
+}
+/* En dag uten lesing er en tom strek, ikke en tapt dag. */
+#bokaUke .stolpe i.tom { background: var(--strek); height: 4px !important }
+#bokaUke .merke { text-align: center; font-size: 12px; color: var(--dus); margin-top: 6px }
+
+#bokaBunn { text-align: center; margin: 16px 0 0 }
+#boka .rad { justify-content: center; margin-top: 28px }
+
+/* ---------- Verden ---------- */
+
+#verden { padding: 30px 20px 60px; max-width: 780px; margin: 0 auto; width: 100% }
+#verden h2 { font-size: 22px; margin: 0 0 20px; font-weight: 650 }
+
+/* ---------- Verdenskartet ----------
+   Bildet er tegnet i faste 16:9 av kenney/lag_kart.py, saa prosentplasseringen
+   av sonene (satt i verden.js, hentet fra samme skript) alltid stemmer uansett
+   hvor bredt kortet vises. object-fit:cover fyller boksen helt -- uten den
+   ville et avvik mellom skjermens og bildets fasong lagt en kant rundt bildet,
+   og da ville ikke prosentene lenger truffet der de skal. */
+#kart {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1.5px solid var(--strek);
+}
+#kartbilde { width: 100%; height: 100%; object-fit: cover; display: block; user-select: none }
+#soner { position: absolute; inset: 0 }
+
+.sone {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+.sone .prikk {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  border: 2.5px solid #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,.35);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff;
+  transition: transform .15s;
+}
+.sone .prikk svg { width: 17px; height: 17px }
+.sone:hover:not(:disabled) .prikk, .sone:focus-visible .prikk { transform: scale(1.12) }
+.sone:disabled { cursor: default }
+.sone:disabled .prikk { opacity: .55 }
+
+.sone .lapp {
+  background: rgba(29, 33, 37, .82);
+  color: #fff;
+  border-radius: 10px;
+  padding: 5px 10px 6px;
+  text-align: center;
+  min-width: 84px;
+  backdrop-filter: blur(1px);
+}
+.sone .navn { font-size: 12.5px; font-weight: 650; line-height: 1.25; white-space: nowrap }
+/* Stolpen viser hvor mye av emnet han har vaert gjennom. Den gaar aldri ned. */
+.sone .stolpe {
+  height: 4px; border-radius: 2px; background: rgba(255,255,255,.28);
+  margin-top: 4px; overflow: hidden;
+}
+.sone .stolpe i { display: block; height: 100% }
+.sone .teller { font-size: 10.5px; color: rgba(255,255,255,.85); margin-top: 3px; white-space: nowrap }
+
+#bankfeil { margin-top: 20px }
+#bankfeil:empty { display: none }
+
+/* ---------- Butikken ---------- */
+
+#butikk { padding: 30px 20px 60px; max-width: 780px; margin: 0 auto; width: 100% }
+#butikk h2 { font-size: 22px; margin: 0 0 8px; font-weight: 650 }
+#butikk h3 { font-size: 16px; margin: 0 0 12px; font-weight: 650 }
+#butikk .rad { justify-content: center }
+#butikkMynterRad { margin: 0 0 20px }
+#butikkMynterRad b { color: var(--gul) }
+
+#butikkListe {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 14px;
+}
+.vare {
+  border: 1.5px solid var(--strek);
+  border-radius: 14px;
+  padding: 14px 12px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.vare img { width: 64px; height: 64px; object-fit: contain; image-rendering: pixelated }
+.vare .navn { font-weight: 600; font-size: 14.5px }
+.vare .pris { color: var(--gul); font-size: 13.5px }
+.vare .antall { color: var(--dus); font-size: 12px }
+.vare button { width: 100%; margin-top: 4px }
+
+#butikkEideWrap { margin-top: 32px; border-top: 1px solid var(--strek); padding-top: 20px }
+#butikkEideTom:empty, #butikkEideTom[hidden] { display: none }
+#butikkEide { display: flex; flex-direction: column; gap: 8px }
+.eidRad {
+  display: flex; align-items: center; gap: 12px;
+  border: 1.5px solid var(--strek); border-radius: 12px; padding: 8px 12px;
+}
+.eidRad img { width: 36px; height: 36px; object-fit: contain; image-rendering: pixelated }
+.eidRad span { flex: 1; font-size: 14.5px }
+.eidRad button { font-size: 13px; padding: 6px 12px }
+
+/* ---------- Ferdig ---------- */
+
+#ferdig {
+  padding: 60px 20px; max-width: 620px; margin: 0 auto; width: 100%;
+  text-align: center;
+}
+#ferdigTittel { font-size: 30px; margin: 0 0 14px; font-weight: 650 }
+#ferdigTall { font-size: 19px; margin: 0; color: var(--grøn); font-weight: 600 }
+#ferdigBok { margin: 8px 0 0 }
+#ferdigBok:empty { display: none }
+#ferdig .rad { justify-content: center; margin-top: 32px }
+
+/* ---------- Startskjermen ---------- */
+
+#start { padding: 30px 20px 60px; max-width: 780px; margin: 0 auto; width: 100% }
+#start p.und { color: var(--dus); margin: 0 0 18px }
+.und { color: var(--dus) }
+textarea {
+  width: 100%;
+  min-height: 220px;
+  font: inherit;
+  line-height: 1.6;
+  padding: 14px 16px;
+  border: 1.5px solid var(--strek);
+  border-radius: 12px;
+  resize: vertical;
+  background: #fff;
+  color: var(--blekk);
+}
+textarea:focus { outline: none; border-color: var(--gul) }
+.rad { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 16px }
+
+#fasit {
+  margin-top: 26px;
+  font-size: 14.5px;
+  color: var(--dus);
+  border-top: 1px solid var(--strek);
+  padding-top: 16px;
+}
+#fasit .ja { color: var(--grøn) }
+#fasit .nei { color: #b3261e }
+#fasit div { margin: 4px 0 }
+
+/* ---------- Teksten som leses ---------- */
+
+main {
+  flex: 1;
+  padding: 34px 24px 40px;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+.avsnitt { margin: 0 0 1.5em; font-size: 30px; line-height: 1.85 }
+
+.setning { border-radius: 8px; transition: opacity .25s }
+.setning.gjort { opacity: .38 }
+.setning.senere { opacity: .38 }
+
+.ord {
+  padding: 2px 4px;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background-color .18s, color .18s;
+}
+.ord.truffet { background: var(--grønbakk); color: var(--grøn) }
+.ord.naa { box-shadow: 0 0 0 2.5px var(--gul); background: #fffaf0 }
+.ord.venter { animation: puls 1.4s ease-in-out infinite }
+@keyframes puls {
+  0%, 100% { box-shadow: 0 0 0 2.5px var(--gul) }
+  50% { box-shadow: 0 0 0 7px rgba(240, 162, 2, .3) }
+}
+
+/* ---------- Verktoeylinja ---------- */
+
+footer {
+  position: sticky;
+  bottom: 0;
+  background: #fff;
+  border-top: 1px solid var(--strek);
+  padding: 14px 20px 18px;
+}
+footer .rad { margin: 0; justify-content: center }
+#beskjed {
+  text-align: center;
+  color: var(--dus);
+  font-size: 14.5px;
+  margin: 10px 0 0;
+  min-height: 1.5em;
+}
+#beskjed.feil { color: #b3261e }

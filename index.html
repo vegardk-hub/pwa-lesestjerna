@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lesestjerna</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <h1>Lesestjerna</h1>
+  <button id="tilbake" hidden>Tilbake</button>
+  <button id="byttSpiller" hidden></button>
+  <div id="stjerner" hidden></div>
+</header>
+
+<section id="velgSpiller">
+  <h2>Hvem leser?</h2>
+  <div id="spillerkort"></div>
+  <p class="und" id="plassbeskjed"></p>
+  <div class="rad">
+    <button id="sikkerhetskopi">Lag sikkerhetskopi</button>
+    <button id="hentInn">Hent inn sikkerhetskopi</button>
+    <input type="file" id="filvelger" accept="application/json,.json" hidden>
+  </div>
+  <p class="und liten" id="kopibeskjed"></p>
+</section>
+
+<section id="hus" hidden>
+  <h2 id="husnavn"></h2>
+  <div id="rom">
+    <img src="img/hus-rom.png" alt="" id="romBilde">
+    <div id="romInnhold"></div>
+  </div>
+  <p class="und liten" id="hushint"></p>
+  <div class="rad">
+    <button id="utOgLes" class="stor hoved">Gå ut og les</button>
+    <button id="apneBoka">Se i boka</button>
+    <button id="apneButikk">Butikk</button>
+  </div>
+</section>
+
+<section id="boka" hidden>
+  <h2 id="bokaTittel"></h2>
+  <div id="bokaTall"></div>
+  <div id="bokaUke"></div>
+  <p class="und liten" id="bokaBunn"></p>
+  <div class="rad">
+    <button id="lukkBoka" class="stor hoved">Lukk boka</button>
+  </div>
+</section>
+
+<section id="butikk" hidden>
+  <h2>Butikken</h2>
+  <p class="und liten">Kjøp ting for mynter, og sett dem der du vil i rommet.
+    Angrer du, kan du selge tilbake for det du betalte.</p>
+  <p class="und" id="butikkMynterRad">Du har <b id="butikkMynter"></b></p>
+  <div id="butikkListe"></div>
+  <div id="butikkEideWrap">
+    <h3>Dine ting</h3>
+    <p class="und liten" id="butikkEideTom">Du eier ingenting ennå.</p>
+    <div id="butikkEide"></div>
+  </div>
+  <div class="rad">
+    <button id="lukkButikk" class="stor hoved">Lukk butikken</button>
+  </div>
+</section>
+
+<section id="verden" hidden>
+  <h2>Hvor vil du lese i dag?</h2>
+  <div id="kart">
+    <img src="img/verden-kart.png" alt="" id="kartbilde">
+    <div id="soner"></div>
+  </div>
+  <div class="rad">
+    <button id="limInn">Lim inn en egen tekst</button>
+  </div>
+  <p class="und liten feil" id="bankfeil"></p>
+</section>
+
+<section id="ferdig" hidden>
+  <h2 id="ferdigTittel"></h2>
+  <p id="ferdigTall"></p>
+  <p id="ferdigBok" class="und"></p>
+  <div class="rad">
+    <button id="lesEnTil" class="stor hoved">Les en til</button>
+    <button id="tilVerden">Tilbake til verden</button>
+    <button id="tilHus">Hjem til huset</button>
+  </div>
+</section>
+
+<section id="start" hidden>
+  <p class="und">Lim inn det han skal lese — fra en bok, en nettside, hva som helst.
+    Så leser han høyt, og ordene lyser når han sier dem riktig.</p>
+  <textarea id="innTekst" placeholder="Lim inn teksten her …" spellcheck="false"></textarea>
+  <div class="rad">
+    <button id="settIGang" class="stor hoved">Sett i gang</button>
+    <button id="eksempel">Bruk en eksempeltekst</button>
+  </div>
+  <div id="fasit"></div>
+</section>
+
+<main id="lesing" hidden>
+  <div id="tekst"></div>
+</main>
+
+<footer id="verktoy" hidden>
+  <div class="rad">
+    <button id="mikrofon" class="stor hoved">Trykk her, så hører jeg etter</button>
+    <button id="lesForMeg">Les den for meg</button>
+    <button id="hoppOver">Hopp over ordet</button>
+    <button id="paaNytt">Prøv setningen på nytt</button>
+  </div>
+  <p id="beskjed"></p>
+</footer>
+
+<script src="js/tekst.js"></script>
+<script src="js/stemme.js"></script>
+<script src="js/lagring.js"></script>
+<script src="js/spill.js"></script>
+<script src="js/bank.js"></script>
+<script src="js/butikk.js"></script>
+<script src="js/lesing.js"></script>
+<script src="js/spillere.js"></script>
+<script src="js/verden.js"></script>
+<script src="js/hus.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

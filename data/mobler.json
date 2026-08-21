@@ -1,0 +1,26 @@
+{
+  "versjon": 1,
+  "_lesmeg": [
+    "Møbelkatalogen til butikken. For å legge til en vare: lim inn et nytt",
+    "objekt i lista under, OG legg til samme id i VARER-lista i",
+    "kenney/lag_mobler.py (den vet hvor på arket den skal klippes), kjør det",
+    "skriptet, og bildet dukker opp i img/mobler/.",
+    "",
+    "  id      må være unik og må ALDRI endres etterpå. Den er nøkkelen til",
+    "          hva noen har kjøpt, så endrer du den, blir varen borte fra",
+    "          rommene til dem som alt eier den.",
+    "  navn    det han ser i butikken.",
+    "  pris    i mynter. Bok nummer 1 gir rundt 300 mynter i sum, så en vare",
+    "          på 15-40 skal kunne kjøpes etter noen få tekster, ikke etter",
+    "          en hel bok.",
+    "  bredde/hoyde  ruter i rommet (16 bredt, 9 høyt), til plassering."
+  ],
+  "varer": [
+    { "id": "skap_oransje", "navn": "Klesskap", "pris": 40, "bredde": 2, "hoyde": 2 },
+    { "id": "bord_lite", "navn": "Lite bord", "pris": 25, "bredde": 1, "hoyde": 2 },
+    { "id": "teppe", "navn": "Teppe", "pris": 15, "bredde": 2, "hoyde": 1 },
+    { "id": "stol", "navn": "Stol", "pris": 15, "bredde": 1, "hoyde": 1 },
+    { "id": "stol_rod", "navn": "Rød stol", "pris": 15, "bredde": 1, "hoyde": 1 },
+    { "id": "plante", "navn": "Potteplante", "pris": 10, "bredde": 1, "hoyde": 1 }
+  ]
+}

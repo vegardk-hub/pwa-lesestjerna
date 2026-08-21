@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="nb">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lesestjerna — hører Edge på et barn?</title>
+<style>
+  :root { color-scheme: light }
+  body { font: 16px/1.55 system-ui, sans-serif; margin: 0 auto; padding: 24px 20px 60px;
+         max-width: 860px; color: #1a1a1a; background: #fff }
+  h1 { font-size: 21px; margin: 0 0 4px }
+  h2 { font-size: 14px; margin: 30px 0 8px; color: #555; text-transform: uppercase;
+       letter-spacing: .05em }
+  p.und { color: #666; margin: 0 0 20px }
+  button { font: inherit; padding: 8px 16px; border: 1px solid #bbb; border-radius: 6px;
+           background: #fafafa; cursor: pointer }
+  button:hover:not(:disabled) { background: #f0f0f0 }
+  button:disabled { opacity: .45; cursor: default }
+  button.stor { font-size: 19px; padding: 14px 28px; border-radius: 10px }
+  button.lytter { background: #b3261e; color: #fff; border-color: #b3261e }
+  select, input[type=text] { font: inherit; padding: 7px 9px; border: 1px solid #ccc;
+                             border-radius: 6px; background: #fff; color: #1a1a1a }
+  .rad { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 }
+  #maal { font-size: 30px; line-height: 1.7; margin: 18px 0; letter-spacing: .01em }
+  #maal span { padding: 2px 3px; border-radius: 5px }
+  #maal span.truffet { background: #cdeccd; color: #14521e }
+  #maal span.naa { box-shadow: 0 0 0 2px #f0a202 }
+  .status { font-size: 14px; color: #666; min-height: 1.5em; margin: 6px 0 }
+  .status.feil { color: #b3261e }
+  table { border-collapse: collapse; width: 100%; font-size: 13.5px }
+  th, td { text-align: left; padding: 5px 8px; border-bottom: 1px solid #eee;
+           vertical-align: top }
+  th { color: #666; font-weight: 600; white-space: nowrap }
+  td.tid { font-family: ui-monospace, monospace; color: #888; white-space: nowrap }
+  td.slag { white-space: nowrap; font-size: 12.5px; color: #777 }
+  tr.endelig td { font-weight: 600; color: #14521e }
+  .fasit { border: 1px solid #e2e2e2; border-radius: 8px; padding: 12px 15px;
+           background: #fafafa; font-size: 14px }
+  .fasit b { font-weight: 600 }
+  .fasit div { margin: 3px 0 }
+  .ja { color: #14521e } .nei { color: #b3261e }
+  .lett { color: #999; font-size: 12.5px }
+  textarea { width: 100%; box-sizing: border-box; font: inherit; padding: 9px;
+             border: 1px solid #ccc; border-radius: 6px; resize: vertical }
+</style>
+
+<h1>Hører Edge på et barn som leser?</h1>
+<p class="und">Denne siden bygger ingenting. Den viser en setning, lytter mens barnet
+leser den høyt, og skriver ut nøyaktig hva talegjenkjenneren hørte — hver eneste
+mellomvariant, med tidsstempel. Svaret avgjør om Lesestjerna kan bygges slik du
+vil ha den.</p>
+
+<h2>1. Hva nettleseren tilbyr</h2>
+<div class="fasit" id="fasit">Sjekker …</div>
+
+<h2>2. Setningen som skal leses</h2>
+<div class="rad">
+  <select id="valg"></select>
+  <button id="egen">Skriv min egen</button>
+  <button id="siFinn">La Finn lese den først</button>
+</div>
+<textarea id="eget" rows="2" hidden></textarea>
+<div id="maal"></div>
+
+<h2>3. Lytt</h2>
+<div class="rad">
+  <button id="start" class="stor">Start lytting</button>
+  <button id="nullstill">Nullstill</button>
+</div>
+<p class="status" id="status">Trykk start, og la barnet lese setningen høyt.</p>
+
+<h2>4. Alt gjenkjenneren sa</h2>
+<table>
+  <thead><tr><th>Tid</th><th>Slag</th><th>Hørt</th><th>Sikkerhet</th></tr></thead>
+  <tbody id="logg"></tbody>
+</table>
+
+<script>
+const $ = s => document.querySelector(s);
+
+const SETNINGER = [
+  "Reven bor i skogen.",
+  "Hver morgen gikk gutten ut for å se etter spor i snøen.",
+  "Mamma laget grøt til middag, og lillebror sølte på genseren sin.",
+  "Det var en gang en liten hund som ikke ville sove om natten."
+];
+
+/* ---------- Setningen ---------- */
+let maalOrd = [];
+
+function normaliser(o) {
+  return o.toLowerCase()
+    .replace(/[.,!?;:«»"'()\u2014\u2013-]/g, "")
+    .trim();
+}
+
+function settMaal(tekst) {
+  const boks = $("#maal");
+  boks.textContent = "";
+  maalOrd = [];
+  basis = 0; peker = 0; midlertidige = [];
+  tekst.split(/(\s+)/).forEach(bit => {
+    if (/^\s+$/.test(bit)) { boks.append(bit); return; }
+    const s = document.createElement("span");
+    s.textContent = bit;
+    boks.appendChild(s);
+    const rein = normaliser(bit);
+    if (rein) maalOrd.push({ rein, el: s, truffet: false });
+  });
+  merkNaa();
+}
+
+function merkNaa() {
+  maalOrd.forEach((o, i) => {
+    o.el.classList.toggle("truffet", o.truffet);
+    o.el.classList.toggle("naa", i === peker);
+  });
+}
+
+/* Grådig fremovermatching.
+   `basis` er hvor langt endelige resultater har ført oss, og flytter seg aldri
+   bakover. En mellomvariant sender hele fragmentet på nytt hver gang, så det
+   den markerte forrige runde tas bort før vi går gjennom på ny.
+   Vi hopper over inntil to ord, ellers ville ett bomord låse resten av
+   setningen — men de overhoppede ordene lyser *ikke*. Sier han «revet» der det
+   står «reven», skal ikke «reven» bli grønt. */
+let basis = 0, peker = 0, midlertidige = [];
+
+function matchMot(hoert, endelig) {
+  midlertidige.forEach(i => maalOrd[i].truffet = false);
+  midlertidige = [];
+  const sagt = hoert.split(/\s+/).map(normaliser).filter(Boolean);
+  let i = basis;
+  for (const ord of sagt) {
+    for (let hopp = 0; hopp <= 2 && i + hopp < maalOrd.length; hopp++) {
+      if (maalOrd[i + hopp].rein === ord) {
+        maalOrd[i + hopp].truffet = true;
+        midlertidige.push(i + hopp);
+        i += hopp + 1;
+        break;
+      }
+    }
+  }
+  if (endelig) { basis = i; midlertidige = []; }
+  peker = i;
+  merkNaa();
+  return maalOrd.filter(o => o.truffet).length;
+}
+
+/* ---------- Hva nettleseren har ---------- */
+const Gjenkjenner = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+/* Språket må sjekkes først. «Finnish» inneholder bokstavene i «Finn», så et
+   navnesøk alene plukker en finsk stemme. */
+const erNorsk = v => /^n[bno]/i.test(v.lang);
+
+function finnStemme() {
+  const norske = speechSynthesis.getVoices().filter(erNorsk);
+  return norske.find(v => /\bfinn\b/i.test(v.name)) ||
+         norske.find(v => !v.localService) ||
+         norske[0];
+}
+
+function tegnFasit() {
+  const stemmer = speechSynthesis.getVoices();
+  const norske = stemmer.filter(erNorsk);
+  const finn = norske.find(v => /\bfinn\b/i.test(v.name));
+  const erEdge = /\bEdg\//.test(navigator.userAgent);
+  const ja = t => `<span class="ja">${t}</span>`;
+  const nei = t => `<span class="nei">${t}</span>`;
+  const valgtNavn = () => {
+    const v = finnStemme();
+    return v ? ja(`${v.name} — ${v.lang}`) : nei("ingen norsk stemme å bruke");
+  };
+  $("#fasit").innerHTML = `
+    <div><b>Nettleser:</b> ${erEdge ? ja("Edge") : nei("ikke Edge — Finn finnes ikke her")}</div>
+    <div><b>Talegjenkjenning:</b> ${Gjenkjenner ? ja("finnes") : nei("mangler — appen kan ikke bygges slik i denne nettleseren")}</div>
+    <div><b>Finn Online:</b> ${finn ? ja(finn.name) : nei("ikke funnet")}</div>
+    <div><b>Norske stemmer:</b> ${norske.length
+        ? norske.map(v => `${v.name} <span class="lett">(${v.lang}, ${v.localService ? "lokal" : "nett"})</span>`).join("<br>&nbsp;&nbsp;&nbsp;")
+        : nei("ingen")}</div>
+    <div><b>Leses av:</b> ${valgtNavn()}</div>
+    <div><b>Nett:</b> ${navigator.onLine ? ja("tilkoblet") : nei("frakoblet — både Finn og gjenkjenning krever nett")}</div>`;
+  $("#siFinn").disabled = !finnStemme();
+  $("#start").disabled = !Gjenkjenner;
+}
+speechSynthesis.onvoiceschanged = tegnFasit;
+tegnFasit();
+
+/* ---------- Loggen ---------- */
+let start0 = 0;
+function logg(slag, tekst, sikkerhet, endelig) {
+  const tr = document.createElement("tr");
+  if (endelig) tr.className = "endelig";
+  const t = ((performance.now() - start0) / 1000).toFixed(2).replace(".", ",");
+  tr.innerHTML = `<td class="tid">${t} s</td><td class="slag">${slag}</td>` +
+                 `<td>${tekst}</td><td class="tid">${sikkerhet}</td>`;
+  $("#logg").prepend(tr);
+}
+
+/* ---------- Lyttingen ---------- */
+let gj = null, lytter = false;
+
+function settStatus(t, feil) {
+  $("#status").textContent = t;
+  $("#status").classList.toggle("feil", !!feil);
+}
+
+function startLytting() {
+  gj = new Gjenkjenner();
+  gj.lang = "nb-NO";
+  gj.continuous = true;
+  gj.interimResults = true;
+  gj.maxAlternatives = 3;
+  start0 = performance.now();
+
+  gj.onresult = e => {
+    for (let i = e.resultIndex; i < e.results.length; i++) {
+      const r = e.results[i];
+      const beste = r[0];
+      const sik = beste.confidence ? beste.confidence.toFixed(2).replace(".", ",") : "—";
+      logg(r.isFinal ? "endelig" : "underveis", beste.transcript.trim(), sik, r.isFinal);
+      if (r.isFinal && r.length > 1) {
+        for (let a = 1; a < r.length; a++)
+          logg("alternativ " + (a + 1), r[a].transcript.trim(), "—", false);
+      }
+      const n = matchMot(beste.transcript, r.isFinal);
+      settStatus(`${n} av ${maalOrd.length} ord truffet.`);
+    }
+  };
+
+  gj.onerror = e => {
+    const forklaring = {
+      "not-allowed": "Mikrofonen er blokkert. Tillat den i adresselinjen.",
+      "no-speech": "Hørte ingenting. Snakk nærmere mikrofonen.",
+      "audio-capture": "Fant ingen mikrofon.",
+      "network": "Gjenkjenningen krever nett, og nettet svarte ikke.",
+      "language-not-supported": "Edge støtter ikke nb-NO her. Dette er svaret vi lette etter."
+    }[e.error] || e.error;
+    logg("FEIL", e.error, "—", false);
+    settStatus(forklaring, true);
+    if (e.error === "not-allowed" || e.error === "language-not-supported") stoppLytting();
+  };
+
+  // Gjenkjenneren gir seg selv av og til. Start på nytt så lenge vi vil lytte.
+  gj.onend = () => { if (lytter) gj.start(); };
+
+  lytter = true;
+  $("#start").textContent = "Stopp";
+  $("#start").classList.add("lytter");
+  settStatus("Lytter …");
+  gj.start();
+}
+
+function stoppLytting() {
+  lytter = false;
+  if (gj) { gj.onend = null; gj.stop(); gj = null; }
+  $("#start").textContent = "Start lytting";
+  $("#start").classList.remove("lytter");
+  settStatus("Stoppet.");
+}
+
+$("#start").onclick = () => lytter ? stoppLytting() : startLytting();
+
+$("#nullstill").onclick = () => {
+  $("#logg").textContent = "";
+  maalOrd.forEach(o => o.truffet = false);
+  basis = 0; peker = 0; midlertidige = [];
+  merkNaa();
+  settStatus("Nullstilt.");
+};
+
+/* ---------- Finn som forbilde ---------- */
+$("#siFinn").onclick = () => {
+  if (lytter) stoppLytting();      // ellers hører gjenkjenneren på Finn
+  speechSynthesis.cancel();
+  const y = new SpeechSynthesisUtterance($("#maal").textContent);
+  const v = finnStemme();
+  if (!v) { settStatus("Fant ingen norsk stemme.", true); return; }
+  y.voice = v;
+  y.lang = v.lang;
+  y.rate = 0.9;
+  y.onerror = e => settStatus("Stemmen feilet: " + e.error, true);
+  settStatus(`Leser med ${v.name}.`);
+  speechSynthesis.speak(y);
+};
+
+/* ---------- Valg av setning ---------- */
+const valg = $("#valg");
+SETNINGER.forEach((s, i) => valg.add(new Option(s, i)));
+valg.onchange = () => settMaal(SETNINGER[+valg.value]);
+
+$("#egen").onclick = () => {
+  const t = $("#eget");
+  t.hidden = !t.hidden;
+  if (!t.hidden) { t.value = $("#maal").textContent; t.focus(); }
+};
+$("#eget").oninput = () => settMaal($("#eget").value);
+
+settMaal(SETNINGER[0]);
+</script>
+</html>

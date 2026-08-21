@@ -1,0 +1,204 @@
+{
+  "versjon": 1,
+  "_lesmeg": [
+    "Tekstbanken til Lesestjerna. For a legge til en tekst: lim inn et nytt",
+    "objekt i lista under. Ingenting annet ma endres — antall ord regnes ut av",
+    "seg selv, og emnene hentes herfra.",
+    "",
+    "  id            ma vaere unik og ma ALDRI endres etterpa. Den er noekkelen",
+    "                til hvem som har lest hva, sa endrer du den, blir teksten",
+    "                talt som ulest og betalt for pa nytt.",
+    "  emne          ma finnes i lista 'emner' over.",
+    "  niva          1 lettest, 3 vanskeligst. Styrer rekkefolgen han far dem i.",
+    "  tekst         1-5 setninger. Sann tekst, ikke oppdiktet. Ta med minst ett",
+    "                konkret tall eller en sammenlikning — det er det som gjor",
+    "                teksten verdt a lese, ikke bare a ove pa.",
+    "  vanskeligeOrd ord talegjenkjenneren neppe klarer. De lyser og sperrer",
+    "                ikke stjerna, men teller ikke som lest.",
+    "",
+    "Kjor 'python sjekk_tekster.py' etterpa. Den fanger dubletter, ukjente",
+    "emner, for lange tekster og tall skrevet med siffer.",
+    "",
+    "Om tall: skriv dem med bokstaver, aldri siffer, og legg HVERT ord i tallet",
+    "i vanskeligeOrd — ogsa 'og' inni det, som i 'fire hundre og sekstini'.",
+    "Gjenkjenneren gir '2469' for hele munnfullen, sa ingen av de seks ordene kan",
+    "treffes. Er de ikke merket, blir setningen aldri ferdig, og han far aldri",
+    "stjerna uansett hvor riktig han leser. Sjekkeskriptet nekter a godta en tekst",
+    "med umerkte tallord."
+  ],
+
+  "emner": [
+    { "id": "skog",    "navn": "Skogen",       "under": "Dyr og småkryp" },
+    { "id": "fjell",   "navn": "Fjellene",     "under": "Vær, snø og stein" },
+    { "id": "hav",     "navn": "Havet",        "under": "Fisk og sjødyr" },
+    { "id": "by",      "navn": "Byen",         "under": "Historie og oppfinnelser" },
+    { "id": "stjerne", "navn": "Stjernetårnet", "under": "Verdensrommet" }
+  ],
+
+  "tekster": [
+    {
+      "id": "skog-01",
+      "emne": "skog",
+      "tittel": "Pinnsvinet",
+      "niva": 1,
+      "tekst": "Et pinnsvin har omtrent fem tusen pigger på ryggen. Når det blir redd, ruller det seg sammen til en ball. Da stikker piggene ut på alle kanter, og de fleste dyr lar det være i fred.",
+      "vanskeligeOrd": ["fem", "tusen"]
+    },
+    {
+      "id": "skog-02",
+      "emne": "skog",
+      "tittel": "Ekornet som glemmer",
+      "niva": 1,
+      "tekst": "Et ekorn kan gjemme flere tusen nøtter i bakken om høsten. Det finner ikke igjen alle sammen. Nøttene det glemmer, kan vokse opp og bli til nye trær.",
+      "vanskeligeOrd": ["tusen"]
+    },
+    {
+      "id": "skog-03",
+      "emne": "skog",
+      "tittel": "Elgen",
+      "niva": 2,
+      "tekst": "Elgen er det største dyret i den norske skogen. En stor okse kan veie sju hundre kilo, og geviret alene kan veie tjue kilo. Elgen feller geviret hver vinter og får et helt nytt til sommeren.",
+      "vanskeligeOrd": ["sju", "hundre", "tjue", "geviret"]
+    },
+    {
+      "id": "skog-04",
+      "emne": "skog",
+      "tittel": "Maurtua",
+      "niva": 2,
+      "tekst": "En maurtue kan se ut som en haug med barnåler, men inni bor det mange hundre tusen maur. En maur kan bære femti ganger sin egen vekt. Det er som om du skulle løftet en bil.",
+      "vanskeligeOrd": ["maurtue", "barnåler", "hundre", "tusen", "femti"]
+    },
+
+    {
+      "id": "fjell-01",
+      "emne": "fjell",
+      "tittel": "Snøkrystallen",
+      "niva": 1,
+      "tekst": "Et snøfnugg er laget av små krystaller av is. Hver krystall vokser rundt et bittelite støvkorn, og hver eneste en har seks kanter. Ingen har funnet to som er helt like.",
+      "vanskeligeOrd": ["snøfnugg", "krystaller", "krystall", "støvkorn", "seks", "to"]
+    },
+    {
+      "id": "fjell-02",
+      "emne": "fjell",
+      "tittel": "Lyn og torden",
+      "niva": 2,
+      "tekst": "Lyset fra lynet kommer fram til deg med en gang. Lyden bruker mye lengre tid, omtrent tre sekunder på hver kilometer. Teller du til seks etter lynet, er tordenen to kilometer unna.",
+      "vanskeligeOrd": ["sekunder", "tre", "seks", "to"]
+    },
+    {
+      "id": "fjell-03",
+      "emne": "fjell",
+      "tittel": "Det høyeste fjellet",
+      "niva": 2,
+      "tekst": "Galdhøpiggen er det høyeste fjellet i Norge. Toppen ligger to tusen fire hundre og sekstini meter over havet, midt inne i Jotunheimen. Der oppe er det snø hele året, også om sommeren.",
+      "vanskeligeOrd": ["Galdhøpiggen", "Jotunheimen", "to", "tusen", "fire", "hundre", "og", "sekstini"]
+    },
+    {
+      "id": "fjell-04",
+      "emne": "fjell",
+      "tittel": "Isen som lagde fjordene",
+      "niva": 3,
+      "tekst": "For lenge siden lå det tykk is over hele Norge. Isen var så tung at den skar seg ned i fjellet mens den sakte gled mot havet. Dalene den grov ut, ble fylt med vann da isen smeltet, og slik ble fjordene til. Sognefjorden er den dypeste, over tusen meter ned til bunnen.",
+      "vanskeligeOrd": ["Sognefjorden", "tusen"]
+    },
+
+    {
+      "id": "hav-01",
+      "emne": "hav",
+      "tittel": "Blåhvalen",
+      "niva": 1,
+      "tekst": "Blåhvalen er det største dyret som noen gang har levd. Den kan bli tretti meter lang, og tunga alene veier like mye som en elefant. Likevel spiser den bare bittesmå krepsdyr, men den spiser fire tonn av dem hver dag.",
+      "vanskeligeOrd": ["Blåhvalen", "tretti", "krepsdyr", "fire"]
+    },
+    {
+      "id": "hav-02",
+      "emne": "hav",
+      "tittel": "Blekkspruten",
+      "niva": 2,
+      "tekst": "Blekkspruten har åtte armer og tre hjerter, og blodet i kroppen er blått. Hver arm har hundrevis av sugekopper som kan smake på det de tar på. Den kan også skifte farge på et blunk og bli helt lik bunnen den ligger på.",
+      "vanskeligeOrd": ["Blekkspruten", "sugekopper", "hundrevis", "åtte", "tre"]
+    },
+    {
+      "id": "hav-03",
+      "emne": "hav",
+      "tittel": "Sjøstjerna",
+      "niva": 1,
+      "tekst": "En sjøstjerne har som regel fem armer, og mister den en, vokser det ut en ny. Den har ingen hjerne i det hele tatt. I stedet kjenner den lys med en liten øyeflekk ytterst på hver arm.",
+      "vanskeligeOrd": ["sjøstjerne", "øyeflekk", "fem"]
+    },
+    {
+      "id": "hav-04",
+      "emne": "hav",
+      "tittel": "Hvor mye vann finnes det?",
+      "niva": 2,
+      "tekst": "Sju av ti deler av jorda er dekket av hav. Ser du på en globus, er den derfor mer blå enn grønn. Det dypeste stedet er nesten elleve tusen meter ned, og der nede har mennesker vært bare noen få ganger.",
+      "vanskeligeOrd": ["globus", "sju", "ti", "elleve", "tusen"]
+    },
+
+    {
+      "id": "by-01",
+      "emne": "by",
+      "tittel": "Vikingene i Amerika",
+      "niva": 2,
+      "tekst": "Vikingene seilte over havet i lange, smale skip. Leiv Eiriksson kom til Amerika for omtrent tusen år siden, nesten fem hundre år før Columbus. De bygde hus der borte, men de ble ikke boende.",
+      "vanskeligeOrd": ["Eiriksson", "Columbus", "tusen", "fem", "hundre"]
+    },
+    {
+      "id": "by-02",
+      "emne": "by",
+      "tittel": "Runer",
+      "niva": 2,
+      "tekst": "Før folk i Norge skrev med bokstaver som våre, skrev de med runer. Runealfabetet hadde bare seksten tegn, mens vårt har tjueni bokstaver. Runene var laget av rette streker, fordi de var lettere å skjære inn i tre og stein.",
+      "vanskeligeOrd": ["Runealfabetet", "Runene", "seksten", "tjueni", "tre"]
+    },
+    {
+      "id": "by-03",
+      "emne": "by",
+      "tittel": "Hjulet",
+      "niva": 2,
+      "tekst": "Hjulet er en av de eldste oppfinnelsene vi kjenner til, og det er over fem tusen år gammelt. De første hjulene ble ikke brukt til å kjøre med. De lå flatt på et bord, og på dem formet folk krukker av leire.",
+      "vanskeligeOrd": ["oppfinnelsene", "fem", "tusen", "krukker"]
+    },
+    {
+      "id": "by-04",
+      "emne": "by",
+      "tittel": "Byen ved fjorden",
+      "niva": 2,
+      "tekst": "Oslo har ligget innerst i fjorden i nesten tusen år. Byen har brent ned fjorten ganger og blitt bygd opp igjen hver gang. Etter den siste brannen fikk den navnet Christiania, og det het den i tre hundre år.",
+      "vanskeligeOrd": ["Christiania", "tusen", "fjorten", "tre", "hundre"]
+    },
+
+    {
+      "id": "stjerne-01",
+      "emne": "stjerne",
+      "tittel": "Sola",
+      "niva": 2,
+      "tekst": "Sola er en stjerne. Den ser mye større ut enn de andre stjernene bare fordi den er så mye nærmere oss. Det er plass til over en million jordkloder inni sola, og lyset derfra bruker åtte minutter på å nå fram til jorda.",
+      "vanskeligeOrd": ["jordkloder", "åtte", "million"]
+    },
+    {
+      "id": "stjerne-02",
+      "emne": "stjerne",
+      "tittel": "Månen som aldri snur seg",
+      "niva": 2,
+      "tekst": "Månen går rundt jorda, men den snurrer akkurat så sakte at den alltid vender den samme siden mot oss. Baksiden hadde ingen mennesker sett før vi sendte opp romskip. Månen er så langt borte at det tok tre dager å fly dit.",
+      "vanskeligeOrd": ["romskip", "tre"]
+    },
+    {
+      "id": "stjerne-03",
+      "emne": "stjerne",
+      "tittel": "Den røde planeten",
+      "niva": 2,
+      "tekst": "Mars ser rød ut fordi bakken der er full av rust. På Mars står det høyeste fjellet i hele solsystemet. Det heter Olympus Mons og er tre ganger så høyt som Mount Everest.",
+      "vanskeligeOrd": ["solsystemet", "Olympus", "Mons", "Everest", "tre"]
+    },
+    {
+      "id": "stjerne-04",
+      "emne": "stjerne",
+      "tittel": "Lyset som er gammelt",
+      "niva": 3,
+      "tekst": "Stjernene er så langt borte at lyset fra dem bruker mange år på å komme fram til oss. Fra den nærmeste stjerna utenom sola bruker lyset over fire år. Når du ser opp på en stjerne, ser du den altså slik den var for lenge siden. Noen av dem finnes kanskje ikke lenger.",
+      "vanskeligeOrd": ["fire"]
+    }
+  ]
+}
