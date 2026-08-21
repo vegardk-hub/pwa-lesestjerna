@@ -11,8 +11,10 @@
  * Rommet (vegg, gulv, vindu, skap, bord og stol) er kenney/lag_rom.py sitt
  * bilde -- img/hus-rom.png, satt som bakgrunn i index.html. Denne fila legger
  * bare det som skal kunne trykkes paa oppaa bildet: doera, boka og figuren.
- * Flere kjoepte mobler kommer etter hvert -- da er det lag_rom.py som endres,
- * ikke dette skriptet.
+ *
+ * Robotene han kjoeper i butikken staar ikke i rommet -- de samles i
+ * samling.js i stedet. Aa dra ting rundt i rommet fungerte daarlig i praksis,
+ * saa den loesningen er byttet ut med en samling han kan bla i.
  */
 (function (global) {
   "use strict";
@@ -28,71 +30,12 @@
     { klaer: "#6a4b9c", bukse: "#38305c", haar: "#c8933f" }
   ];
 
-  // Samme rutenett som kenney/lag_rom.py tegnet rommet i -- se ogsaa
-  // butikk.js, som bruker de samme tallene til aa finne ledig plass.
-  var ROM_BREDDE = 16, ROM_HOYDE = 9;
-
   var paaUt = null;      // settes av app.js: ut i verden
 
   function lag(klasse, tag) {
     var d = document.createElement(tag || "div");
     if (klasse) d.className = klasse;
     return d;
-  }
-
-  /* ---------- Kjoepte moebler ---------- */
-
-  function plasser(el, x, y, w, h) {
-    el.style.left = (x / ROM_BREDDE * 100) + "%";
-    el.style.top = (y / ROM_HOYDE * 100) + "%";
-    el.style.width = (w / ROM_BREDDE * 100) + "%";
-    el.style.height = (h / ROM_HOYDE * 100) + "%";
-  }
-
-  // Han skal kunne dra en vare dit han vil i rommet -- ikke bare kjoepe den.
-  // Flyttingen lagres foerst naar han slipper (Spill.flytt), saa selve
-  // draget er bare visuelt inntil da.
-  function gjorDraggbar(el, nr, v) {
-    el.addEventListener("pointerdown", function (ev) {
-      ev.preventDefault();
-      var boks = $("#rom").getBoundingClientRect();
-      el.setPointerCapture(ev.pointerId);
-      el.classList.add("flyttes");
-      var sisteX = null, sisteY = null;
-
-      function flytter(ev2) {
-        var px = (ev2.clientX - boks.left) / boks.width;
-        var py = (ev2.clientY - boks.top) / boks.height;
-        var x = Math.max(0, Math.min(ROM_BREDDE - v.bredde, px * ROM_BREDDE - v.bredde / 2));
-        var y = Math.max(0, Math.min(ROM_HOYDE - v.hoyde, py * ROM_HOYDE - v.hoyde / 2));
-        sisteX = Math.round(x * 2) / 2;
-        sisteY = Math.round(y * 2) / 2;
-        plasser(el, sisteX, sisteY, v.bredde, v.hoyde);
-      }
-      function slipper() {
-        el.removeEventListener("pointermove", flytter);
-        el.removeEventListener("pointerup", slipper);
-        el.classList.remove("flyttes");
-        if (sisteX !== null) Spill.flytt(nr, sisteX, sisteY);
-      }
-      el.addEventListener("pointermove", flytter);
-      el.addEventListener("pointerup", slipper);
-    });
-  }
-
-  function leggMobler(rom, s) {
-    (s.eide || []).forEach(function (e, nr) {
-      var v = Butikk.finn(e.ting);
-      if (!v) return;
-      var el = document.createElement("img");
-      el.src = "img/mobler/" + e.ting + ".png";
-      el.alt = v.navn;
-      el.className = "mobel";
-      el.draggable = false;
-      plasser(el, e.x, e.y, v.bredde, v.hoyde);
-      gjorDraggbar(el, nr, v);
-      rom.append(el);
-    });
   }
 
   function figurSvg(f) {
@@ -120,10 +63,6 @@
 
     var rom = $("#romInnhold");
     rom.textContent = "";
-
-    // Kjoepte moebler ligger nederst i rommet, saa doera, boka og figuren
-    // alltid er klikkbare oppaa dem.
-    leggMobler(rom, s);
 
     var doer = lag("doer", "button");
     doer.type = "button";

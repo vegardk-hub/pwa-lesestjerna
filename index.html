@@ -39,6 +39,7 @@
     <button id="utOgLes" class="stor hoved">Gå ut og les</button>
     <button id="apneBoka">Se i boka</button>
     <button id="apneButikk">Butikk</button>
+    <button id="apneSamling">Samling</button>
   </div>
 </section>
 
@@ -53,17 +54,33 @@
 
 <section id="butikk" hidden>
   <h2>Butikken</h2>
-  <p class="und liten">Kjøp ting for mynter, og sett dem der du vil i rommet.
+  <p class="und liten">Kjøp roboter for mynter, og se dem igjen i samlingen din.
     Angrer du, kan du selge tilbake for det du betalte.</p>
   <p class="und" id="butikkMynterRad">Du har <b id="butikkMynter"></b></p>
   <div id="butikkListe"></div>
   <div id="butikkEideWrap">
-    <h3>Dine ting</h3>
-    <p class="und liten" id="butikkEideTom">Du eier ingenting ennå.</p>
+    <h3>Dine roboter</h3>
+    <p class="und liten" id="butikkEideTom">Du eier ingen roboter ennå.</p>
     <div id="butikkEide"></div>
   </div>
   <div class="rad">
     <button id="lukkButikk" class="stor hoved">Lukk butikken</button>
+  </div>
+</section>
+
+<section id="samling" hidden>
+  <h2>Samlingen din</h2>
+  <p class="und liten" id="samlingTom">Du eier ingen roboter ennå — kjøp noen i butikken.</p>
+  <div id="samlingListe"></div>
+  <div id="samlingDetalj" hidden>
+    <div id="samlingDetaljIkon"></div>
+    <h3 id="samlingDetaljNavn"></h3>
+    <div class="rad">
+      <button id="lukkSamlingDetalj">Tilbake til samlingen</button>
+    </div>
+  </div>
+  <div class="rad">
+    <button id="lukkSamling" class="stor hoved">Lukk samlingen</button>
   </div>
 </section>
 
@@ -120,7 +137,9 @@
 <script src="js/lagring.js"></script>
 <script src="js/spill.js"></script>
 <script src="js/bank.js"></script>
+<script src="js/figurer.js"></script>
 <script src="js/butikk.js"></script>
+<script src="js/samling.js"></script>
 <script src="js/lesing.js"></script>
 <script src="js/spillere.js"></script>
 <script src="js/verden.js"></script>

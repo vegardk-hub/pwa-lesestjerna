@@ -88,11 +88,11 @@
 
   /* ---------- Butikken ---------- */
 
-  function kjop(ting, pris, x, y) {
+  function kjop(ting, pris) {
     var s = meg();
     if (!s || s.mynter < pris) return false;
     s.mynter -= pris;
-    s.eide.push({ ting: ting, pris: pris, x: x || 0, y: y || 0 });
+    s.eide.push({ ting: ting, pris: pris });
     Lagring.lagre();
     return true;
   }
@@ -103,15 +103,6 @@
     if (!s || !s.eide[nr]) return false;
     s.mynter += s.eide[nr].pris;
     s.eide.splice(nr, 1);
-    Lagring.lagre();
-    return true;
-  }
-
-  function flytt(nr, x, y) {
-    var s = meg();
-    if (!s || !s.eide[nr]) return false;
-    s.eide[nr].x = x;
-    s.eide[nr].y = y;
     Lagring.lagre();
     return true;
   }
@@ -146,7 +137,6 @@
     betal: betal,
     kjop: kjop,
     selg: selg,
-    flytt: flytt,
     statistikk: statistikk,
     MYNT_PER_ORD: MYNT_PER_ORD,
     FULLFOERT_BONUS: FULLFOERT_BONUS

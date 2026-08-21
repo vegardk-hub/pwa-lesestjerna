@@ -24,7 +24,7 @@
     gjenlesinger: 0,    // tekster han har tatt om igjen for aa bli bedre
     boker: 0,
     tekster: [],        // id-ene han har faatt betalt for
-    eide: [],           // { ting, x, y }
+    eide: [],           // { ting, pris } -- roboter kjøpt fra butikken
     dager: {}           // "2026-08-21": 34 — ord per dag, til boka paa bordet
   };
 

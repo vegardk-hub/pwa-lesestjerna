@@ -127,6 +127,7 @@
   $("#utOgLes").onclick = tilVerden;
   $("#apneBoka").onclick = Hus.apneBoka;
   $("#apneButikk").onclick = Butikk.apne;
+  $("#apneSamling").onclick = Samling.apne;
 
   $("#limInn").onclick = function () {
     sisteEmne = null;
@@ -184,9 +185,9 @@
   /* ---------- Oppstart ---------- */
 
   Spillere.tegn();
-  // Banken og moebelkatalogen hentes foer noe tegnes, ellers staar kortene
-  // tomme -- eller rommet uten moebler -- et oeyeblikk.
-  Promise.all([Bank.last(), Butikk.last()]).then(function () {
+  // Banken og robotkatalogen hentes foer noe tegnes, ellers staar kortene
+  // tomme et oeyeblikk.
+  Promise.all([Bank.last(), Figurer.last()]).then(function () {
     // Den som leste sist slipper aa velge seg selv paa nytt hver gang.
     if (Lagring.aktiv()) tilHus();
     else vis("spillere");
