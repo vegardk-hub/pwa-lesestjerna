@@ -28,7 +28,6 @@
   ],
 
   "emner": [
-    { "id": "tall",         "navn": "Tall og gåter",                 "under": "Mål, mengder og mønstre" },
     { "id": "krefter",      "navn": "Ting, krefter og verdensrommet", "under": "Fysikk, vær og rommet" },
     { "id": "liv",          "navn": "Alt som lever",                 "under": "Dyr, planter og kropp" },
     { "id": "folk",         "navn": "Mennesker, tanker og følelser",  "under": "Historie og hvordan vi tenker" },
@@ -70,28 +69,12 @@
     },
 
     {
-      "id": "fjell-01",
-      "emne": "tall",
-      "tittel": "Snøkrystallen",
-      "niva": 1,
-      "tekst": "Et snøfnugg er laget av små krystaller av is. Hver krystall vokser rundt et bittelite støvkorn, og hver eneste en har seks kanter. Ingen har funnet to som er helt like.",
-      "vanskeligeOrd": ["snøfnugg", "krystaller", "krystall", "støvkorn", "seks", "to"]
-    },
-    {
       "id": "fjell-02",
       "emne": "krefter",
       "tittel": "Lyn og torden",
       "niva": 2,
       "tekst": "Lyset fra lynet kommer fram til deg med en gang. Lyden bruker mye lengre tid, omtrent tre sekunder på hver kilometer. Teller du til seks etter lynet, er tordenen to kilometer unna.",
       "vanskeligeOrd": ["sekunder", "tre", "seks", "to"]
-    },
-    {
-      "id": "fjell-03",
-      "emne": "tall",
-      "tittel": "Det høyeste fjellet",
-      "niva": 2,
-      "tekst": "Galdhøpiggen er det høyeste fjellet i Norge. Toppen ligger to tusen fire hundre og sekstini meter over havet, midt inne i Jotunheimen. Der oppe er det snø hele året, også om sommeren.",
-      "vanskeligeOrd": ["Galdhøpiggen", "Jotunheimen", "to", "tusen", "fire", "hundre", "og", "sekstini"]
     },
     {
       "id": "fjell-04",
@@ -126,15 +109,6 @@
       "tekst": "En sjøstjerne har som regel fem armer, og mister den en, vokser det ut en ny. Den har ingen hjerne i det hele tatt. I stedet kjenner den lys med en liten øyeflekk ytterst på hver arm.",
       "vanskeligeOrd": ["sjøstjerne", "øyeflekk", "fem"]
     },
-    {
-      "id": "hav-04",
-      "emne": "tall",
-      "tittel": "Hvor mye vann finnes det?",
-      "niva": 2,
-      "tekst": "Sju av ti deler av jorda er dekket av hav. Ser du på en globus, er den derfor mer blå enn grønn. Det dypeste stedet er nesten elleve tusen meter ned, og der nede har mennesker vært bare noen få ganger.",
-      "vanskeligeOrd": ["globus", "sju", "ti", "elleve", "tusen"]
-    },
-
     {
       "id": "by-01",
       "emne": "folk",
@@ -199,63 +173,6 @@
       "niva": 3,
       "tekst": "Stjernene er så langt borte at lyset fra dem bruker mange år på å komme fram til oss. Fra den nærmeste stjerna utenom sola bruker lyset over fire år. Når du ser opp på en stjerne, ser du den altså slik den var for lenge siden. Noen av dem finnes kanskje ikke lenger.",
       "vanskeligeOrd": ["fire"]
-    },
-
-    {
-      "id": "tall-01",
-      "emne": "tall",
-      "tittel": "Terningen",
-      "niva": 1,
-      "tekst": "En vanlig terning har seks sider. Prikkene på to sider som ligger rett overfor hverandre, legger alltid sammen til sju. Ligger det tre prikker på den ene siden, ligger det fire på den andre.",
-      "vanskeligeOrd": ["seks", "to", "sju", "tre", "fire"]
-    },
-    {
-      "id": "tall-02",
-      "emne": "tall",
-      "tittel": "Sjakkbrettet",
-      "niva": 2,
-      "tekst": "Et sjakkbrett har sekstifire ruter, satt sammen av åtte rader og åtte kolonner. Halvparten av rutene er lyse og halvparten er mørke, trettito av hver farge. Hver spiller starter med seksten brikker.",
-      "vanskeligeOrd": ["sekstifire", "åtte", "trettito", "seksten"]
-    },
-    {
-      "id": "tall-03",
-      "emne": "tall",
-      "tittel": "Fingrene og tærne",
-      "niva": 1,
-      "tekst": "De fleste mennesker har ti fingre og ti tær, tjue til sammen. Hver finger har tre ledd, bortsett fra tommelen som bare har to. Det gjør at vi kan gripe om ting og telle på en enkel måte.",
-      "vanskeligeOrd": ["ti", "tjue", "tre", "to"]
-    },
-    {
-      "id": "tall-04",
-      "emne": "tall",
-      "tittel": "Romertallene",
-      "niva": 2,
-      "tekst": "Før i tiden brukte mange land romertall i stedet for tallene vi bruker nå. Der vi skriver fire, skrev de IV, og der vi skriver ti, skrev de X. Systemet hadde ikke noe tegn for null, så det var vanskelig å regne med.",
-      "vanskeligeOrd": ["fire", "ti", "null", "romertall"]
-    },
-    {
-      "id": "tall-05",
-      "emne": "tall",
-      "tittel": "Uken og året",
-      "niva": 1,
-      "tekst": "En uke har sju dager, og et år har tolv måneder. De fleste år har tre hundre og sekstifem dager, men hvert fjerde år får februar en ekstra dag, og året får tre hundre og sekstiseks dager i stedet.",
-      "vanskeligeOrd": ["sju", "tolv", "tre", "hundre", "og", "sekstifem", "fjerde", "sekstiseks"]
-    },
-    {
-      "id": "tall-06",
-      "emne": "tall",
-      "tittel": "Klokka",
-      "niva": 2,
-      "tekst": "Et døgn har tjuefire timer, hver time har seksti minutter, og hvert minutt har seksti sekunder. Det betyr at et helt døgn varer i åttiseks tusen fire hundre sekunder.",
-      "vanskeligeOrd": ["tjuefire", "seksti", "åttiseks", "tusen", "fire", "hundre"]
-    },
-    {
-      "id": "tall-07",
-      "emne": "tall",
-      "tittel": "Bokstavene våre",
-      "niva": 2,
-      "tekst": "Det norske alfabetet har tjueni bokstaver, tre flere enn det engelske. De tre siste er æ, ø og å, og de finnes ikke i mange andre språk. Med bare tjueni tegn kan vi likevel skrive alle ordene vi trenger.",
-      "vanskeligeOrd": ["tjueni", "tre"]
     },
 
     {

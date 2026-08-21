@@ -1,19 +1,19 @@
 /* Verden: skjermen der han velger hva han vil lese om.
  *
  * Kartet er img/verden-kart.jpg, ett ferdig bilde av en flytende by. Denne
- * fila legger bare de klikkbare punktene oppaa bildet -- se SONER under, som
- * er valgt til aa treffe noe som faktisk staar der i bildet (et tarn, broen,
- * en gronn oy...). Skal en sone flyttes, er det tallene der det skjer.
+ * fila legger bare de klikkbare punktene oppaa bildet -- se SONER under.
+ * Punktene er IKKE valgt for aa treffe noe bestemt i bildet (et taarn, en
+ * bro...) -- de er bare spredt fint utover flaten, saa de ikke klumper seg
+ * sammen. Skal en sone flyttes, er det tallene der det skjer.
  *
- * De fem emnene er skolefag-bredde, ikke steder: tall og gaater, ting og
- * krefter, alt som lever, mennesker og tanker, oppfinnelser. Bildet passer
- * likevel fint -- det er stort nok til aa romme alle fem uten aa se ut som en
- * meny.
+ * De fire emnene er skolefag-bredde, ikke steder: ting og krefter, alt som
+ * lever, mennesker og tanker, oppfinnelser. Bildet passer likevel fint --
+ * det er stort nok til aa romme alle fire uten aa se ut som en meny.
  *
  * Hjemme-punktet er ikke et emne fra tekstbanken -- det foerer alltid rett
  * tilbake til huset (Hus.tegn).
  *
- * At det er ett kart og ikke fem kort er et bevisst valg: det skal se ut som
+ * At det er ett kart og ikke fire kort er et bevisst valg: det skal se ut som
  * han drar til et sted, ikke velger fra en meny.
  */
 (function (global) {
@@ -22,22 +22,19 @@
   var $ = function (v) { return document.querySelector(v); };
 
   // Brøkdel av kartets bredde/hoeyde (0..1), ikke piksler -- da flytter
-  // punktene seg riktig med kortet uansett hvor bredt det vises. Tallene er
-  // satt for aa treffe konkrete ting i img/verden-kart.jpg (1280x853):
-  // taarnet med rutemoenster, lysstraalene og stjernehimmelen midt i bildet,
-  // broen over vannet, den store kula nede til venstre, den groenne oeya nede
-  // til hoeyre.
+  // punktene seg riktig med kortet uansett hvor bredt det vises. Fem punkter
+  // spredt jevnt over img/verden-kart.jpg: én oeverst til hoeyre, ett par nede
+  // til venstre og hoeyre, og hjem/folk midt i, uten aa vaere for taett paa
+  // hverandre.
   var SONER = {
-    tall:         { x: 0.2852, y: 0.1641 },
-    krefter:      { x: 0.5469, y: 0.2344 },
-    folk:         { x: 0.4922, y: 0.5859 },
-    oppfinnelser: { x: 0.1484, y: 0.6330 },
-    liv:          { x: 0.9063, y: 0.7734 },
-    hjem:         { x: 0.3400, y: 0.9000 }
+    krefter:      { x: 0.6200, y: 0.2200 },
+    folk:         { x: 0.4600, y: 0.5500 },
+    oppfinnelser: { x: 0.1400, y: 0.6200 },
+    liv:          { x: 0.8800, y: 0.7800 },
+    hjem:         { x: 0.3000, y: 0.8700 }
   };
 
   var FARGER = {
-    tall: "#2f6d9d",
     krefter: "#4b3f8f",
     folk: "#a8447a",
     oppfinnelser: "#b3651e",
@@ -48,9 +45,6 @@
 
   /* Ett lite ikon per emne i prikken paa kartet. */
   var MERKER = {
-    // Tall og gaater: et rutenett, som et lite regnestykke.
-    tall: '<path d="M9 3v18M15 3v18M4 9h16M4 15h16" fill="none" stroke="currentColor" ' +
-          'stroke-width="2.2" stroke-linecap="round"/>',
     // Ting, krefter og verdensrommet: et atom i bane.
     krefter: '<circle cx="12" cy="12" r="2.3"/>' +
              '<ellipse cx="12" cy="12" rx="9" ry="3.6" fill="none" stroke="currentColor" ' +
