@@ -23,15 +23,16 @@
 
   // Brøkdel av kartets bredde/hoeyde (0..1), ikke piksler -- da flytter
   // punktene seg riktig med kortet uansett hvor bredt det vises. Fem punkter
-  // spredt jevnt over img/verden-kart.jpg: én oeverst til hoeyre, ett par nede
-  // til venstre og hoeyre, og hjem/folk midt i, uten aa vaere for taett paa
-  // hverandre.
+  // i en symmetrisk diamant: to oeverst, hjem midt i, to nederst. To paa
+  // samme rad staar alltid paa hver sin halvdel av bildet (0.56 fra
+  // hverandre), saa selv paa det smaleste kortet er det god avstand --
+  // ellers klumper lappene seg fort sammen naar kortet vises smalt (mobil).
   var SONER = {
-    krefter:      { x: 0.6200, y: 0.2200 },
-    folk:         { x: 0.4600, y: 0.5500 },
-    oppfinnelser: { x: 0.1400, y: 0.6200 },
-    liv:          { x: 0.8800, y: 0.7800 },
-    hjem:         { x: 0.3000, y: 0.8700 }
+    oppfinnelser: { x: 0.22, y: 0.26 },
+    folk:         { x: 0.78, y: 0.26 },
+    hjem:         { x: 0.50, y: 0.54 },
+    liv:          { x: 0.22, y: 0.78 },
+    krefter:      { x: 0.78, y: 0.78 }
   };
 
   var FARGER = {
@@ -42,6 +43,17 @@
     hjem: "#c46a2f"
   };
   var RESERVE = "#6b727a";
+
+  // De fulle emnenavnene (fra tekster.json) er for lange til aa staa paa én
+  // eller to linjer uten aa krasje inn i naboene paa en smal skjerm. Lappen
+  // paa kartet faar derfor et kortere navn -- det fulle navnet lever videre i
+  // e.navn (aria-label), det er bare paa selve kartet det er forkortet.
+  var KORTNAVN = {
+    krefter: "Verdensrommet",
+    folk: "Mennesker",
+    oppfinnelser: "Oppfinnelser",
+    liv: "Alt som lever"
+  };
 
   /* Ett lite ikon per emne i prikken paa kartet. */
   var MERKER = {
@@ -66,16 +78,6 @@
 
   var paaValgt = null;   // settes av app.js: en tekst er valgt
   var paaHjem = null;    // settes av app.js: tilbake til huset
-
-  function teksten(e) {
-    // Naar alt er lest skal det ikke se ut som emnet er brukt opp. Han kan lese
-    // om igjen sa mye han vil — det gir bare ikke mynter en gang til.
-    return e.antall === 0
-      ? "Ingen tekster ennå"
-      : e.lest >= e.antall
-        ? "Alt lest — les om igjen"
-        : e.lest + " av " + e.antall + " lest";
-  }
 
   function pin(e) {
     var farge = FARGER[e.id] || RESERVE;
@@ -102,24 +104,17 @@
 
     var navn = document.createElement("span");
     navn.className = "navn";
-    navn.textContent = e.navn;
+    navn.textContent = KORTNAVN[e.id] || e.navn;
 
-    var stolpe = document.createElement("span");
-    stolpe.className = "stolpe";
-    var fyll = document.createElement("i");
-    fyll.style.width = (e.antall ? Math.round(100 * e.lest / e.antall) : 0) + "%";
-    fyll.style.background = farge;
-    stolpe.append(fyll);
-
-    var teller = document.createElement("span");
-    teller.className = "teller";
-    teller.textContent = teksten(e);
-
-    lapp.append(navn, stolpe, teller);
+    lapp.append(navn);
     k.append(prikk, lapp);
 
+    // Ingen tallinformasjon her med vilje -- han skal ikke kunne se hvor
+    // mange tekster som finnes eller hvor mange som er lest, bare velge
+    // et emne. Antall vokser stadig etter hvert som flere legges til, saa
+    // et tall her ville uansett vaere foreldet med det samme.
     k.disabled = e.antall === 0;
-    k.setAttribute("aria-label", e.navn + ": " + teksten(e));
+    k.setAttribute("aria-label", e.navn);
     k.onclick = function () { if (paaValgt) paaValgt(e.id); };
     return k;
   }

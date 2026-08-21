@@ -37,6 +37,10 @@ header {
   z-index: 5;
 }
 header h1 { font-size: 19px; margin: 0; font-weight: 650; letter-spacing: -.01em }
+#versjon {
+  font-size: 11.5px; color: var(--dus); font-variant-numeric: tabular-nums;
+  margin-left: -8px;
+}
 #stjerner {
   margin-left: auto;
   font-size: 19px;
@@ -268,17 +272,14 @@ button.liten { padding: 6px 12px }
   border-radius: 10px;
   padding: 5px 10px 6px;
   text-align: center;
-  min-width: 84px;
+  min-width: 64px;
+  max-width: 92px;
   backdrop-filter: blur(1px);
 }
-.sone .navn { font-size: 12.5px; font-weight: 650; line-height: 1.25; white-space: nowrap }
-/* Stolpen viser hvor mye av emnet han har vaert gjennom. Den gaar aldri ned. */
-.sone .stolpe {
-  height: 4px; border-radius: 2px; background: rgba(255,255,255,.28);
-  margin-top: 4px; overflow: hidden;
-}
-.sone .stolpe i { display: block; height: 100% }
-.sone .teller { font-size: 10.5px; color: rgba(255,255,255,.85); margin-top: 3px; white-space: nowrap }
+/* Bryter til flere linjer i stedet for én lang rad -- en bred, énlinjes
+   lapp er det som fikk navnene til aa krasje inn i hverandre paa smale
+   skjermer, sia bredden ikke minker naar kortet gjoer det. */
+.sone .navn { font-size: 12.5px; font-weight: 650; line-height: 1.25 }
 
 #bankfeil { margin-top: 20px }
 #bankfeil:empty { display: none }
