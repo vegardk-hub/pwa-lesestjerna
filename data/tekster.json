@@ -207,6 +207,86 @@
       "tekst": "Saturn er den eneste planeten i solsystemet med tydelige ringer rundt seg. Ringene består av utallige biter av is og stein, de fleste ikke større enn en snøball. Lagt sammen er ringene likevel over to hundre og femti tusen kilometer brede.",
       "vanskeligeOrd": ["to", "hundre", "og", "femti", "tusen", "Saturn", "solsystemet"]
     },
+    {
+      "id": "krefter-05",
+      "emne": "krefter",
+      "tittel": "Jupiter",
+      "niva": 2,
+      "tekst": "Jupiter er den største planeten i solsystemet, så stor at over tusen jordkloder kunne fått plass inni den. Den store røde flekken er en kjempestorm som har rast i flere hundre år.",
+      "vanskeligeOrd": ["tusen", "hundre"]
+    },
+    {
+      "id": "krefter-06",
+      "emne": "krefter",
+      "tittel": "Vulkaner",
+      "niva": 2,
+      "tekst": "Når en vulkan får utbrudd, kan lava bli varmere enn tolv hundre grader. Noen vulkaner har ligget stille i flere hundre år før de plutselig våkner til live igjen. Asken fra et stort utbrudd kan spre seg tusenvis av kilometer med vinden.",
+      "vanskeligeOrd": ["tolv", "hundre"]
+    },
+    {
+      "id": "krefter-07",
+      "emne": "krefter",
+      "tittel": "Jordskjelv",
+      "niva": 3,
+      "tekst": "Jorda består av flere store steinplater som beveger seg sakte mot hverandre, og noen ganger glipper de brått. Da kan rystelser brede seg gjennom bakken med en fart på over fem kilometer i sekundet.",
+      "vanskeligeOrd": ["fem"]
+    },
+    {
+      "id": "krefter-08",
+      "emne": "krefter",
+      "tittel": "Regnbuen",
+      "niva": 1,
+      "tekst": "En regnbue blir til når sollys brytes i tusenvis av små vanndråper i lufta. Den har alltid de samme sju fargene, i akkurat samme rekkefølge. Skal du se en regnbue, må sola være bak deg og regnet foran.",
+      "vanskeligeOrd": ["sju"]
+    },
+    {
+      "id": "krefter-09",
+      "emne": "krefter",
+      "tittel": "Lyd under vann",
+      "niva": 3,
+      "tekst": "Lyd beveger seg mye raskere i vann enn i luft, over fire ganger så fort. Det er derfor hvaler kan høre hverandre over avstander på flere hundre kilometer.",
+      "vanskeligeOrd": ["fire", "hundre"]
+    },
+    {
+      "id": "krefter-10",
+      "emne": "krefter",
+      "tittel": "Sorte hull",
+      "niva": 3,
+      "tekst": "Et sort hull har et tyngdefelt så sterkt at ikke engang lyset klarer å slippe unna. Det nærmeste sorte hullet vi kjenner til, er likevel mer enn tusen lysår unna jorda. Selv om vi ikke kan se selve hullet, kan vi se hvordan det trekker til seg stjerner og støv rundt seg.",
+      "vanskeligeOrd": ["tusen"]
+    },
+    {
+      "id": "krefter-11",
+      "emne": "krefter",
+      "tittel": "Tsunamien",
+      "niva": 2,
+      "tekst": "En tsunami kan starte som en liten bølge ute på havet, men bli mer enn tretti meter høy når den når land. Ute på åpent hav kan den bevege seg like fort som et passasjerfly.",
+      "vanskeligeOrd": ["tretti"]
+    },
+    {
+      "id": "krefter-12",
+      "emne": "krefter",
+      "tittel": "Elektriske ålen",
+      "niva": 2,
+      "tekst": "Den elektriske ålen kan sende ut støt på over seks hundre volt. Det er mer enn fem ganger så mye som en vanlig stikkontakt i veggen. Den bruker støtene både til å jage bort fiender og til å bedøve byttet sitt.",
+      "vanskeligeOrd": ["seks", "hundre", "fem"]
+    },
+    {
+      "id": "krefter-13",
+      "emne": "krefter",
+      "tittel": "Stjerneskudd",
+      "niva": 1,
+      "tekst": "Det du ser som et stjerneskudd er egentlig en liten steinbit som farer inn i lufta med en fart på over sytti kilometer i sekundet. De fleste er ikke større enn et sandkorn, men brenner likevel opp med det samme.",
+      "vanskeligeOrd": ["sytti"]
+    },
+    {
+      "id": "krefter-14",
+      "emne": "krefter",
+      "tittel": "Isen som flyter",
+      "niva": 2,
+      "tekst": "Is flyter på vann fordi den er lettere enn vannet den kommer fra, noe som er ganske uvanlig blant stoffer. Bare rundt en tidel av et isfjell stikker opp over vannflaten. Resten, ni tideler, skjuler seg under vann.",
+      "vanskeligeOrd": ["ni"]
+    },
 
     {
       "id": "liv-01",
@@ -231,6 +311,86 @@
       "niva": 2,
       "tekst": "Bambus er den raskest voksende planten vi kjenner til. Noen arter kan vokse nesten én hel meter på et eneste døgn. Likevel blomstrer mange bambusplanter bare én gang hvert hundrede år.",
       "vanskeligeOrd": ["én", "hundrede", "bambus"]
+    },
+    {
+      "id": "liv-04",
+      "emne": "liv",
+      "tittel": "Isbjørnen",
+      "niva": 1,
+      "tekst": "Isbjørnen er verdens største rovdyr på land, og en voksen hann kan veie over sju hundre kilo. Under den hvite pelsen er huden hans faktisk helt svart.",
+      "vanskeligeOrd": ["sju", "hundre"]
+    },
+    {
+      "id": "liv-05",
+      "emne": "liv",
+      "tittel": "Kameleonen",
+      "niva": 2,
+      "tekst": "Kameleonen kan bevege de to øynene sine helt uavhengig av hverandre, og se to forskjellige retninger på samme tid. Den skifter ikke farge for å gjemme seg, men for å vise humør eller temperatur. Tunga kan skytes ut og fange et insekt på under et halvt sekund.",
+      "vanskeligeOrd": ["to", "halvt"]
+    },
+    {
+      "id": "liv-06",
+      "emne": "liv",
+      "tittel": "Hvithaien",
+      "niva": 2,
+      "tekst": "Hvithaien kan ha opp mot tre hundre tenner i munnen samtidig, ordnet i flere rader bak hverandre. Mister den en tann, vokser det raskt ut en ny.",
+      "vanskeligeOrd": ["tre", "hundre"]
+    },
+    {
+      "id": "liv-07",
+      "emne": "liv",
+      "tittel": "Pandaen",
+      "niva": 1,
+      "tekst": "En panda spiser bambus nesten hele dagen, gjerne tolv timer i strekk. Likevel har magen dens vanskelig for å fordøye plantekost, så den må spise enormt mye for å bli mett. En nyfødt pandaunge er bitteliten, ikke mye større enn en smørklatt, selv om moren kan veie hundre kilo.",
+      "vanskeligeOrd": ["tolv", "hundre"]
+    },
+    {
+      "id": "liv-08",
+      "emne": "liv",
+      "tittel": "Flaggermusen",
+      "niva": 3,
+      "tekst": "Flaggermusa flyr i mørket ved å sende ut lyder mennesker ikke kan høre, og lytte til ekkoet som kommer tilbake. På den måten kan noen arter fange opp mot tusen insekter på én time.",
+      "vanskeligeOrd": ["tusen"]
+    },
+    {
+      "id": "liv-09",
+      "emne": "liv",
+      "tittel": "Sekvojatreet",
+      "niva": 2,
+      "tekst": "Sekvojatrærne i California er de høyeste trærne i verden, og noen av dem er over hundre meter høye. De kan også bli mer enn to tusen år gamle. Barken er så tykk at treet tåler både brann og insekter uten å ta stor skade.",
+      "vanskeligeOrd": ["hundre", "to", "tusen"]
+    },
+    {
+      "id": "liv-10",
+      "emne": "liv",
+      "tittel": "Krokodillen",
+      "niva": 2,
+      "tekst": "Krokodillen kan holde pusten under vann i over en time. Bittekraften i kjeven er mer enn ti ganger sterkere enn hos et menneske.",
+      "vanskeligeOrd": ["ti"]
+    },
+    {
+      "id": "liv-11",
+      "emne": "liv",
+      "tittel": "Meitemarken",
+      "niva": 1,
+      "tekst": "En meitemark har ingen øyne, men kan likevel kjenne lys gjennom huden. Kuttes den i to, kan den ene delen noen ganger vokse ut igjen til en helt ny mark. En vanlig hage kan romme flere hundre meitemark i jorda uten at du ser en eneste en.",
+      "vanskeligeOrd": ["to", "hundre"]
+    },
+    {
+      "id": "liv-12",
+      "emne": "liv",
+      "tittel": "Honningbien",
+      "niva": 3,
+      "tekst": "En bikube kan romme over femti tusen bier som deler på oppgavene sine. For å lage bare ett kilo honning må biene besøke rundt to millioner blomster.",
+      "vanskeligeOrd": ["femti", "tusen", "to", "millioner"]
+    },
+    {
+      "id": "liv-13",
+      "emne": "liv",
+      "tittel": "Kaktusen",
+      "niva": 2,
+      "tekst": "En stor kaktus kan lagre flere hundre liter vann inni den tykke stengelen sin. Det er nok til å overleve i lange tørkeperioder uten en dråpe regn. Piggene er egentlig blader som har krympet for å spare enda mer vann.",
+      "vanskeligeOrd": ["hundre"]
     },
 
     {
@@ -288,6 +448,86 @@
       "niva": 2,
       "tekst": "I tusenvis av år har mennesker brukt brevduer til å sende beskjeder til hverandre. En brevdue kan finne veien hjem selv om den blir sluppet fri over ti mil unna. Under den første verdenskrig reddet én enkelt due livet til nesten to hundre soldater ved å komme fram med en viktig beskjed.",
       "vanskeligeOrd": ["ti", "to", "hundre", "brevduer", "verdenskrig"]
+    },
+    {
+      "id": "folk-08",
+      "emne": "folk",
+      "tittel": "Kinamuren",
+      "niva": 2,
+      "tekst": "Den kinesiske muren er så lang at den strekker seg over tjue tusen kilometer om du regner med alle greinene. Den ble bygget over mange hundre år, av flere ulike keisere.",
+      "vanskeligeOrd": ["tjue", "tusen", "hundre"]
+    },
+    {
+      "id": "folk-09",
+      "emne": "folk",
+      "tittel": "Månelandingen",
+      "niva": 2,
+      "tekst": "I nitten hundre og sekstini gikk de to første menneskene ut på månen. De brukte bare fire dager på reisen dit, i et romskip mindre enn en buss. Det er over femti år siden, men bare tolv mennesker har noensinne gått der.",
+      "vanskeligeOrd": ["nitten", "hundre", "og", "sekstini", "to", "fire", "femti", "tolv"]
+    },
+    {
+      "id": "folk-10",
+      "emne": "folk",
+      "tittel": "Å hilse på hverandre",
+      "niva": 1,
+      "tekst": "Rundt om i verden hilser folk på helt ulike måter, med alt fra håndtrykk til å gni nesene mot hverandre. Noen steder bukker man i stedet, gjerne to ganger for å vise ekstra respekt.",
+      "vanskeligeOrd": ["to"]
+    },
+    {
+      "id": "folk-11",
+      "emne": "folk",
+      "tittel": "Søvnen din",
+      "niva": 2,
+      "tekst": "Et menneske sover bort omtrent tjuefem år av livet sitt, om du legger sammen alle nettene. Likevel husker du nesten ingenting av de fleste nettene du har sovet. Kroppen bruker søvnen til å rydde opp i alt hjernen har lært den dagen.",
+      "vanskeligeOrd": ["tjuefem"]
+    },
+    {
+      "id": "folk-12",
+      "emne": "folk",
+      "tittel": "Navnet ditt",
+      "niva": 1,
+      "tekst": "Over hele verden finnes det trolig flere hundre tusen ulike fornavn. Noen navn har vært i bruk i over tre tusen år uten å gå av mote.",
+      "vanskeligeOrd": ["hundre", "tusen", "tre"]
+    },
+    {
+      "id": "folk-13",
+      "emne": "folk",
+      "tittel": "Gladiatorene",
+      "niva": 3,
+      "tekst": "I det gamle Roma kjempet gladiatorer mot hverandre i store arenaer som kunne romme over femti tusen tilskuere. De fleste kampene endte likevel ikke med at noen døde. En god gladiator var nemlig altfor dyr å miste for eierne sine.",
+      "vanskeligeOrd": ["femti", "tusen"]
+    },
+    {
+      "id": "folk-14",
+      "emne": "folk",
+      "tittel": "Terrakottahæren",
+      "niva": 2,
+      "tekst": "Dypt under bakken i Kina fant arbeidere over åtte tusen leirsoldater i full størrelse, gjemt i over to tusen år. Hvert eneste ansikt er unikt, ingen av soldatene er helt like.",
+      "vanskeligeOrd": ["åtte", "tusen", "to"]
+    },
+    {
+      "id": "folk-15",
+      "emne": "folk",
+      "tittel": "Sirkuset",
+      "niva": 1,
+      "tekst": "De første sirkusene hadde ofte bare noen få akrobater og ett eller to dyr. I dag kan et stort sirkus reise rundt med over hundre mennesker. I tillegg følger gjerne flere titalls dyr med på turné.",
+      "vanskeligeOrd": ["to", "hundre"]
+    },
+    {
+      "id": "folk-16",
+      "emne": "folk",
+      "tittel": "Verdens eldste by",
+      "niva": 3,
+      "tekst": "Damaskus har trolig vært bebodd i over ti tusen år sammenhengende, lenger enn noen annen by vi kjenner til. Menneskene som bodde der aller først, levde altså lenge før pyramidene i Egypt ble bygget.",
+      "vanskeligeOrd": ["ti", "tusen"]
+    },
+    {
+      "id": "folk-17",
+      "emne": "folk",
+      "tittel": "Norsk språk",
+      "niva": 1,
+      "tekst": "Norsk snakkes av rundt fem millioner mennesker, de fleste av dem her i Norge. Det er likevel bare ett av mer enn sju tusen språk som finnes i verden. Noen av disse språkene snakkes i dag av bare en håndfull mennesker.",
+      "vanskeligeOrd": ["fem", "millioner", "sju", "tusen"]
     },
 
     {
@@ -361,6 +601,86 @@
       "niva": 1,
       "tekst": "Papir ble funnet opp i Kina for nesten to tusen år siden, laget av knuste planterester og vann. Før den tid skrev folk på stein, tre eller dyreskinn, som var mye tyngre å bære med seg. Nå lager fabrikker papir av tre på under ett sekund per ark.",
       "vanskeligeOrd": ["to", "tusen", "ett", "tre", "Kina"]
+    },
+    {
+      "id": "oppfinnelser-10",
+      "emne": "oppfinnelser",
+      "tittel": "Radioen",
+      "niva": 2,
+      "tekst": "De første radiosendingene kunne bare høres noen få kilometer unna. I dag kan et radiosignal sendes over ti tusen kilometer uten en eneste ledning.",
+      "vanskeligeOrd": ["ti", "tusen"]
+    },
+    {
+      "id": "oppfinnelser-11",
+      "emne": "oppfinnelser",
+      "tittel": "Kameraet",
+      "niva": 2,
+      "tekst": "De aller første fotografiene måtte eksponeres i over åtte timer for å bli ferdige. I dag tar et kamera et skarpt bilde på under et tiendedels sekund. Det er raskere enn du rekker å blunke.",
+      "vanskeligeOrd": ["åtte"]
+    },
+    {
+      "id": "oppfinnelser-12",
+      "emne": "oppfinnelser",
+      "tittel": "Kjøleskapet",
+      "niva": 1,
+      "tekst": "Før kjøleskapet fantes, måtte folk bruke is og kalde kjellere for å holde maten frisk. I dag har over ni av ti hjem i Norge et kjøleskap som går døgnet rundt.",
+      "vanskeligeOrd": ["ni", "ti"]
+    },
+    {
+      "id": "oppfinnelser-13",
+      "emne": "oppfinnelser",
+      "tittel": "Symaskinen",
+      "niva": 2,
+      "tekst": "Før symaskinen kom, brukte folk mange timer på å sy ett eneste plagg for hånd. Med en symaskin kunne den samme jobben plutselig gjøres over tjue ganger raskere. Det gjorde klær billigere for svært mange mennesker.",
+      "vanskeligeOrd": ["tjue"]
+    },
+    {
+      "id": "oppfinnelser-14",
+      "emne": "oppfinnelser",
+      "tittel": "Blyanten",
+      "niva": 1,
+      "tekst": "En vanlig blyant kan skrive en strek som er over femti kilometer lang før den er tom. Den er laget av grafitt, ikke bly, selv om navnet sier noe annet.",
+      "vanskeligeOrd": ["femti"]
+    },
+    {
+      "id": "oppfinnelser-15",
+      "emne": "oppfinnelser",
+      "tittel": "Glidelåsen",
+      "niva": 2,
+      "tekst": "Glidelåsen ble funnet opp for å slippe å bruke knapper og hekter, som tok mye lengre tid å lukke. Det tok likevel over tjue år før folk begynte å bruke den i klær. I dag har de fleste jakker og bukser minst én glidelås.",
+      "vanskeligeOrd": ["tjue"]
+    },
+    {
+      "id": "oppfinnelser-16",
+      "emne": "oppfinnelser",
+      "tittel": "Luftballongen",
+      "niva": 2,
+      "tekst": "De første menneskene som fløy, gjorde det i en luftballong for over to hundre år siden. Ballongen var laget av papir og stoff, og holdt seg oppe med røyk fra et bål.",
+      "vanskeligeOrd": ["to", "hundre"]
+    },
+    {
+      "id": "oppfinnelser-17",
+      "emne": "oppfinnelser",
+      "tittel": "Datamaskinen",
+      "niva": 3,
+      "tekst": "De første datamaskinene fylte et helt rom og veide flere tonn. Likevel klarte de mye mindre enn en enkel lommeregner i dag. En moderne mobiltelefon kan regne millioner av ganger raskere enn dem.",
+      "vanskeligeOrd": ["millioner"]
+    },
+    {
+      "id": "oppfinnelser-18",
+      "emne": "oppfinnelser",
+      "tittel": "Mikrobølgeovnen",
+      "niva": 1,
+      "tekst": "Mikrobølgeovnen ble oppdaget ved et uhell, da en forsker merket at en sjokolade i lomma hans smeltet. I dag bruker over ni av ti hjem i Norge en mikrobølgeovn til oppvarming.",
+      "vanskeligeOrd": ["ni", "ti"]
+    },
+    {
+      "id": "oppfinnelser-19",
+      "emne": "oppfinnelser",
+      "tittel": "Penicillinet",
+      "niva": 3,
+      "tekst": "Penicillinet ble oppdaget ved et uhell, da en forsker så at en muggsopp drepte bakterier i en skål han hadde glemt. Oppdagelsen har siden reddet livet til godt over hundre millioner mennesker. Det gjør penicillinet til en av de viktigste oppdagelsene noensinne.",
+      "vanskeligeOrd": ["hundre", "millioner"]
     }
   ]
 }
