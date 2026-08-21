@@ -30,16 +30,24 @@
 
 <section id="hus" hidden>
   <h2 id="husnavn"></h2>
-  <div id="rom">
-    <img src="img/hus-rom.png" alt="" id="romBilde">
-    <div id="romInnhold"></div>
-  </div>
   <p class="und liten" id="hushint"></p>
-  <div class="rad">
-    <button id="utOgLes" class="stor hoved">Gå ut og les</button>
-    <button id="apneBoka">Se i boka</button>
-    <button id="apneButikk">Butikk</button>
-    <button id="apneSamling">Samling</button>
+  <div id="husKort">
+    <button type="button" id="utOgLes" class="huskort hoved">
+      <span class="huskort-ikon"></span>
+      <span class="huskort-navn">Gå ut og les</span>
+    </button>
+    <button type="button" id="apneBoka" class="huskort bok">
+      <span class="huskort-ikon"></span>
+      <span class="huskort-navn" id="bokKortNavn"></span>
+    </button>
+    <button type="button" id="apneButikk" class="huskort butikk">
+      <span class="huskort-ikon"></span>
+      <span class="huskort-navn">Butikken</span>
+    </button>
+    <button type="button" id="apneSamling" class="huskort samling">
+      <span class="huskort-ikon"></span>
+      <span class="huskort-navn">Samlingen</span>
+    </button>
   </div>
 </section>
 

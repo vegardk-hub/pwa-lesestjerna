@@ -111,76 +111,45 @@ button.lytter:hover { background: #c8332a }
 #kopibeskjed.feil { color: #b3261e }
 
 /* ---------- Huset ----------
-   Rommet er nå kenney/lag_rom.py sitt bilde (tapet, vindu, teppe og det vesle
-   bordet) -- se img/hus-rom.png. Rommet er med vilje nesten tomt: det eneste
-   som betyr noe aa begynne med er boka. Flere mobler kommer etter hvert som
-   han kjoeper dem for mynter -- det er da lag_rom.py fylles paa, ikke naar
-   rommet virker for stort og tomt i seg selv.
-
-   Det som ligger oppaa bildet er bare det som skal kunne trykkes paa: doera,
-   boka paa bordet, figuren og levelboblen, plassert i prosent av boksen paa
-   noeyaktig samme sted bildet tegnet dem, akkurat som sonene paa
-   verdenskartet. */
+   Fire kort: gaa ut og les, boka, butikken, samlingen. "Gaa ut og les" er
+   hovedhandlingen og ser slik ut (moerk bakgrunn, stor), de tre andre er
+   like store som hverandre. */
 
 #hus { padding: 24px 20px 50px; max-width: 780px; margin: 0 auto; width: 100% }
-#hus h2 { font-size: 22px; margin: 0 0 16px; font-weight: 650 }
-#hushint { margin: 10px 0 0 }
+#hus h2 { font-size: 22px; margin: 0 0 6px; font-weight: 650 }
+#hushint { margin: 0 0 20px }
 #hushint:empty { display: none }
-#hus .rad { justify-content: center }
 
-#rom {
-  position: relative;
-  aspect-ratio: 16 / 9;
-  border-radius: 18px;
-  overflow: hidden;
-  border: 1.5px solid var(--strek);
-  user-select: none;
+#husKort {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
 }
-#romBilde { width: 100%; height: 100%; object-fit: cover; display: block }
-#romInnhold { position: absolute; inset: 0 }
-
-/* Doera staar aapent paa hoeyre vegg i bildet -- ingen mobler er tegnet der. */
-#rom .doer {
-  position: absolute; left: 85%; top: 15%; width: 13%; height: 57%;
-  background: #a4693a; border: 3px solid #7d4e2a; border-radius: 6px 6px 0 0;
-  padding: 0; display: flex; align-items: flex-end; justify-content: center;
-}
-#rom .doer:hover { background: #b8794a }
-#rom .doer .haandtak {
-  position: absolute; left: 12%; top: 52%;
-  width: 9px; height: 9px; border-radius: 50%; background: var(--gul);
-}
-#rom .doer .skilt {
-  margin-bottom: 12%; font-size: 13px; font-weight: 650; color: #fff;
-  letter-spacing: .04em;
+@media (min-width: 620px) {
+  #husKort { grid-template-columns: repeat(4, 1fr) }
 }
 
-/* Selve bordet er malt inn i bildet -- denne knappen er en usynlig flate rett
-   oppaa bordplata, med en liten bok som viser at det er noe aa trykke paa.
-   Boka ligger paa bordet i stedet for i en meny: han skal snuble over den. */
-#rom .bord {
-  position: absolute; left: 68.75%; top: 55.5%; width: 6.25%; height: 13%;
-  background: none; border: none; padding: 0;
+.huskort {
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+  border: 1.5px solid var(--strek); border-radius: 18px;
+  padding: 26px 14px 20px; text-align: center;
+  background: #fff;
 }
-#rom .bord .boka {
-  position: absolute; left: 28%; width: 44%; top: 10%; height: 52%;
-  background: #b3261e; border-radius: 2px 4px 4px 2px;
-  border-left: 3px solid #7d1a15;
-  box-shadow: 0 2px 0 rgba(0,0,0,.25);
-}
-#rom .bord:hover .boka { transform: translateY(-2px) }
+.huskort:hover:not(:disabled) { border-color: var(--gul); background: #fffdf7 }
+.huskort-ikon { width: 60px; height: 60px }
+.huskort-ikon svg { width: 100%; height: 100%; display: block }
+.huskort-navn { font-weight: 600; font-size: 15px }
 
-#rom .figur { position: absolute; left: 22%; top: 38%; width: 12%; height: 44% }
-#rom .figur svg { width: 100%; height: 100%; display: block }
+.huskort.bok .huskort-ikon { color: #b3261e }
+.huskort.butikk .huskort-ikon { color: #2f7d9d }
+.huskort.samling .huskort-ikon { color: #6a4b9c }
 
-#rom .levelboble {
-  position: absolute; left: 64%; top: 18%;
-  background: #fff; border: 2px solid var(--gul); border-radius: 12px;
-  padding: 4px 10px; text-align: center; line-height: 1.25;
-  font-variant-numeric: tabular-nums;
+.huskort.hoved {
+  background: var(--blekk); border-color: var(--blekk);
 }
-#rom .levelboble b { display: block; font-size: 15px }
-#rom .levelboble span { font-size: 12.5px; color: var(--gul) }
+.huskort.hoved:hover:not(:disabled) { background: #333b44 }
+.huskort.hoved .huskort-ikon { color: var(--gul) }
+.huskort.hoved .huskort-navn { color: #fff; font-size: 17px }
 
 /* ---------- Boka paa bordet ---------- */
 

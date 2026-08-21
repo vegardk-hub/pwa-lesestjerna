@@ -110,7 +110,6 @@
   Spillere.naarValgt(tilHus);
   Verden.naarValgt(lesFraEmne);
   Verden.naarHjem(tilHus);
-  Hus.naarUt(tilVerden);
 
   $("#byttSpiller").onclick = function () {
     Lesing.stopp();
