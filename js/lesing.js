@@ -146,6 +146,25 @@
    * ord sperre resten av setningen. Men de overhoppede ordene lyser *ikke*:
    * sier han "revet" der det staar "reven", skal han ikke ha groent for det.
    */
+
+  // Store tall kommer av og til med mellomrom som tusenskille -- "250 000" i
+  // stedet for "250000" -- og da splittes de i to ord av split(/\s+/) over.
+  // Hver del for seg matcher ingenting, og gruppa lyser aldri. Et tall-ord
+  // etterfulgt av noeyaktig tre nye siffer er alltid en fortsettelse av det
+  // forrige, aldri et nytt tall, saa de kan trygt limes sammen igjen.
+  function slaaSammenTusenskille(sagt) {
+    var ut = [];
+    sagt.forEach(function (o) {
+      var forrige = ut.length - 1;
+      if (forrige >= 0 && /^\d+$/.test(ut[forrige]) && /^\d{3}$/.test(o)) {
+        ut[forrige] += o;
+      } else {
+        ut.push(o);
+      }
+    });
+    return ut;
+  }
+
   function match(hoert, endelig) {
     // En mellomvariant sender hele fragmentet paa nytt hver gang, saa det den
     // markerte forrige runde tas bort foer vi gaar gjennom paa ny. Endelige
@@ -153,7 +172,7 @@
     midlertidige.forEach(function (i) { ord[i].truffet = false; });
     midlertidige = [];
 
-    var sagt = hoert.split(/\s+/).map(Tekst.reint).filter(Boolean);
+    var sagt = slaaSammenTusenskille(hoert.split(/\s+/).map(Tekst.reint).filter(Boolean));
     var i = basis;
 
     sagt.forEach(function (o) {
