@@ -108,7 +108,35 @@ button.lytter:hover { background: #c8332a }
 
 #byttSpiller { font-size: 14.5px; padding: 6px 12px }
 .liten { font-size: 13.5px }
+button.liten { padding: 6px 12px }
 #kopibeskjed.feil { color: #b3261e }
+
+/* ---------- Foreldrekontroll ---------- */
+
+#foreldre { padding: 30px 20px 60px; max-width: 460px; margin: 0 auto; width: 100% }
+#foreldre h2 { font-size: 22px; margin: 0 0 20px; font-weight: 650 }
+#foreldre .rad { margin-top: 18px }
+
+.pinfelt {
+  display: block;
+  width: 100%;
+  font-size: 30px;
+  letter-spacing: .5em;
+  text-align: center;
+  padding: 12px 14px;
+  border: 1.5px solid var(--strek);
+  border-radius: 12px;
+  font-variant-numeric: tabular-nums;
+}
+.pinfelt:focus { outline: none; border-color: var(--gul) }
+#foreldreFeil { min-height: 1.3em; margin: 10px 0 0; color: #b3261e }
+#foreldreFeil:empty { display: none }
+
+.veksle {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 15.5px; cursor: pointer;
+}
+.veksle input { width: 18px; height: 18px }
 
 /* ---------- Huset ----------
    Fire kort: gaa ut og les, boka, butikken, samlingen. "Gaa ut og les" er

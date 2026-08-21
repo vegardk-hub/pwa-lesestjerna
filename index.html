@@ -26,6 +26,34 @@
     <input type="file" id="filvelger" accept="application/json,.json" hidden>
   </div>
   <p class="und liten" id="kopibeskjed"></p>
+  <div class="rad">
+    <button id="apneForeldre" class="liten">Foreldrekontroll</button>
+  </div>
+</section>
+
+<section id="foreldre" hidden>
+  <h2>Foreldrekontroll</h2>
+
+  <div id="foreldreLaas">
+    <p class="und liten" id="foreldreLaasTekst"></p>
+    <input type="text" id="foreldrePin" class="pinfelt" inputmode="numeric"
+           pattern="[0-9]*" maxlength="4" placeholder="••••" autocomplete="off">
+    <div class="rad">
+      <button id="foreldreLaasOpp" class="stor hoved"></button>
+      <button id="lukkForeldreLaas">Avbryt</button>
+    </div>
+    <p class="und liten feil" id="foreldreFeil"></p>
+  </div>
+
+  <div id="foreldreInnstillinger" hidden>
+    <label class="veksle">
+      <input type="checkbox" id="lesForMegVeksle">
+      Vis knappen «Les den for meg» i lesevisningen
+    </label>
+    <div class="rad">
+      <button id="lukkForeldre" class="stor hoved">Lukk</button>
+    </div>
+  </div>
 </section>
 
 <section id="hus" hidden>
@@ -134,9 +162,8 @@
 <footer id="verktoy" hidden>
   <div class="rad">
     <button id="mikrofon" class="stor hoved">Trykk her, så hører jeg etter</button>
-    <button id="lesForMeg">Les den for meg</button>
+    <button id="lesForMeg" hidden>Les den for meg</button>
     <button id="hoppOver">Hopp over ordet</button>
-    <button id="paaNytt">Prøv setningen på nytt</button>
   </div>
   <p id="beskjed"></p>
 </footer>
@@ -150,6 +177,7 @@
 <script src="js/robotlyd.js"></script>
 <script src="js/butikk.js"></script>
 <script src="js/samling.js"></script>
+<script src="js/foreldre.js"></script>
 <script src="js/lesing.js"></script>
 <script src="js/spillere.js"></script>
 <script src="js/verden.js"></script>

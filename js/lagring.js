@@ -31,7 +31,13 @@
   var data = null;
 
   function ferskt() {
-    return { versjon: 1, aktiv: null, spillere: [], papirkurv: [] };
+    return { versjon: 1, aktiv: null, spillere: [], papirkurv: [], foreldre: TOM_FORELDRE() };
+  }
+
+  function TOM_FORELDRE() {
+    // pin: en firesifret kode Vegard setter selv, ikke noe ekte sikkerhet --
+    // bare nok til at et barn ikke skrur paa hjelpeknappen ved et uhell.
+    return { pin: null, lesForMeg: false };
   }
 
   function les() {
@@ -45,6 +51,8 @@
       data = ferskt();
     }
     if (!data.spillere) data = ferskt();
+    // Lagring fra foer foreldrekontrollen fantes mangler denne noekkelen.
+    if (!data.foreldre) data.foreldre = TOM_FORELDRE();
     return data;
   }
 
@@ -144,6 +152,14 @@
     papirkurv: function () { return les().papirkurv; },
 
     idag: idag,
+
+    /* ---------- Foreldrekontroll ---------- */
+
+    harForeldrePin: function () { return !!les().foreldre.pin; },
+    settForeldrePin: function (pin) { les().foreldre.pin = pin; lagre(); },
+    sjekkForeldrePin: function (pin) { return les().foreldre.pin === pin; },
+    lesForMegPaa: function () { return !!les().foreldre.lesForMeg; },
+    settLesForMeg: function (paa) { les().foreldre.lesForMeg = !!paa; lagre(); },
 
     /* ---------- Sikkerhetskopi ---------- */
 

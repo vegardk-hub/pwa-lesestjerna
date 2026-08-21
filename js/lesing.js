@@ -1,7 +1,7 @@
 /* Lesemotoren i Lesestjerna. Gutten leser hoegt, appen lytter, ordene lyser.
  *
  * Denne fila eier lesesskjermen og ingenting annet: teksten, mikrofonen,
- * stjernene og de fire hjelpeknappene. Den vet ikke hvor teksten kommer fra og
+ * stjernene og hjelpeknappene. Den vet ikke hvor teksten kommer fra og
  * ikke hva som skjer etterpaa — den sier bare fra naar oekta er over, og
  * forteller hvor mye som ble lest. Da kan den samme motoren brukes bade av
  * innlimt tekst og av spillet.
@@ -355,22 +355,6 @@
     sistFramgang = Date.now();
     beskjed("Hør etter, så prøver du.");
     Stemme.si(tekst).catch(function () { beskjed("Fant ingen norsk stemme.", true); });
-  };
-
-  $("#paaNytt").onclick = function () {
-    if (!ord.length) return;
-    var s = naaSetning();
-    for (var i = s.ordFra; i < s.ordTil; i++) {
-      ord[i].truffet = false;
-      ord[i].hoppet = false;
-    }
-    s.ferdig = false;
-    basis = s.ordFra;
-    peker = s.ordFra;
-    midlertidige = [];
-    sistFramgang = Date.now();
-    tegn();
-    beskjed("Vær så god, prøv en gang til.");
   };
 
   $("#mikrofon").onclick = function () {
