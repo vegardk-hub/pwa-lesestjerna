@@ -12,21 +12,13 @@
 
   var $ = function (v) { return document.querySelector(v); };
 
-  var EKSEMPEL =
-    "Gutten gikk i sjuende klasse. Hver morgen gikk han den samme veien til " +
-    "skolen, forbi den gamle butikken og ned mot elva.\n\n" +
-    "En dag i november så han noe som lå i snøen ved brua. Det var en liten " +
-    "hund. Den ristet på hele kroppen, og den hadde ingen bånd rundt halsen.\n\n" +
-    "«Hei,» sa gutten forsiktig. «Har du gått deg bort?»";
-
-  var naa = null;        // teksten som leses akkurat naa, null for innlimt
+  var naa = null;        // teksten som leses akkurat naa
   var sisteEmne = null;  // hvor "Les en til" skal hente neste fra
 
   function vis(hvilken) {
     $("#velgSpiller").hidden = hvilken !== "spillere";
     $("#hus").hidden = hvilken !== "hus";
     $("#verden").hidden = hvilken !== "verden";
-    $("#start").hidden = hvilken !== "tekst";
     $("#lesing").hidden = hvilken !== "lesing";
     $("#ferdig").hidden = hvilken !== "ferdig";
     $("#verktoy").hidden = hvilken !== "lesing";
@@ -85,9 +77,9 @@
   }
 
   function ferdig(r) {
-    // Innlimt tekst har ingen id og betaler derfor hver gang. Tekster fra
-    // banken betaler én gang — id-en er noekkelen til hvilke han har lest.
-    var b = Spill.betal(naa ? naa.id : null, r);
+    // Tekster fra banken betaler én gang — id-en er noekkelen til hvilke
+    // han har lest.
+    var b = Spill.betal(naa.id, r);
     tegnSpillerknapp();
 
     if (b.alleredeLest) {
@@ -95,7 +87,7 @@
       $("#ferdigTall").textContent = b.beskjed;
       $("#ferdigBok").textContent = "";
     } else {
-      $("#ferdigTittel").textContent = naa ? naa.tittel + " er lest!" : "Hele teksten er lest!";
+      $("#ferdigTittel").textContent = naa.tittel + " er lest!";
       $("#ferdigTall").textContent =
         r.ord + " ord \u00b7 " + r.setninger + " stjerner \u00b7 " +
         "+" + b.mynter + " mynter";
@@ -106,7 +98,6 @@
             : "");
     }
 
-    $("#lesEnTil").textContent = sisteEmne ? "Les en til" : "Lim inn en ny tekst";
     vis("ferdig");
   }
 
@@ -134,58 +125,7 @@
   $("#apneSamling").onclick = Samling.apne;
   $("#apneForeldre").onclick = Foreldre.apne;
 
-  $("#limInn").onclick = function () {
-    sisteEmne = null;
-    vis("tekst");
-  };
-
-  $("#lesEnTil").onclick = function () {
-    if (sisteEmne) lesFraEmne(sisteEmne);
-    else vis("tekst");
-  };
-
-  $("#eksempel").onclick = function () { $("#innTekst").value = EKSEMPEL; };
-
-  $("#settIGang").onclick = function () {
-    var t = $("#innTekst").value.trim();
-    if (!t) { $("#innTekst").focus(); return; }
-    naa = null;
-    sisteEmne = null;
-    les({ tekst: t });
-  };
-
-  /* ---------- Hva maskinen kan tilby ---------- */
-
-  function tegnFasit() {
-    var v = Stemme.valgtStemme();
-    var ja = function (t) { return '<span class="ja">' + t + "</span>"; };
-    var nei = function (t) { return '<span class="nei">' + t + "</span>"; };
-    var linjer = [];
-
-    if (!Stemme.lytter.stoettes) {
-      linjer.push("<div>" + nei("Denne nettleseren kan ikke lytte.") +
-                  " Lesestjerna trenger Edge.</div>");
-    }
-    if (!v) {
-      linjer.push("<div>" + nei("Ingen norsk stemme funnet.") +
-                  " Hjelpen med å si ordene virker ikke.</div>");
-    } else if (/\bfinn\b/i.test(v.name)) {
-      linjer.push("<div>Leses av " + ja(v.name) + "</div>");
-    } else {
-      linjer.push("<div>Leses av " + v.name + ". " +
-                  (Stemme.erEdge
-                    ? "Finn er ikke tilgjengelig nå — er du på nett?"
-                    : "Finn finnes bare i Edge.") + "</div>");
-    }
-    if (!navigator.onLine) {
-      linjer.push("<div>" + nei("Ikke på nett.") +
-                  " Både lyttingen og Finn trenger nettet.</div>");
-    }
-    $("#fasit").innerHTML = linjer.join("");
-  }
-
-  speechSynthesis.onvoiceschanged = tegnFasit;
-  tegnFasit();
+  $("#lesEnTil").onclick = function () { lesFraEmne(sisteEmne); };
 
   /* ---------- Oppstart ---------- */
 

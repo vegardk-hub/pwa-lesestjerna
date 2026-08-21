@@ -378,36 +378,8 @@ button.liten { padding: 6px 12px }
 #ferdigBok:empty { display: none }
 #ferdig .rad { justify-content: center; margin-top: 32px }
 
-/* ---------- Startskjermen ---------- */
-
-#start { padding: 30px 20px 60px; max-width: 780px; margin: 0 auto; width: 100% }
-#start p.und { color: var(--dus); margin: 0 0 18px }
 .und { color: var(--dus) }
-textarea {
-  width: 100%;
-  min-height: 220px;
-  font: inherit;
-  line-height: 1.6;
-  padding: 14px 16px;
-  border: 1.5px solid var(--strek);
-  border-radius: 12px;
-  resize: vertical;
-  background: #fff;
-  color: var(--blekk);
-}
-textarea:focus { outline: none; border-color: var(--gul) }
 .rad { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 16px }
-
-#fasit {
-  margin-top: 26px;
-  font-size: 14.5px;
-  color: var(--dus);
-  border-top: 1px solid var(--strek);
-  padding-top: 16px;
-}
-#fasit .ja { color: var(--grøn) }
-#fasit .nei { color: #b3261e }
-#fasit div { margin: 4px 0 }
 
 /* ---------- Teksten som leses ---------- */
 
