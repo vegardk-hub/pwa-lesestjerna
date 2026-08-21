@@ -38,13 +38,17 @@
     $("#samlingTom").hidden = (s.eide || []).length > 0;
   }
 
+  // Robotens egen lyd -- se robotlyd.js. Han skal kunne trykke den om igjen
+  // saa mange ganger han vil, ikke bare hoere den én gang.
   function visDetalj(v) {
     var ikon = $("#samlingDetaljIkon");
     ikon.innerHTML = Figurer.svg(v.id);
+    ikon.onclick = function () { Robotlyd.spill(v.id); };
     $("#samlingDetaljNavn").textContent = v.navn;
     $("#samlingListe").hidden = true;
     $("#samlingTom").hidden = true;
     $("#samlingDetalj").hidden = false;
+    Robotlyd.spill(v.id);
   }
 
   function lukkDetalj() {
