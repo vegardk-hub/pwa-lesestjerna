@@ -25,7 +25,8 @@
     boker: 0,
     tekster: [],        // id-ene han har faatt betalt for
     eide: [],           // { ting, pris } -- roboter kjøpt fra butikken
-    dager: {}           // "2026-08-21": 34 — ord per dag, til boka paa bordet
+    dager: {},          // "2026-08-21": 34 — ord per dag, til boka paa bordet
+    opptak: {}          // { robotId: dataURL } -- egne opptak til mytiske roboter
   };
 
   var data = null;
@@ -53,6 +54,8 @@
     if (!data.spillere) data = ferskt();
     // Lagring fra foer foreldrekontrollen fantes mangler denne noekkelen.
     if (!data.foreldre) data.foreldre = TOM_FORELDRE();
+    // Lagring fra foer opptaksfunksjonen fantes mangler denne paa spillerne.
+    data.spillere.forEach(function (s) { if (!s.opptak) s.opptak = {}; });
     return data;
   }
 
@@ -95,7 +98,7 @@
       laget: idag(),
       sistBrukt: idag(),
       // Objektene i TOM_SPILLER er delte referanser om vi ikke lager nye.
-      tekster: [], eide: [], dager: {}
+      tekster: [], eide: [], dager: {}, opptak: {}
     });
     d.spillere.push(s);
     d.aktiv = s.id;
@@ -160,6 +163,21 @@
     sjekkForeldrePin: function (pin) { return les().foreldre.pin === pin; },
     lesForMegPaa: function () { return !!les().foreldre.lesForMeg; },
     settLesForMeg: function (paa) { les().foreldre.lesForMeg = !!paa; lagre(); },
+
+    /* ---------- Opptak til mytiske roboter ---------- */
+
+    // Ett opptak per robot per spiller. Tar han opp paa nytt, erstattes det
+    // gamle -- ikke noe arkiv med flere forsoek aa holde styr paa.
+    lagreOpptak: function (figurId, dataUrl) {
+      var s = aktiv();
+      if (!s) return;
+      s.opptak[figurId] = dataUrl;
+      lagre();
+    },
+    hentOpptak: function (figurId) {
+      var s = aktiv();
+      return (s && s.opptak[figurId]) || null;
+    },
 
     /* ---------- Sikkerhetskopi ---------- */
 

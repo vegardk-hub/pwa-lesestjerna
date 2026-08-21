@@ -31,7 +31,9 @@
     var liste = $("#butikkListe");
     liste.textContent = "";
     Figurer.alle().forEach(function (v) {
-      var kort = lag("vare");
+      var kort = lag("vare " + v.kategori);
+      var merke = lag("merke-kategori");
+      merke.textContent = Figurer.bokstav(v.kategori);
       var ikon = lag("figur-ikon");
       ikon.innerHTML = Figurer.svg(v.id);
       var navn = lag("navn"); navn.textContent = v.navn;
@@ -48,7 +50,7 @@
           if (Spill.kjop(v.id, v.pris)) tegn();
         };
       }
-      kort.append(ikon, navn, pris, knapp);
+      kort.append(merke, ikon, navn, pris, knapp);
       liste.append(kort);
     });
 
@@ -62,7 +64,7 @@
     (s.eide || []).forEach(function (e, nr) {
       var v = Figurer.finn(e.ting);
       if (!v) return;
-      var rad = lag("eidRad");
+      var rad = lag("eidRad " + v.kategori);
       var ikon = lag("figur-ikon liten");
       ikon.innerHTML = Figurer.svg(v.id);
       var navn = lag("", "span");

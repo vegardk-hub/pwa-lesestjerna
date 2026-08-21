@@ -11,7 +11,7 @@
 
 <header>
   <h1>Lesestjerna</h1>
-  <span id="versjon">v1</span>
+  <span id="versjon">v2</span>
   <button id="tilbake" hidden>Tilbake</button>
   <button id="byttSpiller" hidden></button>
   <div id="stjerner" hidden></div>
@@ -112,7 +112,14 @@
   <div id="samlingDetalj" hidden>
     <div id="samlingDetaljIkon" title="Trykk for å høre lyden"></div>
     <h3 id="samlingDetaljNavn"></h3>
-    <p class="und liten">Trykk på roboten for å høre lyden igjen.</p>
+    <p class="und liten" id="samlingDetaljHint">Trykk på roboten for å høre lyden igjen.</p>
+    <div id="samlingOpptak" hidden>
+      <div class="rad">
+        <button id="taOpp">🔴 Ta opp (10 sek)</button>
+        <button id="spillOpptak">▶ Spill av</button>
+      </div>
+      <p class="und liten" id="opptakStatus"></p>
+    </div>
     <div class="rad">
       <button id="lukkSamlingDetalj">Tilbake til samlingen</button>
     </div>
@@ -162,6 +169,7 @@
 <script src="js/bank.js"></script>
 <script src="js/figurer.js"></script>
 <script src="js/robotlyd.js"></script>
+<script src="js/opptak.js"></script>
 <script src="js/butikk.js"></script>
 <script src="js/samling.js"></script>
 <script src="js/foreldre.js"></script>

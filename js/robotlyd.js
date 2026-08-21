@@ -147,6 +147,75 @@
     magnetus: function (c, t) {
       tone(c, t, 110, .4, "sawtooth", .18);
       sveip(c, t + .05, 220, 110, .3, "sine", .13);
+    },
+
+    /* ---------- Sjeldne ---------- */
+    glitra: function (c, t) {
+      tone(c, t, 1800, .08, "sine", .16);
+      tone(c, t + .08, 2200, .08, "sine", .15);
+      tone(c, t + .16, 2600, .12, "sine", .14);
+    },
+    neon: function (c, t) {
+      sveip(c, t, 600, 650, .15, "sawtooth", .16);
+      stoy(c, t + .15, .04, 5000, .12);
+      sveip(c, t + .2, 640, 600, .12, "sawtooth", .14);
+    },
+    pulsar: function (c, t) {
+      tone(c, t, 500, .06, "square", .2);
+      tone(c, t + .12, 500, .06, "square", .2);
+      tone(c, t + .24, 500, .06, "square", .2);
+    },
+    flimmer: function (c, t) {
+      for (var i = 0; i < 5; i++) tone(c, t + i * .06, 900 + (i % 2) * 300, .05, "triangle", .14);
+    },
+    strobo: function (c, t) {
+      for (var i = 0; i < 3; i++) stoy(c, t + i * .1, .03, 6000, .22);
+    },
+
+    /* ---------- Legendariske ---------- */
+    titan: function (c, t) {
+      tone(c, t, 70, .3, "sawtooth", .3);
+      tone(c, t + .1, 100, .35, "square", .22);
+    },
+    fenix: function (c, t) {
+      sveip(c, t, 300, 1200, .3, "sawtooth", .22);
+      stoy(c, t + .05, .15, 3000, .18);
+    },
+    orakel: function (c, t) {
+      tone(c, t, 1200, .2, "sine", .16);
+      tone(c, t + .15, 900, .25, "sine", .14);
+      tone(c, t + .32, 700, .3, "sine", .12);
+    },
+    kosmo: function (c, t) {
+      sveip(c, t, 200, 1600, .35, "sine", .2);
+      sveip(c, t + .35, 1600, 200, .25, "sine", .14);
+    },
+    ultra: function (c, t) {
+      sveip(c, t, 300, 3000, .1, "sawtooth", .22);
+      tone(c, t + .1, 2000, .05, "square", .16);
+    },
+
+    /* ---------- Mytiske ---------- */
+    ekko: function (c, t) {
+      tone(c, t, 700, .12, "sine", .22);
+      tone(c, t + .15, 700, .12, "sine", .15);
+      tone(c, t + .3, 700, .12, "sine", .09);
+    },
+    gjenklang: function (c, t) {
+      tone(c, t, 500, .15, "triangle", .22);
+      tone(c, t + .18, 500, .15, "triangle", .14);
+      tone(c, t + .36, 500, .15, "triangle", .08);
+    },
+    viska: function (c, t) {
+      stoy(c, t, .3, 1500, .1);
+    },
+    spegel: function (c, t) {
+      sveip(c, t, 400, 900, .15, "sine", .18);
+      sveip(c, t + .15, 900, 400, .15, "sine", .18);
+    },
+    stemmefanger: function (c, t) {
+      sveip(c, t, 1200, 300, .25, "sawtooth", .2);
+      tone(c, t + .25, 300, .1, "sine", .16);
     }
   };
 
@@ -159,6 +228,23 @@
       try {
         var c = faaKontekst();
         if (c) oppskrift(c, c.currentTime);
+      } catch (e) { /* stille */ }
+    },
+
+    // Robotstemmen til de legendariske: samme norske stemme som resten av
+    // appen, bare med lavere tonehoeyde -- nok til aa hoeres ut som en robot
+    // og ikke som Finn som leser en tekst.
+    si: function (tekst) {
+      try {
+        var stemme = global.Stemme && Stemme.valgtStemme();
+        if (!stemme || !window.speechSynthesis) return;
+        speechSynthesis.cancel();
+        var u = new SpeechSynthesisUtterance(tekst);
+        u.voice = stemme;
+        u.lang = stemme.lang;
+        u.pitch = 0.3;
+        u.rate = 0.95;
+        speechSynthesis.speak(u);
       } catch (e) { /* stille */ }
     }
   };

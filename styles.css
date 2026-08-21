@@ -299,6 +299,7 @@ button.liten { padding: 6px 12px }
   gap: 14px;
 }
 .vare {
+  position: relative;
   border: 1.5px solid var(--strek);
   border-radius: 14px;
   padding: 14px 12px;
@@ -314,13 +315,36 @@ button.liten { padding: 6px 12px }
 .vare .pris { color: var(--gul); font-size: 13.5px }
 .vare button { width: 100%; margin-top: 4px }
 
+/* ---------- Sjeldenhet: bakgrunn + bokstav ----------
+   Vanlig=hvit, sjelden=graa, legendarisk=gul, mytisk=roed. Samme klasser
+   brukes paa vareRad i butikken og figurkort i samlingen -- se js/butikk.js
+   og js/samling.js, som begge legger klassenavnet paa fra kategorien i
+   data/figurer.json. */
+.vare.vanlig, .figurkort.vanlig { background: #fff }
+.vare.sjelden, .figurkort.sjelden { background: #dcdde2 }
+.vare.legendarisk, .figurkort.legendarisk { background: #fbe9a6 }
+.vare.mytisk, .figurkort.mytisk { background: #f3b6b6 }
+
+.merke-kategori {
+  position: absolute; top: 8px; right: 10px;
+  font-size: 12.5px; font-weight: 800;
+  color: rgba(0, 0, 0, .38);
+}
+
+/* Blinkende lys paa hodet/kroppen til sjeldne og legendariske roboter. */
+@keyframes blinkelys { 0%, 100% { opacity: 1 } 50% { opacity: .15 } }
+.blink-lys { animation: blinkelys 1.1s ease-in-out infinite }
+
 #butikkEideWrap { margin-top: 32px; border-top: 1px solid var(--strek); padding-top: 20px }
 #butikkEideTom:empty, #butikkEideTom[hidden] { display: none }
 #butikkEide { display: flex; flex-direction: column; gap: 8px }
 .eidRad {
-  display: flex; align-items: center; gap: 12px;
   border: 1.5px solid var(--strek); border-radius: 12px; padding: 8px 12px;
+  display: flex; align-items: center; gap: 12px;
 }
+.eidRad.sjelden { background: #dcdde2 }
+.eidRad.legendarisk { background: #fbe9a6 }
+.eidRad.mytisk { background: #f3b6b6 }
 .eidRad .figur-ikon.liten { width: 36px; height: 36px; flex: none }
 .eidRad .figur-ikon.liten svg { width: 100%; height: 100%; display: block }
 .eidRad span { flex: 1; font-size: 14.5px }
@@ -339,6 +363,7 @@ button.liten { padding: 6px 12px }
 }
 #samlingListe[hidden] { display: none }
 .figurkort {
+  position: relative;
   border: 1.5px solid var(--strek);
   border-radius: 14px;
   padding: 14px 10px;
@@ -349,7 +374,7 @@ button.liten { padding: 6px 12px }
   gap: 8px;
   background: #fff;
 }
-.figurkort:hover { border-color: var(--gul); background: #fffdf7 }
+.figurkort:hover { border-color: var(--gul) }
 .figurkort .figur-ikon { width: 56px; height: 56px }
 .figurkort .figur-ikon svg { width: 100%; height: 100%; display: block }
 .figurkort .navn { font-weight: 600; font-size: 14px }
@@ -366,6 +391,11 @@ button.liten { padding: 6px 12px }
 #samlingDetalj h3 { font-size: 22px; margin: 0 0 6px; font-weight: 650 }
 #samlingDetalj .und.liten { margin: 0 0 20px }
 .eidRad button { font-size: 13px; padding: 6px 12px }
+
+/* Opptaksknappene til de mytiske robotene. */
+#samlingOpptak { margin: 0 0 20px }
+#opptakStatus { margin: 10px 0 0 }
+#taOpp.tar-opp { background: #b3261e; border-color: #b3261e; color: #fff }
 
 /* ---------- Ferdig ---------- */
 
