@@ -273,13 +273,19 @@ button.liten { padding: 6px 12px }
   padding: 5px 10px 6px;
   text-align: center;
   min-width: 64px;
-  max-width: 92px;
+  max-width: 116px;
   backdrop-filter: blur(1px);
 }
 /* Bryter til flere linjer i stedet for én lang rad -- en bred, énlinjes
    lapp er det som fikk navnene til aa krasje inn i hverandre paa smale
-   skjermer, sia bredden ikke minker naar kortet gjoer det. */
-.sone .navn { font-size: 12.5px; font-weight: 650; line-height: 1.25 }
+   skjermer, sia bredden ikke minker naar kortet gjoer det. Ord uten
+   mellomrom ("Verdensrommet", "Oppfinnelser") har ingenting aa brytes ved,
+   saa uten overflow-wrap stakk de rett og slett ut over den moerke lappen
+   i stedet for aa brytes -- se ogsaa .sone .lapp sin max-width over. */
+.sone .navn {
+  font-size: 12.5px; font-weight: 650; line-height: 1.25;
+  overflow-wrap: break-word;
+}
 
 #bankfeil { margin-top: 20px }
 #bankfeil:empty { display: none }
