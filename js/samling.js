@@ -34,7 +34,7 @@
       var kort = lag("figurkort " + v.kategori, "button");
       kort.type = "button";
       var merke = lag("merke-kategori");
-      merke.textContent = Figurer.bokstav(v.kategori);
+      merke.textContent = Figurer.kategorinavn(v.kategori);
       var ikon = lag("figur-ikon");
       ikon.innerHTML = Figurer.svg(v.id);
       var navn = lag("navn");

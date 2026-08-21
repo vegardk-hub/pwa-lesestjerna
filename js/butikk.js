@@ -33,7 +33,7 @@
     Figurer.alle().forEach(function (v) {
       var kort = lag("vare " + v.kategori);
       var merke = lag("merke-kategori");
-      merke.textContent = Figurer.bokstav(v.kategori);
+      merke.textContent = Figurer.kategorinavn(v.kategori);
       var ikon = lag("figur-ikon");
       ikon.innerHTML = Figurer.svg(v.id);
       var navn = lag("navn"); navn.textContent = v.navn;

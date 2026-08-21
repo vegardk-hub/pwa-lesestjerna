@@ -16,10 +16,10 @@
   var etterId = {};
   var lasting = null;
 
-  // Bokstaven paa kortet i butikken og samlingen -- se BAKGRUNNSFARGE i
+  // Teksten paa kortet i butikken og samlingen -- se BAKGRUNNSFARGE i
   // styles.css (.vare/.figurkort + kategorinavnet som klasse) for selve
   // fargen. Ukjent/manglende kategori telles som vanlig.
-  var BOKSTAV = { vanlig: "V", sjelden: "S", legendarisk: "L", mytisk: "M" };
+  var KATEGORINAVN = { vanlig: "Vanlig", sjelden: "Sjelden", legendarisk: "Legendarisk", mytisk: "Mytisk" };
 
   function antenneSvg(f) {
     if (f.antenne === "kule") {
@@ -100,6 +100,6 @@
       var f = etterId[id];
       return f ? robotSvg(f) : "";
     },
-    bokstav: function (kategori) { return BOKSTAV[kategori] || BOKSTAV.vanlig; }
+    kategorinavn: function (kategori) { return KATEGORINAVN[kategori] || KATEGORINAVN.vanlig; }
   };
 })(window);

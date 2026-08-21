@@ -315,7 +315,7 @@ button.liten { padding: 6px 12px }
 .vare .pris { color: var(--gul); font-size: 13.5px }
 .vare button { width: 100%; margin-top: 4px }
 
-/* ---------- Sjeldenhet: bakgrunn + bokstav ----------
+/* ---------- Sjeldenhet: bakgrunn + kategorinavn ----------
    Vanlig=hvit, sjelden=graa, legendarisk=gul, mytisk=roed. Samme klasser
    brukes paa vareRad i butikken og figurkort i samlingen -- se js/butikk.js
    og js/samling.js, som begge legger klassenavnet paa fra kategorien i
@@ -325,10 +325,11 @@ button.liten { padding: 6px 12px }
 .vare.legendarisk, .figurkort.legendarisk { background: #fbe9a6 }
 .vare.mytisk, .figurkort.mytisk { background: #f3b6b6 }
 
+/* Kategorinavnet var foerst et bokstav-merke i hjoernet, men "Legendarisk"
+   er for langt til det -- en liten etikett oeverst paa kortet i stedet. */
 .merke-kategori {
-  position: absolute; top: 8px; right: 10px;
-  font-size: 12.5px; font-weight: 800;
-  color: rgba(0, 0, 0, .38);
+  font-size: 10.5px; font-weight: 800; text-transform: uppercase;
+  letter-spacing: .03em; color: rgba(0, 0, 0, .4);
 }
 
 /* Blinkende lys paa hodet/kroppen til sjeldne og legendariske roboter. */
