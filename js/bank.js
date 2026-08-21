@@ -82,18 +82,20 @@
     return tekster.filter(function (t) { return t.emne === emneId; });
   }
 
-  /* Neste tekst i et emne: den letteste han ikke har lest. Er alle lest, kommer
-   * de om igjen — det skal ikke gaa an aa toemme et emne og staa fast, selv om
-   * gjenlesing ikke betaler. */
+  /* Neste tekst i et emne: en tilfeldig en han ikke har lest. Er alle lest,
+   * kommer de om igjen — det skal ikke gaa an aa toemme et emne og staa fast,
+   * selv om gjenlesing ikke betaler.
+   *
+   * Trakk foer alltid den letteste uleste foerst (niva 1, saa 2, saa 3) —
+   * det gjorde at han leste seg METODISK gjennom hvert niva i tur og orden,
+   * som i praksis saa ut som en fast rekkefoelge i stedet for tilfeldig. */
   function neste(emneId) {
     var alle = iEmne(emneId);
     if (!alle.length) return null;
     var f = lest();
     var uleste = alle.filter(function (t) { return f.indexOf(t.id) === -1; });
     var pott = uleste.length ? uleste : alle;
-    var lavest = Math.min.apply(null, pott.map(function (t) { return t.niva; }));
-    var laveste = pott.filter(function (t) { return t.niva === lavest; });
-    return laveste[Math.floor(Math.random() * laveste.length)];
+    return pott[Math.floor(Math.random() * pott.length)];
   }
 
   global.Bank = {
