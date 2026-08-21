@@ -202,29 +202,31 @@ button.lytter:hover { background: #c8332a }
 }
 #bokaTall .tall {
   border: 1.5px solid var(--strek); border-radius: 14px;
-  padding: 14px 10px; text-align: center;
+  padding: 16px 10px 14px; text-align: center;
 }
 #bokaTall .tall b {
-  display: block; font-size: 26px; font-weight: 650;
+  display: block; font-size: 24px; font-weight: 650;
   font-variant-numeric: tabular-nums;
 }
-#bokaTall .tall span { font-size: 13px; color: var(--dus) }
+#bokaTall .tall .merke { font-size: 13px; color: var(--dus) }
 
-#bokaUke {
-  display: flex; gap: 10px; align-items: flex-end;
-  margin-top: 22px; height: 96px;
+/* Hvert tall faar et lite ikon som viser hva slags ting det er --
+   ord, stjerner, tekster, boeker, level og mynter -- saa siden blir noe
+   han har lyst til aa se paa, ikke bare en tabell med tall. */
+#bokaTall .ikon {
+  display: flex; align-items: center; justify-content: center;
+  width: 42px; height: 42px; border-radius: 50%;
+  margin: 0 auto 10px;
 }
-#bokaUke .dag { flex: 1; display: flex; flex-direction: column; height: 100% }
-#bokaUke .stolpe { flex: 1; display: flex; align-items: flex-end }
-#bokaUke .stolpe i {
-  display: block; width: 100%; background: var(--grøn);
-  border-radius: 5px 5px 0 0; min-height: 4px;
-}
-/* En dag uten lesing er en tom strek, ikke en tapt dag. */
-#bokaUke .stolpe i.tom { background: var(--strek); height: 4px !important }
-#bokaUke .merke { text-align: center; font-size: 12px; color: var(--dus); margin-top: 6px }
+#bokaTall .ikon svg { width: 23px; height: 23px }
+#bokaTall .ikon.ord { background: #e4ecf9; color: #3d6fb4 }
+#bokaTall .ikon.stjerner { background: #fdf0cf; color: var(--stjerne) }
+#bokaTall .ikon.tekster { background: #ddf0e4; color: var(--grøn) }
+#bokaTall .ikon.boker { background: #fbe1de; color: #b3261e }
+#bokaTall .ikon.level { background: #e9e3f8; color: #6a4b9c }
+#bokaTall .ikon.mynter { background: #fbead0; color: var(--gul) }
 
-#bokaBunn { text-align: center; margin: 16px 0 0 }
+#bokaBunn { text-align: center; margin: 24px 0 0 }
 #boka .rad { justify-content: center; margin-top: 28px }
 
 /* ---------- Verden ---------- */
