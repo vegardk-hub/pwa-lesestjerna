@@ -57,6 +57,17 @@
     tegnEide(s);
   }
 
+  // Naavn og mynter staar i den globale topplinja mens butikken er aapen,
+  // paa samme rad som "Lesestjerna" -- ikke paa en egen rad under, som maa
+  // rulles forbi. "Bytt spiller" viser ellers de samme myntene der, saa den
+  // skjules i mellomtiden for aa ikke vise tallet to ganger paa rad.
+  function visHeader(paa) {
+    $("#butikkHeader").hidden = !paa;
+    $("#lukkButikk").hidden = !paa;
+    if (paa) $("#byttSpiller").hidden = true;
+    else if (Lagring.aktiv()) $("#byttSpiller").hidden = false;
+  }
+
   function tegnEide(s) {
     var liste = $("#butikkEide");
     liste.textContent = "";
@@ -80,11 +91,13 @@
     tegn();
     $("#hus").hidden = true;
     $("#butikk").hidden = false;
+    visHeader(true);
   }
 
   $("#lukkButikk").onclick = function () {
     $("#butikk").hidden = true;
     $("#hus").hidden = false;
+    visHeader(false);
   };
 
   global.Butikk = {

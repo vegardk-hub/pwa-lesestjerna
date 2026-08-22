@@ -293,30 +293,15 @@ button.liten { padding: 6px 12px }
 /* ---------- Butikken ---------- */
 
 #butikk { padding: 30px 20px 60px; max-width: 780px; margin: 0 auto; width: 100% }
-#butikk h2 { font-size: 22px; margin: 0; font-weight: 650 }
 #butikk h3 { font-size: 16px; margin: 0 0 12px; font-weight: 650 }
 #butikk .rad { justify-content: center }
-#butikkMynterRad { margin: 0; flex: 1 }
-#butikkMynterRad b { color: var(--gul) }
 
-/* Navn, mynter og lukkeknapp blir med naar resten av butikken rulles --
-   ellers maa han rulle helt ned igjen for aa lukke butikken. 76px er
-   hoeyden paa den globale topplinja (header), saa denne haenger rett under
-   den i stedet for oppaa den. */
-#butikkTopp {
-  position: sticky;
-  top: 76px;
-  z-index: 4;
-  background: #fff;
-  margin: -30px -20px 20px;
-  padding: 16px 20px;
-  border-bottom: 1px solid var(--strek);
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px 20px;
-}
-#butikkTopp #lukkButikk { margin-left: auto }
+/* Navn og mynter staar i den globale topplinja naar butikken er aapen --
+   se #butikkHeader/#lukkButikk i header, satt synlig fra js/butikk.js --
+   ikke paa en egen rad under, som maa rulles forbi eller vekk fra. */
+#butikkHeader { font-size: 14.5px; white-space: nowrap }
+#butikkHeader b { color: var(--gul) }
+#lukkButikk { font-size: 14.5px; padding: 6px 12px; margin-left: auto }
 
 #butikkListe {
   display: grid;

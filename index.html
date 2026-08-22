@@ -11,10 +11,12 @@
 
 <header>
   <h1>Lesestjerna</h1>
-  <span id="versjon">v16</span>
+  <span id="versjon">v17</span>
   <button id="tilbake" hidden>Tilbake</button>
   <button id="byttSpiller" hidden></button>
   <div id="stjerner" hidden></div>
+  <span id="butikkHeader" hidden>Butikken · <b id="butikkMynter"></b></span>
+  <button id="lukkButikk" hidden>Lukk butikken</button>
 </header>
 
 <section id="velgSpiller">
@@ -95,11 +97,6 @@
 </section>
 
 <section id="butikk" hidden>
-  <div id="butikkTopp">
-    <h2>Butikken</h2>
-    <p class="und" id="butikkMynterRad">Du har <b id="butikkMynter"></b></p>
-    <button id="lukkButikk" class="hoved">Lukk butikken</button>
-  </div>
   <p class="und liten">Kjøp roboter for mynter, og se dem igjen i samlingen din.</p>
   <div id="butikkListe"></div>
   <div id="butikkEideWrap">
