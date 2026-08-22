@@ -10,7 +10,7 @@
  * å velge et nytt. "Nye 20 ord" bytter ut hele settet, uten å røre det han
  * alt har samlet opp -- se poengSamlet under.
  *
- * Hvert godkjent ord er verdt én mynt, men betales ikke ut med en gang --
+ * Hvert godkjent ord er verdt to mynter, men betales ikke ut med en gang --
  * det bygger seg opp i poengSamlet til han trykker "Ferdig", som henter ut
  * hele summen på én gang (se app.js, som kobler det mot Spill.tjenMynter).
  * Ikke koblet til "ord lest" eller bøkene: dette er en øvelse for seg selv,
@@ -23,7 +23,8 @@
   var MAKS = 20;
 
   var settOrd = [];      // [{ ord, ferdig }]
-  var poengSamlet = 0;   // godkjente ord siden forrige uthenting
+  var poengSamlet = 0;   // mynter siden forrige uthenting -- to per godkjent ord
+  var MYNT_PER_ORD = 2;
   var paaValgt = null;   // settes av app.js: et ord er valgt for øvelse
 
   function stokk(liste) {
@@ -78,7 +79,7 @@
     var funnet = settOrd.find(function (o) { return o.ord === ord; });
     if (funnet && !funnet.ferdig) {
       funnet.ferdig = true;
-      poengSamlet++;
+      poengSamlet += MYNT_PER_ORD;
     }
     tegn();
   }

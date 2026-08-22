@@ -91,6 +91,12 @@
 
     basis = 0; peker = 0; midlertidige = []; stjerner = 0; sistRullet = -1;
     meldtFerdig = false; forsoktPeker = -1; forsokUtenFramgang = 0;
+    // Mikrofonen startes na med det samme (se start()), ikke ved et trykk
+    // paa knappen -- den satte foer i gang klokka for "staar du fast?".
+    // Uten denne linja ville den klokka fortsatt staa paa forrige oekt, og
+    // "staar du fast?" kunne dukke opp med det samme paa det aller foerste
+    // ordet i en ny tekst.
+    sistFramgang = Date.now();
     $("#stjerner").textContent = "\u2605 0";
     tegn();
   }
@@ -508,7 +514,16 @@
     start: function (oppgave, k) {
       kroker = k || {};
       bygg(oppgave.tekst, oppgave.vanskeligeOrd);
-      beskjed("Trykk på den store knappen når du er klar.");
+      // Lytteren starter na med det samme -- han skal ikke maatte trykke en
+      // egen knapp foerst for hver eneste tekst eller hvert eneste ord.
+      // Stemme.lytter.start() sier selv fra ("Les hoeyt, du.") naar den er i
+      // gang, se paaTilstand i stemme.js. Stoetter ikke nettleseren lytting i
+      // det hele tatt, blir han staaende med en forklaring i stedet.
+      if (Stemme.lytter.stoettes) {
+        Stemme.lytter.start();
+      } else {
+        beskjed("Denne nettleseren kan ikke lytte. Prøv en annen nettleser.", true);
+      }
       passPaa();
     },
 

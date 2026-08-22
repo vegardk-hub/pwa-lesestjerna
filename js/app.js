@@ -250,7 +250,7 @@
   $("#apneVanskord").onclick = tilVanskord;
   $("#apneForeldre").onclick = Foreldre.apne;
 
-  // Hvert godkjent vanskelig ord er verdt én mynt, samlet opp i vanskord.js
+  // Hvert godkjent vanskelig ord er verdt to mynter, samlet opp i vanskord.js
   // til han trykker her -- da hentes hele summen ut paa én gang (se
   // Spill.tjenMynter). Ingen sammenheng med "ord lest" eller boekene.
   $("#vanskordFerdig").onclick = function () {
