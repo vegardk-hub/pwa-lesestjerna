@@ -45,12 +45,15 @@
 
   function tegn() {
     var ferdige = settOrd.filter(function (o) { return o.ferdig; }).length;
-    var poengtekst = poengSamlet
-      ? " · " + poengSamlet + (poengSamlet === 1 ? " mynt klar til henting" : " mynter klare til henting")
-      : "";
     $("#vanskordFremgang").textContent = settOrd.length
-      ? ferdige + " av " + settOrd.length + " ord øvd" + poengtekst
+      ? ferdige + " av " + settOrd.length + " ord øvd"
       : "Fant ingen vanskelige ord å øve på ennå.";
+
+    // Egen, stor og gyllen linje for myntene -- den skal stikke seg ut, ikke
+    // gjemme seg i den vanlige, dempede fremgangsteksten over.
+    $("#vanskordMynter").innerHTML =
+      "<b>" + poengSamlet + " ◉</b> " +
+      (poengSamlet === 1 ? "mynt klar til henting" : "mynter klare til henting");
     $("#vanskordFerdig").disabled = poengSamlet === 0;
 
     var liste = $("#vanskordListe");

@@ -350,7 +350,17 @@ button.liten { padding: 6px 12px }
 
 #vanskord { padding: 30px 20px 60px; max-width: 780px; margin: 0 auto; width: 100% }
 #vanskord h2 { font-size: 22px; margin: 0 0 8px; font-weight: 650 }
-#vanskordFremgang { color: var(--dus); margin: 0 0 20px }
+#vanskordFremgang { color: var(--dus); margin: 0 0 6px }
+
+/* Myntene skal stikke seg ut -- stor, gyllen tekst i en tydelig lapp, ikke
+   gjemt bort i den dempede fremgangslinja over. */
+#vanskordMynter {
+  display: inline-flex; align-items: baseline; gap: 6px;
+  font-size: 17px; font-weight: 600; color: var(--blekk);
+  background: #fbead0; border-radius: 999px;
+  padding: 8px 18px; margin: 0 0 20px;
+}
+#vanskordMynter b { font-size: 22px; font-weight: 700; color: var(--gul) }
 #vanskordListe { display: flex; flex-wrap: wrap; gap: 10px }
 .ordknapp { font-size: 16px; padding: 10px 18px }
 .ordknapp.ferdig {
