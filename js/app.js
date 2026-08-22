@@ -250,6 +250,22 @@
   $("#apneVanskord").onclick = tilVanskord;
   $("#apneForeldre").onclick = Foreldre.apne;
 
+  // Hvert godkjent vanskelig ord er verdt én mynt, samlet opp i vanskord.js
+  // til han trykker her -- da hentes hele summen ut paa én gang (se
+  // Spill.tjenMynter). Ingen sammenheng med "ord lest" eller boekene.
+  $("#vanskordFerdig").onclick = function () {
+    var n = Vanskord.hentUtMynter();
+    if (n > 0) {
+      Spill.tjenMynter(n);
+      tegnSpillerknapp();
+      $("#vanskordMelding").textContent =
+        "+" + n + (n === 1 ? " mynt hentet ut!" : " mynter hentet ut!");
+    } else {
+      $("#vanskordMelding").textContent = "Ingen mynter å hente ut ennå.";
+    }
+    Vanskord.apne();
+  };
+
   $("#lesEnTil").onclick = function () { lesFraEmne(sisteEmne); };
 
   /* ---------- Oppstart ---------- */

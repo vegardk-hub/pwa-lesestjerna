@@ -86,6 +86,17 @@
     };
   }
 
+  /* Rett betaling for smaating som ikke er en hel tekst -- i dag bare de
+   * vanskelige ordene (js/vanskord.js). Ingen bok- eller "ord lest"-
+   * sammenheng her, bare mynter rett i lomma -- vanskelige ord skal ikke
+   * bli en snarvei forbi bok-oekonomien i betal() over. */
+  function tjenMynter(antall) {
+    var s = meg();
+    if (!s || !antall) return;
+    s.mynter += antall;
+    Lagring.lagre();
+  }
+
   /* ---------- Butikken ---------- */
 
   function kjop(ting, pris) {
@@ -126,6 +137,7 @@
     tilNesteBok: tilNesteBok,
     betal: betal,
     kjop: kjop,
+    tjenMynter: tjenMynter,
     statistikk: statistikk,
     MYNT_PER_ORD: MYNT_PER_ORD,
     FULLFOERT_BONUS: FULLFOERT_BONUS
