@@ -482,14 +482,6 @@
       "vanskeligeOrd": ["tjuefem"]
     },
     {
-      "id": "folk-12",
-      "emne": "folk",
-      "tittel": "Navnet ditt",
-      "niva": 1,
-      "tekst": "Over hele verden finnes det trolig flere hundre tusen ulike fornavn. Noen navn har vært i bruk i over tre tusen år uten å gå av mote.",
-      "vanskeligeOrd": ["hundre", "tusen", "tre"]
-    },
-    {
       "id": "folk-13",
       "emne": "folk",
       "tittel": "Gladiatorene",
