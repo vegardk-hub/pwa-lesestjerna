@@ -24,6 +24,7 @@
     $("#verktoy").hidden = hvilken !== "lesing";
     $("#stjerner").hidden = hvilken !== "lesing";
     $("#boka").hidden = true;
+    $("#lestBok").hidden = true;
 
     // Begge disse er avslaatt som standard -- se foreldre.js. Satt hver
     // gang, ikke bare ved oppstart, i tilfelle en forelder endrer dem mens
@@ -79,6 +80,16 @@
     les({ tekst: t.tekst, vanskeligeOrd: t.vanskeligeOrd });
   }
 
+  // Valgt fra "Ola sin bok" -- en tekst han alt har lest, valgt fra den
+  // alfabetiske lista i stedet for en tilfeldig i et emne. Den betaler ikke
+  // på nytt (se Spill.betal), men "Les en til" etterpå fortsetter fint i
+  // emnet teksten hoerer til.
+  function lesSpesifikk(t) {
+    naa = t;
+    sisteEmne = t.emne;
+    les({ tekst: t.tekst, vanskeligeOrd: t.vanskeligeOrd });
+  }
+
   function ferdig(r) {
     // Tekster fra banken betaler én gang — id-en er noekkelen til hvilke
     // han har lest.
@@ -109,6 +120,7 @@
   Spillere.naarValgt(tilHus);
   Verden.naarValgt(lesFraEmne);
   Verden.naarHjem(tilHus);
+  Hus.naarLestValgt(lesSpesifikk);
 
   $("#byttSpiller").onclick = function () {
     Lesing.stopp();
@@ -124,6 +136,7 @@
   $("#tilHus").onclick = tilHus;
   $("#utOgLes").onclick = tilVerden;
   $("#apneBoka").onclick = Hus.apneBoka;
+  $("#apneLest").onclick = Hus.apneLest;
   $("#apneButikk").onclick = Butikk.apne;
   $("#apneSamling").onclick = Samling.apne;
   $("#apneForeldre").onclick = Foreldre.apne;

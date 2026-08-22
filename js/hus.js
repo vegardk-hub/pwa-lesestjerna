@@ -13,11 +13,12 @@
 
   var $ = function (v) { return document.querySelector(v); };
 
-  // Fire ikoner, tegnet i samme flate stil som resten av appen -- ett per
+  // Fem ikoner, tegnet i samme flate stil som resten av appen -- ett per
   // kort, satt inn én gang siden de aldri forandrer seg.
   var IKONER = {
     ut: '<path fill="currentColor" d="M13 5h16a2 2 0 0 1 2 2v34a2 2 0 0 1-2 2H13a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"/><circle cx="26.5" cy="24" r="2.1" fill="#fff"/>',
-    bok: '<rect fill="currentColor" x="10" y="6" width="28" height="36" rx="3"/><rect fill="currentColor" opacity=".55" x="10" y="6" width="7.5" height="36" rx="3"/><rect fill="#fff" opacity=".85" x="21" y="15" width="12" height="3" rx="1.5"/><rect fill="#fff" opacity=".85" x="21" y="22" width="12" height="3" rx="1.5"/><rect fill="#fff" opacity=".85" x="21" y="29" width="8.5" height="3" rx="1.5"/>',
+    tall: '<rect fill="currentColor" x="8" y="26" width="8" height="16" rx="2"/><rect fill="currentColor" x="20" y="16" width="8" height="26" rx="2"/><rect fill="currentColor" x="32" y="9" width="8" height="33" rx="2"/>',
+    lest: '<rect fill="currentColor" x="10" y="6" width="28" height="36" rx="3"/><rect fill="currentColor" opacity=".55" x="10" y="6" width="7.5" height="36" rx="3"/><rect fill="#fff" opacity=".85" x="21" y="15" width="12" height="3" rx="1.5"/><rect fill="#fff" opacity=".85" x="21" y="22" width="12" height="3" rx="1.5"/><rect fill="#fff" opacity=".85" x="21" y="29" width="8.5" height="3" rx="1.5"/>',
     butikk: '<path fill="currentColor" d="M14 16 17 8h14l3 8h6a1 1 0 0 1 1 1l-2.4 21a3 3 0 0 1-3 2.7H12.4a3 3 0 0 1-3-2.7L7 17a1 1 0 0 1 1-1h6Z"/><path fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" d="M18 20v2a6 6 0 0 0 12 0v-2"/>',
     samling: '<line x1="24" y1="6" x2="24" y2="14" stroke="currentColor" stroke-width="2.6"/><circle cx="24" cy="5" r="3.6" fill="currentColor"/><rect fill="currentColor" x="10" y="14" width="28" height="21" rx="8"/><circle cx="18" cy="24.5" r="3.1" fill="#fff"/><circle cx="30" cy="24.5" r="3.1" fill="#fff"/><rect fill="currentColor" x="15.5" y="35" width="7" height="5.5" rx="2.2"/><rect fill="currentColor" x="25.5" y="35" width="7" height="5.5" rx="2.2"/>'
   };
@@ -27,7 +28,8 @@
     el.innerHTML = '<svg viewBox="0 0 48 48" aria-hidden="true">' + IKONER[ikon] + "</svg>";
   }
   settIkon("utOgLes", "ut");
-  settIkon("apneBoka", "bok");
+  settIkon("apneBoka", "tall");
+  settIkon("apneLest", "lest");
   settIkon("apneButikk", "butikk");
   settIkon("apneSamling", "samling");
 
@@ -38,7 +40,8 @@
     if (!s) return;
 
     $("#husnavn").textContent = "Hjemme hos " + s.navn;
-    $("#bokKortNavn").textContent = s.navn + " sin bok";
+    $("#bokKortNavn").textContent = s.navn + " sine tall";
+    $("#lestKortNavn").textContent = s.navn + " sin bok";
 
     var neste = Spill.tilNesteBok(s);
     $("#hushint").textContent = neste
@@ -82,7 +85,7 @@
     var st = Spill.statistikk();
     if (!st) return;
 
-    $("#bokaTittel").textContent = st.navn + " sin lesebok";
+    $("#bokaTittel").textContent = st.navn + " sine tall";
 
     var boks = $("#bokaTall");
     boks.textContent = "";
@@ -116,8 +119,48 @@
     $("#hus").hidden = false;
   };
 
+  /* ---------- Ola sin bok: alt han har lest, til å lese om igjen ----------
+   * Titlene er alfabetisk sortert -- ikke i den rekkefølgen han leste dem,
+   * som ville vokst usortert i den ene enden hver gang han leser noe nytt,
+   * og gjort en enkelt tittel vanskelig å finne igjen. */
+
+  var paaLestValgt = null; // settes av app.js: en tidligere tekst er valgt på nytt
+
+  function apneLest() {
+    var s = Lagring.aktiv();
+    if (!s) return;
+    $("#lestBokTittel").textContent = s.navn + " sin bok";
+
+    var tekster = (s.tekster || [])
+      .map(function (id) { return Bank.finn(id); })
+      .filter(Boolean)
+      .sort(function (a, b) { return a.tittel.localeCompare(b.tittel, "nb"); });
+
+    var liste = $("#lestBokListe");
+    liste.textContent = "";
+    tekster.forEach(function (t) {
+      var knapp = document.createElement("button");
+      knapp.type = "button";
+      knapp.className = "lestRad";
+      knapp.textContent = t.tittel;
+      knapp.onclick = function () { if (paaLestValgt) paaLestValgt(t); };
+      liste.append(knapp);
+    });
+    $("#lestBokTom").hidden = tekster.length > 0;
+
+    $("#hus").hidden = true;
+    $("#lestBok").hidden = false;
+  }
+
+  $("#lukkLestBok").onclick = function () {
+    $("#lestBok").hidden = true;
+    $("#hus").hidden = false;
+  };
+
   global.Hus = {
     tegn: tegn,
-    apneBoka: apneBoka
+    apneBoka: apneBoka,
+    apneLest: apneLest,
+    naarLestValgt: function (fn) { paaLestValgt = fn; }
   };
 })(window);

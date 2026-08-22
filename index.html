@@ -11,7 +11,7 @@
 
 <header>
   <h1>Lesestjerna</h1>
-  <span id="versjon">v18</span>
+  <span id="versjon">v19</span>
   <button id="tilbake" hidden>Tilbake</button>
   <button id="byttSpiller" hidden></button>
   <div id="stjerner" hidden></div>
@@ -72,9 +72,13 @@
       <span class="huskort-ikon"></span>
       <span class="huskort-navn">Gå ut og les</span>
     </button>
-    <button type="button" id="apneBoka" class="huskort bok">
+    <button type="button" id="apneBoka" class="huskort statistikk">
       <span class="huskort-ikon"></span>
       <span class="huskort-navn" id="bokKortNavn"></span>
+    </button>
+    <button type="button" id="apneLest" class="huskort lest">
+      <span class="huskort-ikon"></span>
+      <span class="huskort-navn" id="lestKortNavn"></span>
     </button>
     <button type="button" id="apneButikk" class="huskort butikk">
       <span class="huskort-ikon"></span>
@@ -92,7 +96,16 @@
   <div id="bokaTall"></div>
   <p class="und liten" id="bokaBunn"></p>
   <div class="rad">
-    <button id="lukkBoka" class="stor hoved">Lukk boka</button>
+    <button id="lukkBoka" class="stor hoved">Lukk</button>
+  </div>
+</section>
+
+<section id="lestBok" hidden>
+  <h2 id="lestBokTittel"></h2>
+  <p class="und liten" id="lestBokTom">Ingenting er lest ennå.</p>
+  <div id="lestBokListe"></div>
+  <div class="rad">
+    <button id="lukkLestBok" class="stor hoved">Lukk boka</button>
   </div>
 </section>
 
