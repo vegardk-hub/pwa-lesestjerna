@@ -31,6 +31,8 @@
   var venteur = null;
   var kroker = {};       // { ferdig }
   var meldtFerdig = false;
+  var forsoktPeker = -1; // hvilket ord de siste mislykkede forsokene gjaldt
+  var forsokUtenFramgang = 0;
 
   /* ---------- Bygge teksten ---------- */
 
@@ -88,7 +90,7 @@
     });
 
     basis = 0; peker = 0; midlertidige = []; stjerner = 0; sistRullet = -1;
-    meldtFerdig = false;
+    meldtFerdig = false; forsoktPeker = -1; forsokUtenFramgang = 0;
     $("#stjerner").textContent = "\u2605 0";
     tegn();
   }
@@ -364,9 +366,11 @@
     clearInterval(venteur);
     venteur = setInterval(function () {
       if (!Stemme.lytter.vil || Stemme.snakker() || peker >= ord.length) return;
+      var fastFoer = ord[peker].el.classList.contains("venter");
       var fast = Date.now() - sistFramgang > 7000;
       ord[peker].el.classList.toggle("venter", fast);
       if (fast) beskjed("Står du fast? Trykk på ordet, så sier jeg det.");
+      else if (fastFoer) beskjed("Les høyt, du.");
     }, 1000);
   }
 
@@ -388,8 +392,9 @@
   });
 
   // Naar gjenkjenneren rett og slett ikke vil hoere et ord, skal han ikke staa
-  // fast i det. Ordet lyser, og han gaar videre.
-  $("#hoppOver").onclick = function () {
+  // fast i det. Ordet lyser, og han gaar videre. Brukt baade av knappen og av
+  // det automatiske sikkerhetsnettet i paaResultat under.
+  function hoppOverGjeldendeOrd() {
     if (peker >= ord.length) return;
     ord[peker].truffet = true;
     ord[peker].hoppet = true;
@@ -397,8 +402,11 @@
     gaaVidere();
     peker = foersteUtreffet();
     sistFramgang = Date.now();
+    forsoktPeker = -1; forsokUtenFramgang = 0;
     tegn();
-  };
+  }
+
+  $("#hoppOver").onclick = hoppOverGjeldendeOrd;
 
   $("#lesForMeg").onclick = function () {
     if (!ord.length) return;
@@ -429,10 +437,33 @@
   // legger seg oppa hverandre i stedet for aa fortrenge hverandre. Dermed
   // teller det ordet han faktisk sa, selv om det bare var gjenkjennerens
   // nest- eller tredjebeste gjetning.
+  //
+  // Noen ord klarer gjenkjenneren rett og slett aldri aa faa til, uansett
+  // hvor mange ganger eller hvor tydelig han sier dem — et uvanlig navn, et
+  // sammensatt ord, en stemme den ikke er trent paa. Uten et sikkerhetsnett
+  // ville han staatt fast der for alltid, og "prov igjen" ville aldri hjelpe.
+  // Derfor telles endelige forsok paa det samme ordet: gir fem forsok paa rad
+  // ingen framgang i det hele tatt, oppfoerer vi oss som om han trykte paa
+  // "hopp over ordet" selv. Det skal aldri skje paa forste eller andre forsok
+  // — bare naar det er tydelig at han faktisk proever, om og om igjen, uten aa
+  // komme videre.
   Stemme.lytter.paaResultat = function (kandidater, endelig) {
     if (!ord.length) return;
     if (!endelig) { match(kandidater[0], false); return; }
+
+    var foer = peker;
     kandidater.forEach(function (k) { match(k, true); });
+
+    if (peker === foer && peker < ord.length) {
+      if (peker !== forsoktPeker) { forsoktPeker = peker; forsokUtenFramgang = 0; }
+      forsokUtenFramgang++;
+      if (forsokUtenFramgang >= 5) {
+        hoppOverGjeldendeOrd();
+        beskjed("Det ordet var vanskelig å høre for meg. Vi går videre!");
+      }
+    } else {
+      forsoktPeker = -1; forsokUtenFramgang = 0;
+    }
   };
 
   Stemme.lytter.paaFeil = function (kode, forklaring) { beskjed(forklaring, true); };
