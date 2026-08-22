@@ -161,10 +161,10 @@
     vis("ferdig");
   }
 
-  // Roboten hans kommenterer teksten som akkurat ble lest -- stille, bare en
-  // tekstlinje, saa det ikke blir masete aa lese mange tekster paa rad. Fylte
-  // han derimot en hel bok, feirer roboten hoeyere: lyden sin, frasen sin (om
-  // den har en) eller et generelt heiarop, og et lite hopp paa ikonet.
+  // Roboten hans kommenterer teksten som akkurat ble lest -- lyden sin,
+  // frasen sin (om den har en, ellers et generelt heiarop) med robotstemme.
+  // Fylte han en hel bok, faar ikonet i tillegg et lite hopp, saa den
+  // storeste bragden fortsatt skiller seg ut fra en vanlig tekst.
   function visFerdigRobot(nyBok) {
     var el = $("#ferdigRobot");
     var valgt = valgtRobotFigur();
@@ -176,9 +176,10 @@
     el.hidden = false;
     el.classList.remove("feirer");
 
+    Robotlyd.spill(valgt.id);
+    setTimeout(function () { Robotlyd.si(frase); }, 500);
+
     if (nyBok) {
-      Robotlyd.spill(valgt.id);
-      setTimeout(function () { Robotlyd.si(frase); }, 500);
       void el.offsetWidth;
       el.classList.add("feirer");
     }
