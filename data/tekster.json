@@ -673,6 +673,650 @@
       "niva": 3,
       "tekst": "Penicillinet ble oppdaget ved et uhell, da en forsker så at en muggsopp drepte bakterier i en skål han hadde glemt. Oppdagelsen har siden reddet livet til godt over hundre millioner mennesker. Det gjør penicillinet til en av de viktigste oppdagelsene noensinne.",
       "vanskeligeOrd": ["hundre", "millioner"]
+    },
+
+    {
+      "id": "krefter-15",
+      "emne": "krefter",
+      "tittel": "Lyn hver dag",
+      "niva": 1,
+      "tekst": "Et sted på jorda slår lynet ned mer enn åtte millioner ganger hver eneste dag. Det er nesten hundre lynnedslag i sekundet, over hele kloden til sammen.",
+      "vanskeligeOrd": ["åtte", "millioner", "hundre"]
+    },
+    {
+      "id": "krefter-16",
+      "emne": "krefter",
+      "tittel": "Jorda snurrer fort",
+      "niva": 2,
+      "tekst": "Jorda snurrer rundt sin egen akse med en fart på over seksten hundre kilometer i timen ved ekvator. Du kjenner det aldri, for alt rundt deg snurrer akkurat like fort.",
+      "vanskeligeOrd": ["seksten", "hundre"]
+    },
+    {
+      "id": "krefter-17",
+      "emne": "krefter",
+      "tittel": "Hvor langt er et lysår",
+      "niva": 3,
+      "tekst": "Et lysår er ikke tid, men en avstand: så langt lyset klarer å reise på ett år. Den avstanden er over ni billioner kilometer, altfor mye til å skrive med vanlige tall.",
+      "vanskeligeOrd": ["ni", "billioner"]
+    },
+    {
+      "id": "krefter-18",
+      "emne": "krefter",
+      "tittel": "Lyn er varmere enn sola",
+      "niva": 2,
+      "tekst": "Et lynnedslag kan bli fem ganger så varmt som overflaten på sola. Det er derfor lufta rundt lynet utvider seg brått og lager smellen vi kaller torden.",
+      "vanskeligeOrd": ["fem"]
+    },
+    {
+      "id": "krefter-19",
+      "emne": "krefter",
+      "tittel": "Havets dypeste punkt",
+      "niva": 2,
+      "tekst": "Det dypeste stedet i havet heter Marianergropen og ligger nesten elleve tusen meter under havoverflaten. Trykket der nede er så stort at de fleste ubåter ville blitt klemt sammen.",
+      "vanskeligeOrd": ["elleve", "tusen", "Marianergropen"]
+    },
+    {
+      "id": "krefter-20",
+      "emne": "krefter",
+      "tittel": "Asteroiden som utryddet dinosaurene",
+      "niva": 3,
+      "tekst": "For sekstiseks millioner år siden traff en asteroide på over ti kilometer jorda og utryddet dinosaurene. Den lagde et krater i Mexico som er mer enn hundre og åtti kilometer bredt.",
+      "vanskeligeOrd": ["sekstiseks", "millioner", "ti", "hundre", "og", "åtti", "Mexico"]
+    },
+    {
+      "id": "krefter-21",
+      "emne": "krefter",
+      "tittel": "Måner i solsystemet",
+      "niva": 1,
+      "tekst": "Jorda har bare én måne, men Saturn alene har nesten tre hundre måner som går i bane rundt planeten. Forskere oppdager stadig flere nye, små måner der ute.",
+      "vanskeligeOrd": ["tre", "hundre"]
+    },
+    {
+      "id": "krefter-22",
+      "emne": "krefter",
+      "tittel": "Neptuns lange år",
+      "niva": 2,
+      "tekst": "Neptun er så langt fra sola at det tar hundre og sekstifem jordår før planeten har gått en hel runde. Ingen som lever i dag, har opplevd at Neptun kommer tilbake dit den var da den ble oppdaget.",
+      "vanskeligeOrd": ["hundre", "og", "sekstifem"]
+    },
+    {
+      "id": "krefter-23",
+      "emne": "krefter",
+      "tittel": "Hvor mye veier en sky",
+      "niva": 1,
+      "tekst": "En vanlig sky som seiler over himmelen kan veie rundt fem hundre tusen kilo, selv om den ser lett ut. Den flyter likevel, fordi vanndråpene er spredt tynt utover et enormt område.",
+      "vanskeligeOrd": ["fem", "hundre", "tusen"]
+    },
+    {
+      "id": "krefter-24",
+      "emne": "krefter",
+      "tittel": "Uranus ruller på siden",
+      "niva": 2,
+      "tekst": "Uranus ligger nesten helt på siden, med en akse som heller nesten nitti grader. Derfor ruller planeten rundt sola i stedet for å snurre som en vanlig snurrebass.",
+      "vanskeligeOrd": ["nitti"]
+    },
+    {
+      "id": "krefter-25",
+      "emne": "krefter",
+      "tittel": "Tordenvær akkurat nå",
+      "niva": 2,
+      "tekst": "Akkurat nå er det trolig rundt to tusen tordenvær i gang samtidig, et sted på jorda. Til sammen blir det over seksten millioner tordenvær i løpet av bare ett år.",
+      "vanskeligeOrd": ["to", "tusen", "seksten", "millioner"]
+    },
+    {
+      "id": "krefter-26",
+      "emne": "krefter",
+      "tittel": "Grand Canyon",
+      "niva": 1,
+      "tekst": "Grand Canyon i USA er på sitt dypeste nesten to tusen meter ned til elva på bunnen. Det har tatt elva millioner av år å grave ut denne kjempedype kløften i fjellet.",
+      "vanskeligeOrd": ["to", "tusen", "millioner"]
+    },
+    {
+      "id": "krefter-27",
+      "emne": "krefter",
+      "tittel": "Den sterkeste tornadoen",
+      "niva": 2,
+      "tekst": "Den sterkeste vinden noensinne målt i en tornado var over fem hundre kilometer i timen. En vind så sterk kan rive hus fullstendig i filler på bare sekunder.",
+      "vanskeligeOrd": ["fem", "hundre"]
+    },
+    {
+      "id": "krefter-28",
+      "emne": "krefter",
+      "tittel": "Stjerner på en mørk natt",
+      "niva": 1,
+      "tekst": "På en klar og mørk natt uten lys fra byen kan du se opp mot to tusen fem hundre stjerner med det blotte øyet. Med en kikkert dukker det plutselig opp tusenvis til.",
+      "vanskeligeOrd": ["to", "tusen", "fem", "hundre"]
+    },
+    {
+      "id": "krefter-29",
+      "emne": "krefter",
+      "tittel": "Solsystemets alder",
+      "niva": 2,
+      "tekst": "Solsystemet vårt, med sola, jorda og alle de andre planetene, ble dannet for over fire milliarder år siden. Det er så lenge siden at jorda har rukket å forandre seg helt fra da den var ny.",
+      "vanskeligeOrd": ["fire", "milliarder"]
+    },
+    {
+      "id": "krefter-30",
+      "emne": "krefter",
+      "tittel": "Fjellet som er høyere enn Everest",
+      "niva": 3,
+      "tekst": "Målt fra bunnen av havet til toppen er den hawaiiske vulkanen Mauna Kea over en kilometer høyere enn Mount Everest. Det aller meste av dette kjempefjellet ligger likevel skjult under vann.",
+      "vanskeligeOrd": ["Mauna", "Kea", "Everest"]
+    },
+    {
+      "id": "krefter-31",
+      "emne": "krefter",
+      "tittel": "Det kraftigste jordskjelvet",
+      "niva": 3,
+      "tekst": "Det kraftigste jordskjelvet som noensinne er målt, rammet Chile i nitten hundre og seksti. Rystelsene kunne kjennes over tusen kilometer bortover kysten.",
+      "vanskeligeOrd": ["nitten", "hundre", "og", "seksti", "tusen", "Chile"]
+    },
+    {
+      "id": "krefter-32",
+      "emne": "krefter",
+      "tittel": "Isen i Antarktis",
+      "niva": 2,
+      "tekst": "Rundt nitti prosent av alt ferskvannet på jorda ligger fanget som is i Antarktis. Resten er alt vi har igjen til elver, innsjøer og drikkevann.",
+      "vanskeligeOrd": ["nitti", "Antarktis"]
+    },
+    {
+      "id": "krefter-33",
+      "emne": "krefter",
+      "tittel": "Den kaldeste dagen",
+      "niva": 2,
+      "tekst": "Den kaldeste temperaturen noensinne målt på jorda var nesten nitti minusgrader, ved en forskningsstasjon i Antarktis. Det er så kaldt at pusten din nesten ville fryst til is før den nådde bakken.",
+      "vanskeligeOrd": ["nitti", "Antarktis"]
+    },
+    {
+      "id": "krefter-34",
+      "emne": "krefter",
+      "tittel": "Solvinden",
+      "niva": 3,
+      "tekst": "Sola sender hele tiden ut en strøm av partikler kalt solvind, som suser gjennom rommet med en fart på rundt fire hundre kilometer i sekundet. Når solvinden treffer jorda, er det den som skaper nordlyset.",
+      "vanskeligeOrd": ["fire", "hundre"]
+    },
+
+    {
+      "id": "liv-14",
+      "emne": "liv",
+      "tittel": "Geparden",
+      "niva": 1,
+      "tekst": "Geparden er det raskeste landdyret i verden og kan løpe i over hundre kilometer i timen. Den orker bare å holde den farten i noen få sekunder før den blir helt utslitt.",
+      "vanskeligeOrd": ["hundre"]
+    },
+    {
+      "id": "liv-15",
+      "emne": "liv",
+      "tittel": "Elefanthjernen",
+      "niva": 2,
+      "tekst": "En elefanthjerne kan veie fem kilo, mer enn tre ganger så mye som hjernen din. Elefanter husker andre elefanter og gamle vannhull i mange, mange år.",
+      "vanskeligeOrd": ["fem", "tre"]
+    },
+    {
+      "id": "liv-16",
+      "emne": "liv",
+      "tittel": "Løvebrølet",
+      "niva": 1,
+      "tekst": "Et løvebrøl er så kraftig at det kan høres over åtte kilometer unna på en stille natt. Løver bruker brølet til å fortelle andre løver hvor de er, og passe på territoriet sitt.",
+      "vanskeligeOrd": ["åtte"]
+    },
+    {
+      "id": "liv-17",
+      "emne": "liv",
+      "tittel": "Koalaen som sover mest",
+      "niva": 1,
+      "tekst": "Koalaen sover over tjue timer i døgnet, mer enn nesten alle andre dyr. Bladene den spiser gir så lite energi at den må hvile mesteparten av tiden.",
+      "vanskeligeOrd": ["tjue"]
+    },
+    {
+      "id": "liv-18",
+      "emne": "liv",
+      "tittel": "Strutsen",
+      "niva": 1,
+      "tekst": "Strutsen kan ikke fly, men den kan løpe fortere enn sytti kilometer i timen. Egget den legger er det største egget i hele fugleverdenen.",
+      "vanskeligeOrd": ["sytti"]
+    },
+    {
+      "id": "liv-19",
+      "emne": "liv",
+      "tittel": "Edderkoppens tråd",
+      "niva": 2,
+      "tekst": "Tråden i et spindelvev er så sterk at den kan tåle mer enn fem ganger så mye strekk som stål av samme tykkelse. Likevel er den tynn nok til at du knapt ser den i sollys.",
+      "vanskeligeOrd": ["fem"]
+    },
+    {
+      "id": "liv-20",
+      "emne": "liv",
+      "tittel": "Monarksommerfuglen",
+      "niva": 2,
+      "tekst": "Monarksommerfuglen flyr over fire tusen kilometer hver høst for å finne varmere trakter. Det er utrolig langt for et insekt som veier mindre enn et gram.",
+      "vanskeligeOrd": ["fire", "tusen"]
+    },
+    {
+      "id": "liv-21",
+      "emne": "liv",
+      "tittel": "Haien som er eldre enn trærne",
+      "niva": 2,
+      "tekst": "Haier fantes i havet lenge før dinosaurene, og allerede nitti millioner år før de første trærne vokste opp av jorda. De har overlevd flere masseutryddelser som utslettet nesten alt annet liv.",
+      "vanskeligeOrd": ["nitti", "millioner"]
+    },
+    {
+      "id": "liv-22",
+      "emne": "liv",
+      "tittel": "Rødnebbternens lange reise",
+      "niva": 2,
+      "tekst": "Rødnebbternen flyr lengst av alle dyr på jorda, opp mot sytti tusen kilometer hvert eneste år mellom nordpolen og sørpolen. I løpet av et langt liv kan den ha fløyet lengre enn turen til månen og tilbake mange ganger.",
+      "vanskeligeOrd": ["sytti", "tusen", "rødnebbternen"]
+    },
+    {
+      "id": "liv-23",
+      "emne": "liv",
+      "tittel": "Hjertet ditt",
+      "niva": 1,
+      "tekst": "Hjertet ditt slår mer enn hundre tusen ganger hvert eneste døgn, uten at du noen gang trenger å tenke på det. Gjennom et helt liv blir det til flere milliarder hjerteslag.",
+      "vanskeligeOrd": ["hundre", "tusen", "milliarder"]
+    },
+    {
+      "id": "liv-24",
+      "emne": "liv",
+      "tittel": "Blodårene dine",
+      "niva": 2,
+      "tekst": "Legger du alle blodårene i kroppen din etter hverandre, blir de lange nok til å strekke seg mer enn to ganger rundt hele jordkloden. Likevel er de aller fleste av dem tynnere enn et hårstrå.",
+      "vanskeligeOrd": ["to"]
+    },
+    {
+      "id": "liv-25",
+      "emne": "liv",
+      "tittel": "Nysehastigheten",
+      "niva": 2,
+      "tekst": "Lufta i et kraftig nys kan fare ut av nesen din med en fart på opp mot femti kilometer i timen. Det er derfor dråpene fra et nys kan spre seg langt utover rommet.",
+      "vanskeligeOrd": ["femti"]
+    },
+    {
+      "id": "liv-26",
+      "emne": "liv",
+      "tittel": "Blodet i kroppen",
+      "niva": 1,
+      "tekst": "En voksen person har omtrent fem liter blod i kroppen sin, som pumpes rundt om og om igjen av hjertet. Mister du mer enn en fjerdedel av det på en gang, blir det svært farlig.",
+      "vanskeligeOrd": ["fem", "fjerdedel"]
+    },
+    {
+      "id": "liv-27",
+      "emne": "liv",
+      "tittel": "Bjørnens vintersøvn",
+      "niva": 2,
+      "tekst": "Når en bjørn ligger i vintersøvn, kan hjertet dens slå så sjelden som ti ganger i minuttet. Våken slår det gjerne fem ganger så fort, men i vintersøvnen bruker kroppen nesten ingen energi.",
+      "vanskeligeOrd": ["ti", "fem"]
+    },
+    {
+      "id": "liv-28",
+      "emne": "liv",
+      "tittel": "Delfinens halve søvn",
+      "niva": 2,
+      "tekst": "En delfin sover bare med den ene halvdelen av hjernen om gangen, mens den andre halvdelen holder den våken nok til å puste. Etter rundt to timer bytter delfinen om, slik at begge sider får hvile.",
+      "vanskeligeOrd": ["to"]
+    },
+    {
+      "id": "liv-29",
+      "emne": "liv",
+      "tittel": "Neshornets horn",
+      "niva": 2,
+      "tekst": "Neshornets horn er ikke bein, men laget av det samme stoffet som er i håret og neglene dine. Det vokser hele livet, opp mot sju centimeter i året.",
+      "vanskeligeOrd": ["sju"]
+    },
+    {
+      "id": "liv-30",
+      "emne": "liv",
+      "tittel": "DNA-et ditt",
+      "niva": 3,
+      "tekst": "Om du dro ut all DNA-en i kroppen din til én lang tråd, ville den strukket seg til sola og tilbake mer enn seksti ganger. Likevel er den krøllet sammen så tett at den får plass i hver eneste, bitte lille celle.",
+      "vanskeligeOrd": ["seksti"]
+    },
+    {
+      "id": "liv-31",
+      "emne": "liv",
+      "tittel": "Håret ditt",
+      "niva": 1,
+      "tekst": "Et menneskehode har som regel rundt hundre tusen hårstrå, selv om noen har flere og andre færre. Hvert av dem vokser videre selv om du klipper det, helt til det til slutt faller av.",
+      "vanskeligeOrd": ["hundre", "tusen"]
+    },
+    {
+      "id": "liv-32",
+      "emne": "liv",
+      "tittel": "Blunkingen din",
+      "niva": 1,
+      "tekst": "Du blunker mer enn tjue tusen ganger hver eneste dag, uten at du legger merke til det. Blunkingen skyller øynene dine i tårevæske og holder dem fuktige og rene.",
+      "vanskeligeOrd": ["tjue", "tusen"]
+    },
+    {
+      "id": "liv-33",
+      "emne": "liv",
+      "tittel": "Tennene dine",
+      "niva": 1,
+      "tekst": "En voksen person har som regel trettito tenner i munnen, mens et barn bare har tjue. De voksne tennene skal vare resten av livet, så de fortjener god pleie.",
+      "vanskeligeOrd": ["trettito", "tjue"]
+    },
+
+    {
+      "id": "folk-18",
+      "emne": "folk",
+      "tittel": "Egyptiske mumier",
+      "niva": 2,
+      "tekst": "Når egyptiske prester gjorde en død person om til en mumie, tok hele prosessen rundt sytti dager. Kroppen ble tørket med spesielt salt og pakket inn i lange remser av lintøy.",
+      "vanskeligeOrd": ["sytti"]
+    },
+    {
+      "id": "folk-19",
+      "emne": "folk",
+      "tittel": "Titanic",
+      "niva": 2,
+      "tekst": "Titanic hadde over to tusen to hundre mennesker om bord da hun sank i nitten hundre og tolv. Mer enn halvparten av dem, over femten hundre mennesker, overlevde ikke.",
+      "vanskeligeOrd": ["to", "tusen", "hundre", "nitten", "og", "tolv", "femten", "Titanic"]
+    },
+    {
+      "id": "folk-20",
+      "emne": "folk",
+      "tittel": "Den forbudte byen",
+      "niva": 2,
+      "tekst": "Den forbudte byen i Kina, hvor Kinas keisere bodde, har over ni tusen rom fordelt utover det enorme palasset. Vanlige folk fikk ikke lov til å gå inn dit i mer enn fem hundre år.",
+      "vanskeligeOrd": ["ni", "tusen", "fem", "hundre"]
+    },
+    {
+      "id": "folk-21",
+      "emne": "folk",
+      "tittel": "Ilden",
+      "niva": 2,
+      "tekst": "Mennesker har laget og brukt ild i minst fire hundre tusen år, lenge før noen kunne skrive eller bygge hus av stein. Ilden ga varme, lys og trygghet mot ville dyr i mørket.",
+      "vanskeligeOrd": ["fire", "hundre", "tusen"]
+    },
+    {
+      "id": "folk-22",
+      "emne": "folk",
+      "tittel": "Verdens eldste skrift",
+      "niva": 2,
+      "tekst": "Det eldste skriftspråket vi kjenner til heter kileskrift og ble funnet opp for om lag fem tusen år siden. Det ble risset inn i myk leire med en spiss pinne, ikke skrevet med penn.",
+      "vanskeligeOrd": ["fem", "tusen"]
+    },
+    {
+      "id": "folk-23",
+      "emne": "folk",
+      "tittel": "Romerriket",
+      "niva": 3,
+      "tekst": "Det vestlige Romerriket varte i over fem hundre år før det falt sammen. Den østlige delen av riket klarte seg videre i mer enn tusen år til.",
+      "vanskeligeOrd": ["fem", "hundre", "tusen"]
+    },
+    {
+      "id": "folk-24",
+      "emne": "folk",
+      "tittel": "Vår egen art",
+      "niva": 3,
+      "tekst": "Vår egen art, det moderne mennesket, har trolig eksistert i rundt tre hundre tusen år. Det aller meste av den tiden levde folk som jegere og sankere, lenge før noen dyrket jorda.",
+      "vanskeligeOrd": ["tre", "hundre", "tusen"]
+    },
+    {
+      "id": "folk-25",
+      "emne": "folk",
+      "tittel": "Korttidsminnet",
+      "niva": 2,
+      "tekst": "Hjernen din klarer vanligvis å holde på rundt sju ting i korttidsminnet samtidig, som et telefonnummer du nettopp har hørt. Etter bare noen sekunder uten å tenke på det, forsvinner det ofte helt.",
+      "vanskeligeOrd": ["sju"]
+    },
+    {
+      "id": "folk-26",
+      "emne": "folk",
+      "tittel": "Smittsom gjesping",
+      "niva": 1,
+      "tekst": "Ser du noen andre gjespe, gjesper du selv i mer enn fire av ti tilfeller. Forskere tror det henger sammen med empati, evnen til å kjenne det andre føler.",
+      "vanskeligeOrd": ["fire", "ti"]
+    },
+    {
+      "id": "folk-27",
+      "emne": "folk",
+      "tittel": "Rødming",
+      "niva": 2,
+      "tekst": "Mennesker er det eneste dyret vi vet rødmer av flauhet, ifølge forskere som har studert det i over hundre år. Selv Charles Darwin undret seg over hvorfor ansiktet vårt avslører følelser vi helst vil skjule.",
+      "vanskeligeOrd": ["hundre", "Darwin"]
+    },
+    {
+      "id": "folk-28",
+      "emne": "folk",
+      "tittel": "Søvngjengeri",
+      "niva": 2,
+      "tekst": "Rundt sju prosent av oss går i søvne minst én gang i løpet av livet. Det skjer som regel i den dypeste delen av søvnen, lenge før man begynner å drømme.",
+      "vanskeligeOrd": ["sju"]
+    },
+    {
+      "id": "folk-29",
+      "emne": "folk",
+      "tittel": "Osebergskipet",
+      "niva": 3,
+      "tekst": "Osebergskipet ble bygget i Norge for over ett tusen to hundre år siden og ble senere gravlagt med to kvinner om bord. Da det ble gravd fram igjen i nitten hundre og tre, var treverket fortsatt godt bevart etter alle årene i leire.",
+      "vanskeligeOrd": ["tusen", "to", "hundre", "nitten", "og", "tre", "Osebergskipet"]
+    },
+    {
+      "id": "folk-30",
+      "emne": "folk",
+      "tittel": "Det fønikiske alfabetet",
+      "niva": 3,
+      "tekst": "Bokstavene vi bruker i dag stammer opprinnelig fra det fønikiske alfabetet, som ble laget for rundt tre tusen år siden. Fønikerne var sjøfolk og handelsmenn som spredte alfabetet sitt langs hele Middelhavet.",
+      "vanskeligeOrd": ["tre", "tusen"]
+    },
+    {
+      "id": "folk-31",
+      "emne": "folk",
+      "tittel": "Første kvinner i OL",
+      "niva": 2,
+      "tekst": "De første kvinnene fikk delta i de olympiske leker i Paris i nitten hundre, der tjueto kvinner konkurrerte i idretter som tennis og seiling. Før det hadde OL i mange år vært forbeholdt bare menn.",
+      "vanskeligeOrd": ["nitten", "hundre", "tjueto"]
+    },
+    {
+      "id": "folk-32",
+      "emne": "folk",
+      "tittel": "Marco Polos lange reise",
+      "niva": 2,
+      "tekst": "Marco Polo dro hjemmefra i Italia som ganske ung og var borte i hele tjuefire år før han kom tilbake igjen. Reisen gikk helt til Kina og tilbake, gjennom ørkener og over høye fjell.",
+      "vanskeligeOrd": ["tjuefire"]
+    },
+    {
+      "id": "folk-33",
+      "emne": "folk",
+      "tittel": "Vikingenes handelsruter",
+      "niva": 2,
+      "tekst": "Vikingene handlet ikke bare i Europa, men reiste langs elver helt til Bagdad, mer enn ti tusen kilometer hjemmefra. Der byttet de skinn og rav mot sølv og silke.",
+      "vanskeligeOrd": ["ti", "tusen", "Bagdad"]
+    },
+    {
+      "id": "folk-34",
+      "emne": "folk",
+      "tittel": "Demokratiets fødsel",
+      "niva": 3,
+      "tekst": "Demokrati, at folket selv er med på å bestemme, ble funnet opp i Athen for over to tusen fem hundre år siden. Den gangen fikk riktignok bare voksne, frie menn være med å stemme.",
+      "vanskeligeOrd": ["to", "tusen", "fem", "hundre", "Athen"]
+    },
+    {
+      "id": "folk-35",
+      "emne": "folk",
+      "tittel": "Roma, storbyen",
+      "niva": 3,
+      "tekst": "Det gamle Roma var trolig den første byen i verden med over en million innbyggere. Det tok mer enn tusen år før noen annen by i Europa ble like stor igjen.",
+      "vanskeligeOrd": ["million", "tusen"]
+    },
+    {
+      "id": "folk-36",
+      "emne": "folk",
+      "tittel": "Verdens eldste hulemalerier",
+      "niva": 2,
+      "tekst": "De eldste hulemalingene vi kjenner til, funnet i Indonesia, er mer enn femti tusen år gamle. Der malte noen sannsynligvis ville dyr og menneskelignende skikkelser på veggen i en mørk grotte.",
+      "vanskeligeOrd": ["femti", "tusen", "Indonesia"]
+    },
+    {
+      "id": "folk-37",
+      "emne": "folk",
+      "tittel": "Vikingskipets fart",
+      "niva": 1,
+      "tekst": "Et vikingskip med god vind i seilet kunne komme opp i en fart på over tretti kilometer i timen. Det var raskere enn de fleste andre skip i Europa på den tiden.",
+      "vanskeligeOrd": ["tretti"]
+    },
+
+    {
+      "id": "oppfinnelser-20",
+      "emne": "oppfinnelser",
+      "tittel": "Raketten",
+      "niva": 2,
+      "tekst": "En rakett må opp i en fart på over førti tusen kilometer i timen for å slippe unna jordas tyngdekraft for godt. Uten den farten ville raketten før eller siden falt tilbake til jorda igjen.",
+      "vanskeligeOrd": ["førti", "tusen"]
+    },
+    {
+      "id": "oppfinnelser-21",
+      "emne": "oppfinnelser",
+      "tittel": "Damptoget",
+      "niva": 2,
+      "tekst": "Det aller første damptoget klarte bare rundt åtte kilometer i timen, omtrent som en rask sykkeltur. Over hundre år senere satte et annet damptog en fartsrekord på mer enn to hundre kilometer i timen.",
+      "vanskeligeOrd": ["åtte", "hundre", "to"]
+    },
+    {
+      "id": "oppfinnelser-22",
+      "emne": "oppfinnelser",
+      "tittel": "Det første videospillet",
+      "niva": 2,
+      "tekst": "Det aller første videospillet ble laget i nitten hundre og femtiåtte, tjue år før det kjente spillet Pong. Det het Tennis for Two og ble vist fram på en gammel oscilloskop-skjerm.",
+      "vanskeligeOrd": ["nitten", "hundre", "og", "femtiåtte", "tjue", "Pong"]
+    },
+    {
+      "id": "oppfinnelser-23",
+      "emne": "oppfinnelser",
+      "tittel": "Satellitter i bane",
+      "niva": 1,
+      "tekst": "Rundt jorda går det nå mer enn femten tusen satellitter, både i bruk og utrangerte. De fleste av dem er så små og fjerne at du aldri kan se dem uten kikkert.",
+      "vanskeligeOrd": ["femten", "tusen"]
+    },
+    {
+      "id": "oppfinnelser-24",
+      "emne": "oppfinnelser",
+      "tittel": "GPS-en din",
+      "niva": 2,
+      "tekst": "For at GPS-en i en telefon skal finne ut nøyaktig hvor du er, trenger den signaler fra flere satellitter samtidig. Hele systemet består av minst tjuefire satellitter som går i bane rundt hele jorda.",
+      "vanskeligeOrd": ["tjuefire"]
+    },
+    {
+      "id": "oppfinnelser-25",
+      "emne": "oppfinnelser",
+      "tittel": "Strekkoden",
+      "niva": 2,
+      "tekst": "Strekkoden ble oppfunnet allerede i nitten hundre og femtito, men det tok mer enn tjue år før butikkene begynte å bruke den. I dag blir strekkoder skannet flere milliarder ganger hver eneste dag over hele verden.",
+      "vanskeligeOrd": ["nitten", "hundre", "og", "femtito", "tjue", "milliarder"]
+    },
+    {
+      "id": "oppfinnelser-26",
+      "emne": "oppfinnelser",
+      "tittel": "Borrelåsen",
+      "niva": 2,
+      "tekst": "En sveitsisk oppfinner fikk ideen til borrelåsen etter å ha sett hvordan små borrefrø hang seg fast i hunden hans. Det tok likevel nesten tjue år før han fikk laget en versjon som fungerte godt nok til å selges.",
+      "vanskeligeOrd": ["tjue"]
+    },
+    {
+      "id": "oppfinnelser-27",
+      "emne": "oppfinnelser",
+      "tittel": "Vannklosettet",
+      "niva": 2,
+      "tekst": "Det første vannklosettet med skylling ble tegnet allerede for mer enn fire hundre år siden. Likevel gikk det enda flere hundre år før vanlige folk fikk et slikt toalett hjemme.",
+      "vanskeligeOrd": ["fire", "hundre"]
+    },
+    {
+      "id": "oppfinnelser-28",
+      "emne": "oppfinnelser",
+      "tittel": "Internett",
+      "niva": 1,
+      "tekst": "Internett består i dag av mer enn en milliard nettsider, men bare en liten del av dem blir jevnlig oppdatert. De aller fleste nettsidene ligger nesten glemt og ubrukt et sted der ute.",
+      "vanskeligeOrd": ["milliard"]
+    },
+    {
+      "id": "oppfinnelser-29",
+      "emne": "oppfinnelser",
+      "tittel": "Lego-klossene",
+      "niva": 2,
+      "tekst": "Med bare seks vanlige Lego-klosser kan du sette dem sammen på over ni hundre millioner forskjellige måter. Ingen har noensinne rukket å bygge alle variantene selv i et helt liv.",
+      "vanskeligeOrd": ["seks", "ni", "hundre", "millioner"]
+    },
+    {
+      "id": "oppfinnelser-30",
+      "emne": "oppfinnelser",
+      "tittel": "Paraplyen",
+      "niva": 1,
+      "tekst": "Paraplyen ble funnet opp i Kina for mer enn tre tusen år siden, lenge før den kom til Europa. De første paraplyene var laget av bambus og tykt papir eller stoff.",
+      "vanskeligeOrd": ["tre", "tusen"]
+    },
+    {
+      "id": "oppfinnelser-31",
+      "emne": "oppfinnelser",
+      "tittel": "Vaskemaskinen",
+      "niva": 2,
+      "tekst": "Før vaskemaskinen kom, kunne det ta en hel dag å vaske klærne for hånd med vann og et skrubbebrett. Den første automatiske vaskemaskinen kom ikke før i nitten hundre og trettisju.",
+      "vanskeligeOrd": ["nitten", "hundre", "og", "trettisju"]
+    },
+    {
+      "id": "oppfinnelser-32",
+      "emne": "oppfinnelser",
+      "tittel": "Fjernsynet",
+      "niva": 1,
+      "tekst": "De første flimrende bildene på en fjernsynsskjerm ble vist fram for over hundre år siden. Det tok likevel mange tiår før de fleste hjem fikk sitt eget fjernsyn å samles rundt.",
+      "vanskeligeOrd": ["hundre"]
+    },
+    {
+      "id": "oppfinnelser-33",
+      "emne": "oppfinnelser",
+      "tittel": "Vindmøllen",
+      "niva": 1,
+      "tekst": "De aller første vindmøllene ble bygget for nesten to tusen år siden for å drive enkle maskiner. I dag bruker vi mye større vindmøller til å lage strøm av vinden.",
+      "vanskeligeOrd": ["to", "tusen"]
+    },
+    {
+      "id": "oppfinnelser-34",
+      "emne": "oppfinnelser",
+      "tittel": "Den mekaniske klokken",
+      "niva": 2,
+      "tekst": "De første mekaniske klokkene ble laget for over sju hundre år siden, ofte til klostre og kirker som trengte å vite nøyaktig når det var tid for bønn. Før det målte folk tiden med solur eller lys som brant sakte ned.",
+      "vanskeligeOrd": ["sju", "hundre"]
+    },
+    {
+      "id": "oppfinnelser-35",
+      "emne": "oppfinnelser",
+      "tittel": "Den første bilen",
+      "niva": 1,
+      "tekst": "Den aller første bilen i verden hadde en toppfart på bare seksten kilometer i timen, tregere enn en sykkel i god fart. I dag kan vanlige biler kjøre over ti ganger så fort uten problem.",
+      "vanskeligeOrd": ["seksten", "ti"]
+    },
+    {
+      "id": "oppfinnelser-36",
+      "emne": "oppfinnelser",
+      "tittel": "Printeren som bygger i lag",
+      "niva": 2,
+      "tekst": "Den første printeren som kunne bygge gjenstander lag på lag av flytende plast, ble laget i nitten hundre og åttifire. I dag brukes samme teknikk til alt fra leker til deler til fly.",
+      "vanskeligeOrd": ["nitten", "hundre", "og", "åttifire"]
+    },
+    {
+      "id": "oppfinnelser-37",
+      "emne": "oppfinnelser",
+      "tittel": "Brannslukningsapparatet",
+      "niva": 2,
+      "tekst": "Det første brannslukningsapparatet ble laget for over tre hundre år siden og brukte krutt til å sprute væske på flammene. Moderne apparater er mye tryggere og finnes i nesten alle hus i dag.",
+      "vanskeligeOrd": ["tre", "hundre"]
+    },
+    {
+      "id": "oppfinnelser-38",
+      "emne": "oppfinnelser",
+      "tittel": "Tannbørsten",
+      "niva": 2,
+      "tekst": "De første tannbørstene med bust ble laget i Kina for over fem hundre år siden, av stive hår fra nakken på griser. Bustene vi bruker i dag er laget av nylon i stedet, noe som gjør dem renere og billigere å lage.",
+      "vanskeligeOrd": ["fem", "hundre"]
+    },
+    {
+      "id": "oppfinnelser-39",
+      "emne": "oppfinnelser",
+      "tittel": "Minnepinnen",
+      "niva": 2,
+      "tekst": "Den aller første minnepinnen kom i salg i år to tusen og hadde plass til bare åtte megabyte. Det er alt for lite til å lagre et eneste bilde slik kameraer tar i dag.",
+      "vanskeligeOrd": ["to", "tusen", "åtte"]
     }
   ]
 }
