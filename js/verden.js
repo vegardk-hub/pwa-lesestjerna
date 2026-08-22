@@ -146,6 +146,18 @@
     lapp.append(navn);
 
     k.append(prikk, lapp);
+
+    // Har han valgt en robot til aa vaere ikonet sitt (se hus.js), sitter
+    // den og venter ved hjemmepunktet -- som om den fulgte med ut i verden.
+    var valgtId = Lagring.valgtRobot();
+    var valgt = valgtId && Figurer.finn(valgtId);
+    if (valgt) {
+      var merke = document.createElement("span");
+      merke.className = "robotmerke";
+      merke.innerHTML = Figurer.svg(valgt.id);
+      k.append(merke);
+    }
+
     k.setAttribute("aria-label", "Gå hjem");
     k.onclick = function () { if (paaHjem) paaHjem(); };
     return k;

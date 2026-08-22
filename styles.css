@@ -55,6 +55,17 @@ header h1 { font-size: 19px; margin: 0; font-weight: 650; letter-spacing: -.01em
   100% { transform: scale(1) }
 }
 
+/* Foelgesvennen ved siden av stjernene i lesevisningen -- se hus.js for
+   valget og app.js for reager()-kallet naar en stjerne blir gitt. */
+#lesRobot { width: 26px; height: 26px; margin-left: 10px }
+#lesRobot svg { width: 100%; height: 100%; display: block }
+#lesRobot.reager { animation: robotblunk .5s ease }
+@keyframes robotblunk {
+  0%, 100% { transform: scale(1) rotate(0) }
+  30% { transform: scale(1.35) rotate(-8deg) }
+  60% { transform: scale(1.1) rotate(6deg) }
+}
+
 /* ---------- Knapper ---------- */
 
 button {
@@ -296,6 +307,20 @@ button.liten { padding: 6px 12px }
 .sone:disabled { cursor: default }
 .sone:disabled .prikk { opacity: .55 }
 
+/* Roboten han har valgt (se hus.js), sittende ved hjemmepunktet -- som om
+   den fulgte med ut i verden. Se verden.js sin hjemPin(). */
+.sone .robotmerke {
+  position: absolute;
+  top: -5px; right: -10px;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1.5px solid var(--strek);
+  box-shadow: 0 1px 3px rgba(0,0,0,.3);
+  overflow: hidden;
+}
+.sone .robotmerke svg { width: 100%; height: 100%; display: block }
+
 .sone .lapp {
   background: rgba(29, 33, 37, .82);
   color: #fff;
@@ -461,6 +486,23 @@ button.liten { padding: 6px 12px }
 #ferdigBok { margin: 8px 0 0 }
 #ferdigBok:empty { display: none }
 #ferdig .rad { justify-content: center; margin-top: 32px }
+
+/* Roboten hans kommenterer teksten (se app.js sin visFerdigRobot()). Et
+   ekstra hopp naar den er stor nok til aa feire en hel bok. */
+#ferdigRobot {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  margin: 20px auto 0; max-width: 420px;
+}
+.ferdigRobot-ikon { width: 40px; height: 40px; flex: none }
+.ferdigRobot-ikon svg { width: 100%; height: 100%; display: block }
+.ferdigRobot-tekst { margin: 0; font-size: 15px; text-align: left }
+#ferdigRobot.feirer .ferdigRobot-ikon { animation: robothopp .7s ease }
+@keyframes robothopp {
+  0%, 100% { transform: translateY(0) rotate(0) }
+  25% { transform: translateY(-10px) rotate(-10deg) }
+  50% { transform: translateY(0) rotate(8deg) }
+  75% { transform: translateY(-5px) rotate(-4deg) }
+}
 
 .und { color: var(--dus) }
 .rad { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 16px }

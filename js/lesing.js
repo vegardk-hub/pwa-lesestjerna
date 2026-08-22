@@ -324,6 +324,9 @@
     el.classList.remove("vokser");
     void el.offsetWidth;                  // tvinger animasjonen til aa gaa om igjen
     el.classList.add("vokser");
+    // Roboten hans (om han har valgt en, se hus.js) reagerer ogsaa -- appen
+    // vet ikke hvordan det ser ut, bare at det skjedde. Se js/app.js.
+    if (kroker.stjerne) kroker.stjerne();
   }
 
   /* ---------- Fasit for oekta ---------- */

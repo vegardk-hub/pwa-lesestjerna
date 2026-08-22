@@ -15,6 +15,19 @@
   var naa = null;        // teksten som leses akkurat naa
   var sisteEmne = null;  // hvor "Les en til" skal hente neste fra
 
+  // Roboter uten en fast frase (bare de legendariske har det, se
+  // data/figurer.json) faar en av disse i stedet, saa alle -- ikke bare fem
+  // av trettito -- kan heie naar en tekst er ferdig.
+  var HEIAROP = [
+    "Bra jobbet!", "Det gikk kjempefint!", "Du leser så bra!",
+    "Nå bygger vi videre!", "Det der var flott lesing!", "Jeg er stolt av deg!"
+  ];
+
+  function valgtRobotFigur() {
+    var id = Lagring.valgtRobot();
+    return id && Figurer.finn(id);
+  }
+
   function vis(hvilken) {
     $("#velgSpiller").hidden = hvilken !== "spillere";
     $("#hus").hidden = hvilken !== "hus";
@@ -33,6 +46,14 @@
     if (hvilken === "lesing") {
       $("#lesForMeg").hidden = !Lagring.lesForMegPaa();
       $("#godkjennHele").hidden = !Lagring.godkjennVoksenPaa();
+
+      // Roboten han har valgt (se hus.js) blir med som en liten foelgesvenn
+      // ved siden av stjernene, og blunker naar han faar en ny -- se
+      // reagerLesRobot(), kalt av lesing.js sitt "stjerne"-hook i les().
+      var valgtLes = valgtRobotFigur();
+      var lr = $("#lesRobot");
+      lr.hidden = !valgtLes;
+      if (valgtLes) lr.innerHTML = Figurer.svg(valgtLes.id);
     }
 
     // Tilbakeknappen finnes bare der det er noe aa gaa tilbake fra, og den
@@ -52,7 +73,7 @@
 
     // Har han valgt en robot (se hus.js), viser knappen den i stedet for
     // bare navnet -- det samme ikonet skal kjennes igjen flere steder.
-    var valgt = Lagring.valgtRobot() && Figurer.finn(Lagring.valgtRobot());
+    var valgt = valgtRobotFigur();
     if (valgt) {
       k.innerHTML = '<span class="byttspiller-ikon">' + Figurer.svg(valgt.id) + "</span>";
       k.append(document.createTextNode(tekst));
@@ -78,9 +99,20 @@
 
   /* ---------- Lesing ---------- */
 
+  // Trigger en kort blunke-animasjon paa foelgesvennen -- samme knep som
+  // stjerne-tallet selv bruker (fjern klassen, tving reflow, legg den paa
+  // igjen), ellers ville ikke CSS-animasjonen gaa om igjen paa rad.
+  function reagerLesRobot() {
+    var el = $("#lesRobot");
+    if (el.hidden) return;
+    el.classList.remove("reager");
+    void el.offsetWidth;
+    el.classList.add("reager");
+  }
+
   function les(oppgave) {
     vis("lesing");
-    Lesing.start(oppgave, { ferdig: ferdig });
+    Lesing.start(oppgave, { ferdig: ferdig, stjerne: reagerLesRobot });
   }
 
   function lesFraEmne(emneId) {
@@ -111,6 +143,7 @@
       $("#ferdigTittel").textContent = "Fint lest om igjen!";
       $("#ferdigTall").textContent = b.beskjed;
       $("#ferdigBok").textContent = "";
+      $("#ferdigRobot").hidden = true;
     } else {
       $("#ferdigTittel").textContent = naa.tittel + " er lest!";
       $("#ferdigTall").textContent =
@@ -121,9 +154,34 @@
         : (b.tilNesteBok
             ? b.tilNesteBok.mangler + " ord igjen til bok nummer " + b.tilNesteBok.nr + "."
             : "");
+
+      visFerdigRobot(b.nyeBoker);
     }
 
     vis("ferdig");
+  }
+
+  // Roboten hans kommenterer teksten som akkurat ble lest -- stille, bare en
+  // tekstlinje, saa det ikke blir masete aa lese mange tekster paa rad. Fylte
+  // han derimot en hel bok, feirer roboten hoeyere: lyden sin, frasen sin (om
+  // den har en) eller et generelt heiarop, og et lite hopp paa ikonet.
+  function visFerdigRobot(nyBok) {
+    var el = $("#ferdigRobot");
+    var valgt = valgtRobotFigur();
+    if (!valgt) { el.hidden = true; return; }
+
+    var frase = valgt.frase || HEIAROP[Math.floor(Math.random() * HEIAROP.length)];
+    el.querySelector(".ferdigRobot-ikon").innerHTML = Figurer.svg(valgt.id);
+    el.querySelector(".ferdigRobot-tekst").textContent = valgt.navn + ": «" + frase + "»";
+    el.hidden = false;
+    el.classList.remove("feirer");
+
+    if (nyBok) {
+      Robotlyd.spill(valgt.id);
+      setTimeout(function () { Robotlyd.si(frase); }, 500);
+      void el.offsetWidth;
+      el.classList.add("feirer");
+    }
   }
 
   /* ---------- Knapper ---------- */
