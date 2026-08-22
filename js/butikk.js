@@ -3,12 +3,11 @@
  * tegnes av Figurer.svg() -- se figurer.js.
  *
  * Robotene er samleobjekter, ikke ting han flytter rundt i rommet: han
- * kjøper én av hver, og ser dem igjen i samlingen (samling.js). To regler
- * fra husreglene gjelder likevel fortsatt:
- *   - Kjøp trekker mynter, men aldri under det han har -- knappen er rett og
- *     slett avslått når han ikke har råd, eller når han alt eier den.
- *   - Selg gir full pris tilbake (se Spill.selg). Han skal kunne ombestemme
- *     seg uten å tape på det.
+ * kjøper én av hver, og ser dem igjen i samlingen (samling.js). Ett regel
+ * fra husreglene gjelder likevel fortsatt: kjøp trekker mynter, men aldri
+ * under det han har -- knappen er rett og slett avslått når han ikke har
+ * råd, eller når han alt eier den. Et kjøp er endelig -- det finnes ingen
+ * vei tilbake til myntene igjen.
  */
 (function (global) {
   "use strict";
@@ -61,7 +60,7 @@
   function tegnEide(s) {
     var liste = $("#butikkEide");
     liste.textContent = "";
-    (s.eide || []).forEach(function (e, nr) {
+    (s.eide || []).forEach(function (e) {
       var v = Figurer.finn(e.ting);
       if (!v) return;
       var rad = lag("eidRad " + v.kategori);
@@ -69,11 +68,7 @@
       ikon.innerHTML = Figurer.svg(v.id);
       var navn = lag("", "span");
       navn.textContent = v.navn;
-      var selg = document.createElement("button");
-      selg.type = "button";
-      selg.textContent = "Selg for " + e.pris + " ◉";
-      selg.onclick = function () { if (Spill.selg(nr)) tegn(); };
-      rad.append(ikon, navn, selg);
+      rad.append(ikon, navn);
       liste.append(rad);
     });
     $("#butikkEideTom").hidden = (s.eide || []).length > 0;

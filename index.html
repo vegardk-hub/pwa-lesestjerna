@@ -11,7 +11,7 @@
 
 <header>
   <h1>Lesestjerna</h1>
-  <span id="versjon">v15</span>
+  <span id="versjon">v16</span>
   <button id="tilbake" hidden>Tilbake</button>
   <button id="byttSpiller" hidden></button>
   <div id="stjerner" hidden></div>
@@ -95,18 +95,17 @@
 </section>
 
 <section id="butikk" hidden>
-  <h2>Butikken</h2>
-  <p class="und liten">Kjøp roboter for mynter, og se dem igjen i samlingen din.
-    Angrer du, kan du selge tilbake for det du betalte.</p>
-  <p class="und" id="butikkMynterRad">Du har <b id="butikkMynter"></b></p>
+  <div id="butikkTopp">
+    <h2>Butikken</h2>
+    <p class="und" id="butikkMynterRad">Du har <b id="butikkMynter"></b></p>
+    <button id="lukkButikk" class="hoved">Lukk butikken</button>
+  </div>
+  <p class="und liten">Kjøp roboter for mynter, og se dem igjen i samlingen din.</p>
   <div id="butikkListe"></div>
   <div id="butikkEideWrap">
     <h3>Dine roboter</h3>
     <p class="und liten" id="butikkEideTom">Du eier ingen roboter ennå.</p>
     <div id="butikkEide"></div>
-  </div>
-  <div class="rad">
-    <button id="lukkButikk" class="stor hoved">Lukk butikken</button>
   </div>
 </section>
 

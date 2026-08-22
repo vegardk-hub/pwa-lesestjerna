@@ -97,16 +97,6 @@
     return true;
   }
 
-  /* Full pris tilbake. Han skal kunne ombestemme seg uten aa tape paa det. */
-  function selg(nr) {
-    var s = meg();
-    if (!s || !s.eide[nr]) return false;
-    s.mynter += s.eide[nr].pris;
-    s.eide.splice(nr, 1);
-    Lagring.lagre();
-    return true;
-  }
-
   /* ---------- Boka paa bordet ---------- */
 
   function statistikk() {
@@ -136,7 +126,6 @@
     tilNesteBok: tilNesteBok,
     betal: betal,
     kjop: kjop,
-    selg: selg,
     statistikk: statistikk,
     MYNT_PER_ORD: MYNT_PER_ORD,
     FULLFOERT_BONUS: FULLFOERT_BONUS
