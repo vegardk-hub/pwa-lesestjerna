@@ -36,10 +36,19 @@
     var d = document.createElement("div");
     d.className = "spiller" + (erAktiv ? " valgt" : "");
 
+    // Har han valgt en robot til aa vaere ikonet sitt (se hus.js), vises den
+    // her i stedet for forbokstaven -- det er nettopp det poenget med aa
+    // velge en er.
+    var valgt = s.valgtRobot && global.Figurer && Figurer.finn(s.valgtRobot);
     var rund = document.createElement("div");
-    rund.className = "figur";
-    rund.style.background = FARGER[s.figur % FARGER.length];
-    rund.textContent = (s.navn[0] || "?").toUpperCase();
+    if (valgt) {
+      rund.className = "figur robot";
+      rund.innerHTML = Figurer.svg(valgt.id);
+    } else {
+      rund.className = "figur";
+      rund.style.background = FARGER[s.figur % FARGER.length];
+      rund.textContent = (s.navn[0] || "?").toUpperCase();
+    }
 
     var navn = document.createElement("div");
     navn.className = "navn";

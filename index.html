@@ -11,7 +11,7 @@
 
 <header>
   <h1>Lesestjerna</h1>
-  <span id="versjon">v19</span>
+  <span id="versjon">v20</span>
   <button id="tilbake" hidden>Tilbake</button>
   <button id="byttSpiller" hidden></button>
   <div id="stjerner" hidden></div>
@@ -88,6 +88,10 @@
       <span class="huskort-ikon"></span>
       <span class="huskort-navn">Samlingen</span>
     </button>
+    <button type="button" id="apneRobotvalg" class="huskort robotvalg">
+      <span class="huskort-ikon"></span>
+      <span class="huskort-navn" id="robotKortNavn"></span>
+    </button>
   </div>
 </section>
 
@@ -106,6 +110,17 @@
   <div id="lestBokListe"></div>
   <div class="rad">
     <button id="lukkLestBok" class="stor hoved">Lukk boka</button>
+  </div>
+</section>
+
+<section id="robotvalg" hidden>
+  <h2 id="robotvalgTittel"></h2>
+  <p class="und liten">Velg en av robotene dine som skal være ikonet ditt i spillet.</p>
+  <p class="und liten" id="robotvalgTom">Du eier ingen roboter ennå — kjøp noen i butikken.</p>
+  <div id="robotvalgListe"></div>
+  <div class="rad">
+    <button id="glemRobotvalg" class="liten">Bruk forbokstav i stedet</button>
+    <button id="lukkRobotvalg" class="stor hoved">Lukk</button>
   </div>
 </section>
 

@@ -26,7 +26,8 @@
     tekster: [],        // id-ene han har faatt betalt for
     eide: [],           // { ting, pris } -- roboter kjøpt fra butikken
     dager: {},          // "2026-08-21": 34 — ord per dag, til boka paa bordet
-    opptak: {}          // { robotId: dataURL } -- egne opptak til mytiske roboter
+    opptak: {},         // { robotId: dataURL } -- egne opptak til mytiske roboter
+    valgtRobot: null    // figur-id -- roboten han har valgt som sitt eget ikon
   };
 
   var data = null;
@@ -55,7 +56,10 @@
     // Lagring fra foer foreldrekontrollen fantes mangler denne noekkelen.
     if (!data.foreldre) data.foreldre = TOM_FORELDRE();
     // Lagring fra foer opptaksfunksjonen fantes mangler denne paa spillerne.
-    data.spillere.forEach(function (s) { if (!s.opptak) s.opptak = {}; });
+    data.spillere.forEach(function (s) {
+      if (!s.opptak) s.opptak = {};
+      if (s.valgtRobot === undefined) s.valgtRobot = null;
+    });
     return data;
   }
 
@@ -179,6 +183,22 @@
     hentOpptak: function (figurId) {
       var s = aktiv();
       return (s && s.opptak[figurId]) || null;
+    },
+
+    /* ---------- Roboten han har valgt som sitt eget ikon ---------- */
+
+    // Hvem som helst kan sette denne -- det er hus.js sin jobb aa bare
+    // tilby roboter han faktisk eier. Null betyr "ingen valgt", og da vises
+    // forbokstaven i stedet, som foer roboter fantes.
+    settValgtRobot: function (figurId) {
+      var s = aktiv();
+      if (!s) return;
+      s.valgtRobot = figurId || null;
+      lagre();
+    },
+    valgtRobot: function () {
+      var s = aktiv();
+      return (s && s.valgtRobot) || null;
     },
 
     /* ---------- Sikkerhetskopi ---------- */

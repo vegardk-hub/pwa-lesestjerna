@@ -4,23 +4,27 @@
  * premie paa slutten -- han skal se hjemmet sitt foerst, og gaa ut derfra for
  * aa tjene til det.
  *
- * Fire kort, ett trykk hver: gaa ut og les, boka, butikken, samlingen. Det
- * gamle rommet med figur og doer i et bilde saa daarlig ut og fungerte
- * daarlig -- dette er rett og slett enklere aa forstaa og finere aa se paa.
+ * Seks kort, ett trykk hver: gaa ut og les, tallene sine, boka, butikken,
+ * samlingen, og roboten sin. Det gamle rommet med figur og doer i et bilde
+ * saa daarlig ut og fungerte daarlig -- dette er rett og slett enklere aa
+ * forstaa og finere aa se paa.
  */
 (function (global) {
   "use strict";
 
   var $ = function (v) { return document.querySelector(v); };
 
-  // Fem ikoner, tegnet i samme flate stil som resten av appen -- ett per
-  // kort, satt inn én gang siden de aldri forandrer seg.
+  // Ikoner, tegnet i samme flate stil som resten av appen -- ett per kort,
+  // satt inn én gang siden de aldri forandrer seg. Roboten sin er unntaket:
+  // den skiftes ut i tegn() til aa vise selve roboten han har valgt, naar
+  // han har valgt en -- "robot" her er bare startutseendet foer det skjer.
   var IKONER = {
     ut: '<path fill="currentColor" d="M13 5h16a2 2 0 0 1 2 2v34a2 2 0 0 1-2 2H13a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"/><circle cx="26.5" cy="24" r="2.1" fill="#fff"/>',
     tall: '<rect fill="currentColor" x="8" y="26" width="8" height="16" rx="2"/><rect fill="currentColor" x="20" y="16" width="8" height="26" rx="2"/><rect fill="currentColor" x="32" y="9" width="8" height="33" rx="2"/>',
     lest: '<rect fill="currentColor" x="10" y="6" width="28" height="36" rx="3"/><rect fill="currentColor" opacity=".55" x="10" y="6" width="7.5" height="36" rx="3"/><rect fill="#fff" opacity=".85" x="21" y="15" width="12" height="3" rx="1.5"/><rect fill="#fff" opacity=".85" x="21" y="22" width="12" height="3" rx="1.5"/><rect fill="#fff" opacity=".85" x="21" y="29" width="8.5" height="3" rx="1.5"/>',
     butikk: '<path fill="currentColor" d="M14 16 17 8h14l3 8h6a1 1 0 0 1 1 1l-2.4 21a3 3 0 0 1-3 2.7H12.4a3 3 0 0 1-3-2.7L7 17a1 1 0 0 1 1-1h6Z"/><path fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" d="M18 20v2a6 6 0 0 0 12 0v-2"/>',
-    samling: '<line x1="24" y1="6" x2="24" y2="14" stroke="currentColor" stroke-width="2.6"/><circle cx="24" cy="5" r="3.6" fill="currentColor"/><rect fill="currentColor" x="10" y="14" width="28" height="21" rx="8"/><circle cx="18" cy="24.5" r="3.1" fill="#fff"/><circle cx="30" cy="24.5" r="3.1" fill="#fff"/><rect fill="currentColor" x="15.5" y="35" width="7" height="5.5" rx="2.2"/><rect fill="currentColor" x="25.5" y="35" width="7" height="5.5" rx="2.2"/>'
+    samling: '<line x1="24" y1="6" x2="24" y2="14" stroke="currentColor" stroke-width="2.6"/><circle cx="24" cy="5" r="3.6" fill="currentColor"/><rect fill="currentColor" x="10" y="14" width="28" height="21" rx="8"/><circle cx="18" cy="24.5" r="3.1" fill="#fff"/><circle cx="30" cy="24.5" r="3.1" fill="#fff"/><rect fill="currentColor" x="15.5" y="35" width="7" height="5.5" rx="2.2"/><rect fill="currentColor" x="25.5" y="35" width="7" height="5.5" rx="2.2"/>',
+    robot: '<rect fill="currentColor" x="12" y="18" width="24" height="20" rx="7"/><circle cx="19" cy="27" r="3" fill="#fff"/><circle cx="29" cy="27" r="3" fill="#fff"/><line x1="24" y1="6" x2="24" y2="13" stroke="currentColor" stroke-width="2.4"/><circle cx="24" cy="5" r="3" fill="currentColor"/>'
   };
 
   function settIkon(kort, ikon) {
@@ -32,6 +36,7 @@
   settIkon("apneLest", "lest");
   settIkon("apneButikk", "butikk");
   settIkon("apneSamling", "samling");
+  settIkon("apneRobotvalg", "robot");
 
   /* ---------- Huset ---------- */
 
@@ -42,6 +47,14 @@
     $("#husnavn").textContent = "Hjemme hos " + s.navn;
     $("#bokKortNavn").textContent = s.navn + " sine tall";
     $("#lestKortNavn").textContent = s.navn + " sin bok";
+    $("#robotKortNavn").textContent = s.navn + " sin robot";
+
+    // Kortet viser selve roboten han har valgt, ikke bare et generisk
+    // robotikon, saa han kjenner igjen sin egen med det samme.
+    var valgt = Lagring.valgtRobot() && Figurer.finn(Lagring.valgtRobot());
+    document.querySelector("#apneRobotvalg .huskort-ikon").innerHTML = valgt
+      ? Figurer.svg(valgt.id)
+      : '<svg viewBox="0 0 48 48" aria-hidden="true">' + IKONER.robot + "</svg>";
 
     var neste = Spill.tilNesteBok(s);
     $("#hushint").textContent = neste
@@ -157,10 +170,60 @@
     $("#hus").hidden = false;
   };
 
+  /* ---------- Ola sin robot: velg en av de eide som sitt eget ikon ----------
+   * Bare roboter han faktisk eier kan velges -- lista bygges fra s.eide,
+   * akkurat som i butikken og samlingen. Den valgte faar en gronn ramme,
+   * samme knep som "eid"-rammen i butikken. */
+
+  var paaRobotValgt = null; // settes av app.js: robotvalget er endret
+
+  function velgRobot(figurId) {
+    Lagring.settValgtRobot(figurId);
+    tegn();                          // huskortet skal vise den nye roboten med en gang
+    if (paaRobotValgt) paaRobotValgt(); // ...og det samme skal "bytt spiller" i header
+    apneRobotvalg();                 // tegn lista paa nytt saa den groenne rammen flytter seg
+  }
+
+  function apneRobotvalg() {
+    var s = Lagring.aktiv();
+    if (!s) return;
+    $("#robotvalgTittel").textContent = s.navn + " sin robot";
+
+    var liste = $("#robotvalgListe");
+    liste.textContent = "";
+    (s.eide || []).forEach(function (e) {
+      var v = Figurer.finn(e.ting);
+      if (!v) return;
+      var kort = lag("figurkort " + v.kategori + (v.id === s.valgtRobot ? " valgt" : ""), "button");
+      kort.type = "button";
+      var merke = lag("merke-kategori");
+      merke.textContent = Figurer.kategorinavn(v.kategori);
+      var ikon = lag("figur-ikon");
+      ikon.innerHTML = Figurer.svg(v.id);
+      var navn = lag("navn"); navn.textContent = v.navn;
+      kort.append(merke, ikon, navn);
+      kort.onclick = function () { velgRobot(v.id); };
+      liste.append(kort);
+    });
+    $("#robotvalgTom").hidden = (s.eide || []).length > 0;
+
+    $("#hus").hidden = true;
+    $("#robotvalg").hidden = false;
+  }
+
+  $("#glemRobotvalg").onclick = function () { velgRobot(null); };
+
+  $("#lukkRobotvalg").onclick = function () {
+    $("#robotvalg").hidden = true;
+    $("#hus").hidden = false;
+  };
+
   global.Hus = {
     tegn: tegn,
     apneBoka: apneBoka,
     apneLest: apneLest,
-    naarLestValgt: function (fn) { paaLestValgt = fn; }
+    apneRobotvalg: apneRobotvalg,
+    naarLestValgt: function (fn) { paaLestValgt = fn; },
+    naarRobotValgt: function (fn) { paaRobotValgt = fn; }
   };
 })(window);

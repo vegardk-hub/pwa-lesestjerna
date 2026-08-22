@@ -25,6 +25,7 @@
     $("#stjerner").hidden = hvilken !== "lesing";
     $("#boka").hidden = true;
     $("#lestBok").hidden = true;
+    $("#robotvalg").hidden = true;
 
     // Begge disse er avslaatt som standard -- se foreldre.js. Satt hver
     // gang, ikke bare ved oppstart, i tilfelle en forelder endrer dem mens
@@ -46,8 +47,18 @@
   function tegnSpillerknapp() {
     var s = Lagring.aktiv();
     if (!s) return;
-    $("#byttSpiller").textContent =
-      s.navn + " \u00b7 lvl " + Spill.level(s) + " \u00b7 " + s.mynter + " \u25c9";
+    var tekst = s.navn + " \u00b7 lvl " + Spill.level(s) + " \u00b7 " + s.mynter + " \u25c9";
+    var k = $("#byttSpiller");
+
+    // Har han valgt en robot (se hus.js), viser knappen den i stedet for
+    // bare navnet -- det samme ikonet skal kjennes igjen flere steder.
+    var valgt = Lagring.valgtRobot() && Figurer.finn(Lagring.valgtRobot());
+    if (valgt) {
+      k.innerHTML = '<span class="byttspiller-ikon">' + Figurer.svg(valgt.id) + "</span>";
+      k.append(document.createTextNode(tekst));
+    } else {
+      k.textContent = tekst;
+    }
   }
 
   function tilVerden() {
@@ -121,6 +132,7 @@
   Verden.naarValgt(lesFraEmne);
   Verden.naarHjem(tilHus);
   Hus.naarLestValgt(lesSpesifikk);
+  Hus.naarRobotValgt(tegnSpillerknapp);
 
   $("#byttSpiller").onclick = function () {
     Lesing.stopp();
@@ -139,6 +151,7 @@
   $("#apneLest").onclick = Hus.apneLest;
   $("#apneButikk").onclick = Butikk.apne;
   $("#apneSamling").onclick = Samling.apne;
+  $("#apneRobotvalg").onclick = Hus.apneRobotvalg;
   $("#apneForeldre").onclick = Foreldre.apne;
 
   $("#lesEnTil").onclick = function () { lesFraEmne(sisteEmne); };
@@ -149,6 +162,10 @@
   // Banken og robotkatalogen hentes foer noe tegnes, ellers staar kortene
   // tomme et oeyeblikk.
   Promise.all([Bank.last(), Figurer.last()]).then(function () {
+    // Spillerkortene ble tegnet foer robotkatalogen kom paa plass, saa en
+    // som alt har valgt en robot fikk forbokstaven i stedet et kort
+    // oeyeblikk. Tegnes paa nytt her, naar Figurer.finn() faktisk virker.
+    Spillere.tegn();
     // Den som leste sist slipper aa velge seg selv paa nytt hver gang.
     if (Lagring.aktiv()) tilHus();
     else vis("spillere");

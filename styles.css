@@ -101,6 +101,11 @@ button.lytter:hover { background: #c8332a }
   display: flex; align-items: center; justify-content: center;
 }
 .spiller.ny .figur { background: #fff; color: var(--dus); border: 2px dashed var(--strek) }
+/* Har han valgt en robot til aa vaere ikonet sitt (se hus.js), vises den her
+   i stedet for forbokstaven. Litt luft rundt roboten, saa den ikke skjaeres
+   av av den runde formen. */
+.spiller .figur.robot { background: #fff; border: 1.5px solid var(--strek); padding: 6px; overflow: hidden }
+.spiller .figur.robot svg { width: 100%; height: 100%; display: block }
 .spiller .navn { font-size: 18px; font-weight: 600 }
 .spiller .tall { font-size: 13.5px; color: var(--dus); margin-top: 4px }
 .spiller .smaaknapper {
@@ -110,7 +115,9 @@ button.lytter:hover { background: #c8332a }
 .spiller:hover .smaaknapper, .spiller.valgt .smaaknapper { opacity: 1 }
 .spiller .smaaknapper button { font-size: 12.5px; padding: 4px 10px; border-radius: 7px }
 
-#byttSpiller { font-size: 14.5px; padding: 6px 12px }
+#byttSpiller { font-size: 14.5px; padding: 6px 12px; display: flex; align-items: center }
+.byttspiller-ikon { width: 20px; height: 20px; margin-right: 7px; flex: none }
+.byttspiller-ikon svg { width: 100%; height: 100%; display: block }
 .liten { font-size: 13.5px }
 button.liten { padding: 6px 12px }
 #kopibeskjed.feil { color: #b3261e }
@@ -176,6 +183,7 @@ button.liten { padding: 6px 12px }
 .huskort.lest .huskort-ikon { color: #2f7d4f }
 .huskort.butikk .huskort-ikon { color: #2f7d9d }
 .huskort.samling .huskort-ikon { color: #6a4b9c }
+.huskort.robotvalg .huskort-ikon { color: var(--gul) }
 
 .huskort.hoved {
   background: var(--blekk); border-color: var(--blekk);
@@ -233,6 +241,13 @@ button.liten { padding: 6px 12px }
   padding: 12px 16px;
 }
 #lestBok .rad { justify-content: center; margin-top: 28px }
+
+/* ---------- Ola sin robot ---------- */
+
+#robotvalg { padding: 30px 20px 60px; max-width: 780px; margin: 0 auto; width: 100% }
+#robotvalg h2 { font-size: 22px; margin: 0 0 8px; font-weight: 650 }
+#robotvalgTom:empty, #robotvalgTom[hidden] { display: none }
+#robotvalg .rad { justify-content: center; margin-top: 28px }
 
 /* ---------- Verden ---------- */
 
@@ -391,7 +406,7 @@ button.liten { padding: 6px 12px }
 #samling .rad { justify-content: center }
 #samlingTom:empty, #samlingTom[hidden] { display: none }
 
-#samlingListe {
+#samlingListe, #robotvalgListe {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   gap: 14px;
@@ -413,6 +428,10 @@ button.liten { padding: 6px 12px }
 .figurkort .figur-ikon { width: 56px; height: 56px }
 .figurkort .figur-ikon svg { width: 100%; height: 100%; display: block }
 .figurkort .navn { font-weight: 600; font-size: 14px }
+
+/* Den valgte roboten i robotvelgeren -- samme groenne ramme-knep som "eid"
+   i butikken (.vare.eid), saa han ser med et blikk hvilken som er i bruk. */
+.figurkort.valgt { border: 2.5px solid var(--grøn) }
 
 #samlingDetalj { text-align: center; padding: 20px 0 10px }
 #samlingDetaljIkon {
