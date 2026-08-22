@@ -1,5 +1,6 @@
-/* Foreldrekontroll: en firesifret kode som styrer om knappen "Les den for
- * meg" skal vises i lesevisningen.
+/* Foreldrekontroll: en firesifret kode som styrer et par innstillinger i
+ * lesevisningen -- i dag om knappen "Les den for meg" skal vises, og om
+ * knappen "Godkjenn hele teksten" (for en voksen som lytter selv) skal vises.
  *
  * Koden er ikke ekte sikkerhet -- den ligger i klartekst i localStorage som
  * alt annet i appen. Poenget er bare at et barn ikke skal kunne skru på
@@ -36,6 +37,7 @@
     $("#foreldreLaas").hidden = true;
     $("#foreldreInnstillinger").hidden = false;
     $("#lesForMegVeksle").checked = Lagring.lesForMegPaa();
+    $("#godkjennVoksenVeksle").checked = Lagring.godkjennVoksenPaa();
   }
 
   $("#foreldreLaasOpp").onclick = function () {
@@ -63,6 +65,10 @@
 
   $("#lesForMegVeksle").onchange = function () {
     Lagring.settLesForMeg(this.checked);
+  };
+
+  $("#godkjennVoksenVeksle").onchange = function () {
+    Lagring.settGodkjennVoksen(this.checked);
   };
 
   function lukk() {

@@ -292,6 +292,26 @@
     }
   }
 
+  /* En voksen som lytter selv kan godkjenne hele teksten med ett trykk --
+   * nyttig naar gjenkjenneren sliter (stoey, dialekt, en mikrofon som ikke
+   * fungerer godt), men den voksne uansett hoerer at han leser riktig. Da
+   * skal *alt* telle som ekte lest, ikke som hoppet over -- det er nettopp
+   * poenget med aa la en voksen godkjenne i stedet for gjenkjenneren. Knappen
+   * vises bare naar en forelder har skrudd den paa, se foreldre.js. */
+  function godkjennHele() {
+    if (!ord.length) return;
+    setninger.forEach(function (s) {
+      if (!s.ferdig) { s.ferdig = true; giStjerne(); }
+    });
+    ord.forEach(function (o) { o.truffet = true; o.hoppet = false; });
+    midlertidige = [];
+    basis = ord.length;
+    peker = ord.length;
+    forsoktPeker = -1; forsokUtenFramgang = 0;
+    beskjed("En voksen godkjente hele teksten. Bra jobbet!");
+    tegn();
+  }
+
   function foersteUtreffet() {
     for (var i = basis; i < ord.length; i++) if (!ord[i].truffet) return i;
     return ord.length;
@@ -408,6 +428,8 @@
 
   $("#hoppOver").onclick = hoppOverGjeldendeOrd;
 
+  $("#godkjennHele").onclick = godkjennHele;
+
   $("#lesForMeg").onclick = function () {
     if (!ord.length) return;
     var s = naaSetning();
@@ -496,6 +518,7 @@
 
     beskjed: beskjed,
     resultat: resultat,
+    godkjennHele: godkjennHele,
 
     // Slipper matchingen til i konsollen, saa den kan proeves uten mikrofon.
     match: match,

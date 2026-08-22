@@ -38,7 +38,7 @@
   function TOM_FORELDRE() {
     // pin: en firesifret kode Vegard setter selv, ikke noe ekte sikkerhet --
     // bare nok til at et barn ikke skrur paa hjelpeknappen ved et uhell.
-    return { pin: null, lesForMeg: false };
+    return { pin: null, lesForMeg: false, godkjennVoksen: false };
   }
 
   function les() {
@@ -163,6 +163,8 @@
     sjekkForeldrePin: function (pin) { return les().foreldre.pin === pin; },
     lesForMegPaa: function () { return !!les().foreldre.lesForMeg; },
     settLesForMeg: function (paa) { les().foreldre.lesForMeg = !!paa; lagre(); },
+    godkjennVoksenPaa: function () { return !!les().foreldre.godkjennVoksen; },
+    settGodkjennVoksen: function (paa) { les().foreldre.godkjennVoksen = !!paa; lagre(); },
 
     /* ---------- Opptak til mytiske roboter ---------- */
 

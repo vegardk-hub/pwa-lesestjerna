@@ -25,10 +25,13 @@
     $("#stjerner").hidden = hvilken !== "lesing";
     $("#boka").hidden = true;
 
-    // "Les den for meg" er avslaatt som standard -- se foreldre.js. Satt
-    // hver gang, ikke bare ved oppstart, i tilfelle en forelder endrer den
-    // mens han allerede leser.
-    if (hvilken === "lesing") $("#lesForMeg").hidden = !Lagring.lesForMegPaa();
+    // Begge disse er avslaatt som standard -- se foreldre.js. Satt hver
+    // gang, ikke bare ved oppstart, i tilfelle en forelder endrer dem mens
+    // han allerede leser.
+    if (hvilken === "lesing") {
+      $("#lesForMeg").hidden = !Lagring.lesForMegPaa();
+      $("#godkjennHele").hidden = !Lagring.godkjennVoksenPaa();
+    }
 
     // Tilbakeknappen finnes bare der det er noe aa gaa tilbake fra, og den
     // foerer alltid ett hakk innover: fra lesingen til verden, fra verden hjem.

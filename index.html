@@ -11,7 +11,7 @@
 
 <header>
   <h1>Lesestjerna</h1>
-  <span id="versjon">v14</span>
+  <span id="versjon">v15</span>
   <button id="tilbake" hidden>Tilbake</button>
   <button id="byttSpiller" hidden></button>
   <div id="stjerner" hidden></div>
@@ -50,6 +50,11 @@
     <label class="veksle">
       <input type="checkbox" id="lesForMegVeksle">
       Vis knappen «Les den for meg» i lesevisningen
+    </label>
+    <label class="veksle">
+      <input type="checkbox" id="godkjennVoksenVeksle">
+      Vis knappen «Godkjenn hele teksten» i lesevisningen, til bruk når en
+      voksen hører på og lytter selv
     </label>
     <div class="rad">
       <button id="lukkForeldre" class="stor hoved">Lukk</button>
@@ -160,6 +165,9 @@
     <button id="hoppOver">Hopp over ordet</button>
   </div>
   <p id="beskjed"></p>
+  <div class="rad">
+    <button id="godkjennHele" class="liten" hidden>Godkjenn hele teksten (voksen)</button>
+  </div>
 </footer>
 
 <script src="js/tekst.js"></script>
