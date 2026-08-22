@@ -61,6 +61,7 @@
     var foerLevel = level(s);
 
     s.mynter += mynter;
+    s.mynterTjent += mynter;
     s.ord += r.ord;
     s.setninger += r.setninger;
     s.hoppetOver += r.hoppetOver || 0;
@@ -94,6 +95,7 @@
     var s = meg();
     if (!s || !antall) return;
     s.mynter += antall;
+    s.mynterTjent += antall;
     Lagring.lagre();
   }
 
@@ -117,6 +119,7 @@
       navn: s.navn,
       level: level(s),
       mynter: s.mynter,
+      mynterTjent: s.mynterTjent,
       ord: s.ord,
       setninger: s.setninger,
       tekster: s.tekster.length,

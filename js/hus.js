@@ -78,13 +78,19 @@
    * har lyst til aa se paa, ikke bare en tabell.
    */
 
+  // Samme myntglyff brukes paa to fliser -- "mynter" (det han har igjen aa
+  // bruke naa) og "mynterTjent" (alt han noensinne har tjent, se lagring.js).
+  // Ulik farge paa fliskortet (styles.css) holder dem fra hverandre.
+  var MYNT_GLYFF = '<circle cx="12" cy="12" r="9" fill="currentColor"/><circle cx="12" cy="12" r="9" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="1.5"/><path fill="none" stroke="#fff" stroke-opacity=".9" stroke-width="1.6" stroke-linecap="round" d="M9.6 15c0 1 1.07 1.6 2.4 1.6s2.4-.6 2.4-1.6-1.07-1.4-2.4-1.6-2.4-.6-2.4-1.6 1.07-1.6 2.4-1.6 2.4.6 2.4 1.6"/><line x1="12" y1="6.8" x2="12" y2="17.2" stroke="#fff" stroke-opacity=".9" stroke-width="1.6" stroke-linecap="round"/>';
+
   var BOKA_IKONER = {
     ord: '<path fill="currentColor" d="M12 3.5C6.98 3.5 3 6.9 3 11c0 2.36 1.34 4.46 3.44 5.82-.1.98-.46 2.2-1.28 3.3a.5.5 0 0 0 .58.77c1.7-.53 3.02-1.34 3.9-1.98.76.14 1.55.21 2.36.21 5.02 0 9-3.4 9-7.5s-3.98-7.5-9-7.5Z"/>',
     stjerner: '<path fill="currentColor" d="M12 2.9l2.7 5.6 6.15.87-4.45 4.34 1.05 6.13L12 16.85l-5.45 2.99 1.05-6.13-4.45-4.34 6.15-.87L12 2.9Z"/>',
     tekster: '<path fill="currentColor" opacity=".55" d="M9 3h9a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2h-1V7a2 2 0 0 0-2-2H9V3Z"/><rect fill="currentColor" x="4" y="6" width="12" height="15" rx="2"/>',
     boker: '<rect fill="currentColor" x="6" y="3" width="12" height="18" rx="1.5"/><rect fill="currentColor" opacity=".55" x="6" y="3" width="3.4" height="18" rx="1.5"/><rect fill="#fff" opacity=".85" x="11.3" y="6.6" width="5" height="1.4" rx=".7"/><rect fill="#fff" opacity=".85" x="11.3" y="10.1" width="5" height="1.4" rx=".7"/><rect fill="#fff" opacity=".85" x="11.3" y="13.6" width="3.6" height="1.4" rx=".7"/>',
     level: '<path fill="currentColor" d="M12 2.2 4.5 5v5.8c0 5.1 3.2 8.9 7.5 11 4.3-2.1 7.5-5.9 7.5-11V5L12 2.2Z"/>',
-    mynter: '<circle cx="12" cy="12" r="9" fill="currentColor"/><circle cx="12" cy="12" r="9" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="1.5"/><path fill="none" stroke="#fff" stroke-opacity=".9" stroke-width="1.6" stroke-linecap="round" d="M9.6 15c0 1 1.07 1.6 2.4 1.6s2.4-.6 2.4-1.6-1.07-1.4-2.4-1.6-2.4-.6-2.4-1.6 1.07-1.6 2.4-1.6 2.4.6 2.4 1.6"/><line x1="12" y1="6.8" x2="12" y2="17.2" stroke="#fff" stroke-opacity=".9" stroke-width="1.6" stroke-linecap="round"/>'
+    mynter: MYNT_GLYFF,
+    mynterTjent: MYNT_GLYFF
   };
 
   function lag(klasse, tag) {
@@ -115,7 +121,8 @@
       tall("tekster", st.tekster === 1 ? "tekst" : "tekster", st.tekster),
       tall("boker", st.boker === 1 ? "bok" : "bøker", st.boker),
       tall("level", "level", st.level),
-      tall("mynter", "mynter", st.mynter)
+      tall("mynter", "mynter", st.mynter),
+      tall("mynterTjent", "tjent totalt", st.mynterTjent)
     );
 
     var linjer = [st.dager + (st.dager === 1 ? " dag" : " dager") + " med lesing"];

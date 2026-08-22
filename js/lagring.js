@@ -17,6 +17,9 @@
 
   var TOM_SPILLER = {
     mynter: 0,
+    mynterTjent: 0,     // alt han noensinne har tjent -- gaar aldri ned, se
+                        // Spill.betal/tjenMynter. "mynter" alene kan ikke
+                        // vise dette, siden den ogsaa trekkes ned av kjoep.
     ord: 0,             // ord lest foerste gang — det er disse som gir boeker
     setninger: 0,
     hoppetOver: 0,
@@ -59,6 +62,11 @@
     data.spillere.forEach(function (s) {
       if (!s.opptak) s.opptak = {};
       if (s.valgtRobot === undefined) s.valgtRobot = null;
+      // Lagring fra foer denne telleren fantes: vi kan ikke vite hvor mye
+      // som er brukt i butikken tidligere, saa det han har staaende naa er
+      // det beste gulvet vi har -- bedre enn aa starte paa null og late som
+      // mynter han alt har tjent aldri fantes.
+      if (s.mynterTjent === undefined) s.mynterTjent = s.mynter;
     });
     return data;
   }

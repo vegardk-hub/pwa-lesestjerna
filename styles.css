@@ -236,6 +236,7 @@ button.liten { padding: 6px 12px }
 #bokaTall .ikon.boker { background: #fbe1de; color: #b3261e }
 #bokaTall .ikon.level { background: #e9e3f8; color: #6a4b9c }
 #bokaTall .ikon.mynter { background: #fbead0; color: var(--gul) }
+#bokaTall .ikon.mynterTjent { background: #ddf0e4; color: var(--grøn) }
 
 #bokaBunn { text-align: center; margin: 24px 0 0 }
 #boka .rad { justify-content: center; margin-top: 28px }
