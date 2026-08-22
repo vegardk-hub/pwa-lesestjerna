@@ -395,6 +395,19 @@ button.liten { padding: 6px 12px }
 .vare.episk, .figurkort.episk { background: #18151f }
 .vare.episk .navn, .figurkort.episk .navn { color: #fff }
 .vare.episk .merke-kategori, .figurkort.episk .merke-kategori { color: rgba(255, 255, 255, .5) }
+.vare.sekssju, .figurkort.sekssju { background: var(--grønbakk) }
+
+/* Sekssju-robotene dytter armene sine opp og ned hele tiden -- css-klassen
+   settes direkte i SVG-en fra js/figurer.js sin robotSvg(), ikke her, saa
+   den virker uansett hvor roboten vises (butikk, samling, storvisning).
+   Liten faseforskyvning mellom armene (arm-vipp-b) gir en vippende
+   bevegelse i stedet for at begge armene gaar i takt. */
+@keyframes armvipp {
+  0%, 100% { transform: translateY(0) }
+  50% { transform: translateY(-4px) }
+}
+.arm-vipp { animation: armvipp .6s ease-in-out infinite }
+.arm-vipp-b { animation-delay: -.3s }
 
 /* Kategorinavnet var foerst et bokstav-merke i hjoernet, men "Legendarisk"
    er for langt til det -- en liten etikett oeverst paa kortet i stedet. */

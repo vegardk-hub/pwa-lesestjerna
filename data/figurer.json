@@ -1,5 +1,5 @@
 {
-  "versjon": 3,
+  "versjon": 4,
   "_lesmeg": [
     "Robotkatalogen til butikken. Disse er samleobjekter -- kjøpt én gang,",
     "vist i samlingen, ikke plassert i rommet. Bildet av hver robot tegnes av",
@@ -9,8 +9,8 @@
     "  id        må være unik og må ALDRI endres etterpå -- det er nøkkelen",
     "            til hvem som eier hvilken robot.",
     "  navn      det han ser i butikken og i samlingen.",
-    "  kategori  \"vanlig\", \"sjelden\", \"legendarisk\", \"mytisk\" eller \"episk\".",
-    "            Styrer bakgrunnsfargen og kategorinavnet på kortet",
+    "  kategori  \"vanlig\", \"sjelden\", \"legendarisk\", \"mytisk\", \"episk\" eller",
+    "            \"sekssju\". Styrer bakgrunnsfargen og kategorinavnet på kortet",
     "            (js/butikk.js og js/samling.js), og hva som skjer i samlingen:",
     "              vanlig       -- bare lyd (Robotlyd.spill)",
     "              sjelden      -- blinkende lys (blink) + lyd",
@@ -18,18 +18,22 @@
     "              mytisk       -- opptaksknapper i stedet for lyd/frase",
     "              episk        -- glitcher hele tiden (css/.glitch) + en",
     "                               skummel lyd (Robotlyd.spill)",
+    "              sekssju      -- armene dytter opp og ned hele tiden",
+    "                               (css/.arm-vipp, satt i js/figurer.js ut fra",
+    "                               kategorien), blinkende lys + sier en frase",
     "  pris      i mynter. Vanlig ligger rundt 35-50 (omtrent én tekst).",
     "            Sjelden = 2x, legendarisk = 4x, mytisk = 8x, episk = 12x",
     "            av en tilsvarende vanlig-pris -- ikke noe fast tall, bare",
-    "            skalert per robot.",
+    "            skalert per robot. Sekssju er unntaket: rundt tusen mynter,",
+    "            satt rett og slett fordi noen ba om det, ikke etter mønsteret.",
     "  kropp/hode/oyne/aksent   farger (heksverdier) som js/figurer.js maler",
     "            roboten med.",
     "  antenne   \"kule\", \"skaal\" eller \"pigger\".",
     "  ansikt    \"rund\", \"visir\" eller \"firkant\" -- formen på øynene.",
     "  blink     valgfri: \"hode\" eller \"kropp\" -- hvor det blinkende lyset",
-    "            sitter. Bare sjelden og legendarisk bruker denne.",
+    "            sitter. Sjelden, legendarisk og sekssju bruker denne.",
     "  frase     valgfri: det roboten sier når han trykkes på i samlingen.",
-    "            Bare legendarisk bruker denne."
+    "            Legendarisk og sekssju bruker denne."
   ],
   "figurer": [
     { "id": "blikkis",  "navn": "Blikkis",  "kategori": "vanlig", "pris": 35, "kropp": "#9aa3ad", "hode": "#dbe8fb", "oyne": "#12233f", "aksent": "#b3261e", "antenne": "kule",  "ansikt": "rund" },
@@ -67,6 +71,10 @@
 
     { "id": "skygge",    "navn": "Skygge",    "kategori": "episk", "pris": 480, "kropp": "#15151d", "hode": "#26262f", "oyne": "#ff2040", "aksent": "#6a1b9a", "antenne": "pigger", "ansikt": "visir" },
     { "id": "gjenferd",  "navn": "Gjenferd",  "kategori": "episk", "pris": 504, "kropp": "#1c1c26", "hode": "#2e2e3a", "oyne": "#dfefff", "aksent": "#00e5ff", "antenne": "skaal",  "ansikt": "rund" },
-    { "id": "morkling",  "navn": "Mørkling",  "kategori": "episk", "pris": 540, "kropp": "#12121a", "hode": "#20202a", "oyne": "#39ff6a", "aksent": "#8a2be2", "antenne": "kule",   "ansikt": "firkant" }
+    { "id": "morkling",  "navn": "Mørkling",  "kategori": "episk", "pris": 540, "kropp": "#12121a", "hode": "#20202a", "oyne": "#39ff6a", "aksent": "#8a2be2", "antenne": "kule",   "ansikt": "firkant" },
+
+    { "id": "doot",   "navn": "Doot",   "kategori": "sekssju", "pris": 980,  "kropp": "#ff8a3d", "hode": "#fff6e0", "oyne": "#3a2000", "aksent": "#8bc93a", "antenne": "pigger", "ansikt": "visir",   "blink": "hode",  "frase": "Doot doot! Six seven!" },
+    { "id": "vippo",  "navn": "Vippo",  "kategori": "sekssju", "pris": 1050, "kropp": "#3d6fb4", "hode": "#e0f0ff", "oyne": "#ffffff", "aksent": "#f2b705", "antenne": "skaal",  "ansikt": "rund",    "blink": "kropp", "frase": "Six seven! Six seven! Six seven!" },
+    { "id": "seksju", "navn": "Seksju", "kategori": "sekssju", "pris": 1020, "kropp": "#a8447a", "hode": "#fbe0f0", "oyne": "#2a1020", "aksent": "#3ec6c6", "antenne": "kule",   "ansikt": "firkant", "blink": "hode",  "frase": "Seks sju! Seks sju! Seks sju!" }
   ]
 }

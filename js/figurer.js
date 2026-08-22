@@ -19,7 +19,7 @@
   // Teksten paa kortet i butikken og samlingen -- se BAKGRUNNSFARGE i
   // styles.css (.vare/.figurkort + kategorinavnet som klasse) for selve
   // fargen. Ukjent/manglende kategori telles som vanlig.
-  var KATEGORINAVN = { vanlig: "Vanlig", sjelden: "Sjelden", legendarisk: "Legendarisk", mytisk: "Mytisk", episk: "Episk" };
+  var KATEGORINAVN = { vanlig: "Vanlig", sjelden: "Sjelden", legendarisk: "Legendarisk", mytisk: "Mytisk", episk: "Episk", sekssju: "67" };
 
   function antenneSvg(f) {
     if (f.antenne === "kule") {
@@ -48,24 +48,31 @@
            '<rect x="22" y="15.5" width="4.5" height="4.5" rx=".8" fill="' + f.oyne + '"/>';
   }
 
-  // Sjeldne og legendariske roboter har et blinkende lys paa hodet eller
-  // kroppen -- css/.blink-lys gjoer selve blinkingen (en enkel opacity-
+  // Sjeldne, legendariske og sekssju-roboter har et blinkende lys paa hodet
+  // eller kroppen -- css/.blink-lys gjoer selve blinkingen (en enkel opacity-
   // animasjon), her legges bare klassen paa riktig sted. Kroppslyset er det
   // samme brystlyset alle robotene alt har -- det faar bare klassen i
   // tillegg. Hodelyset er nytt, en liten lampe oppe i hjoernet av hodet.
+  //
+  // Sekssju-roboten dytter i tillegg armene sine opp og ned hele tiden --
+  // css/.arm-vipp gjoer selve bevegelsen, med en liten faseforskyvning
+  // mellom venstre og hoeyre arm (css/.arm-vipp-b) saa de ikke gaar i takt.
   function robotSvg(f) {
     var hodelys = f.blink === "hode"
       ? '<circle cx="28" cy="11" r="2" class="blink-lys" fill="' + f.aksent + '"/>'
       : "";
     var kroppslysKlasse = f.blink === "kropp" ? ' class="blink-lys"' : "";
+    var vipper = f.kategori === "sekssju";
+    var armVKlasse = vipper ? ' class="arm-vipp"' : "";
+    var armHKlasse = vipper ? ' class="arm-vipp arm-vipp-b"' : "";
 
     return '<svg viewBox="0 0 40 48" aria-hidden="true">' +
       antenneSvg(f) +
       '<rect x="9" y="8" width="22" height="16" rx="6" fill="' + f.hode + '"/>' +
       ansiktSvg(f) +
       hodelys +
-      '<rect x="1" y="29" width="6" height="10" rx="3" fill="' + f.kropp + '"/>' +
-      '<rect x="33" y="29" width="6" height="10" rx="3" fill="' + f.kropp + '"/>' +
+      '<rect x="1" y="29" width="6" height="10" rx="3" fill="' + f.kropp + '"' + armVKlasse + '/>' +
+      '<rect x="33" y="29" width="6" height="10" rx="3" fill="' + f.kropp + '"' + armHKlasse + '/>' +
       '<rect x="6" y="26" width="28" height="18" rx="7" fill="' + f.kropp + '"/>' +
       '<circle cx="20" cy="35" r="3.6" fill="' + f.aksent + '"' + kroppslysKlasse + '/>' +
       '<rect x="12" y="44" width="6" height="4" rx="2" fill="' + f.hode + '"/>' +

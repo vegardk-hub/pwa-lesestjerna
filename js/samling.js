@@ -11,6 +11,12 @@
  *   mytisk       -- ingen lyd/frase -- to knapper for eget opptak i stedet
  *   episk        -- glitcher hele tiden (css/.glitch), og trykk gir en
  *                   skummel robotlyd
+ *   sekssju      -- armene dytter opp og ned hele tiden (css/.arm-vipp),
+ *                   blinkende lys, og trykk gir en frase med robotstemme
+ *
+ * Frasen (reager() under) knyttes til at figuren HAR en frase i
+ * data/figurer.json, ikke til en bestemt kategori -- i dag er det
+ * legendarisk og sekssju, men koden bryr seg ikke om hvilke.
  */
 (function (global) {
   "use strict";
@@ -54,7 +60,7 @@
   function reager(v) {
     if (v.kategori === "mytisk") return;
     Robotlyd.spill(v.id);
-    if (v.kategori === "legendarisk" && v.frase) {
+    if (v.frase) {
       setTimeout(function () { Robotlyd.si(v.frase); }, 450);
     }
   }
@@ -78,7 +84,7 @@
     } else {
       opptakBoks.hidden = true;
       hint.hidden = false;
-      hint.textContent = v.kategori === "legendarisk"
+      hint.textContent = v.frase
         ? "Trykk på roboten for å høre den snakke igjen."
         : "Trykk på roboten for å høre lyden igjen.";
     }
