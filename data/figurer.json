@@ -73,8 +73,8 @@
     { "id": "gjenferd",  "navn": "Gjenferd",  "kategori": "episk", "pris": 504, "kropp": "#1c1c26", "hode": "#2e2e3a", "oyne": "#dfefff", "aksent": "#00e5ff", "antenne": "skaal",  "ansikt": "rund" },
     { "id": "morkling",  "navn": "Mørkling",  "kategori": "episk", "pris": 540, "kropp": "#12121a", "hode": "#20202a", "oyne": "#39ff6a", "aksent": "#8a2be2", "antenne": "kule",   "ansikt": "firkant" },
 
-    { "id": "doot",   "navn": "Doot",   "kategori": "sekssju", "pris": 980,  "kropp": "#ff8a3d", "hode": "#fff6e0", "oyne": "#3a2000", "aksent": "#8bc93a", "antenne": "pigger", "ansikt": "visir",   "blink": "hode",  "frase": "Doot doot! Six seven!" },
+    { "id": "doot",   "navn": "Doot",   "kategori": "sekssju", "pris": 980,  "kropp": "#ff8a3d", "hode": "#fff6e0", "oyne": "#3a2000", "aksent": "#8bc93a", "antenne": "pigger", "ansikt": "visir",   "blink": "hode",  "frase": "Six seven! Six seven!" },
     { "id": "vippo",  "navn": "Vippo",  "kategori": "sekssju", "pris": 1050, "kropp": "#3d6fb4", "hode": "#e0f0ff", "oyne": "#ffffff", "aksent": "#f2b705", "antenne": "skaal",  "ansikt": "rund",    "blink": "kropp", "frase": "Six seven! Six seven! Six seven!" },
-    { "id": "seksju", "navn": "Seksju", "kategori": "sekssju", "pris": 1020, "kropp": "#a8447a", "hode": "#fbe0f0", "oyne": "#2a1020", "aksent": "#3ec6c6", "antenne": "kule",   "ansikt": "firkant", "blink": "hode",  "frase": "Seks sju! Seks sju! Seks sju!" }
+    { "id": "seksju", "navn": "Seksju", "kategori": "sekssju", "pris": 1020, "kropp": "#a8447a", "hode": "#fbe0f0", "oyne": "#2a1020", "aksent": "#3ec6c6", "antenne": "kule",   "ansikt": "firkant", "blink": "hode",  "frase": "Six seven, six seven!" }
   ]
 }
