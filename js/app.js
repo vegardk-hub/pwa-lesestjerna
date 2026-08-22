@@ -14,6 +14,8 @@
 
   var naa = null;        // teksten som leses akkurat naa
   var sisteEmne = null;  // hvor "Les en til" skal hente neste fra
+  var lesFraVanskord = false; // sant naar lesingen kom fra "Vanskelige ord",
+                              // saa "tilbake" og fullfoert foerer dit igjen
 
   // Roboter uten en fast frase (bare de legendariske har det, se
   // data/figurer.json) faar en av disse i stedet, saa alle -- ikke bare fem
@@ -32,6 +34,7 @@
     $("#velgSpiller").hidden = hvilken !== "spillere";
     $("#hus").hidden = hvilken !== "hus";
     $("#verden").hidden = hvilken !== "verden";
+    $("#vanskord").hidden = hvilken !== "vanskord";
     $("#lesing").hidden = hvilken !== "lesing";
     $("#ferdig").hidden = hvilken !== "ferdig";
     $("#verktoy").hidden = hvilken !== "lesing";
@@ -97,6 +100,13 @@
     vis("hus");
   }
 
+  function tilVanskord() {
+    Lesing.stopp();
+    naa = null;
+    Vanskord.apne();
+    vis("vanskord");
+  }
+
   /* ---------- Lesing ---------- */
 
   // Trigger en kort blunke-animasjon paa foelgesvennen -- samme knep som
@@ -111,6 +121,7 @@
   }
 
   function les(oppgave) {
+    lesFraVanskord = false;
     vis("lesing");
     Lesing.start(oppgave, { ferdig: ferdig, stjerne: reagerLesRobot });
   }
@@ -121,6 +132,24 @@
     naa = t;
     sisteEmne = emneId;
     les({ tekst: t.tekst, vanskeligeOrd: t.vanskeligeOrd });
+  }
+
+  // Valgt fra "Vanskelige ord" -- ett enkelt ord i stedet for en hel tekst,
+  // og betaler ikke noe (se vanskord.js): ingen mynter, ingen "ord lest",
+  // bare et hakk i den lille lista. Fullfoert (ved stemme, ved den vanlige
+  // "fem forsoek"-sikkerheten i lesing.js, eller ved at en voksen godkjenner)
+  // foerer rett tilbake til ordlista, ikke til den vanlige ferdig-skjermen.
+  function lesVanskeligOrd(ord) {
+    naa = null;
+    lesFraVanskord = true;
+    vis("lesing");
+    Lesing.start({ tekst: ord + ".", vanskeligeOrd: [] }, {
+      ferdig: function () {
+        Vanskord.merkFerdig(ord);
+        tilVanskord();
+      },
+      stjerne: reagerLesRobot
+    });
   }
 
   // Valgt fra "Ola sin bok" -- en tekst han alt har lest, valgt fra den
@@ -192,6 +221,7 @@
   Verden.naarHjem(tilHus);
   Hus.naarLestValgt(lesSpesifikk);
   Hus.naarRobotValgt(tegnSpillerknapp);
+  Vanskord.naarOrdValgt(lesVanskeligOrd);
 
   $("#byttSpiller").onclick = function () {
     Lesing.stopp();
@@ -199,9 +229,15 @@
     vis("spillere");
   };
 
+  // Fra lesing gaar tilbake enten til verden (vanlig lesing) eller til
+  // ordlista (les via "Vanskelige ord") -- se lesFraVanskord. Ellers gaar
+  // den alltid hjem, enten det er fra verden eller fra ordlista selv.
   $("#tilbake").onclick = function () {
-    if ($("#verden").hidden) tilVerden();
-    else tilHus();
+    if (!$("#lesing").hidden) {
+      if (lesFraVanskord) tilVanskord(); else tilVerden();
+    } else {
+      tilHus();
+    }
   };
   $("#tilVerden").onclick = tilVerden;
   $("#tilHus").onclick = tilHus;
@@ -211,6 +247,7 @@
   $("#apneButikk").onclick = Butikk.apne;
   $("#apneSamling").onclick = Samling.apne;
   $("#apneRobotvalg").onclick = Hus.apneRobotvalg;
+  $("#apneVanskord").onclick = tilVanskord;
   $("#apneForeldre").onclick = Foreldre.apne;
 
   $("#lesEnTil").onclick = function () { lesFraEmne(sisteEmne); };

@@ -24,7 +24,13 @@
     lest: '<rect fill="currentColor" x="10" y="6" width="28" height="36" rx="3"/><rect fill="currentColor" opacity=".55" x="10" y="6" width="7.5" height="36" rx="3"/><rect fill="#fff" opacity=".85" x="21" y="15" width="12" height="3" rx="1.5"/><rect fill="#fff" opacity=".85" x="21" y="22" width="12" height="3" rx="1.5"/><rect fill="#fff" opacity=".85" x="21" y="29" width="8.5" height="3" rx="1.5"/>',
     butikk: '<path fill="currentColor" d="M14 16 17 8h14l3 8h6a1 1 0 0 1 1 1l-2.4 21a3 3 0 0 1-3 2.7H12.4a3 3 0 0 1-3-2.7L7 17a1 1 0 0 1 1-1h6Z"/><path fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" d="M18 20v2a6 6 0 0 0 12 0v-2"/>',
     samling: '<line x1="24" y1="6" x2="24" y2="14" stroke="currentColor" stroke-width="2.6"/><circle cx="24" cy="5" r="3.6" fill="currentColor"/><rect fill="currentColor" x="10" y="14" width="28" height="21" rx="8"/><circle cx="18" cy="24.5" r="3.1" fill="#fff"/><circle cx="30" cy="24.5" r="3.1" fill="#fff"/><rect fill="currentColor" x="15.5" y="35" width="7" height="5.5" rx="2.2"/><rect fill="currentColor" x="25.5" y="35" width="7" height="5.5" rx="2.2"/>',
-    robot: '<rect fill="currentColor" x="12" y="18" width="24" height="20" rx="7"/><circle cx="19" cy="27" r="3" fill="#fff"/><circle cx="29" cy="27" r="3" fill="#fff"/><line x1="24" y1="6" x2="24" y2="13" stroke="currentColor" stroke-width="2.4"/><circle cx="24" cy="5" r="3" fill="currentColor"/>'
+    robot: '<rect fill="currentColor" x="12" y="18" width="24" height="20" rx="7"/><circle cx="19" cy="27" r="3" fill="#fff"/><circle cx="29" cy="27" r="3" fill="#fff"/><line x1="24" y1="6" x2="24" y2="13" stroke="currentColor" stroke-width="2.4"/><circle cx="24" cy="5" r="3" fill="currentColor"/>',
+    // Ei bok med bolgete linjer i stedet for rette -- vanskelig, kronglete
+    // tekst -- til forskjell fra det rette, ryddige "lest"-ikonet over.
+    vanskord: '<rect fill="currentColor" x="8" y="6" width="32" height="36" rx="4"/>' +
+      '<path d="M14 15 Q19 11 24 15 T34 15" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/>' +
+      '<path d="M14 23 Q19 19 24 23 T34 23" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/>' +
+      '<path d="M14 31 Q19 27 24 31 T34 31" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/>'
   };
 
   function settIkon(kort, ikon) {
@@ -37,6 +43,7 @@
   settIkon("apneButikk", "butikk");
   settIkon("apneSamling", "samling");
   settIkon("apneRobotvalg", "robot");
+  settIkon("apneVanskord", "vanskord");
 
   /* ---------- Huset ---------- */
 

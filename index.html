@@ -11,7 +11,7 @@
 
 <header>
   <h1>Lesestjerna</h1>
-  <span id="versjon">v26</span>
+  <span id="versjon">v27</span>
   <button id="tilbake" hidden>Tilbake</button>
   <button id="byttSpiller" hidden></button>
   <div id="stjerner" hidden></div>
@@ -93,6 +93,10 @@
       <span class="huskort-ikon"></span>
       <span class="huskort-navn" id="robotKortNavn"></span>
     </button>
+    <button type="button" id="apneVanskord" class="huskort vanskord">
+      <span class="huskort-ikon"></span>
+      <span class="huskort-navn">Vanskelige ord</span>
+    </button>
   </div>
 </section>
 
@@ -163,6 +167,15 @@
   <p class="und liten feil" id="bankfeil"></p>
 </section>
 
+<section id="vanskord" hidden>
+  <h2>Vanskelige ord</h2>
+  <p class="und liten" id="vanskordFremgang"></p>
+  <div id="vanskordListe"></div>
+  <div class="rad">
+    <button id="nyttOrdsett">Nye 20 ord</button>
+  </div>
+</section>
+
 <section id="ferdig" hidden>
   <h2 id="ferdigTittel"></h2>
   <p id="ferdigTall"></p>
@@ -209,6 +222,7 @@
 <script src="js/spillere.js"></script>
 <script src="js/verden.js"></script>
 <script src="js/hus.js"></script>
+<script src="js/vanskord.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>
