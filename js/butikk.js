@@ -30,7 +30,10 @@
     var liste = $("#butikkListe");
     liste.textContent = "";
     Figurer.alle().forEach(function (v) {
-      var kort = lag("vare " + v.kategori);
+      // Groenn ramme paa kortet, ikke bare "Eid" paa knappen -- ellers maa
+      // han lese hver eneste knapp for aa se hvilke han alt har naar han
+      // blar gjennom hele lista.
+      var kort = lag("vare " + v.kategori + (eid[v.id] ? " eid" : ""));
       var merke = lag("merke-kategori");
       merke.textContent = Figurer.kategorinavn(v.kategori);
       var ikon = lag("figur-ikon");
@@ -54,7 +57,6 @@
     });
 
     $("#butikkMynter").textContent = s.mynter + " ◉";
-    tegnEide(s);
   }
 
   // Naavn og mynter staar i den globale topplinja mens butikken er aapen,
@@ -66,23 +68,6 @@
     $("#lukkButikk").hidden = !paa;
     if (paa) $("#byttSpiller").hidden = true;
     else if (Lagring.aktiv()) $("#byttSpiller").hidden = false;
-  }
-
-  function tegnEide(s) {
-    var liste = $("#butikkEide");
-    liste.textContent = "";
-    (s.eide || []).forEach(function (e) {
-      var v = Figurer.finn(e.ting);
-      if (!v) return;
-      var rad = lag("eidRad " + v.kategori);
-      var ikon = lag("figur-ikon liten");
-      ikon.innerHTML = Figurer.svg(v.id);
-      var navn = lag("", "span");
-      navn.textContent = v.navn;
-      rad.append(ikon, navn);
-      liste.append(rad);
-    });
-    $("#butikkEideTom").hidden = (s.eide || []).length > 0;
   }
 
   /* ---------- Åpne / lukke ---------- */

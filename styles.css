@@ -293,8 +293,6 @@ button.liten { padding: 6px 12px }
 /* ---------- Butikken ---------- */
 
 #butikk { padding: 30px 20px 60px; max-width: 780px; margin: 0 auto; width: 100% }
-#butikk h3 { font-size: 16px; margin: 0 0 12px; font-weight: 650 }
-#butikk .rad { justify-content: center }
 
 /* Navn og mynter staar i den globale topplinja naar butikken er aapen --
    se #butikkHeader/#lukkButikk i header, satt synlig fra js/butikk.js --
@@ -324,6 +322,11 @@ button.liten { padding: 6px 12px }
 .vare .navn { font-weight: 600; font-size: 14.5px }
 .vare .pris { color: var(--gul); font-size: 13.5px }
 .vare button { width: 100%; margin-top: 4px }
+
+/* Groenn ramme paa roboter han alt eier, saa det er tydelig med et blikk
+   naar han blar gjennom hele butikken -- ikke noe han maa lese seg til paa
+   hver enkelt knapp. */
+.vare.eid { border: 2.5px solid var(--grøn) }
 
 /* ---------- Sjeldenhet: bakgrunn + kategorinavn ----------
    Vanlig=hvit, sjelden=graa, legendarisk=gul, mytisk=roed, episk=moerk
@@ -365,20 +368,6 @@ button.liten { padding: 6px 12px }
 .vare.episk .figur-ikon, .figurkort.episk .figur-ikon, #samlingDetaljIkon.glitch {
   animation: glitch 2.4s infinite;
 }
-
-#butikkEideWrap { margin-top: 32px; border-top: 1px solid var(--strek); padding-top: 20px }
-#butikkEideTom:empty, #butikkEideTom[hidden] { display: none }
-#butikkEide { display: flex; flex-direction: column; gap: 8px }
-.eidRad {
-  border: 1.5px solid var(--strek); border-radius: 12px; padding: 8px 12px;
-  display: flex; align-items: center; gap: 12px;
-}
-.eidRad.sjelden { background: #dcdde2 }
-.eidRad.legendarisk { background: #fbe9a6 }
-.eidRad.mytisk { background: #f3b6b6 }
-.eidRad .figur-ikon.liten { width: 36px; height: 36px; flex: none }
-.eidRad .figur-ikon.liten svg { width: 100%; height: 100%; display: block }
-.eidRad span { flex: 1; font-size: 14.5px }
 
 /* ---------- Samlingen ---------- */
 
