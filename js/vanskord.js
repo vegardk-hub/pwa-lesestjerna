@@ -40,7 +40,6 @@
     var alle = Bank.vanskeligeOrd();
     settOrd = stokk(alle).slice(0, Math.min(MAKS, alle.length))
       .map(function (o) { return { ord: o, ferdig: false }; });
-    $("#vanskordMelding").textContent = "";
     tegn();
   }
 
