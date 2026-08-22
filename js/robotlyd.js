@@ -234,28 +234,12 @@
       sveip(c, t, 260, 55, .5, "sawtooth", .25);
       stoy(c, t + .45, .15, 1200, .18);
       tone(c, t + .5, 45, .4, "square", .2);
-    },
-
-    /* ---------- Sekssju ---------- */
-    doot: function (c, t) {
-      tone(c, t, 220, .12, "triangle", .24);
-      tone(c, t + .15, 220, .12, "triangle", .24);
-    },
-    // To toner som sveiper fram og tilbake, tre ganger paa rad -- samme
-    // vippende bevegelse som armene gjoer (css/.arm-vipp).
-    vippo: function (c, t) {
-      for (var i = 0; i < 3; i++) {
-        sveip(c, t + i * .22, 300, 600, .1, "sine", .18);
-        sveip(c, t + i * .22 + .11, 600, 300, .1, "sine", .18);
-      }
-    },
-    // To toner om hverandre, tre ganger -- "seks-sju, seks-sju, seks-sju".
-    seksju: function (c, t) {
-      for (var i = 0; i < 3; i++) {
-        tone(c, t + i * .2, 500, .08, "square", .2);
-        tone(c, t + i * .2 + .1, 700, .08, "square", .2);
-      }
     }
+
+    // Sekssju-robotene (doot, vippo, seksju) har med vilje ingen oppskrift
+    // her. De skal bare si frasen sin ("Six seven!") med robotstemme, ikke
+    // ogsaa en syntetisert lyd attpaa -- Robotlyd.spill() nedenfor gjoer da
+    // ingenting for dem, helt stille, se reager() i samling.js.
   };
 
   global.Robotlyd = {
