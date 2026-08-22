@@ -165,6 +165,39 @@
     return ut;
   }
 
+  // Gjenkjenneren hoerer titt og ofte nesten riktig -- en dialektendelse, en
+  // vokal som blir feiltolket -- og da hjelper det ikke aa spoerre om flere
+  // tolkninger, for ingen av dem treffer bokstavrett. Et ord som ligger tett
+  // nok (faa bokstaver unna) skal telle likevel. Korte ord holdes utenfor:
+  // "en" er bare to bokstaver fra de fleste andre smaa ord, og ville truffet
+  // altfor mye feil.
+  function likTNok(a, b) {
+    if (a.length < 4 || b.length < 4) return a === b;
+    var tillatt = (a.length > 7 || b.length > 7) ? 2 : 1;
+    return avstand(a, b, tillatt + 1) <= tillatt;
+  }
+
+  // Levenshtein-avstand, men gir opp saa fort den passerer taket -- ordene
+  // her er korte og taket lite, saa dette koster ingenting merkbart.
+  function avstand(a, b, tak) {
+    if (Math.abs(a.length - b.length) > tak) return tak + 1;
+    var forrige = [];
+    for (var j = 0; j <= b.length; j++) forrige.push(j);
+    for (var i = 1; i <= a.length; i++) {
+      var rad = [i];
+      var minRad = i;
+      for (j = 1; j <= b.length; j++) {
+        var kost = a[i - 1] === b[j - 1] ? 0 : 1;
+        var v = Math.min(forrige[j] + 1, rad[j - 1] + 1, forrige[j - 1] + kost);
+        rad.push(v);
+        if (v < minRad) minRad = v;
+      }
+      if (minRad > tak) return tak + 1;
+      forrige = rad;
+    }
+    return forrige[b.length];
+  }
+
   function match(hoert, endelig) {
     // En mellomvariant sender hele fragmentet paa nytt hver gang, saa det den
     // markerte forrige runde tas bort foer vi gaar gjennom paa ny. Endelige
@@ -194,7 +227,7 @@
           i = g.til;
           return;
         }
-        if (ord[j].rein === o) {
+        if (ord[j].rein === o || likTNok(ord[j].rein, o)) {
           if (!ord[j].truffet) {
             ord[j].truffet = true;
             if (!endelig) midlertidige.push(j);
@@ -387,8 +420,19 @@
 
   /* ---------- Kobling mot stemmelaget ---------- */
 
-  Stemme.lytter.paaResultat = function (hoert, endelig) {
-    if (ord.length) match(hoert, endelig);
+  // Gjenkjenneren gir na en liste med tolkninger av det samme lydklippet, ikke
+  // bare den ene den er sikrest paa. En mellomvariant bruker bare den beste,
+  // siden den uansett blir tegnet paa nytt naar neste fragment kommer. Et
+  // endelig resultat proever i stedet alle tolkningene: siden endelige treff
+  // aldri viskes ut igjen (bare de midlertidige gjoer det, se toppen av
+  // match()), kan vi trygt kjoere match() flere ganger paa rad -- treffene
+  // legger seg oppa hverandre i stedet for aa fortrenge hverandre. Dermed
+  // teller det ordet han faktisk sa, selv om det bare var gjenkjennerens
+  // nest- eller tredjebeste gjetning.
+  Stemme.lytter.paaResultat = function (kandidater, endelig) {
+    if (!ord.length) return;
+    if (!endelig) { match(kandidater[0], false); return; }
+    kandidater.forEach(function (k) { match(k, true); });
   };
 
   Stemme.lytter.paaFeil = function (kode, forklaring) { beskjed(forklaring, true); };

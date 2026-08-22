@@ -72,7 +72,7 @@
   var lytter = {
     vil: false,          // vil vi lytte? gjenkjenneren stopper av seg selv titt og ofte
     gj: null,
-    paaResultat: null,   // (tekst, endelig)
+    paaResultat: null,   // (kandidater, endelig) -- kandidater er en liste med tolkninger
     paaFeil: null,       // (kode, forklaring)
     paaTilstand: null,   // (lytter?)
 
@@ -85,16 +85,25 @@
       gj.lang = "nb-NO";
       gj.continuous = true;
       gj.interimResults = true;
+      // Gjenkjenneren kan foreslaa flere tolkninger av det samme lydklippet,
+      // rangert etter hvor sikker den er. Foer spurte vi bare om den beste,
+      // men paa en barnestemme er den riktige teksten titt og ofte nummer to
+      // eller tre paa lista i stedet for nummer en. Aa spoerre om flere
+      // koster ingenting og gir matchingen flere sjanser aa treffe med.
+      gj.maxAlternatives = 5;
 
       gj.onresult = function (e) {
         for (var i = e.resultIndex; i < e.results.length; i++) {
           var r = e.results[i];
-          var t = r[0].transcript.trim();
-          // Gjenkjenneren sender av og til et tomt endelig resultat naar den
-          // runder av. Slippes det gjennom, nulles framgangen paa slutten av
-          // hver eneste setning.
-          if (!t) continue;
-          if (meg.paaResultat) meg.paaResultat(t, r.isFinal);
+          var kandidater = [];
+          for (var k = 0; k < r.length; k++) {
+            var t = r[k].transcript.trim();
+            // Gjenkjenneren sender av og til et tomt endelig resultat naar den
+            // runder av. Slippes det gjennom, nulles framgangen paa slutten av
+            // hver eneste setning.
+            if (t) kandidater.push(t);
+          }
+          if (kandidater.length && meg.paaResultat) meg.paaResultat(kandidater, r.isFinal);
         }
       };
 
