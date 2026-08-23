@@ -6,9 +6,11 @@
  * bro...) -- de er bare spredt fint utover flaten, saa de ikke klumper seg
  * sammen. Skal en sone flyttes, er det tallene der det skjer.
  *
- * De fire emnene er skolefag-bredde, ikke steder: ting og krefter, alt som
- * lever, mennesker og tanker, oppfinnelser. Bildet passer likevel fint --
- * det er stort nok til aa romme alle fire uten aa se ut som en meny.
+ * Emnene er skolefag-bredde, ikke steder: ting og krefter, alt som lever,
+ * mennesker og tanker, oppfinnelser -- og vitser, som ikke er et skolefag,
+ * men et sted han kan ta en pause og le litt mellom de andre. Bildet passer
+ * likevel fint -- det er stort nok til aa romme alle fem uten aa se ut som
+ * en meny.
  *
  * Hjemme-punktet er ikke et emne fra tekstbanken -- det foerer alltid rett
  * tilbake til huset (Hus.tegn).
@@ -22,12 +24,14 @@
   var $ = function (v) { return document.querySelector(v); };
 
   // Brøkdel av kartets bredde/hoeyde (0..1), ikke piksler -- da flytter
-  // punktene seg riktig med kortet uansett hvor bredt det vises. Fem punkter
-  // i en symmetrisk diamant: to oeverst, hjem midt i, to nederst. To paa
-  // samme rad staar alltid paa hver sin halvdel av bildet (0.56 fra
-  // hverandre), saa selv paa det smaleste kortet er det god avstand --
-  // ellers klumper lappene seg fort sammen naar kortet vises smalt (mobil).
+  // punktene seg riktig med kortet uansett hvor bredt det vises. Seks
+  // punkter: fire i en symmetrisk diamant, hjem midt i, og vitser som en
+  // sjette topp-prikk over de to oeverste. To paa samme rad staar alltid
+  // paa hver sin halvdel av bildet (0.56 fra hverandre), saa selv paa det
+  // smaleste kortet er det god avstand -- ellers klumper lappene seg fort
+  // sammen naar kortet vises smalt (mobil).
   var SONER = {
+    vitser:       { x: 0.50, y: 0.13 },
     oppfinnelser: { x: 0.22, y: 0.26 },
     folk:         { x: 0.78, y: 0.26 },
     hjem:         { x: 0.50, y: 0.54 },
@@ -40,6 +44,7 @@
     folk: "#a8447a",
     oppfinnelser: "#b3651e",
     liv: "#2f7d4f",
+    vitser: "#d99a00",
     hjem: "#c46a2f"
   };
   var RESERVE = "#6b727a";
@@ -52,7 +57,8 @@
     krefter: "Verdensrommet",
     folk: "Mennesker",
     oppfinnelser: "Oppfinnelser",
-    liv: "Alt som lever"
+    liv: "Alt som lever",
+    vitser: "Vitser"
   };
 
   /* Ett lite ikon per emne i prikken paa kartet. */
@@ -73,6 +79,11 @@
     // Alt som lever: et blad.
     liv: '<path d="M12 3c-5 2-8 6-8 11a8 8 0 0 0 16 0c0-5-3-9-8-11Z"/>' +
          '<path d="M12 6v13" fill="none" stroke="#fff" stroke-width="1.4" opacity=".7"/>',
+    // Vitser og humor: et smilende, leende ansikt -- bare oeyne og munn,
+    // ikke noe hode-omriss, akkurat som "krefter" sitt atom klarer seg uten.
+    vitser: '<circle cx="8" cy="10" r="1.6"/><circle cx="16" cy="10" r="1.6"/>' +
+            '<path d="M6.5 13.5c1.6 3.4 4 5 5.5 5s3.9-1.6 5.5-5" fill="none" ' +
+            'stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
     hjem: '<path d="M3 12 12 4l9 8"/><path d="M5 10.5V21h14V10.5"/><path d="M9.5 21v-7h5v7"/>'
   };
 

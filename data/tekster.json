@@ -19,6 +19,9 @@
     "Kjor 'python sjekk_tekster.py' etterpa. Den fanger dubletter, ukjente",
     "emner, for lange tekster og tall skrevet med siffer.",
     "",
+    "Unntak: emnet 'vitser' er oppdiktede vitser, ikke fakta -- kravet",
+    "om sann tekst og et konkret tall over gjelder ikke der.",
+    "",
     "Om tall: skriv dem med bokstaver, aldri siffer, og legg HVERT ord i tallet",
     "i vanskeligeOrd — ogsa 'og' inni det, som i 'fire hundre og sekstini'.",
     "Gjenkjenneren gir '2469' for hele munnfullen, sa ingen av de seks ordene kan",
@@ -46,6 +49,11 @@
       "id": "oppfinnelser",
       "navn": "Oppfinnelser og maskiner",
       "under": "Ting folk har funnet opp"
+    },
+    {
+      "id": "vitser",
+      "navn": "Vitser og humor",
+      "under": "Korte vitser som skal få deg til å le"
     }
   ],
   "tekster": [
@@ -2082,6 +2090,276 @@
         "åtte"
       ],
       "emoji": "💾"
+    },
+    {
+      "id": "vitser-01",
+      "emne": "vitser",
+      "tittel": "Det late spøkelset",
+      "niva": 1,
+      "tekst": "Hvorfor tok spøkelset heisen i stedet for å sveve? Fordi det var for lat til å anstrenge seg, selv om det kunne fly. Nå kommer det alltid for sent når det skal skremme noen.",
+      "vanskeligeOrd": [],
+      "emoji": "👻"
+    },
+    {
+      "id": "vitser-02",
+      "emne": "vitser",
+      "tittel": "Roboten som glemte alt",
+      "niva": 1,
+      "tekst": "Hvorfor sluttet roboten å telle sauer om natten? Fordi han telte helt til han gikk tom for batteri. Nå sover han med laderen i hånden.",
+      "vanskeligeOrd": [],
+      "emoji": "🤖"
+    },
+    {
+      "id": "vitser-03",
+      "emne": "vitser",
+      "tittel": "Den kloke fisken",
+      "niva": 1,
+      "tekst": "Hvorfor tok fisken med seg lekser hjem? Fordi læreren hadde sagt at den måtte øve på å svømme mot strømmen. Fisken syntes det hørtes ut som en fridag.",
+      "vanskeligeOrd": [],
+      "emoji": "🐟"
+    },
+    {
+      "id": "vitser-04",
+      "emne": "vitser",
+      "tittel": "Skjelettet på festen",
+      "niva": 2,
+      "tekst": "Hvorfor ville ikke skjelettet danse på festen? Fordi han ikke hadde noe kjøtt igjen på beina. I stedet sto han bare og klapret fornøyd i takt til musikken.",
+      "vanskeligeOrd": [],
+      "emoji": "💀"
+    },
+    {
+      "id": "vitser-05",
+      "emne": "vitser",
+      "tittel": "Sneglen som kom for sent",
+      "niva": 1,
+      "tekst": "Hvorfor kom sneglen for sent til bursdagsselskapet? Fordi han hadde glemt invitasjonen hjemme i huset sitt. Da han endelig kom fram, var det allerede blitt jul.",
+      "vanskeligeOrd": [],
+      "emoji": "🐌"
+    },
+    {
+      "id": "vitser-06",
+      "emne": "vitser",
+      "tittel": "Den triste skyen",
+      "niva": 1,
+      "tekst": "Hvorfor gikk skyen til legen? Fordi den følte seg helt oppblåst og tung. Legen sa bare at den trengte å gråte litt regn.",
+      "vanskeligeOrd": [],
+      "emoji": "☁️"
+    },
+    {
+      "id": "vitser-07",
+      "emne": "vitser",
+      "tittel": "Kua som sluttet å se på tv",
+      "niva": 1,
+      "tekst": "Hvorfor sluttet kua å se på tv? Fordi hun hadde sett alle reprisene allerede. Nå ligger hun bare på jordet og gresser i stedet.",
+      "vanskeligeOrd": [],
+      "emoji": "🐄"
+    },
+    {
+      "id": "vitser-08",
+      "emne": "vitser",
+      "tittel": "Egget som ikke turte le",
+      "niva": 1,
+      "tekst": "Hvorfor turte ikke egget å fortelle vitser? Fordi det var redd for å sprekke av latter. Det ville heller forbli helt og rundt.",
+      "vanskeligeOrd": [],
+      "emoji": "🥚"
+    },
+    {
+      "id": "vitser-09",
+      "emne": "vitser",
+      "tittel": "Poteten på dansekurs",
+      "niva": 2,
+      "tekst": "Hvorfor meldte poteten seg på dansekurs? Fordi den ville lære seg å rulle med litt mer stil. Nå kaller de andre grønnsakene den for diskokongen.",
+      "vanskeligeOrd": [],
+      "emoji": "🥔"
+    },
+    {
+      "id": "vitser-10",
+      "emne": "vitser",
+      "tittel": "Den ensomme sokken",
+      "niva": 1,
+      "tekst": "Hvorfor gråt den ene sokken? Fordi han hadde mistet makkeren sin i vaskemaskinen. Nå ligger han alene i skuffen og venter.",
+      "vanskeligeOrd": [],
+      "emoji": "🧦"
+    },
+    {
+      "id": "vitser-11",
+      "emne": "vitser",
+      "tittel": "Den trøtte blyanten",
+      "niva": 1,
+      "tekst": "Hvorfor var blyanten så trøtt hele tiden? Fordi den ble brukt fra tidlig morgen til sein kveld uten en eneste pause. Til slutt sovnet den midt i en tegning.",
+      "vanskeligeOrd": [],
+      "emoji": "✏️"
+    },
+    {
+      "id": "vitser-12",
+      "emne": "vitser",
+      "tittel": "Katten som ville programmere",
+      "niva": 2,
+      "tekst": "Hvorfor ville katten bli programmerer? Fordi den allerede var ekspert på å sitte foran skjermen hele dagen. Den eneste tasten den trykket på, var mellomrom.",
+      "vanskeligeOrd": [],
+      "emoji": "🐱"
+    },
+    {
+      "id": "vitser-13",
+      "emne": "vitser",
+      "tittel": "Hunden med paraply",
+      "niva": 1,
+      "tekst": "Hvorfor tok hunden med seg paraply på tur? Fordi noen hadde sagt at det kom til å regne katter og hunder. Han ville i hvert fall ikke bli truffet av en annen hund.",
+      "vanskeligeOrd": [],
+      "emoji": "🐶"
+    },
+    {
+      "id": "vitser-14",
+      "emne": "vitser",
+      "tittel": "Monsteret under senga",
+      "niva": 1,
+      "tekst": "Hvorfor gjemte monsteret seg under senga? Fordi det var livredd for barnet som lå oppå. Nå tør det ikke komme fram før frokosten er servert.",
+      "vanskeligeOrd": [],
+      "emoji": "👹"
+    },
+    {
+      "id": "vitser-15",
+      "emne": "vitser",
+      "tittel": "Romvesenet på skolegården",
+      "niva": 2,
+      "tekst": "Hvorfor landet romvesenet midt på skolegården? Fordi kartet hans bare viste en stor, blå prikk. Han trodde han hadde funnet den fineste planeten i hele galaksen.",
+      "vanskeligeOrd": [],
+      "emoji": "👽"
+    },
+    {
+      "id": "vitser-16",
+      "emne": "vitser",
+      "tittel": "Dinosauren og tannlegen",
+      "niva": 2,
+      "tekst": "Hvorfor sluttet dinosauren å spise blader? Fordi tannlegen sa at han måtte styre unna alt som var grønt og seigt. Nå spiser han bare myk is i stedet.",
+      "vanskeligeOrd": [],
+      "emoji": "🦕"
+    },
+    {
+      "id": "vitser-17",
+      "emne": "vitser",
+      "tittel": "Snømannen som ble en dam",
+      "niva": 1,
+      "tekst": "Hvorfor sluttet snømannen å bekymre seg for våren? Fordi han hadde bestemt seg for å bli til en dam i stedet. Da kunne endene i det minste bruke ham til noe.",
+      "vanskeligeOrd": [],
+      "emoji": "⛄"
+    },
+    {
+      "id": "vitser-18",
+      "emne": "vitser",
+      "tittel": "Stjernen som ikke ville gå på skolen",
+      "niva": 1,
+      "tekst": "Hvorfor ville ikke stjernen gå på skolen? Fordi den syntes den allerede skinte nok som den var. Læreren måtte minne den på at selv stjerner må øve seg.",
+      "vanskeligeOrd": [],
+      "emoji": "⭐"
+    },
+    {
+      "id": "vitser-19",
+      "emne": "vitser",
+      "tittel": "Den stolte tannen",
+      "niva": 1,
+      "tekst": "Hvorfor var tannen så stolt av seg selv? Fordi den nettopp hadde bitt gjennom den hardeste kjeksen i hele boksen. Nå skryter den av det til alle de andre tennene.",
+      "vanskeligeOrd": [],
+      "emoji": "🦷"
+    },
+    {
+      "id": "vitser-20",
+      "emne": "vitser",
+      "tittel": "Ballongen i sirkuset",
+      "niva": 2,
+      "tekst": "Hvorfor ble ballongen med i sirkuset? Fordi den drømte om å fly høyere enn alle de andre. Dessverre visste den ikke at klovnen hadde med seg en nål.",
+      "vanskeligeOrd": [],
+      "emoji": "🎈"
+    },
+    {
+      "id": "vitser-21",
+      "emne": "vitser",
+      "tittel": "Edderkoppen og internett",
+      "niva": 2,
+      "tekst": "Hvorfor bygde edderkoppen nettet sitt midt i stuen? Fordi den hadde hørt at internett fantes akkurat der. Nå venter den fortsatt på at noe skal logge seg på.",
+      "vanskeligeOrd": [],
+      "emoji": "🕷️"
+    },
+    {
+      "id": "vitser-22",
+      "emne": "vitser",
+      "tittel": "Frosken som sang falskt",
+      "niva": 1,
+      "tekst": "Hvorfor sluttet frosken å synge om kvelden? Fordi naboene klagde på at han kvekket falskt. Nå øver han i hemmelighet nede ved dammen i stedet.",
+      "vanskeligeOrd": [],
+      "emoji": "🐸"
+    },
+    {
+      "id": "vitser-23",
+      "emne": "vitser",
+      "tittel": "Skilpadden i løpekonkurransen",
+      "niva": 2,
+      "tekst": "Hvorfor meldte skilpadden seg på løpekonkurransen? Fordi den ville bevise at skallet ikke gjorde den treg. Den kom i mål lenge etter at premieutdelingen var ferdig.",
+      "vanskeligeOrd": [],
+      "emoji": "🐢"
+    },
+    {
+      "id": "vitser-24",
+      "emne": "vitser",
+      "tittel": "Bien med notatbok",
+      "niva": 1,
+      "tekst": "Hvorfor tok bien med seg notatbok på jobb? Fordi sjefen ville ha en rapport om all honningen hver eneste dag. Nå summer den mens den skriver.",
+      "vanskeligeOrd": [],
+      "emoji": "🐝"
+    },
+    {
+      "id": "vitser-25",
+      "emne": "vitser",
+      "tittel": "Ugla på nattevakt",
+      "niva": 1,
+      "tekst": "Hvorfor var ugla den beste i klassen på nattevakt? Fordi hun var den eneste som klarte å holde øynene åpne hele natten. De andre dyrene sov allerede etter få minutter.",
+      "vanskeligeOrd": [],
+      "emoji": "🦉"
+    },
+    {
+      "id": "vitser-26",
+      "emne": "vitser",
+      "tittel": "Piraten som glemte skatten",
+      "niva": 1,
+      "tekst": "Hvorfor gikk piraten alltid rundt med et kart i lomma? Fordi han stadig glemte hvor han hadde gravd ned skatten sist. Nå tegner han et nytt kryss for hver gang.",
+      "vanskeligeOrd": [],
+      "emoji": "🏴‍☠️"
+    },
+    {
+      "id": "vitser-27",
+      "emne": "vitser",
+      "tittel": "Trollmannen på matteprøven",
+      "niva": 2,
+      "tekst": "Hvorfor mislyktes trollmannen på matteprøven? Fordi han trollet bort alle tallene i stedet for å regne dem ut. Læreren ga ham i det minste pluss for kreativitet.",
+      "vanskeligeOrd": [],
+      "emoji": "🧙"
+    },
+    {
+      "id": "vitser-28",
+      "emne": "vitser",
+      "tittel": "Dragen på balkongen",
+      "niva": 1,
+      "tekst": "Hvorfor sluttet dragen å puste ild inne i huset? Fordi han hadde brent opp gardinene for tredje gang den uken. Nå må han puste ild ute på balkongen i stedet.",
+      "vanskeligeOrd": [],
+      "emoji": "🐉"
+    },
+    {
+      "id": "vitser-29",
+      "emne": "vitser",
+      "tittel": "Solen som sto sent opp",
+      "niva": 1,
+      "tekst": "Hvorfor kom solen for sent opp en morgen? Fordi den hadde ligget våken og sett på stjernene hele natten. Månen måtte minne den på at det faktisk var dag ute.",
+      "vanskeligeOrd": [],
+      "emoji": "☀️"
+    },
+    {
+      "id": "vitser-30",
+      "emne": "vitser",
+      "tittel": "Månen som alltid var rolig",
+      "niva": 1,
+      "tekst": "Hvorfor var månen alltid så rolig? Fordi den visste at den uansett skulle bli full igjen om ikke så lenge. I mellomtiden bare lyste den fornøyd på alle som så opp.",
+      "vanskeligeOrd": [],
+      "emoji": "🌙"
     }
   ]
 }
