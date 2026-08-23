@@ -26,14 +26,28 @@
     "stjerna uansett hvor riktig han leser. Sjekkeskriptet nekter a godta en tekst",
     "med umerkte tallord."
   ],
-
   "emner": [
-    { "id": "krefter",      "navn": "Ting, krefter og verdensrommet", "under": "Fysikk, vær og rommet" },
-    { "id": "liv",          "navn": "Alt som lever",                 "under": "Dyr, planter og kropp" },
-    { "id": "folk",         "navn": "Mennesker, tanker og følelser",  "under": "Historie og hvordan vi tenker" },
-    { "id": "oppfinnelser", "navn": "Oppfinnelser og maskiner",      "under": "Ting folk har funnet opp" }
+    {
+      "id": "krefter",
+      "navn": "Ting, krefter og verdensrommet",
+      "under": "Fysikk, vær og rommet"
+    },
+    {
+      "id": "liv",
+      "navn": "Alt som lever",
+      "under": "Dyr, planter og kropp"
+    },
+    {
+      "id": "folk",
+      "navn": "Mennesker, tanker og følelser",
+      "under": "Historie og hvordan vi tenker"
+    },
+    {
+      "id": "oppfinnelser",
+      "navn": "Oppfinnelser og maskiner",
+      "under": "Ting folk har funnet opp"
+    }
   ],
-
   "tekster": [
     {
       "id": "skog-01",
@@ -41,7 +55,11 @@
       "tittel": "Pinnsvinet",
       "niva": 1,
       "tekst": "Et pinnsvin har omtrent fem tusen pigger på ryggen. Når det blir redd, ruller det seg sammen til en ball. Da stikker piggene ut på alle kanter, og de fleste dyr lar det være i fred.",
-      "vanskeligeOrd": ["fem", "tusen"]
+      "vanskeligeOrd": [
+        "fem",
+        "tusen"
+      ],
+      "emoji": "🦔"
     },
     {
       "id": "skog-02",
@@ -49,7 +67,10 @@
       "tittel": "Ekornet som glemmer",
       "niva": 1,
       "tekst": "Et ekorn kan gjemme flere tusen nøtter i bakken om høsten. Det finner ikke igjen alle sammen. Nøttene det glemmer, kan vokse opp og bli til nye trær.",
-      "vanskeligeOrd": ["tusen"]
+      "vanskeligeOrd": [
+        "tusen"
+      ],
+      "emoji": "🐿️"
     },
     {
       "id": "skog-03",
@@ -57,7 +78,13 @@
       "tittel": "Elgen",
       "niva": 2,
       "tekst": "Elgen er det største dyret i den norske skogen. En stor okse kan veie over fem hundre kilo, og geviret alene kan veie tjue kilo. Elgen feller geviret hver vinter og får et helt nytt til sommeren.",
-      "vanskeligeOrd": ["fem", "hundre", "tjue", "geviret"]
+      "vanskeligeOrd": [
+        "fem",
+        "hundre",
+        "tjue",
+        "geviret"
+      ],
+      "emoji": "🦌"
     },
     {
       "id": "skog-04",
@@ -65,16 +92,28 @@
       "tittel": "Maurtua",
       "niva": 2,
       "tekst": "En maurtue kan se ut som en haug med barnåler, men inni kan det bo opp mot hundre tusen maur. En maur kan bære opp mot femti ganger sin egen vekt. Det er som om du skulle løftet en bil.",
-      "vanskeligeOrd": ["maurtue", "barnåler", "hundre", "tusen", "femti"]
+      "vanskeligeOrd": [
+        "maurtue",
+        "barnåler",
+        "hundre",
+        "tusen",
+        "femti"
+      ],
+      "emoji": "🐜"
     },
-
     {
       "id": "fjell-02",
       "emne": "krefter",
       "tittel": "Lyn og torden",
       "niva": 2,
       "tekst": "Lyset fra lynet kommer fram til deg med en gang. Lyden bruker mye lengre tid, omtrent tre sekunder på hver kilometer. Teller du til seks etter lynet, er tordenen to kilometer unna.",
-      "vanskeligeOrd": ["sekunder", "tre", "seks", "to"]
+      "vanskeligeOrd": [
+        "sekunder",
+        "tre",
+        "seks",
+        "to"
+      ],
+      "emoji": "⚡"
     },
     {
       "id": "fjell-04",
@@ -82,16 +121,25 @@
       "tittel": "Isen som lagde fjordene",
       "niva": 3,
       "tekst": "For lenge siden lå det tykk is over hele Norge. Isen var så tung at den skar seg ned i fjellet mens den sakte gled mot havet. Dalene den grov ut, ble fylt med vann da isen smeltet, og slik ble fjordene til. Sognefjorden er den dypeste, over tusen meter ned til bunnen.",
-      "vanskeligeOrd": ["Sognefjorden", "tusen"]
+      "vanskeligeOrd": [
+        "Sognefjorden",
+        "tusen"
+      ],
+      "emoji": "🧊"
     },
-
     {
       "id": "hav-01",
       "emne": "liv",
       "tittel": "Blåhvalen",
       "niva": 1,
       "tekst": "Blåhvalen er det største dyret som noen gang har levd. Den kan bli tretti meter lang, og tunga alene veier like mye som en elefant. Likevel spiser den bare bittesmå krepsdyr, men den spiser fire tonn av dem hver dag.",
-      "vanskeligeOrd": ["Blåhvalen", "tretti", "krepsdyr", "fire"]
+      "vanskeligeOrd": [
+        "Blåhvalen",
+        "tretti",
+        "krepsdyr",
+        "fire"
+      ],
+      "emoji": "🐋"
     },
     {
       "id": "hav-02",
@@ -99,7 +147,14 @@
       "tittel": "Blekkspruten",
       "niva": 2,
       "tekst": "Blekkspruten har åtte armer og tre hjerter, og blodet i kroppen er blått. Hver arm har hundrevis av sugekopper som kan smake på det de tar på. Den kan også skifte farge på et blunk og bli helt lik bunnen den ligger på.",
-      "vanskeligeOrd": ["Blekkspruten", "sugekopper", "hundrevis", "åtte", "tre"]
+      "vanskeligeOrd": [
+        "Blekkspruten",
+        "sugekopper",
+        "hundrevis",
+        "åtte",
+        "tre"
+      ],
+      "emoji": "🐙"
     },
     {
       "id": "hav-03",
@@ -107,7 +162,12 @@
       "tittel": "Sjøstjerna",
       "niva": 1,
       "tekst": "En sjøstjerne har som regel fem armer, og mister den en, vokser det ut en ny. Den har ingen hjerne i det hele tatt. I stedet kjenner den lys med en liten øyeflekk ytterst på hver arm.",
-      "vanskeligeOrd": ["sjøstjerne", "øyeflekk", "fem"]
+      "vanskeligeOrd": [
+        "sjøstjerne",
+        "øyeflekk",
+        "fem"
+      ],
+      "emoji": "⭐"
     },
     {
       "id": "by-01",
@@ -115,7 +175,14 @@
       "tittel": "Vikingene i Amerika",
       "niva": 2,
       "tekst": "Vikingene seilte over havet i lange, smale skip. Leiv Eiriksson kom til Amerika for omtrent tusen år siden, nesten fem hundre år før Columbus. De bygde hus der borte, men de ble ikke boende.",
-      "vanskeligeOrd": ["Eiriksson", "Columbus", "tusen", "fem", "hundre"]
+      "vanskeligeOrd": [
+        "Eiriksson",
+        "Columbus",
+        "tusen",
+        "fem",
+        "hundre"
+      ],
+      "emoji": "⛵"
     },
     {
       "id": "by-02",
@@ -123,7 +190,14 @@
       "tittel": "Runer",
       "niva": 2,
       "tekst": "Før folk i Norge skrev med bokstaver som våre, skrev de med runer. Runealfabetet hadde bare seksten tegn, mens vårt har tjueni bokstaver. Runene var laget av rette streker, fordi de var lettere å skjære inn i tre og stein.",
-      "vanskeligeOrd": ["Runealfabetet", "Runene", "seksten", "tjueni", "tre"]
+      "vanskeligeOrd": [
+        "Runealfabetet",
+        "Runene",
+        "seksten",
+        "tjueni",
+        "tre"
+      ],
+      "emoji": "🪨"
     },
     {
       "id": "by-03",
@@ -131,7 +205,13 @@
       "tittel": "Hjulet",
       "niva": 2,
       "tekst": "Hjulet er en av de eldste oppfinnelsene vi kjenner til, og det er over fem tusen år gammelt. De første hjulene ble ikke brukt til å kjøre med. De lå flatt på et bord, og på dem formet folk krukker av leire.",
-      "vanskeligeOrd": ["oppfinnelsene", "fem", "tusen", "krukker"]
+      "vanskeligeOrd": [
+        "oppfinnelsene",
+        "fem",
+        "tusen",
+        "krukker"
+      ],
+      "emoji": "🛞"
     },
     {
       "id": "by-04",
@@ -139,16 +219,27 @@
       "tittel": "Byen ved fjorden",
       "niva": 2,
       "tekst": "Oslo har ligget innerst i fjorden i nesten tusen år. Byen har brent ned fjorten ganger og blitt bygd opp igjen hver gang. Etter den siste brannen fikk den navnet Christiania, og det het den i tre hundre år.",
-      "vanskeligeOrd": ["Christiania", "tusen", "fjorten", "tre", "hundre"]
+      "vanskeligeOrd": [
+        "Christiania",
+        "tusen",
+        "fjorten",
+        "tre",
+        "hundre"
+      ],
+      "emoji": "🏙️"
     },
-
     {
       "id": "stjerne-01",
       "emne": "krefter",
       "tittel": "Sola",
       "niva": 2,
       "tekst": "Sola er en stjerne. Den ser mye større ut enn de andre stjernene bare fordi den er så mye nærmere oss. Det er plass til over en million jordkloder inni sola, og lyset derfra bruker åtte minutter på å nå fram til jorda.",
-      "vanskeligeOrd": ["jordkloder", "åtte", "million"]
+      "vanskeligeOrd": [
+        "jordkloder",
+        "åtte",
+        "million"
+      ],
+      "emoji": "☀️"
     },
     {
       "id": "stjerne-02",
@@ -156,7 +247,11 @@
       "tittel": "Månen som aldri snur seg",
       "niva": 2,
       "tekst": "Månen går rundt jorda, men den snurrer akkurat så sakte at den alltid vender den samme siden mot oss. Baksiden hadde ingen mennesker sett før vi sendte opp romskip. Månen er så langt borte at det tok tre dager å fly dit.",
-      "vanskeligeOrd": ["romskip", "tre"]
+      "vanskeligeOrd": [
+        "romskip",
+        "tre"
+      ],
+      "emoji": "🌙"
     },
     {
       "id": "stjerne-03",
@@ -164,7 +259,14 @@
       "tittel": "Den røde planeten",
       "niva": 2,
       "tekst": "Mars ser rød ut fordi bakken der er full av rust. På Mars står det høyeste fjellet i hele solsystemet. Det heter Olympus Mons og er nesten tre ganger så høyt som Mount Everest.",
-      "vanskeligeOrd": ["solsystemet", "Olympus", "Mons", "Everest", "tre"]
+      "vanskeligeOrd": [
+        "solsystemet",
+        "Olympus",
+        "Mons",
+        "Everest",
+        "tre"
+      ],
+      "emoji": "🪐"
     },
     {
       "id": "stjerne-04",
@@ -172,16 +274,25 @@
       "tittel": "Lyset som er gammelt",
       "niva": 3,
       "tekst": "Stjernene er så langt borte at lyset fra dem bruker mange år på å komme fram til oss. Fra den nærmeste stjerna utenom sola bruker lyset over fire år. Når du ser opp på en stjerne, ser du den altså slik den var for lenge siden. Noen av dem finnes kanskje ikke lenger.",
-      "vanskeligeOrd": ["fire"]
+      "vanskeligeOrd": [
+        "fire"
+      ],
+      "emoji": "✨"
     },
-
     {
       "id": "krefter-01",
       "emne": "krefter",
       "tittel": "Tyngdekraften på månen",
       "niva": 2,
       "tekst": "På månen trekker tyngdekraften mye svakere enn på jorda, bare en sjettedel så sterkt. Det gjør at astronauter kan hoppe mye høyere der enn hjemme. En som veier seksti kilo på jorda, ville bare veid ti kilo på månen.",
-      "vanskeligeOrd": ["sjettedel", "seksti", "ti", "tyngdekraften", "astronauter"]
+      "vanskeligeOrd": [
+        "sjettedel",
+        "seksti",
+        "ti",
+        "tyngdekraften",
+        "astronauter"
+      ],
+      "emoji": "🌕"
     },
     {
       "id": "krefter-02",
@@ -189,7 +300,11 @@
       "tittel": "Nordlyset",
       "niva": 2,
       "tekst": "Nordlyset oppstår når partikler fra sola treffer lufta høyt over jorda og får den til å lyse grønt, rosa eller lilla. Partiklene er omtrent to døgn på vei fra sola før de når jorda. I Nord-Norge kan man se nordlys mange klare kvelder om vinteren.",
-      "vanskeligeOrd": ["to", "partikler"]
+      "vanskeligeOrd": [
+        "to",
+        "partikler"
+      ],
+      "emoji": "🌌"
     },
     {
       "id": "krefter-03",
@@ -197,7 +312,13 @@
       "tittel": "Magnetene",
       "niva": 1,
       "tekst": "En magnet har to ender, en nordpol og en sørpol. To like poler dytter hverandre bort, mens to ulike poler trekker hverandre til seg. Jorda selv er en kjempestor magnet, og det er derfor et kompass alltid peker mot nord.",
-      "vanskeligeOrd": ["to", "nordpol", "sørpol", "kompass"]
+      "vanskeligeOrd": [
+        "to",
+        "nordpol",
+        "sørpol",
+        "kompass"
+      ],
+      "emoji": "🧲"
     },
     {
       "id": "krefter-04",
@@ -205,7 +326,16 @@
       "tittel": "Saturns ringer",
       "niva": 2,
       "tekst": "Saturn er den eneste planeten i solsystemet med tydelige ringer rundt seg. Ringene består av utallige biter av is og stein, de fleste ikke større enn en snøball. Lagt sammen er ringene likevel over to hundre og femti tusen kilometer brede.",
-      "vanskeligeOrd": ["to", "hundre", "og", "femti", "tusen", "Saturn", "solsystemet"]
+      "vanskeligeOrd": [
+        "to",
+        "hundre",
+        "og",
+        "femti",
+        "tusen",
+        "Saturn",
+        "solsystemet"
+      ],
+      "emoji": "🪐"
     },
     {
       "id": "krefter-05",
@@ -213,7 +343,11 @@
       "tittel": "Jupiter",
       "niva": 2,
       "tekst": "Jupiter er den største planeten i solsystemet, så stor at over tusen jordkloder kunne fått plass inni den. Den store røde flekken er en kjempestorm som har rast i flere hundre år.",
-      "vanskeligeOrd": ["tusen", "hundre"]
+      "vanskeligeOrd": [
+        "tusen",
+        "hundre"
+      ],
+      "emoji": "🌀"
     },
     {
       "id": "krefter-06",
@@ -221,7 +355,11 @@
       "tittel": "Vulkaner",
       "niva": 2,
       "tekst": "Når en vulkan får utbrudd, kan lava bli varmere enn tolv hundre grader. Noen vulkaner har ligget stille i flere hundre år før de plutselig våkner til live igjen. Asken fra et stort utbrudd kan spre seg tusenvis av kilometer med vinden.",
-      "vanskeligeOrd": ["tolv", "hundre"]
+      "vanskeligeOrd": [
+        "tolv",
+        "hundre"
+      ],
+      "emoji": "🌋"
     },
     {
       "id": "krefter-07",
@@ -229,7 +367,10 @@
       "tittel": "Jordskjelv",
       "niva": 3,
       "tekst": "Jorda består av flere store steinplater som beveger seg sakte mot hverandre, og noen ganger glipper de brått. Da kan rystelser brede seg gjennom bakken med en fart på over fem kilometer i sekundet.",
-      "vanskeligeOrd": ["fem"]
+      "vanskeligeOrd": [
+        "fem"
+      ],
+      "emoji": "🌍"
     },
     {
       "id": "krefter-08",
@@ -237,7 +378,10 @@
       "tittel": "Regnbuen",
       "niva": 1,
       "tekst": "En regnbue blir til når sollys brytes i tusenvis av små vanndråper i lufta. Den har alltid de samme sju fargene, i akkurat samme rekkefølge. Skal du se en regnbue, må sola være bak deg og regnet foran.",
-      "vanskeligeOrd": ["sju"]
+      "vanskeligeOrd": [
+        "sju"
+      ],
+      "emoji": "🌈"
     },
     {
       "id": "krefter-09",
@@ -245,7 +389,11 @@
       "tittel": "Lyd under vann",
       "niva": 3,
       "tekst": "Lyd beveger seg mye raskere i vann enn i luft, over fire ganger så fort. Det er derfor hvaler kan høre hverandre over avstander på flere hundre kilometer.",
-      "vanskeligeOrd": ["fire", "hundre"]
+      "vanskeligeOrd": [
+        "fire",
+        "hundre"
+      ],
+      "emoji": "🌊"
     },
     {
       "id": "krefter-10",
@@ -253,7 +401,10 @@
       "tittel": "Sorte hull",
       "niva": 3,
       "tekst": "Et sort hull har et tyngdefelt så sterkt at ikke engang lyset klarer å slippe unna. Det nærmeste sorte hullet vi kjenner til, er likevel mer enn tusen lysår unna jorda. Selv om vi ikke kan se selve hullet, kan vi se hvordan det trekker til seg stjerner og støv rundt seg.",
-      "vanskeligeOrd": ["tusen"]
+      "vanskeligeOrd": [
+        "tusen"
+      ],
+      "emoji": "🕳️"
     },
     {
       "id": "krefter-11",
@@ -261,7 +412,10 @@
       "tittel": "Tsunamien",
       "niva": 2,
       "tekst": "En tsunami kan starte som en liten bølge ute på havet, men bli mer enn tretti meter høy når den når land. Ute på åpent hav kan den bevege seg like fort som et passasjerfly.",
-      "vanskeligeOrd": ["tretti"]
+      "vanskeligeOrd": [
+        "tretti"
+      ],
+      "emoji": "🌊"
     },
     {
       "id": "krefter-12",
@@ -269,7 +423,12 @@
       "tittel": "Elektriske ålen",
       "niva": 2,
       "tekst": "Den elektriske ålen kan sende ut støt på over seks hundre volt. Det er mer enn to ganger så mye som en vanlig stikkontakt i veggen. Den bruker støtene både til å jage bort fiender og til å bedøve byttet sitt.",
-      "vanskeligeOrd": ["seks", "hundre", "to"]
+      "vanskeligeOrd": [
+        "seks",
+        "hundre",
+        "to"
+      ],
+      "emoji": "⚡"
     },
     {
       "id": "krefter-13",
@@ -277,7 +436,10 @@
       "tittel": "Stjerneskudd",
       "niva": 1,
       "tekst": "Det du ser som et stjerneskudd er egentlig en liten steinbit som farer inn i lufta med en fart på over tjue kilometer i sekundet. De fleste er ikke større enn et sandkorn, men brenner likevel opp med det samme.",
-      "vanskeligeOrd": ["tjue"]
+      "vanskeligeOrd": [
+        "tjue"
+      ],
+      "emoji": "🌠"
     },
     {
       "id": "krefter-14",
@@ -285,16 +447,25 @@
       "tittel": "Isen som flyter",
       "niva": 2,
       "tekst": "Is flyter på vann fordi den er lettere enn vannet den kommer fra, noe som er ganske uvanlig blant stoffer. Bare rundt en tidel av et isfjell stikker opp over vannflaten. Resten, ni tideler, skjuler seg under vann.",
-      "vanskeligeOrd": ["ni"]
+      "vanskeligeOrd": [
+        "ni"
+      ],
+      "emoji": "🧊"
     },
-
     {
       "id": "liv-01",
       "emne": "liv",
       "tittel": "Giraffen",
       "niva": 1,
       "tekst": "Giraffen er verdens høyeste dyr og kan bli nesten seks meter høy. Den har akkurat sju nakkevirvler, nøyaktig like mange som mennesker har, bare mye lengre. Tunga til en giraff kan bli femti centimeter lang, nesten som en linjal og en halv.",
-      "vanskeligeOrd": ["seks", "sju", "femti", "halv", "nakkevirvler"]
+      "vanskeligeOrd": [
+        "seks",
+        "sju",
+        "femti",
+        "halv",
+        "nakkevirvler"
+      ],
+      "emoji": "🦒"
     },
     {
       "id": "liv-02",
@@ -302,7 +473,11 @@
       "tittel": "Kolibrien",
       "niva": 2,
       "tekst": "Kolibrien er så liten at den kan hvile i håndflaten din, men vingene slår opp mot femti ganger i sekundet. Det går så fort at vingene bare ses som en tåke. Den er også den eneste fuglen som kan fly baklengs.",
-      "vanskeligeOrd": ["femti", "kolibrien"]
+      "vanskeligeOrd": [
+        "femti",
+        "kolibrien"
+      ],
+      "emoji": "🐦"
     },
     {
       "id": "liv-03",
@@ -310,7 +485,12 @@
       "tittel": "Bambusen",
       "niva": 2,
       "tekst": "Bambus er den raskest voksende planten vi kjenner til. Noen arter kan vokse nesten én hel meter på et eneste døgn. Likevel blomstrer mange bambusplanter bare én gang hvert hundrede år.",
-      "vanskeligeOrd": ["én", "hundrede", "bambus"]
+      "vanskeligeOrd": [
+        "én",
+        "hundrede",
+        "bambus"
+      ],
+      "emoji": "🎋"
     },
     {
       "id": "liv-04",
@@ -318,7 +498,11 @@
       "tittel": "Isbjørnen",
       "niva": 1,
       "tekst": "Isbjørnen er verdens største rovdyr på land, og en voksen hann kan veie over sju hundre kilo. Under den hvite pelsen er huden hans faktisk helt svart.",
-      "vanskeligeOrd": ["sju", "hundre"]
+      "vanskeligeOrd": [
+        "sju",
+        "hundre"
+      ],
+      "emoji": "🐻‍❄️"
     },
     {
       "id": "liv-05",
@@ -326,7 +510,11 @@
       "tittel": "Kameleonen",
       "niva": 2,
       "tekst": "Kameleonen kan bevege de to øynene sine helt uavhengig av hverandre, og se to forskjellige retninger på samme tid. Den skifter ikke farge for å gjemme seg, men for å vise humør eller temperatur. Tunga kan skytes ut og fange et insekt på under et halvt sekund.",
-      "vanskeligeOrd": ["to", "halvt"]
+      "vanskeligeOrd": [
+        "to",
+        "halvt"
+      ],
+      "emoji": "🦎"
     },
     {
       "id": "liv-06",
@@ -334,7 +522,11 @@
       "tittel": "Hvithaien",
       "niva": 2,
       "tekst": "Hvithaien kan ha opp mot tre hundre tenner i munnen samtidig, ordnet i flere rader bak hverandre. Mister den en tann, vokser det raskt ut en ny.",
-      "vanskeligeOrd": ["tre", "hundre"]
+      "vanskeligeOrd": [
+        "tre",
+        "hundre"
+      ],
+      "emoji": "🦈"
     },
     {
       "id": "liv-07",
@@ -342,7 +534,11 @@
       "tittel": "Pandaen",
       "niva": 1,
       "tekst": "En panda spiser bambus nesten hele dagen, gjerne tolv timer i strekk. Likevel har magen dens vanskelig for å fordøye plantekost, så den må spise enormt mye for å bli mett. En nyfødt pandaunge er bitteliten, ikke mye større enn en smørklatt, selv om moren kan veie hundre kilo.",
-      "vanskeligeOrd": ["tolv", "hundre"]
+      "vanskeligeOrd": [
+        "tolv",
+        "hundre"
+      ],
+      "emoji": "🐼"
     },
     {
       "id": "liv-08",
@@ -350,7 +546,10 @@
       "tittel": "Flaggermusen",
       "niva": 3,
       "tekst": "Flaggermusa flyr i mørket ved å sende ut lyder mennesker ikke kan høre, og lytte til ekkoet som kommer tilbake. På den måten kan noen arter fange opp mot tusen insekter på én time.",
-      "vanskeligeOrd": ["tusen"]
+      "vanskeligeOrd": [
+        "tusen"
+      ],
+      "emoji": "🦇"
     },
     {
       "id": "liv-09",
@@ -358,7 +557,12 @@
       "tittel": "Sekvojatreet",
       "niva": 2,
       "tekst": "Sekvojatrærne i California er de høyeste trærne i verden, og noen av dem er over hundre meter høye. De kan også bli mer enn to tusen år gamle. Barken er så tykk at treet tåler både brann og insekter uten å ta stor skade.",
-      "vanskeligeOrd": ["hundre", "to", "tusen"]
+      "vanskeligeOrd": [
+        "hundre",
+        "to",
+        "tusen"
+      ],
+      "emoji": "🌲"
     },
     {
       "id": "liv-10",
@@ -366,7 +570,10 @@
       "tittel": "Krokodillen",
       "niva": 2,
       "tekst": "Krokodillen kan holde pusten under vann i over en time. Bittekraften i kjeven er mer enn ti ganger sterkere enn hos et menneske.",
-      "vanskeligeOrd": ["ti"]
+      "vanskeligeOrd": [
+        "ti"
+      ],
+      "emoji": "🐊"
     },
     {
       "id": "liv-11",
@@ -374,7 +581,11 @@
       "tittel": "Meitemarken",
       "niva": 1,
       "tekst": "En meitemark har ingen øyne, men kan likevel kjenne lys gjennom huden. Kuttes den i to, kan den ene delen noen ganger vokse ut igjen til en helt ny mark. En vanlig hage kan romme flere hundre meitemark i jorda uten at du ser en eneste en.",
-      "vanskeligeOrd": ["to", "hundre"]
+      "vanskeligeOrd": [
+        "to",
+        "hundre"
+      ],
+      "emoji": "🪱"
     },
     {
       "id": "liv-12",
@@ -382,7 +593,13 @@
       "tittel": "Honningbien",
       "niva": 3,
       "tekst": "En bikube kan romme over femti tusen bier som deler på oppgavene sine. For å lage bare ett kilo honning må biene besøke rundt seks millioner blomster.",
-      "vanskeligeOrd": ["femti", "tusen", "seks", "millioner"]
+      "vanskeligeOrd": [
+        "femti",
+        "tusen",
+        "seks",
+        "millioner"
+      ],
+      "emoji": "🐝"
     },
     {
       "id": "liv-13",
@@ -390,16 +607,25 @@
       "tittel": "Kaktusen",
       "niva": 2,
       "tekst": "En stor kaktus kan lagre flere hundre liter vann inni den tykke stengelen sin. Det er nok til å overleve i lange tørkeperioder uten en dråpe regn. Piggene er egentlig blader som har krympet for å spare enda mer vann.",
-      "vanskeligeOrd": ["hundre"]
+      "vanskeligeOrd": [
+        "hundre"
+      ],
+      "emoji": "🌵"
     },
-
     {
       "id": "folk-01",
       "emne": "folk",
       "tittel": "Hjernen din",
       "niva": 2,
       "tekst": "Hjernen din veier omtrent halvannet kilo, men bruker likevel en femtedel av all energien kroppen trenger. Inni den finnes rundt åttiseks milliarder nerveceller, som sender beskjeder til hverandre hele tiden. Det er disse cellene som gjør at du kan tenke, huske og føle.",
-      "vanskeligeOrd": ["halvannet", "femtedel", "åttiseks", "milliarder", "nerveceller"]
+      "vanskeligeOrd": [
+        "halvannet",
+        "femtedel",
+        "åttiseks",
+        "milliarder",
+        "nerveceller"
+      ],
+      "emoji": "🧠"
     },
     {
       "id": "folk-02",
@@ -407,7 +633,11 @@
       "tittel": "Latteren",
       "niva": 1,
       "tekst": "Babyer begynner å le allerede etter omtrent fire måneder, lenge før de kan snakke. Voksne ler i gjennomsnitt rundt sytten ganger om dagen. Latter er nesten likt i alle land, selv om språkene er helt forskjellige.",
-      "vanskeligeOrd": ["fire", "sytten"]
+      "vanskeligeOrd": [
+        "fire",
+        "sytten"
+      ],
+      "emoji": "😂"
     },
     {
       "id": "folk-03",
@@ -415,7 +645,11 @@
       "tittel": "Drømmene dine",
       "niva": 2,
       "tekst": "De fleste mennesker drømmer flere ganger hver eneste natt, gjerne fire til seks drømmer. Likevel glemmer vi det meste i løpet av bare noen minutter etter at vi våkner. Drømmene kommer særlig i den delen av søvnen der øynene beveger seg raskt bak øyelokkene.",
-      "vanskeligeOrd": ["fire", "seks"]
+      "vanskeligeOrd": [
+        "fire",
+        "seks"
+      ],
+      "emoji": "💭"
     },
     {
       "id": "folk-04",
@@ -423,7 +657,18 @@
       "tittel": "Pyramidene i Egypt",
       "niva": 3,
       "tekst": "Den store pyramiden i Egypt ble bygget for over fire tusen fem hundre år siden, uten maskiner slik vi har i dag. Den er satt sammen av over to millioner steinblokker, og noen av dem veier så mye som en buss. I over tre tusen år var den det høyeste byggverket mennesker hadde laget.",
-      "vanskeligeOrd": ["fire", "tusen", "fem", "hundre", "to", "millioner", "tre", "Egypt", "steinblokker"]
+      "vanskeligeOrd": [
+        "fire",
+        "tusen",
+        "fem",
+        "hundre",
+        "to",
+        "millioner",
+        "tre",
+        "Egypt",
+        "steinblokker"
+      ],
+      "emoji": "🏜️"
     },
     {
       "id": "folk-05",
@@ -431,7 +676,16 @@
       "tittel": "De olympiske leker",
       "niva": 2,
       "tekst": "De aller første olympiske lekene ble holdt i Hellas for nesten tre tusen år siden. Da var det bare menn som fikk delta, og de konkurrerte helt nakne. I dag er det over to hundre land med, og lekene arrangeres hvert fjerde år.",
-      "vanskeligeOrd": ["tre", "tusen", "to", "hundre", "fjerde", "Hellas", "olympiske"]
+      "vanskeligeOrd": [
+        "tre",
+        "tusen",
+        "to",
+        "hundre",
+        "fjerde",
+        "Hellas",
+        "olympiske"
+      ],
+      "emoji": "🏅"
     },
     {
       "id": "folk-06",
@@ -439,7 +693,12 @@
       "tittel": "Ansiktet ditt",
       "niva": 1,
       "tekst": "Uansett hvor i verden du er født, ser et sint, glad eller redd ansikt nesten helt likt ut. Forskere har funnet de samme seks grunnfølelsene igjen hos mennesker i alle land de har undersøkt. Ansiktet ditt har over førti muskler som jobber sammen for å lage disse uttrykkene.",
-      "vanskeligeOrd": ["seks", "førti", "grunnfølelsene"]
+      "vanskeligeOrd": [
+        "seks",
+        "førti",
+        "grunnfølelsene"
+      ],
+      "emoji": "😀"
     },
     {
       "id": "folk-07",
@@ -447,7 +706,14 @@
       "tittel": "Brevduene",
       "niva": 2,
       "tekst": "I tusenvis av år har mennesker brukt brevduer til å sende beskjeder til hverandre. En brevdue kan finne veien hjem selv om den blir sluppet fri over ti mil unna. Under den første verdenskrig reddet én enkelt due livet til nesten to hundre soldater ved å komme fram med en viktig beskjed.",
-      "vanskeligeOrd": ["ti", "to", "hundre", "brevduer", "verdenskrig"]
+      "vanskeligeOrd": [
+        "ti",
+        "to",
+        "hundre",
+        "brevduer",
+        "verdenskrig"
+      ],
+      "emoji": "🕊️"
     },
     {
       "id": "folk-08",
@@ -455,7 +721,12 @@
       "tittel": "Kinamuren",
       "niva": 2,
       "tekst": "Den kinesiske muren er så lang at den strekker seg over tjue tusen kilometer om du regner med alle greinene. Den ble bygget over mange hundre år, av flere ulike keisere.",
-      "vanskeligeOrd": ["tjue", "tusen", "hundre"]
+      "vanskeligeOrd": [
+        "tjue",
+        "tusen",
+        "hundre"
+      ],
+      "emoji": "🧱"
     },
     {
       "id": "folk-09",
@@ -463,7 +734,17 @@
       "tittel": "Månelandingen",
       "niva": 2,
       "tekst": "I nitten hundre og sekstini gikk de to første menneskene ut på månen. De brukte bare fire dager på reisen dit, i et romskip mindre enn en buss. Det er over femti år siden, men bare tolv mennesker har noensinne gått der.",
-      "vanskeligeOrd": ["nitten", "hundre", "og", "sekstini", "to", "fire", "femti", "tolv"]
+      "vanskeligeOrd": [
+        "nitten",
+        "hundre",
+        "og",
+        "sekstini",
+        "to",
+        "fire",
+        "femti",
+        "tolv"
+      ],
+      "emoji": "👨‍🚀"
     },
     {
       "id": "folk-10",
@@ -471,7 +752,10 @@
       "tittel": "Å hilse på hverandre",
       "niva": 1,
       "tekst": "Rundt om i verden hilser folk på helt ulike måter, med alt fra håndtrykk til å gni nesene mot hverandre. Noen steder bukker man i stedet, gjerne to ganger for å vise ekstra respekt.",
-      "vanskeligeOrd": ["to"]
+      "vanskeligeOrd": [
+        "to"
+      ],
+      "emoji": "🤝"
     },
     {
       "id": "folk-11",
@@ -479,7 +763,10 @@
       "tittel": "Søvnen din",
       "niva": 2,
       "tekst": "Et menneske sover bort omtrent tjuefem år av livet sitt, om du legger sammen alle nettene. Likevel husker du nesten ingenting av de fleste nettene du har sovet. Kroppen bruker søvnen til å rydde opp i alt hjernen har lært den dagen.",
-      "vanskeligeOrd": ["tjuefem"]
+      "vanskeligeOrd": [
+        "tjuefem"
+      ],
+      "emoji": "😴"
     },
     {
       "id": "folk-13",
@@ -487,7 +774,11 @@
       "tittel": "Gladiatorene",
       "niva": 3,
       "tekst": "I det gamle Roma kjempet gladiatorer mot hverandre i store arenaer som kunne romme over femti tusen tilskuere. De fleste kampene endte likevel ikke med at noen døde. En god gladiator var nemlig altfor dyr å miste for eierne sine.",
-      "vanskeligeOrd": ["femti", "tusen"]
+      "vanskeligeOrd": [
+        "femti",
+        "tusen"
+      ],
+      "emoji": "⚔️"
     },
     {
       "id": "folk-14",
@@ -495,7 +786,12 @@
       "tittel": "Terrakottahæren",
       "niva": 2,
       "tekst": "Dypt under bakken i Kina fant arbeidere over åtte tusen leirsoldater i full størrelse, gjemt i over to tusen år. Hvert eneste ansikt er unikt, ingen av soldatene er helt like.",
-      "vanskeligeOrd": ["åtte", "tusen", "to"]
+      "vanskeligeOrd": [
+        "åtte",
+        "tusen",
+        "to"
+      ],
+      "emoji": "🗿"
     },
     {
       "id": "folk-15",
@@ -503,7 +799,11 @@
       "tittel": "Sirkuset",
       "niva": 1,
       "tekst": "De første sirkusene hadde ofte bare noen få akrobater og ett eller to dyr. I dag kan et stort sirkus reise rundt med over hundre mennesker. I tillegg følger gjerne flere titalls dyr med på turné.",
-      "vanskeligeOrd": ["to", "hundre"]
+      "vanskeligeOrd": [
+        "to",
+        "hundre"
+      ],
+      "emoji": "🎪"
     },
     {
       "id": "folk-16",
@@ -511,7 +811,11 @@
       "tittel": "Verdens eldste by",
       "niva": 3,
       "tekst": "Damaskus har trolig vært bebodd i opp mot ti tusen år, lenger enn noen annen by vi kjenner til. Menneskene som bodde der aller først, levde altså lenge før pyramidene i Egypt ble bygget.",
-      "vanskeligeOrd": ["ti", "tusen"]
+      "vanskeligeOrd": [
+        "ti",
+        "tusen"
+      ],
+      "emoji": "🏛️"
     },
     {
       "id": "folk-17",
@@ -519,16 +823,30 @@
       "tittel": "Norsk språk",
       "niva": 1,
       "tekst": "Norsk snakkes av rundt fem millioner mennesker, de fleste av dem her i Norge. Det er likevel bare ett av mer enn sju tusen språk som finnes i verden. Noen av disse språkene snakkes i dag av bare en håndfull mennesker.",
-      "vanskeligeOrd": ["fem", "millioner", "sju", "tusen"]
+      "vanskeligeOrd": [
+        "fem",
+        "millioner",
+        "sju",
+        "tusen"
+      ],
+      "emoji": "🗣️"
     },
-
     {
       "id": "oppfinnelser-01",
       "emne": "oppfinnelser",
       "tittel": "Boktrykkerkunsten",
       "niva": 2,
       "tekst": "Før boktrykkerkunsten kom, måtte hver eneste bok skrives for hånd. Rundt år fjorten hundre og femti laget Johannes Gutenberg en presse som kunne trykke mange sider raskt. Med den trykte han rundt hundre og åtti bibler i løpet av noen få år, noe ingen kunne klart å skrive for hånd på så kort tid.",
-      "vanskeligeOrd": ["fjorten", "hundre", "og", "femti", "åtti", "Gutenberg", "boktrykkerkunsten"]
+      "vanskeligeOrd": [
+        "fjorten",
+        "hundre",
+        "og",
+        "femti",
+        "åtti",
+        "Gutenberg",
+        "boktrykkerkunsten"
+      ],
+      "emoji": "🖨️"
     },
     {
       "id": "oppfinnelser-02",
@@ -536,7 +854,18 @@
       "tittel": "Telefonen",
       "niva": 2,
       "tekst": "Den første telefonsamtalen noensinne ble ringt i atten hundre og syttiseks av Alexander Graham Bell. Han satt i et annet rom enn medhjelperen sin og ba ham komme og hjelpe til. I dag bruker mer enn fem milliarder mennesker en telefon hver dag.",
-      "vanskeligeOrd": ["atten", "hundre", "og", "syttiseks", "fem", "milliarder", "Alexander", "Graham", "Bell"]
+      "vanskeligeOrd": [
+        "atten",
+        "hundre",
+        "og",
+        "syttiseks",
+        "fem",
+        "milliarder",
+        "Alexander",
+        "Graham",
+        "Bell"
+      ],
+      "emoji": "☎️"
     },
     {
       "id": "oppfinnelser-03",
@@ -544,7 +873,14 @@
       "tittel": "Lyspæren",
       "niva": 2,
       "tekst": "Thomas Edison brukte over ett tusen forskjellige materialer før han fant en tråd som kunne gløde lenge nok inni en lyspære. Den første pæren hans lyste i over tretten timer sammenhengende, noe ingen hadde klart før. I dag bytter de fleste til lyspærer som kan vare i tjue år eller mer.",
-      "vanskeligeOrd": ["ett", "tusen", "tretten", "tjue", "Edison"]
+      "vanskeligeOrd": [
+        "ett",
+        "tusen",
+        "tretten",
+        "tjue",
+        "Edison"
+      ],
+      "emoji": "💡"
     },
     {
       "id": "oppfinnelser-04",
@@ -552,7 +888,16 @@
       "tittel": "Det første flyet",
       "niva": 2,
       "tekst": "Brødrene Wright fløy det aller første motorflyet i nitten hundre og tre. Den første turen varte i bare tolv sekunder og gikk drøye tretti meter, kortere enn en fotballbane. I dag kan fly krysse hele jordkloden uten å lande.",
-      "vanskeligeOrd": ["nitten", "hundre", "og", "tre", "tolv", "tretti", "Wright"]
+      "vanskeligeOrd": [
+        "nitten",
+        "hundre",
+        "og",
+        "tre",
+        "tolv",
+        "tretti",
+        "Wright"
+      ],
+      "emoji": "✈️"
     },
     {
       "id": "oppfinnelser-05",
@@ -560,7 +905,11 @@
       "tittel": "Sykkelen",
       "niva": 1,
       "tekst": "De første syklene hadde ingen pedaler i det hele tatt. Man måtte sparke fra i bakken med føttene, litt som en løpesykkel for barn i dag. Pedaler ble ikke funnet opp før nesten femti år senere.",
-      "vanskeligeOrd": ["femti", "løpesykkel"]
+      "vanskeligeOrd": [
+        "femti",
+        "løpesykkel"
+      ],
+      "emoji": "🚲"
     },
     {
       "id": "oppfinnelser-06",
@@ -568,7 +917,13 @@
       "tittel": "Kompasset",
       "niva": 2,
       "tekst": "Kompasset ble funnet opp i Kina for over to tusen år siden, lenge før noen visste hvorfor det virket. Inni det henger en liten magnet fritt, slik at den alltid dreier seg mot nord. Sjøfolk brukte kompasset til å finne veien over havet selv når de ikke kunne se land.",
-      "vanskeligeOrd": ["to", "tusen", "Kina", "kompasset"]
+      "vanskeligeOrd": [
+        "to",
+        "tusen",
+        "Kina",
+        "kompasset"
+      ],
+      "emoji": "🧭"
     },
     {
       "id": "oppfinnelser-07",
@@ -576,7 +931,13 @@
       "tittel": "Dampmaskinen",
       "niva": 3,
       "tekst": "Dampmaskinen gjorde det mulig å drive fabrikker og tog uten hester eller vannhjul. Den utnytter at damp tar mye større plass enn vannet den kom fra, og dytter derfor et stempel fram med stor kraft. På halvannet hundre år forandret den hvordan folk i hele verden arbeidet og reiste.",
-      "vanskeligeOrd": ["halvannet", "hundre", "dampmaskinen", "stempel"]
+      "vanskeligeOrd": [
+        "halvannet",
+        "hundre",
+        "dampmaskinen",
+        "stempel"
+      ],
+      "emoji": "🚂"
     },
     {
       "id": "oppfinnelser-08",
@@ -584,7 +945,15 @@
       "tittel": "Kikkerten",
       "niva": 2,
       "tekst": "De første kikkertene ble laget for over fire hundre år siden ved å sette sammen to glasslinser i et rør. Galileo Galilei brukte en slik kikkert til å se fjell på månen og fire måner rundt Jupiter. Uten den oppdagelsen hadde vi trengt mye lenger tid på å forstå verdensrommet.",
-      "vanskeligeOrd": ["fire", "hundre", "to", "Galileo", "Galilei", "Jupiter"]
+      "vanskeligeOrd": [
+        "fire",
+        "hundre",
+        "to",
+        "Galileo",
+        "Galilei",
+        "Jupiter"
+      ],
+      "emoji": "🔭"
     },
     {
       "id": "oppfinnelser-09",
@@ -592,7 +961,14 @@
       "tittel": "Papiret",
       "niva": 1,
       "tekst": "Papir ble funnet opp i Kina for nesten to tusen år siden, laget av knuste planterester og vann. Før den tid skrev folk på stein, tre eller dyreskinn, som var mye tyngre å bære med seg. Nå lager fabrikker papir av tre på under ett sekund per ark.",
-      "vanskeligeOrd": ["to", "tusen", "ett", "tre", "Kina"]
+      "vanskeligeOrd": [
+        "to",
+        "tusen",
+        "ett",
+        "tre",
+        "Kina"
+      ],
+      "emoji": "📄"
     },
     {
       "id": "oppfinnelser-10",
@@ -600,7 +976,11 @@
       "tittel": "Radioen",
       "niva": 2,
       "tekst": "De første radiosendingene kunne bare høres noen få kilometer unna. I dag kan et radiosignal sendes over ti tusen kilometer uten en eneste ledning.",
-      "vanskeligeOrd": ["ti", "tusen"]
+      "vanskeligeOrd": [
+        "ti",
+        "tusen"
+      ],
+      "emoji": "📻"
     },
     {
       "id": "oppfinnelser-11",
@@ -608,7 +988,10 @@
       "tittel": "Kameraet",
       "niva": 2,
       "tekst": "De aller første fotografiene måtte eksponeres i over åtte timer for å bli ferdige. I dag tar et kamera et skarpt bilde på under et tiendedels sekund. Det er raskere enn du rekker å blunke.",
-      "vanskeligeOrd": ["åtte"]
+      "vanskeligeOrd": [
+        "åtte"
+      ],
+      "emoji": "📷"
     },
     {
       "id": "oppfinnelser-12",
@@ -616,7 +999,11 @@
       "tittel": "Kjøleskapet",
       "niva": 1,
       "tekst": "Før kjøleskapet fantes, måtte folk bruke is og kalde kjellere for å holde maten frisk. I dag har over ni av ti hjem i Norge et kjøleskap som går døgnet rundt.",
-      "vanskeligeOrd": ["ni", "ti"]
+      "vanskeligeOrd": [
+        "ni",
+        "ti"
+      ],
+      "emoji": "🧊"
     },
     {
       "id": "oppfinnelser-13",
@@ -624,7 +1011,10 @@
       "tittel": "Symaskinen",
       "niva": 2,
       "tekst": "Før symaskinen kom, brukte folk mange timer på å sy ett eneste plagg for hånd. Med en symaskin kunne den samme jobben plutselig gjøres over fem ganger raskere. Det gjorde klær billigere for svært mange mennesker.",
-      "vanskeligeOrd": ["fem"]
+      "vanskeligeOrd": [
+        "fem"
+      ],
+      "emoji": "🪡"
     },
     {
       "id": "oppfinnelser-14",
@@ -632,7 +1022,10 @@
       "tittel": "Blyanten",
       "niva": 1,
       "tekst": "En vanlig blyant kan skrive en strek som er over femti kilometer lang før den er tom. Den er laget av grafitt, ikke bly, selv om navnet sier noe annet.",
-      "vanskeligeOrd": ["femti"]
+      "vanskeligeOrd": [
+        "femti"
+      ],
+      "emoji": "✏️"
     },
     {
       "id": "oppfinnelser-15",
@@ -640,7 +1033,10 @@
       "tittel": "Glidelåsen",
       "niva": 2,
       "tekst": "Glidelåsen ble funnet opp for å slippe å bruke knapper og hekter, som tok mye lengre tid å lukke. Det tok likevel over tjue år før folk begynte å bruke den i klær. I dag har de fleste jakker og bukser minst én glidelås.",
-      "vanskeligeOrd": ["tjue"]
+      "vanskeligeOrd": [
+        "tjue"
+      ],
+      "emoji": "🧥"
     },
     {
       "id": "oppfinnelser-16",
@@ -648,7 +1044,11 @@
       "tittel": "Luftballongen",
       "niva": 2,
       "tekst": "De første menneskene som fløy, gjorde det i en luftballong for over to hundre år siden. Ballongen var laget av papir og stoff, og holdt seg oppe med røyk fra et bål.",
-      "vanskeligeOrd": ["to", "hundre"]
+      "vanskeligeOrd": [
+        "to",
+        "hundre"
+      ],
+      "emoji": "🎈"
     },
     {
       "id": "oppfinnelser-17",
@@ -656,7 +1056,10 @@
       "tittel": "Datamaskinen",
       "niva": 3,
       "tekst": "De første datamaskinene fylte et helt rom og veide flere tonn. Likevel klarte de mye mindre enn en enkel lommeregner i dag. En moderne mobiltelefon kan regne millioner av ganger raskere enn dem.",
-      "vanskeligeOrd": ["millioner"]
+      "vanskeligeOrd": [
+        "millioner"
+      ],
+      "emoji": "💻"
     },
     {
       "id": "oppfinnelser-18",
@@ -664,7 +1067,11 @@
       "tittel": "Mikrobølgeovnen",
       "niva": 1,
       "tekst": "Mikrobølgeovnen ble oppdaget ved et uhell, da en forsker merket at en sjokolade i lomma hans smeltet. I dag bruker over ni av ti hjem i Norge en mikrobølgeovn til oppvarming.",
-      "vanskeligeOrd": ["ni", "ti"]
+      "vanskeligeOrd": [
+        "ni",
+        "ti"
+      ],
+      "emoji": "♨️"
     },
     {
       "id": "oppfinnelser-19",
@@ -672,16 +1079,24 @@
       "tittel": "Penicillinet",
       "niva": 3,
       "tekst": "Penicillinet ble oppdaget ved et uhell, da en forsker så at en muggsopp drepte bakterier i en skål han hadde glemt. Oppdagelsen har siden reddet livet til godt over hundre millioner mennesker. Det gjør penicillinet til en av de viktigste oppdagelsene noensinne.",
-      "vanskeligeOrd": ["hundre", "millioner"]
+      "vanskeligeOrd": [
+        "hundre",
+        "millioner"
+      ],
+      "emoji": "💊"
     },
-
     {
       "id": "krefter-15",
       "emne": "krefter",
       "tittel": "Lyn hver dag",
       "niva": 1,
       "tekst": "Et sted på jorda slår lynet ned mer enn åtte millioner ganger hver eneste dag. Det er nesten hundre lynnedslag i sekundet, over hele kloden til sammen.",
-      "vanskeligeOrd": ["åtte", "millioner", "hundre"]
+      "vanskeligeOrd": [
+        "åtte",
+        "millioner",
+        "hundre"
+      ],
+      "emoji": "⚡"
     },
     {
       "id": "krefter-16",
@@ -689,7 +1104,11 @@
       "tittel": "Jorda snurrer fort",
       "niva": 2,
       "tekst": "Jorda snurrer rundt sin egen akse med en fart på over seksten hundre kilometer i timen ved ekvator. Du kjenner det aldri, for alt rundt deg snurrer akkurat like fort.",
-      "vanskeligeOrd": ["seksten", "hundre"]
+      "vanskeligeOrd": [
+        "seksten",
+        "hundre"
+      ],
+      "emoji": "🌍"
     },
     {
       "id": "krefter-17",
@@ -697,7 +1116,11 @@
       "tittel": "Hvor langt er et lysår",
       "niva": 3,
       "tekst": "Et lysår er ikke tid, men en avstand: så langt lyset klarer å reise på ett år. Den avstanden er over ni billioner kilometer, altfor mye til å skrive med vanlige tall.",
-      "vanskeligeOrd": ["ni", "billioner"]
+      "vanskeligeOrd": [
+        "ni",
+        "billioner"
+      ],
+      "emoji": "✨"
     },
     {
       "id": "krefter-18",
@@ -705,7 +1128,10 @@
       "tittel": "Lyn er varmere enn sola",
       "niva": 2,
       "tekst": "Et lynnedslag kan bli fem ganger så varmt som overflaten på sola. Det er derfor lufta rundt lynet utvider seg brått og lager smellen vi kaller torden.",
-      "vanskeligeOrd": ["fem"]
+      "vanskeligeOrd": [
+        "fem"
+      ],
+      "emoji": "⚡"
     },
     {
       "id": "krefter-19",
@@ -713,7 +1139,12 @@
       "tittel": "Havets dypeste punkt",
       "niva": 2,
       "tekst": "Det dypeste stedet i havet heter Marianergropen og ligger nesten elleve tusen meter under havoverflaten. Trykket der nede er så stort at de fleste ubåter ville blitt klemt sammen.",
-      "vanskeligeOrd": ["elleve", "tusen", "Marianergropen"]
+      "vanskeligeOrd": [
+        "elleve",
+        "tusen",
+        "Marianergropen"
+      ],
+      "emoji": "🌊"
     },
     {
       "id": "krefter-20",
@@ -721,7 +1152,16 @@
       "tittel": "Asteroiden som utryddet dinosaurene",
       "niva": 3,
       "tekst": "For sekstiseks millioner år siden traff en asteroide på over ti kilometer jorda og utryddet dinosaurene. Den lagde et krater i Mexico som er mer enn hundre og åtti kilometer bredt.",
-      "vanskeligeOrd": ["sekstiseks", "millioner", "ti", "hundre", "og", "åtti", "Mexico"]
+      "vanskeligeOrd": [
+        "sekstiseks",
+        "millioner",
+        "ti",
+        "hundre",
+        "og",
+        "åtti",
+        "Mexico"
+      ],
+      "emoji": "🦕"
     },
     {
       "id": "krefter-21",
@@ -729,7 +1169,11 @@
       "tittel": "Måner i solsystemet",
       "niva": 1,
       "tekst": "Jorda har bare én måne, men Saturn alene har nesten tre hundre måner som går i bane rundt planeten. Forskere oppdager stadig flere nye, små måner der ute.",
-      "vanskeligeOrd": ["tre", "hundre"]
+      "vanskeligeOrd": [
+        "tre",
+        "hundre"
+      ],
+      "emoji": "🌙"
     },
     {
       "id": "krefter-22",
@@ -737,7 +1181,12 @@
       "tittel": "Neptuns lange år",
       "niva": 2,
       "tekst": "Neptun er så langt fra sola at det tar hundre og sekstifem jordår før planeten har gått en hel runde. Ingen som lever i dag, har opplevd at Neptun kommer tilbake dit den var da den ble oppdaget.",
-      "vanskeligeOrd": ["hundre", "og", "sekstifem"]
+      "vanskeligeOrd": [
+        "hundre",
+        "og",
+        "sekstifem"
+      ],
+      "emoji": "🔵"
     },
     {
       "id": "krefter-23",
@@ -745,7 +1194,12 @@
       "tittel": "Hvor mye veier en sky",
       "niva": 1,
       "tekst": "En vanlig sky som seiler over himmelen kan veie rundt fem hundre tusen kilo, selv om den ser lett ut. Den flyter likevel, fordi vanndråpene er spredt tynt utover et enormt område.",
-      "vanskeligeOrd": ["fem", "hundre", "tusen"]
+      "vanskeligeOrd": [
+        "fem",
+        "hundre",
+        "tusen"
+      ],
+      "emoji": "☁️"
     },
     {
       "id": "krefter-24",
@@ -753,7 +1207,10 @@
       "tittel": "Uranus ruller på siden",
       "niva": 2,
       "tekst": "Uranus ligger nesten helt på siden, med en akse som heller nesten nitti grader. Derfor ruller planeten rundt sola i stedet for å snurre som en vanlig snurrebass.",
-      "vanskeligeOrd": ["nitti"]
+      "vanskeligeOrd": [
+        "nitti"
+      ],
+      "emoji": "🪐"
     },
     {
       "id": "krefter-25",
@@ -761,7 +1218,13 @@
       "tittel": "Tordenvær akkurat nå",
       "niva": 2,
       "tekst": "Akkurat nå er det trolig rundt to tusen tordenvær i gang samtidig, et sted på jorda. Til sammen blir det over seksten millioner tordenvær i løpet av bare ett år.",
-      "vanskeligeOrd": ["to", "tusen", "seksten", "millioner"]
+      "vanskeligeOrd": [
+        "to",
+        "tusen",
+        "seksten",
+        "millioner"
+      ],
+      "emoji": "⛈️"
     },
     {
       "id": "krefter-26",
@@ -769,7 +1232,12 @@
       "tittel": "Grand Canyon",
       "niva": 1,
       "tekst": "Grand Canyon i USA er på sitt dypeste nesten to tusen meter ned til elva på bunnen. Det har tatt elva millioner av år å grave ut denne kjempedype kløften i fjellet.",
-      "vanskeligeOrd": ["to", "tusen", "millioner"]
+      "vanskeligeOrd": [
+        "to",
+        "tusen",
+        "millioner"
+      ],
+      "emoji": "🏜️"
     },
     {
       "id": "krefter-27",
@@ -777,7 +1245,11 @@
       "tittel": "Den sterkeste tornadoen",
       "niva": 2,
       "tekst": "Den sterkeste vinden noensinne målt i en tornado var over fem hundre kilometer i timen. En vind så sterk kan rive hus fullstendig i filler på bare sekunder.",
-      "vanskeligeOrd": ["fem", "hundre"]
+      "vanskeligeOrd": [
+        "fem",
+        "hundre"
+      ],
+      "emoji": "🌪️"
     },
     {
       "id": "krefter-28",
@@ -785,7 +1257,13 @@
       "tittel": "Stjerner på en mørk natt",
       "niva": 1,
       "tekst": "På en klar og mørk natt uten lys fra byen kan du se opp mot to tusen fem hundre stjerner med det blotte øyet. Med en kikkert dukker det plutselig opp tusenvis til.",
-      "vanskeligeOrd": ["to", "tusen", "fem", "hundre"]
+      "vanskeligeOrd": [
+        "to",
+        "tusen",
+        "fem",
+        "hundre"
+      ],
+      "emoji": "✨"
     },
     {
       "id": "krefter-29",
@@ -793,7 +1271,11 @@
       "tittel": "Solsystemets alder",
       "niva": 2,
       "tekst": "Solsystemet vårt, med sola, jorda og alle de andre planetene, ble dannet for over fire milliarder år siden. Det er så lenge siden at jorda har rukket å forandre seg helt fra da den var ny.",
-      "vanskeligeOrd": ["fire", "milliarder"]
+      "vanskeligeOrd": [
+        "fire",
+        "milliarder"
+      ],
+      "emoji": "⏳"
     },
     {
       "id": "krefter-30",
@@ -801,7 +1283,12 @@
       "tittel": "Fjellet som er høyere enn Everest",
       "niva": 3,
       "tekst": "Målt fra bunnen av havet til toppen er den hawaiiske vulkanen Mauna Kea over en kilometer høyere enn Mount Everest. Det aller meste av dette kjempefjellet ligger likevel skjult under vann.",
-      "vanskeligeOrd": ["Mauna", "Kea", "Everest"]
+      "vanskeligeOrd": [
+        "Mauna",
+        "Kea",
+        "Everest"
+      ],
+      "emoji": "🏔️"
     },
     {
       "id": "krefter-31",
@@ -809,7 +1296,15 @@
       "tittel": "Det kraftigste jordskjelvet",
       "niva": 3,
       "tekst": "Det kraftigste jordskjelvet som noensinne er målt, rammet Chile i nitten hundre og seksti. Rystelsene kunne kjennes over tusen kilometer bortover kysten.",
-      "vanskeligeOrd": ["nitten", "hundre", "og", "seksti", "tusen", "Chile"]
+      "vanskeligeOrd": [
+        "nitten",
+        "hundre",
+        "og",
+        "seksti",
+        "tusen",
+        "Chile"
+      ],
+      "emoji": "🌍"
     },
     {
       "id": "krefter-32",
@@ -817,7 +1312,11 @@
       "tittel": "Isen i Antarktis",
       "niva": 2,
       "tekst": "Rundt nitti prosent av alt ferskvannet på jorda ligger fanget som is i Antarktis. Resten er alt vi har igjen til elver, innsjøer og drikkevann.",
-      "vanskeligeOrd": ["nitti", "Antarktis"]
+      "vanskeligeOrd": [
+        "nitti",
+        "Antarktis"
+      ],
+      "emoji": "🧊"
     },
     {
       "id": "krefter-33",
@@ -825,7 +1324,11 @@
       "tittel": "Den kaldeste dagen",
       "niva": 2,
       "tekst": "Den kaldeste temperaturen noensinne målt på jorda var nesten nitti minusgrader, ved en forskningsstasjon i Antarktis. Det er så kaldt at pusten din nesten ville fryst til is før den nådde bakken.",
-      "vanskeligeOrd": ["nitti", "Antarktis"]
+      "vanskeligeOrd": [
+        "nitti",
+        "Antarktis"
+      ],
+      "emoji": "❄️"
     },
     {
       "id": "krefter-34",
@@ -833,16 +1336,22 @@
       "tittel": "Solvinden",
       "niva": 3,
       "tekst": "Sola sender hele tiden ut en strøm av partikler kalt solvind, som suser gjennom rommet med en fart på rundt fire hundre kilometer i sekundet. Når solvinden treffer jorda, er det den som skaper nordlyset.",
-      "vanskeligeOrd": ["fire", "hundre"]
+      "vanskeligeOrd": [
+        "fire",
+        "hundre"
+      ],
+      "emoji": "🌬️"
     },
-
     {
       "id": "liv-14",
       "emne": "liv",
       "tittel": "Geparden",
       "niva": 1,
       "tekst": "Geparden er det raskeste landdyret i verden og kan løpe i over hundre kilometer i timen. Den orker bare å holde den farten i noen få sekunder før den blir helt utslitt.",
-      "vanskeligeOrd": ["hundre"]
+      "vanskeligeOrd": [
+        "hundre"
+      ],
+      "emoji": "🐆"
     },
     {
       "id": "liv-15",
@@ -850,7 +1359,11 @@
       "tittel": "Elefanthjernen",
       "niva": 2,
       "tekst": "En elefanthjerne kan veie fem kilo, mer enn tre ganger så mye som hjernen din. Elefanter husker andre elefanter og gamle vannhull i mange, mange år.",
-      "vanskeligeOrd": ["fem", "tre"]
+      "vanskeligeOrd": [
+        "fem",
+        "tre"
+      ],
+      "emoji": "🐘"
     },
     {
       "id": "liv-16",
@@ -858,7 +1371,10 @@
       "tittel": "Løvebrølet",
       "niva": 1,
       "tekst": "Et løvebrøl er så kraftig at det kan høres over åtte kilometer unna på en stille natt. Løver bruker brølet til å fortelle andre løver hvor de er, og passe på territoriet sitt.",
-      "vanskeligeOrd": ["åtte"]
+      "vanskeligeOrd": [
+        "åtte"
+      ],
+      "emoji": "🦁"
     },
     {
       "id": "liv-17",
@@ -866,7 +1382,10 @@
       "tittel": "Koalaen som sover mest",
       "niva": 1,
       "tekst": "Koalaen sover over tjue timer i døgnet, mer enn nesten alle andre dyr. Bladene den spiser gir så lite energi at den må hvile mesteparten av tiden.",
-      "vanskeligeOrd": ["tjue"]
+      "vanskeligeOrd": [
+        "tjue"
+      ],
+      "emoji": "🐨"
     },
     {
       "id": "liv-18",
@@ -874,7 +1393,10 @@
       "tittel": "Strutsen",
       "niva": 1,
       "tekst": "Strutsen kan ikke fly, men den kan løpe fortere enn sytti kilometer i timen. Egget den legger er det største egget i hele fugleverdenen.",
-      "vanskeligeOrd": ["sytti"]
+      "vanskeligeOrd": [
+        "sytti"
+      ],
+      "emoji": "🐦"
     },
     {
       "id": "liv-19",
@@ -882,7 +1404,10 @@
       "tittel": "Edderkoppens tråd",
       "niva": 2,
       "tekst": "Tråden i et spindelvev er så sterk at den kan tåle mer enn fem ganger så mye strekk som stål av samme tykkelse. Likevel er den tynn nok til at du knapt ser den i sollys.",
-      "vanskeligeOrd": ["fem"]
+      "vanskeligeOrd": [
+        "fem"
+      ],
+      "emoji": "🕸️"
     },
     {
       "id": "liv-20",
@@ -890,7 +1415,11 @@
       "tittel": "Monarksommerfuglen",
       "niva": 2,
       "tekst": "Monarksommerfuglen flyr over fire tusen kilometer hver høst for å finne varmere trakter. Det er utrolig langt for et insekt som veier mindre enn et gram.",
-      "vanskeligeOrd": ["fire", "tusen"]
+      "vanskeligeOrd": [
+        "fire",
+        "tusen"
+      ],
+      "emoji": "🦋"
     },
     {
       "id": "liv-21",
@@ -898,7 +1427,11 @@
       "tittel": "Haien som er eldre enn trærne",
       "niva": 2,
       "tekst": "Haier fantes i havet lenge før dinosaurene, og allerede nitti millioner år før de første trærne vokste opp av jorda. De har overlevd flere masseutryddelser som utslettet nesten alt annet liv.",
-      "vanskeligeOrd": ["nitti", "millioner"]
+      "vanskeligeOrd": [
+        "nitti",
+        "millioner"
+      ],
+      "emoji": "🦈"
     },
     {
       "id": "liv-22",
@@ -906,7 +1439,12 @@
       "tittel": "Rødnebbternens lange reise",
       "niva": 2,
       "tekst": "Rødnebbternen flyr lengst av alle dyr på jorda, opp mot sytti tusen kilometer hvert eneste år mellom nordpolen og sørpolen. I løpet av et langt liv kan den ha fløyet lengre enn turen til månen og tilbake mange ganger.",
-      "vanskeligeOrd": ["sytti", "tusen", "rødnebbternen"]
+      "vanskeligeOrd": [
+        "sytti",
+        "tusen",
+        "rødnebbternen"
+      ],
+      "emoji": "🐦"
     },
     {
       "id": "liv-23",
@@ -914,7 +1452,12 @@
       "tittel": "Hjertet ditt",
       "niva": 1,
       "tekst": "Hjertet ditt slår mer enn hundre tusen ganger hvert eneste døgn, uten at du noen gang trenger å tenke på det. Gjennom et helt liv blir det til flere milliarder hjerteslag.",
-      "vanskeligeOrd": ["hundre", "tusen", "milliarder"]
+      "vanskeligeOrd": [
+        "hundre",
+        "tusen",
+        "milliarder"
+      ],
+      "emoji": "❤️"
     },
     {
       "id": "liv-24",
@@ -922,7 +1465,10 @@
       "tittel": "Blodårene dine",
       "niva": 2,
       "tekst": "Legger du alle blodårene i kroppen din etter hverandre, blir de lange nok til å strekke seg mer enn to ganger rundt hele jordkloden. Likevel er de aller fleste av dem tynnere enn et hårstrå.",
-      "vanskeligeOrd": ["to"]
+      "vanskeligeOrd": [
+        "to"
+      ],
+      "emoji": "🩸"
     },
     {
       "id": "liv-25",
@@ -930,7 +1476,10 @@
       "tittel": "Nysehastigheten",
       "niva": 2,
       "tekst": "Lufta i et kraftig nys kan fare ut av nesen din med en fart på opp mot femti kilometer i timen. Det er derfor dråpene fra et nys kan spre seg langt utover rommet.",
-      "vanskeligeOrd": ["femti"]
+      "vanskeligeOrd": [
+        "femti"
+      ],
+      "emoji": "🤧"
     },
     {
       "id": "liv-26",
@@ -938,7 +1487,11 @@
       "tittel": "Blodet i kroppen",
       "niva": 1,
       "tekst": "En voksen person har omtrent fem liter blod i kroppen sin, som pumpes rundt om og om igjen av hjertet. Mister du mer enn en fjerdedel av det på en gang, blir det svært farlig.",
-      "vanskeligeOrd": ["fem", "fjerdedel"]
+      "vanskeligeOrd": [
+        "fem",
+        "fjerdedel"
+      ],
+      "emoji": "🩸"
     },
     {
       "id": "liv-27",
@@ -946,7 +1499,11 @@
       "tittel": "Bjørnens vintersøvn",
       "niva": 2,
       "tekst": "Når en bjørn ligger i vintersøvn, kan hjertet dens slå så sjelden som ti ganger i minuttet. Våken slår det gjerne fem ganger så fort, men i vintersøvnen bruker kroppen nesten ingen energi.",
-      "vanskeligeOrd": ["ti", "fem"]
+      "vanskeligeOrd": [
+        "ti",
+        "fem"
+      ],
+      "emoji": "🐻"
     },
     {
       "id": "liv-28",
@@ -954,7 +1511,10 @@
       "tittel": "Delfinens halve søvn",
       "niva": 2,
       "tekst": "En delfin sover bare med den ene halvdelen av hjernen om gangen, mens den andre halvdelen holder den våken nok til å puste. Etter rundt to timer bytter delfinen om, slik at begge sider får hvile.",
-      "vanskeligeOrd": ["to"]
+      "vanskeligeOrd": [
+        "to"
+      ],
+      "emoji": "🐬"
     },
     {
       "id": "liv-29",
@@ -962,7 +1522,10 @@
       "tittel": "Neshornets horn",
       "niva": 2,
       "tekst": "Neshornets horn er ikke bein, men laget av det samme stoffet som er i håret og neglene dine. Det vokser hele livet, opp mot sju centimeter i året.",
-      "vanskeligeOrd": ["sju"]
+      "vanskeligeOrd": [
+        "sju"
+      ],
+      "emoji": "🦏"
     },
     {
       "id": "liv-30",
@@ -970,7 +1533,10 @@
       "tittel": "DNA-et ditt",
       "niva": 3,
       "tekst": "Om du dro ut all DNA-en i kroppen din til én lang tråd, ville den strukket seg til sola og tilbake mer enn seksti ganger. Likevel er den krøllet sammen så tett at den får plass i hver eneste, bitte lille celle.",
-      "vanskeligeOrd": ["seksti"]
+      "vanskeligeOrd": [
+        "seksti"
+      ],
+      "emoji": "🧬"
     },
     {
       "id": "liv-31",
@@ -978,7 +1544,11 @@
       "tittel": "Håret ditt",
       "niva": 1,
       "tekst": "Et menneskehode har som regel rundt hundre tusen hårstrå, selv om noen har flere og andre færre. Hvert av dem vokser videre selv om du klipper det, helt til det til slutt faller av.",
-      "vanskeligeOrd": ["hundre", "tusen"]
+      "vanskeligeOrd": [
+        "hundre",
+        "tusen"
+      ],
+      "emoji": "💇"
     },
     {
       "id": "liv-32",
@@ -986,7 +1556,11 @@
       "tittel": "Blunkingen din",
       "niva": 1,
       "tekst": "Du blunker mer enn tjue tusen ganger hver eneste dag, uten at du legger merke til det. Blunkingen skyller øynene dine i tårevæske og holder dem fuktige og rene.",
-      "vanskeligeOrd": ["tjue", "tusen"]
+      "vanskeligeOrd": [
+        "tjue",
+        "tusen"
+      ],
+      "emoji": "👁️"
     },
     {
       "id": "liv-33",
@@ -994,16 +1568,22 @@
       "tittel": "Tennene dine",
       "niva": 1,
       "tekst": "En voksen person har som regel trettito tenner i munnen, mens et barn bare har tjue. De voksne tennene skal vare resten av livet, så de fortjener god pleie.",
-      "vanskeligeOrd": ["trettito", "tjue"]
+      "vanskeligeOrd": [
+        "trettito",
+        "tjue"
+      ],
+      "emoji": "🦷"
     },
-
     {
       "id": "folk-18",
       "emne": "folk",
       "tittel": "Egyptiske mumier",
       "niva": 2,
       "tekst": "Når egyptiske prester gjorde en død person om til en mumie, tok hele prosessen rundt sytti dager. Kroppen ble tørket med spesielt salt og pakket inn i lange remser av lintøy.",
-      "vanskeligeOrd": ["sytti"]
+      "vanskeligeOrd": [
+        "sytti"
+      ],
+      "emoji": "🏺"
     },
     {
       "id": "folk-19",
@@ -1011,7 +1591,17 @@
       "tittel": "Titanic",
       "niva": 2,
       "tekst": "Titanic hadde over to tusen to hundre mennesker om bord da hun sank i nitten hundre og tolv. Mer enn halvparten av dem, over femten hundre mennesker, overlevde ikke.",
-      "vanskeligeOrd": ["to", "tusen", "hundre", "nitten", "og", "tolv", "femten", "Titanic"]
+      "vanskeligeOrd": [
+        "to",
+        "tusen",
+        "hundre",
+        "nitten",
+        "og",
+        "tolv",
+        "femten",
+        "Titanic"
+      ],
+      "emoji": "🚢"
     },
     {
       "id": "folk-20",
@@ -1019,7 +1609,13 @@
       "tittel": "Den forbudte byen",
       "niva": 2,
       "tekst": "Den forbudte byen i Kina, hvor Kinas keisere bodde, har over ni tusen rom fordelt utover det enorme palasset. Vanlige folk fikk ikke lov til å gå inn dit i mer enn fem hundre år.",
-      "vanskeligeOrd": ["ni", "tusen", "fem", "hundre"]
+      "vanskeligeOrd": [
+        "ni",
+        "tusen",
+        "fem",
+        "hundre"
+      ],
+      "emoji": "🏯"
     },
     {
       "id": "folk-21",
@@ -1027,7 +1623,12 @@
       "tittel": "Ilden",
       "niva": 2,
       "tekst": "Mennesker har laget og brukt ild i minst fire hundre tusen år, lenge før noen kunne skrive eller bygge hus av stein. Ilden ga varme, lys og trygghet mot ville dyr i mørket.",
-      "vanskeligeOrd": ["fire", "hundre", "tusen"]
+      "vanskeligeOrd": [
+        "fire",
+        "hundre",
+        "tusen"
+      ],
+      "emoji": "🔥"
     },
     {
       "id": "folk-22",
@@ -1035,7 +1636,11 @@
       "tittel": "Verdens eldste skrift",
       "niva": 2,
       "tekst": "Det eldste skriftspråket vi kjenner til heter kileskrift og ble funnet opp for om lag fem tusen år siden. Det ble risset inn i myk leire med en spiss pinne, ikke skrevet med penn.",
-      "vanskeligeOrd": ["fem", "tusen"]
+      "vanskeligeOrd": [
+        "fem",
+        "tusen"
+      ],
+      "emoji": "📜"
     },
     {
       "id": "folk-23",
@@ -1043,7 +1648,12 @@
       "tittel": "Romerriket",
       "niva": 3,
       "tekst": "Det vestlige Romerriket varte i over fem hundre år før det falt sammen. Den østlige delen av riket klarte seg videre i mer enn tusen år til.",
-      "vanskeligeOrd": ["fem", "hundre", "tusen"]
+      "vanskeligeOrd": [
+        "fem",
+        "hundre",
+        "tusen"
+      ],
+      "emoji": "🏛️"
     },
     {
       "id": "folk-24",
@@ -1051,7 +1661,12 @@
       "tittel": "Vår egen art",
       "niva": 3,
       "tekst": "Vår egen art, det moderne mennesket, har trolig eksistert i rundt tre hundre tusen år. Det aller meste av den tiden levde folk som jegere og sankere, lenge før noen dyrket jorda.",
-      "vanskeligeOrd": ["tre", "hundre", "tusen"]
+      "vanskeligeOrd": [
+        "tre",
+        "hundre",
+        "tusen"
+      ],
+      "emoji": "🧬"
     },
     {
       "id": "folk-25",
@@ -1059,7 +1674,10 @@
       "tittel": "Korttidsminnet",
       "niva": 2,
       "tekst": "Hjernen din klarer vanligvis å holde på rundt sju ting i korttidsminnet samtidig, som et telefonnummer du nettopp har hørt. Etter bare noen sekunder uten å tenke på det, forsvinner det ofte helt.",
-      "vanskeligeOrd": ["sju"]
+      "vanskeligeOrd": [
+        "sju"
+      ],
+      "emoji": "🧠"
     },
     {
       "id": "folk-26",
@@ -1067,7 +1685,11 @@
       "tittel": "Smittsom gjesping",
       "niva": 1,
       "tekst": "Ser du noen andre gjespe, gjesper du selv i mer enn fire av ti tilfeller. Forskere tror det henger sammen med empati, evnen til å kjenne det andre føler.",
-      "vanskeligeOrd": ["fire", "ti"]
+      "vanskeligeOrd": [
+        "fire",
+        "ti"
+      ],
+      "emoji": "🥱"
     },
     {
       "id": "folk-27",
@@ -1075,7 +1697,11 @@
       "tittel": "Rødming",
       "niva": 2,
       "tekst": "Mennesker er det eneste dyret vi vet rødmer av flauhet, ifølge forskere som har studert det i over hundre år. Selv Charles Darwin undret seg over hvorfor ansiktet vårt avslører følelser vi helst vil skjule.",
-      "vanskeligeOrd": ["hundre", "Darwin"]
+      "vanskeligeOrd": [
+        "hundre",
+        "Darwin"
+      ],
+      "emoji": "😳"
     },
     {
       "id": "folk-28",
@@ -1083,7 +1709,10 @@
       "tittel": "Søvngjengeri",
       "niva": 2,
       "tekst": "Rundt sju prosent av oss går i søvne minst én gang i løpet av livet. Det skjer som regel i den dypeste delen av søvnen, lenge før man begynner å drømme.",
-      "vanskeligeOrd": ["sju"]
+      "vanskeligeOrd": [
+        "sju"
+      ],
+      "emoji": "😴"
     },
     {
       "id": "folk-29",
@@ -1091,7 +1720,16 @@
       "tittel": "Osebergskipet",
       "niva": 3,
       "tekst": "Osebergskipet ble bygget i Norge for over ett tusen to hundre år siden og ble senere gravlagt med to kvinner om bord. Da det ble gravd fram igjen i nitten hundre og tre, var treverket fortsatt godt bevart etter alle årene i leire.",
-      "vanskeligeOrd": ["tusen", "to", "hundre", "nitten", "og", "tre", "Osebergskipet"]
+      "vanskeligeOrd": [
+        "tusen",
+        "to",
+        "hundre",
+        "nitten",
+        "og",
+        "tre",
+        "Osebergskipet"
+      ],
+      "emoji": "⛵"
     },
     {
       "id": "folk-30",
@@ -1099,7 +1737,11 @@
       "tittel": "Det fønikiske alfabetet",
       "niva": 3,
       "tekst": "Bokstavene vi bruker i dag stammer opprinnelig fra det fønikiske alfabetet, som ble laget for rundt tre tusen år siden. Fønikerne var sjøfolk og handelsmenn som spredte alfabetet sitt langs hele Middelhavet.",
-      "vanskeligeOrd": ["tre", "tusen"]
+      "vanskeligeOrd": [
+        "tre",
+        "tusen"
+      ],
+      "emoji": "🔤"
     },
     {
       "id": "folk-31",
@@ -1107,7 +1749,12 @@
       "tittel": "Første kvinner i OL",
       "niva": 2,
       "tekst": "De første kvinnene fikk delta i de olympiske leker i Paris i nitten hundre, der tjueto kvinner konkurrerte i idretter som tennis og seiling. Før det hadde OL i mange år vært forbeholdt bare menn.",
-      "vanskeligeOrd": ["nitten", "hundre", "tjueto"]
+      "vanskeligeOrd": [
+        "nitten",
+        "hundre",
+        "tjueto"
+      ],
+      "emoji": "🥇"
     },
     {
       "id": "folk-32",
@@ -1115,7 +1762,10 @@
       "tittel": "Marco Polos lange reise",
       "niva": 2,
       "tekst": "Marco Polo dro hjemmefra i Italia som ganske ung og var borte i hele tjuefire år før han kom tilbake igjen. Reisen gikk helt til Kina og tilbake, gjennom ørkener og over høye fjell.",
-      "vanskeligeOrd": ["tjuefire"]
+      "vanskeligeOrd": [
+        "tjuefire"
+      ],
+      "emoji": "🧳"
     },
     {
       "id": "folk-33",
@@ -1123,7 +1773,12 @@
       "tittel": "Vikingenes handelsruter",
       "niva": 2,
       "tekst": "Vikingene handlet ikke bare i Europa, men reiste langs elver helt til Bagdad, mer enn ti tusen kilometer hjemmefra. Der byttet de skinn og rav mot sølv og silke.",
-      "vanskeligeOrd": ["ti", "tusen", "Bagdad"]
+      "vanskeligeOrd": [
+        "ti",
+        "tusen",
+        "Bagdad"
+      ],
+      "emoji": "⛵"
     },
     {
       "id": "folk-34",
@@ -1131,7 +1786,14 @@
       "tittel": "Demokratiets fødsel",
       "niva": 3,
       "tekst": "Demokrati, at folket selv er med på å bestemme, ble funnet opp i Athen for over to tusen fem hundre år siden. Den gangen fikk riktignok bare voksne, frie menn være med å stemme.",
-      "vanskeligeOrd": ["to", "tusen", "fem", "hundre", "Athen"]
+      "vanskeligeOrd": [
+        "to",
+        "tusen",
+        "fem",
+        "hundre",
+        "Athen"
+      ],
+      "emoji": "🏛️"
     },
     {
       "id": "folk-35",
@@ -1139,7 +1801,11 @@
       "tittel": "Roma, storbyen",
       "niva": 3,
       "tekst": "Det gamle Roma var trolig den første byen i verden med over en million innbyggere. Det tok mer enn tusen år før noen annen by i Europa ble like stor igjen.",
-      "vanskeligeOrd": ["million", "tusen"]
+      "vanskeligeOrd": [
+        "million",
+        "tusen"
+      ],
+      "emoji": "🏛️"
     },
     {
       "id": "folk-36",
@@ -1147,7 +1813,12 @@
       "tittel": "Verdens eldste hulemalerier",
       "niva": 2,
       "tekst": "De eldste hulemalingene vi kjenner til, funnet i Indonesia, er mer enn femti tusen år gamle. Der malte noen sannsynligvis ville dyr og menneskelignende skikkelser på veggen i en mørk grotte.",
-      "vanskeligeOrd": ["femti", "tusen", "Indonesia"]
+      "vanskeligeOrd": [
+        "femti",
+        "tusen",
+        "Indonesia"
+      ],
+      "emoji": "🎨"
     },
     {
       "id": "folk-37",
@@ -1155,16 +1826,22 @@
       "tittel": "Vikingskipets fart",
       "niva": 1,
       "tekst": "Et vikingskip med god vind i seilet kunne komme opp i en fart på over tretti kilometer i timen. Det var raskere enn de fleste andre skip i Europa på den tiden.",
-      "vanskeligeOrd": ["tretti"]
+      "vanskeligeOrd": [
+        "tretti"
+      ],
+      "emoji": "⛵"
     },
-
     {
       "id": "oppfinnelser-20",
       "emne": "oppfinnelser",
       "tittel": "Raketten",
       "niva": 2,
       "tekst": "En rakett må opp i en fart på over førti tusen kilometer i timen for å slippe unna jordas tyngdekraft for godt. Uten den farten ville raketten før eller siden falt tilbake til jorda igjen.",
-      "vanskeligeOrd": ["førti", "tusen"]
+      "vanskeligeOrd": [
+        "førti",
+        "tusen"
+      ],
+      "emoji": "🚀"
     },
     {
       "id": "oppfinnelser-21",
@@ -1172,7 +1849,12 @@
       "tittel": "Damptoget",
       "niva": 2,
       "tekst": "Det aller første damptoget klarte bare rundt åtte kilometer i timen, omtrent som en rask sykkeltur. Over hundre år senere satte et annet damptog en fartsrekord på mer enn to hundre kilometer i timen.",
-      "vanskeligeOrd": ["åtte", "hundre", "to"]
+      "vanskeligeOrd": [
+        "åtte",
+        "hundre",
+        "to"
+      ],
+      "emoji": "🚂"
     },
     {
       "id": "oppfinnelser-22",
@@ -1180,7 +1862,15 @@
       "tittel": "Det første videospillet",
       "niva": 2,
       "tekst": "Det aller første videospillet ble laget i nitten hundre og femtiåtte, tjue år før det kjente spillet Pong. Det het Tennis for Two og ble vist fram på en gammel oscilloskop-skjerm.",
-      "vanskeligeOrd": ["nitten", "hundre", "og", "femtiåtte", "tjue", "Pong"]
+      "vanskeligeOrd": [
+        "nitten",
+        "hundre",
+        "og",
+        "femtiåtte",
+        "tjue",
+        "Pong"
+      ],
+      "emoji": "🎮"
     },
     {
       "id": "oppfinnelser-23",
@@ -1188,7 +1878,11 @@
       "tittel": "Satellitter i bane",
       "niva": 1,
       "tekst": "Rundt jorda går det nå mer enn femten tusen satellitter, både i bruk og utrangerte. De fleste av dem er så små og fjerne at du aldri kan se dem uten kikkert.",
-      "vanskeligeOrd": ["femten", "tusen"]
+      "vanskeligeOrd": [
+        "femten",
+        "tusen"
+      ],
+      "emoji": "🛰️"
     },
     {
       "id": "oppfinnelser-24",
@@ -1196,7 +1890,10 @@
       "tittel": "GPS-en din",
       "niva": 2,
       "tekst": "For at GPS-en i en telefon skal finne ut nøyaktig hvor du er, trenger den signaler fra flere satellitter samtidig. Hele systemet består av minst tjuefire satellitter som går i bane rundt hele jorda.",
-      "vanskeligeOrd": ["tjuefire"]
+      "vanskeligeOrd": [
+        "tjuefire"
+      ],
+      "emoji": "📍"
     },
     {
       "id": "oppfinnelser-25",
@@ -1204,7 +1901,15 @@
       "tittel": "Strekkoden",
       "niva": 2,
       "tekst": "Strekkoden ble oppfunnet allerede i nitten hundre og femtito, men det tok mer enn tjue år før butikkene begynte å bruke den. I dag blir strekkoder skannet flere milliarder ganger hver eneste dag over hele verden.",
-      "vanskeligeOrd": ["nitten", "hundre", "og", "femtito", "tjue", "milliarder"]
+      "vanskeligeOrd": [
+        "nitten",
+        "hundre",
+        "og",
+        "femtito",
+        "tjue",
+        "milliarder"
+      ],
+      "emoji": "🏷️"
     },
     {
       "id": "oppfinnelser-26",
@@ -1212,7 +1917,10 @@
       "tittel": "Borrelåsen",
       "niva": 2,
       "tekst": "En sveitsisk oppfinner fikk ideen til borrelåsen etter å ha sett hvordan små borrefrø hang seg fast i hunden hans. Det tok likevel nesten tjue år før han fikk laget en versjon som fungerte godt nok til å selges.",
-      "vanskeligeOrd": ["tjue"]
+      "vanskeligeOrd": [
+        "tjue"
+      ],
+      "emoji": "🌿"
     },
     {
       "id": "oppfinnelser-27",
@@ -1220,7 +1928,11 @@
       "tittel": "Vannklosettet",
       "niva": 2,
       "tekst": "Det første vannklosettet med skylling ble tegnet allerede for mer enn fire hundre år siden. Likevel gikk det enda flere hundre år før vanlige folk fikk et slikt toalett hjemme.",
-      "vanskeligeOrd": ["fire", "hundre"]
+      "vanskeligeOrd": [
+        "fire",
+        "hundre"
+      ],
+      "emoji": "🚽"
     },
     {
       "id": "oppfinnelser-28",
@@ -1228,7 +1940,10 @@
       "tittel": "Internett",
       "niva": 1,
       "tekst": "Internett består i dag av mer enn en milliard nettsider, men bare en liten del av dem blir jevnlig oppdatert. De aller fleste nettsidene ligger nesten glemt og ubrukt et sted der ute.",
-      "vanskeligeOrd": ["milliard"]
+      "vanskeligeOrd": [
+        "milliard"
+      ],
+      "emoji": "🌐"
     },
     {
       "id": "oppfinnelser-29",
@@ -1236,7 +1951,13 @@
       "tittel": "Lego-klossene",
       "niva": 2,
       "tekst": "Med bare seks vanlige Lego-klosser kan du sette dem sammen på over ni hundre millioner forskjellige måter. Ingen har noensinne rukket å bygge alle variantene selv i et helt liv.",
-      "vanskeligeOrd": ["seks", "ni", "hundre", "millioner"]
+      "vanskeligeOrd": [
+        "seks",
+        "ni",
+        "hundre",
+        "millioner"
+      ],
+      "emoji": "🧱"
     },
     {
       "id": "oppfinnelser-30",
@@ -1244,7 +1965,11 @@
       "tittel": "Paraplyen",
       "niva": 1,
       "tekst": "Paraplyen ble funnet opp i Kina for mer enn tre tusen år siden, lenge før den kom til Europa. De første paraplyene var laget av bambus og tykt papir eller stoff.",
-      "vanskeligeOrd": ["tre", "tusen"]
+      "vanskeligeOrd": [
+        "tre",
+        "tusen"
+      ],
+      "emoji": "☂️"
     },
     {
       "id": "oppfinnelser-31",
@@ -1252,7 +1977,13 @@
       "tittel": "Vaskemaskinen",
       "niva": 2,
       "tekst": "Før vaskemaskinen kom, kunne det ta en hel dag å vaske klærne for hånd med vann og et skrubbebrett. Den første automatiske vaskemaskinen kom ikke før i nitten hundre og trettisju.",
-      "vanskeligeOrd": ["nitten", "hundre", "og", "trettisju"]
+      "vanskeligeOrd": [
+        "nitten",
+        "hundre",
+        "og",
+        "trettisju"
+      ],
+      "emoji": "🧺"
     },
     {
       "id": "oppfinnelser-32",
@@ -1260,7 +1991,10 @@
       "tittel": "Fjernsynet",
       "niva": 1,
       "tekst": "De første flimrende bildene på en fjernsynsskjerm ble vist fram for over hundre år siden. Det tok likevel mange tiår før de fleste hjem fikk sitt eget fjernsyn å samles rundt.",
-      "vanskeligeOrd": ["hundre"]
+      "vanskeligeOrd": [
+        "hundre"
+      ],
+      "emoji": "📺"
     },
     {
       "id": "oppfinnelser-33",
@@ -1268,7 +2002,11 @@
       "tittel": "Vindmøllen",
       "niva": 1,
       "tekst": "De aller første vindmøllene ble bygget for nesten to tusen år siden for å drive enkle maskiner. I dag bruker vi mye større vindmøller til å lage strøm av vinden.",
-      "vanskeligeOrd": ["to", "tusen"]
+      "vanskeligeOrd": [
+        "to",
+        "tusen"
+      ],
+      "emoji": "💨"
     },
     {
       "id": "oppfinnelser-34",
@@ -1276,7 +2014,11 @@
       "tittel": "Den mekaniske klokken",
       "niva": 2,
       "tekst": "De første mekaniske klokkene ble laget for over sju hundre år siden, ofte til klostre og kirker som trengte å vite nøyaktig når det var tid for bønn. Før det målte folk tiden med solur eller lys som brant sakte ned.",
-      "vanskeligeOrd": ["sju", "hundre"]
+      "vanskeligeOrd": [
+        "sju",
+        "hundre"
+      ],
+      "emoji": "🕰️"
     },
     {
       "id": "oppfinnelser-35",
@@ -1284,7 +2026,11 @@
       "tittel": "Den første bilen",
       "niva": 1,
       "tekst": "Den aller første bilen i verden hadde en toppfart på bare seksten kilometer i timen, tregere enn en sykkel i god fart. I dag kan vanlige biler kjøre over ti ganger så fort uten problem.",
-      "vanskeligeOrd": ["seksten", "ti"]
+      "vanskeligeOrd": [
+        "seksten",
+        "ti"
+      ],
+      "emoji": "🚗"
     },
     {
       "id": "oppfinnelser-36",
@@ -1292,7 +2038,13 @@
       "tittel": "Printeren som bygger i lag",
       "niva": 2,
       "tekst": "Den første printeren som kunne bygge gjenstander lag på lag av flytende plast, ble laget i nitten hundre og åttifire. I dag brukes samme teknikk til alt fra leker til deler til fly.",
-      "vanskeligeOrd": ["nitten", "hundre", "og", "åttifire"]
+      "vanskeligeOrd": [
+        "nitten",
+        "hundre",
+        "og",
+        "åttifire"
+      ],
+      "emoji": "🖨️"
     },
     {
       "id": "oppfinnelser-37",
@@ -1300,7 +2052,11 @@
       "tittel": "Brannslukningsapparatet",
       "niva": 2,
       "tekst": "Det første brannslukningsapparatet ble laget for over tre hundre år siden og brukte krutt til å sprute væske på flammene. Moderne apparater er mye tryggere og finnes i nesten alle hus i dag.",
-      "vanskeligeOrd": ["tre", "hundre"]
+      "vanskeligeOrd": [
+        "tre",
+        "hundre"
+      ],
+      "emoji": "🧯"
     },
     {
       "id": "oppfinnelser-38",
@@ -1308,7 +2064,11 @@
       "tittel": "Tannbørsten",
       "niva": 2,
       "tekst": "De første tannbørstene med bust ble laget i Kina for over fem hundre år siden, av stive hår fra nakken på griser. Bustene vi bruker i dag er laget av nylon i stedet, noe som gjør dem renere og billigere å lage.",
-      "vanskeligeOrd": ["fem", "hundre"]
+      "vanskeligeOrd": [
+        "fem",
+        "hundre"
+      ],
+      "emoji": "🪥"
     },
     {
       "id": "oppfinnelser-39",
@@ -1316,7 +2076,12 @@
       "tittel": "Minnepinnen",
       "niva": 2,
       "tekst": "Den aller første minnepinnen kom i salg i år to tusen og hadde plass til bare åtte megabyte. Det er alt for lite til å lagre et eneste bilde slik kameraer tar i dag.",
-      "vanskeligeOrd": ["to", "tusen", "åtte"]
+      "vanskeligeOrd": [
+        "to",
+        "tusen",
+        "åtte"
+      ],
+      "emoji": "💾"
     }
   ]
 }

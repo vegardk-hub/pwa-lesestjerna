@@ -169,7 +169,7 @@
       var knapp = document.createElement("button");
       knapp.type = "button";
       knapp.className = "lestRad";
-      knapp.textContent = t.tittel;
+      knapp.textContent = (t.emoji || "📖") + "  " + t.tittel;
       knapp.onclick = function () { if (paaLestValgt) paaLestValgt(t); };
       liste.append(knapp);
     });
