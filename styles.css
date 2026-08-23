@@ -435,6 +435,9 @@ button.liten { padding: 6px 12px }
 .vare.episk .navn, .figurkort.episk .navn { color: #fff }
 .vare.episk .merke-kategori, .figurkort.episk .merke-kategori { color: rgba(255, 255, 255, .5) }
 .vare.sekssju, .figurkort.sekssju { background: var(--grønbakk) }
+.vare.utenomjordisk, .figurkort.utenomjordisk { background: #132247 }
+.vare.utenomjordisk .navn, .figurkort.utenomjordisk .navn { color: #fff }
+.vare.utenomjordisk .merke-kategori, .figurkort.utenomjordisk .merke-kategori { color: rgba(255, 255, 255, .5) }
 
 /* Sekssju-robotene dytter armene sine opp og ned hele tiden -- css-klassen
    settes direkte i SVG-en fra js/figurer.js sin robotSvg(), ikke her, saa
@@ -447,6 +450,26 @@ button.liten { padding: 6px 12px }
 }
 .arm-vipp { animation: armvipp .6s ease-in-out infinite }
 .arm-vipp-b { animation-delay: -.3s }
+
+/* Utenomjordiske roboter dreier hodet mot venstre, saa mot hoeyre, og
+   tilbake til midten -- klassene settes i figurer.js sin robotSvg(), se
+   forklaringen der. Straalene (.utenom-laser) blinker paa akkurat de to
+   punktene i tidslinja der hodet staar stille, dreid heilt til siden --
+   samme prosent-tall paa begge steder, saa de faktisk treffer sammen. */
+@keyframes utenomsving {
+  0%, 12%, 48%, 52%, 88%, 100% { transform: rotate(0deg) }
+  28%, 32% { transform: rotate(-18deg) }
+  68%, 72% { transform: rotate(18deg) }
+}
+.utenom-hode {
+  transform-origin: 20px 16px;
+  animation: utenomsving 4.5s ease-in-out infinite;
+}
+@keyframes utenomlaser {
+  0%, 22%, 38%, 62%, 78%, 100% { opacity: 0 }
+  28%, 32%, 68%, 72% { opacity: 1 }
+}
+.utenom-laser { opacity: 0; animation: utenomlaser 4.5s ease-in-out infinite }
 
 /* Kategorinavnet var foerst et bokstav-merke i hjoernet, men "Legendarisk"
    er for langt til det -- en liten etikett oeverst paa kortet i stedet. */

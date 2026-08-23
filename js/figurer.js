@@ -19,7 +19,7 @@
   // Teksten paa kortet i butikken og samlingen -- se BAKGRUNNSFARGE i
   // styles.css (.vare/.figurkort + kategorinavnet som klasse) for selve
   // fargen. Ukjent/manglende kategori telles som vanlig.
-  var KATEGORINAVN = { vanlig: "Vanlig", sjelden: "Sjelden", legendarisk: "Legendarisk", mytisk: "Mytisk", episk: "Episk", sekssju: "67" };
+  var KATEGORINAVN = { vanlig: "Vanlig", sjelden: "Sjelden", legendarisk: "Legendarisk", mytisk: "Mytisk", episk: "Episk", sekssju: "67", utenomjordisk: "Utenomjordisk" };
 
   function antenneSvg(f) {
     if (f.antenne === "kule") {
@@ -57,6 +57,14 @@
   // Sekssju-roboten dytter i tillegg armene sine opp og ned hele tiden --
   // css/.arm-vipp gjoer selve bevegelsen, med en liten faseforskyvning
   // mellom venstre og hoeyre arm (css/.arm-vipp-b) saa de ikke gaar i takt.
+  // Utenomjordiske roboter dreier hodet fram og tilbake, og skyter en
+  // laserstraale ut av begge oeynene naar hodet er dreid heilt til den ene
+  // siden -- css/.utenom-hode dreier gruppa, css/.utenom-laser blinker
+  // straalene, begge paa samme tidslinje saa de treffer naar hodet faktisk
+  // staar dreid. Straalene ligger inni samme gruppe som hodet, saa de
+  // "sitter fast" ved oeynene og dreier med i stedet for aa peke rett fram
+  // uansett. Fargen paa straalen er oeynefargen deres, akkurat som
+  // brystlyset bruker aksentfargen.
   function robotSvg(f) {
     var hodelys = f.blink === "hode"
       ? '<circle cx="28" cy="11" r="2" class="blink-lys" fill="' + f.aksent + '"/>'
@@ -66,11 +74,21 @@
     var armVKlasse = vipper ? ' class="arm-vipp"' : "";
     var armHKlasse = vipper ? ' class="arm-vipp arm-vipp-b"' : "";
 
-    return '<svg viewBox="0 0 40 48" aria-hidden="true">' +
-      antenneSvg(f) +
+    var hodeInnhold = antenneSvg(f) +
       '<rect x="9" y="8" width="22" height="16" rx="6" fill="' + f.hode + '"/>' +
       ansiktSvg(f) +
-      hodelys +
+      hodelys;
+
+    var hode = f.kategori === "utenomjordisk"
+      ? '<g class="utenom-hode">' + hodeInnhold +
+        '<line x1="15" y1="17.5" x2="3" y2="2" stroke="' + f.oyne + '" stroke-width="2.4" ' +
+        'stroke-linecap="round" class="utenom-laser"/>' +
+        '<line x1="25" y1="17.5" x2="37" y2="2" stroke="' + f.oyne + '" stroke-width="2.4" ' +
+        'stroke-linecap="round" class="utenom-laser"/></g>'
+      : hodeInnhold;
+
+    return '<svg viewBox="0 0 40 48" aria-hidden="true">' +
+      hode +
       '<rect x="1" y="29" width="6" height="10" rx="3" fill="' + f.kropp + '"' + armVKlasse + '/>' +
       '<rect x="33" y="29" width="6" height="10" rx="3" fill="' + f.kropp + '"' + armHKlasse + '/>' +
       '<rect x="6" y="26" width="28" height="18" rx="7" fill="' + f.kropp + '"/>' +

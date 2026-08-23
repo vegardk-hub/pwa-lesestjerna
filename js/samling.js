@@ -13,6 +13,9 @@
  *                   skummel robotlyd
  *   sekssju      -- armene dytter opp og ned hele tiden (css/.arm-vipp),
  *                   blinkende lys, og trykk gir en frase med robotstemme
+ *   utenomjordisk -- hodet dreier fram og tilbake og skyter laserstraaler
+ *                   fra oeynene (css/.utenom-hode + .utenom-laser),
+ *                   blinkende lys, og trykk gir en frase med robotstemme
  *
  * Frasen (reager() under) knyttes til at figuren HAR en frase i
  * data/figurer.json, ikke til en bestemt kategori -- i dag er det

@@ -9,9 +9,10 @@
     "  id        må være unik og må ALDRI endres etterpå -- det er nøkkelen",
     "            til hvem som eier hvilken robot.",
     "  navn      det han ser i butikken og i samlingen.",
-    "  kategori  \"vanlig\", \"sjelden\", \"legendarisk\", \"mytisk\", \"episk\" eller",
-    "            \"sekssju\". Styrer bakgrunnsfargen og kategorinavnet på kortet",
-    "            (js/butikk.js og js/samling.js), og hva som skjer i samlingen:",
+    "  kategori  \"vanlig\", \"sjelden\", \"legendarisk\", \"mytisk\", \"episk\",",
+    "            \"sekssju\" eller \"utenomjordisk\". Styrer bakgrunnsfargen og",
+    "            kategorinavnet på kortet (js/butikk.js og js/samling.js), og",
+    "            hva som skjer i samlingen:",
     "              vanlig       -- bare lyd (Robotlyd.spill)",
     "              sjelden      -- blinkende lys (blink) + lyd",
     "              legendarisk  -- blinkende lys + sier en frase (Robotlyd.si)",
@@ -21,11 +22,16 @@
     "              sekssju      -- armene dytter opp og ned hele tiden",
     "                               (css/.arm-vipp, satt i js/figurer.js ut fra",
     "                               kategorien), blinkende lys + sier en frase",
+    "              utenomjordisk -- hodet dreier fram og tilbake og skyter",
+    "                               laserstråler fra øynene (css/.utenom-hode",
+    "                               + .utenom-laser, satt i js/figurer.js),",
+    "                               blinkende lys + sier en frase",
     "  pris      i mynter. Vanlig ligger rundt 35-50 (omtrent én tekst).",
     "            Sjelden = 2x, legendarisk = 4x, mytisk = 8x, episk = 12x",
     "            av en tilsvarende vanlig-pris -- ikke noe fast tall, bare",
-    "            skalert per robot. Sekssju er unntaket: rundt tusen mynter,",
-    "            satt rett og slett fordi noen ba om det, ikke etter mønsteret.",
+    "            skalert per robot. Sekssju og utenomjordisk er unntaket:",
+    "            rundt tusen mynter, satt rett og slett fordi noen ba om det,",
+    "            ikke etter mønsteret.",
     "  kropp/hode/oyne/aksent   farger (heksverdier) som js/figurer.js maler",
     "            roboten med.",
     "  antenne   \"kule\", \"skaal\" eller \"pigger\".",
@@ -37,7 +43,7 @@
     "  moro      en kort, morsom setning om roboten -- vises stor sammen med",
     "            ham på \"Ola sin robot\" når han er valgt som personlig robot",
     "            (velges fra samlingen, se js/samling.js og js/hus.js).",
-    "            Alle 35 roboter har én."
+    "            Alle roboter har én."
   ],
   "figurer": [
     { "id": "blikkis",  "navn": "Blikkis",  "kategori": "vanlig", "pris": 35, "kropp": "#9aa3ad", "hode": "#dbe8fb", "oyne": "#12233f", "aksent": "#b3261e", "antenne": "kule",  "ansikt": "rund", "moro": "Blikkis blinker fælt fort når han blir flau -- og det er ganske ofte." },
@@ -79,6 +85,12 @@
 
     { "id": "doot",   "navn": "Doot",   "kategori": "sekssju", "pris": 980,  "kropp": "#ff8a3d", "hode": "#fff6e0", "oyne": "#3a2000", "aksent": "#8bc93a", "antenne": "pigger", "ansikt": "visir",   "blink": "hode",  "frase": "Six seven! Six seven!", "moro": "Doot hopper opp og ned og svarer «six seven» uansett hva du spør om." },
     { "id": "vippo",  "navn": "Vippo",  "kategori": "sekssju", "pris": 1050, "kropp": "#3d6fb4", "hode": "#e0f0ff", "oyne": "#ffffff", "aksent": "#f2b705", "antenne": "skaal",  "ansikt": "rund",    "blink": "kropp", "frase": "Six seven! Six seven! Six seven!", "moro": "Vippo vipper armene så mye at han glemmer hva han egentlig skulle gjøre." },
-    { "id": "seksju", "navn": "Seksju", "kategori": "sekssju", "pris": 1020, "kropp": "#a8447a", "hode": "#fbe0f0", "oyne": "#2a1020", "aksent": "#3ec6c6", "antenne": "kule",   "ansikt": "firkant", "blink": "hode",  "frase": "Six seven, six seven!", "moro": "Seksju kan ikke telle til åtte. Bare seks, sju, seks, sju, i det uendelige." }
+    { "id": "seksju", "navn": "Seksju", "kategori": "sekssju", "pris": 1020, "kropp": "#a8447a", "hode": "#fbe0f0", "oyne": "#2a1020", "aksent": "#3ec6c6", "antenne": "kule",   "ansikt": "firkant", "blink": "hode",  "frase": "Six seven, six seven!", "moro": "Seksju kan ikke telle til åtte. Bare seks, sju, seks, sju, i det uendelige." },
+
+    { "id": "zorbo",   "navn": "Zorbo",   "kategori": "utenomjordisk", "pris": 1180, "kropp": "#2f7d5e", "hode": "#c9f7dd", "oyne": "#39ff8a", "aksent": "#8a2be2", "antenne": "kule",   "ansikt": "rund",    "blink": "hode",  "frase": "Zzzorp-blipp-blorp!", "moro": "Zorbo tror jorda er en kjempestor blå ball han glemte igjen hjemme." },
+    { "id": "nebulon", "navn": "Nebulon", "kategori": "utenomjordisk", "pris": 1220, "kropp": "#5b2f9d", "hode": "#e5d9ff", "oyne": "#00e5ff", "aksent": "#ff6bd6", "antenne": "skaal",  "ansikt": "visir",   "blink": "kropp", "frase": "Vi kommer i fred, jordboer!", "moro": "Nebulon sier han kommer i fred, men skyter laser på alt som beveger seg." },
+    { "id": "kryptar", "navn": "Kryptar", "kategori": "utenomjordisk", "pris": 1150, "kropp": "#123a4b", "hode": "#bff0e6", "oyne": "#39ff6a", "aksent": "#f9c74f", "antenne": "pigger", "ansikt": "firkant", "blink": "hode",  "frase": "Bip-bop-utenomjordisk!", "moro": "Kryptar snakker bare bip og bop, men er faktisk kjempeflink i matte." },
+    { "id": "vraak",   "navn": "Vraak",   "kategori": "utenomjordisk", "pris": 1260, "kropp": "#4a4f5c", "hode": "#dfe3ea", "oyne": "#ff8a3d", "aksent": "#39c5ff", "antenne": "pigger", "ansikt": "visir",   "blink": "kropp", "frase": "Meld deg til Vraak-flåten!", "moro": "Vraak mister romskipet sitt så ofte at han har fått GPS i antennen." },
+    { "id": "xenon",   "navn": "Xenon",   "kategori": "utenomjordisk", "pris": 1200, "kropp": "#1c2d6b", "hode": "#cdd7ff", "oyne": "#f2e94e", "aksent": "#39c5bb", "antenne": "kule",   "ansikt": "rund",    "blink": "hode",  "frase": "Xenon skinner sterkere enn sola di!", "moro": "Xenon blunker sakte fordi lyset hans trenger oppladning innimellom." }
   ]
 }
