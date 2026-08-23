@@ -265,11 +265,17 @@ button.liten { padding: 6px 12px }
 /* Den store visningen av roboten han har valgt som sin personlige --
    samme "stor ikon med skygge"-knep som #samlingDetaljIkon, saa de to
    stedene han ser roboten sin stor kjennes igjen som samme ting. */
-#robotvalgIkon { width: 180px; height: 180px; margin: 20px auto 16px }
+#robotvalgIkon {
+  width: 180px; height: 180px; margin: 20px auto 16px; cursor: pointer;
+  transition: transform .1s;
+}
+#robotvalgIkon:hover { transform: scale(1.04) }
+#robotvalgIkon:active { transform: scale(.96) }
 #robotvalgIkon svg { width: 100%; height: 100%; display: block;
   filter: drop-shadow(0 6px 10px rgba(0,0,0,.15)) }
 #robotvalgVisning h3 { font-size: 24px; margin: 0 0 10px; font-weight: 650 }
-#robotvalgMoro { font-size: 17px; max-width: 480px; margin: 0 auto }
+#robotvalgMoro { font-size: 17px; max-width: 480px; margin: 0 auto 10px }
+#robotvalgHint:empty { display: none }
 
 /* ---------- Verden ---------- */
 
@@ -466,7 +472,8 @@ button.liten { padding: 6px 12px }
   97% { transform: translate(-2px, -1px) skew(1deg); filter: contrast(1.5) }
   98% { transform: translate(2px, 0); filter: none }
 }
-.vare.episk .figur-ikon, .figurkort.episk .figur-ikon, #samlingDetaljIkon.glitch {
+.vare.episk .figur-ikon, .figurkort.episk .figur-ikon,
+#samlingDetaljIkon.glitch, #robotvalgIkon.glitch {
   animation: glitch 2.4s infinite;
 }
 
@@ -477,7 +484,7 @@ button.liten { padding: 6px 12px }
 #samling .rad { justify-content: center }
 #samlingTom:empty, #samlingTom[hidden] { display: none }
 
-#samlingListe, #robotvalgListe {
+#samlingListe {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   gap: 14px;
@@ -523,10 +530,12 @@ button.liten { padding: 6px 12px }
   background: var(--grønbakk); color: var(--grøn); border-color: var(--grøn);
 }
 
-/* Opptaksknappene til de mytiske robotene. */
-#samlingOpptak { margin: 0 0 20px }
-#opptakStatus { margin: 10px 0 0 }
-#taOpp.tar-opp { background: #b3261e; border-color: #b3261e; color: #fff }
+/* Opptaksknappene til de mytiske robotene -- delt mellom samlingen og
+   "Ola sin robot" (klasser, ikke id, siden begge stedene har hvert sitt
+   sett med disse elementene samtidig i DOM-en). */
+.opptak-boks { margin: 0 0 20px }
+.opptak-status { margin: 10px 0 0 }
+.opptak-taopp.tar-opp { background: #b3261e; border-color: #b3261e; color: #fff }
 
 /* ---------- Ferdig ---------- */
 

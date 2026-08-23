@@ -17,6 +17,10 @@
  * Frasen (reager() under) knyttes til at figuren HAR en frase i
  * data/figurer.json, ikke til en bestemt kategori -- i dag er det
  * legendarisk og sekssju, men koden bryr seg ikke om hvilke.
+ *
+ * visStor() nedenfor kobler alt dette (lyd, glitch, opptak) til et gitt
+ * sett DOM-elementer -- delt med "Ola sin robot" i hus.js, som viser den
+ * valgte roboten stort på nøyaktig samme måte som her.
  */
 (function (global) {
   "use strict";
@@ -80,40 +84,54 @@
     };
   }
 
+  // Kobler en robot til et sett DOM-elementer: ikonet reagerer med lyd/frase
+  // ved trykk (og glitcher om den er episk), og mytiske roboter faar
+  // opptaksknappene sine i stedet. "els" er { ikon, hint, opptakBoks, opptak:
+  // { taOpp, spillAv, status } } -- se visDetalj under og tegnRobotvalg i
+  // hus.js, som begge bruker denne til å vise akkurat samme oppførsel.
+  function visStor(v, els) {
+    els.ikon.innerHTML = Figurer.svg(v.id);
+    els.ikon.classList.toggle("glitch", v.kategori === "episk");
+    els.ikon.onclick = function () { reager(v); };
+
+    if (v.kategori === "mytisk") {
+      if (els.hint) els.hint.hidden = true;
+      els.opptakBoks.hidden = false;
+      settOppOpptak(v, els.opptak);
+    } else {
+      els.opptakBoks.hidden = true;
+      if (els.hint) {
+        els.hint.hidden = false;
+        els.hint.textContent = v.frase
+          ? "Trykk på roboten for å høre den snakke igjen."
+          : "Trykk på roboten for å høre lyden igjen.";
+      }
+    }
+
+    reager(v);
+  }
+
   function visDetalj(v) {
-    var ikon = $("#samlingDetaljIkon");
-    ikon.innerHTML = Figurer.svg(v.id);
-    ikon.classList.toggle("glitch", v.kategori === "episk");
-    ikon.onclick = function () { reager(v); };
     $("#samlingDetaljNavn").textContent = v.navn;
     tegnVelgKnapp(v);
     $("#samlingListe").hidden = true;
     $("#samlingTom").hidden = true;
     $("#samlingDetalj").hidden = false;
 
-    var hint = $("#samlingDetaljHint");
-    var opptakBoks = $("#samlingOpptak");
-    if (v.kategori === "mytisk") {
-      hint.hidden = true;
-      opptakBoks.hidden = false;
-      settOppOpptak(v);
-    } else {
-      opptakBoks.hidden = true;
-      hint.hidden = false;
-      hint.textContent = v.frase
-        ? "Trykk på roboten for å høre den snakke igjen."
-        : "Trykk på roboten for å høre lyden igjen.";
-    }
-
-    reager(v);
+    visStor(v, {
+      ikon: $("#samlingDetaljIkon"),
+      hint: $("#samlingDetaljHint"),
+      opptakBoks: $("#samlingOpptak"),
+      opptak: { taOpp: $("#taOpp"), spillAv: $("#spillOpptak"), status: $("#opptakStatus") }
+    });
   }
 
   /* ---------- Opptak (mytiske roboter) ---------- */
 
-  function settOppOpptak(v) {
-    var taOpp = $("#taOpp");
-    var spillAv = $("#spillOpptak");
-    var status = $("#opptakStatus");
+  function settOppOpptak(v, opptakEls) {
+    var taOpp = opptakEls.taOpp;
+    var spillAv = opptakEls.spillAv;
+    var status = opptakEls.status;
 
     Opptak.stopp();
     taOpp.classList.remove("tar-opp");
@@ -176,6 +194,7 @@
   };
 
   global.Samling = {
-    apne: apne
+    apne: apne,
+    visStor: visStor
   };
 })(window);

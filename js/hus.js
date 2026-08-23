@@ -189,7 +189,9 @@
    * "Velg som min robot" for hver enkelt robot han eier (se samling.js, som
    * kaller Hus.velgRobot). Denne siden er bare en liten scene som viser den
    * store versjonen av roboten hans, sammen med en morsom setning om ham
-   * (moro-feltet i data/figurer.json, ett per robot). */
+   * (moro-feltet i data/figurer.json, ett per robot) -- og alt det andre
+   * roboten kan gjøre (lyd, frase, glitch, opptak), via Samling.visStor(),
+   * saa den store versjonen her oppfører seg akkurat som i Samlingen. */
 
   var paaRobotValgt = null; // settes av app.js: robotvalget er endret
 
@@ -211,9 +213,18 @@
     $("#robotvalgVisning").hidden = !valgt;
     $("#glemRobotvalg").hidden = !valgt;
     if (valgt) {
-      $("#robotvalgIkon").innerHTML = Figurer.svg(valgt.id);
       $("#robotvalgNavn").textContent = valgt.navn;
       $("#robotvalgMoro").textContent = valgt.moro || "";
+      Samling.visStor(valgt, {
+        ikon: $("#robotvalgIkon"),
+        hint: $("#robotvalgHint"),
+        opptakBoks: $("#robotvalgOpptak"),
+        opptak: {
+          taOpp: $("#robotvalgTaOpp"),
+          spillAv: $("#robotvalgSpillOpptak"),
+          status: $("#robotvalgOpptakStatus")
+        }
+      });
     }
   }
 
@@ -226,6 +237,7 @@
   $("#glemRobotvalg").onclick = function () { velgRobot(null); tegnRobotvalg(); };
 
   $("#lukkRobotvalg").onclick = function () {
+    Opptak.stopp();
     $("#robotvalg").hidden = true;
     $("#hus").hidden = false;
   };

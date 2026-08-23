@@ -11,7 +11,7 @@
 
 <header>
   <h1>Lesestjerna</h1>
-  <span id="versjon">v34</span>
+  <span id="versjon">v35</span>
   <button id="tilbake" hidden>Tilbake</button>
   <button id="byttSpiller" hidden></button>
   <div id="stjerner" hidden></div>
@@ -125,9 +125,17 @@
     «Velg som min robot» på den du liker best.
   </p>
   <div id="robotvalgVisning" hidden>
-    <div id="robotvalgIkon"></div>
+    <div id="robotvalgIkon" title="Trykk for å høre lyden"></div>
     <h3 id="robotvalgNavn"></h3>
     <p class="und" id="robotvalgMoro"></p>
+    <p class="und liten" id="robotvalgHint"></p>
+    <div class="opptak-boks" id="robotvalgOpptak" hidden>
+      <div class="rad">
+        <button id="robotvalgTaOpp" class="opptak-taopp">🔴 Ta opp (10 sek)</button>
+        <button id="robotvalgSpillOpptak">▶ Spill av</button>
+      </div>
+      <p class="und liten opptak-status" id="robotvalgOpptakStatus"></p>
+    </div>
   </div>
   <div class="rad">
     <button id="glemRobotvalg" class="liten" hidden>Bruk forbokstav i stedet</button>
@@ -151,12 +159,12 @@
     <div class="rad">
       <button id="velgSomMin" type="button"></button>
     </div>
-    <div id="samlingOpptak" hidden>
+    <div class="opptak-boks" id="samlingOpptak" hidden>
       <div class="rad">
-        <button id="taOpp">🔴 Ta opp (10 sek)</button>
+        <button id="taOpp" class="opptak-taopp">🔴 Ta opp (10 sek)</button>
         <button id="spillOpptak">▶ Spill av</button>
       </div>
-      <p class="und liten" id="opptakStatus"></p>
+      <p class="und liten opptak-status" id="opptakStatus"></p>
     </div>
     <div class="rad">
       <button id="lukkSamlingDetalj">Tilbake til samlingen</button>
