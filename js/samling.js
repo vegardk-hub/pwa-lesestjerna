@@ -16,6 +16,9 @@
  *   utenomjordisk -- hodet dreier fram og tilbake og skyter laserstraaler
  *                   fra oeynene (css/.utenom-hode + .utenom-laser),
  *                   blinkende lys, og trykk gir en frase med robotstemme
+ *   utrolig      -- hopper og snurrer rundt, og bytter saa om paa hodet og
+ *                   kroppen sin (css/.utrolig-hele/-hode/-kropp), blinkende
+ *                   lys, og trykk gir en frase med robotstemme
  *
  * Frasen (reager() under) knyttes til at figuren HAR en frase i
  * data/figurer.json, ikke til en bestemt kategori -- i dag er det

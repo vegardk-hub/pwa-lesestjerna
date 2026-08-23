@@ -19,7 +19,7 @@
   // Teksten paa kortet i butikken og samlingen -- se BAKGRUNNSFARGE i
   // styles.css (.vare/.figurkort + kategorinavnet som klasse) for selve
   // fargen. Ukjent/manglende kategori telles som vanlig.
-  var KATEGORINAVN = { vanlig: "Vanlig", sjelden: "Sjelden", legendarisk: "Legendarisk", mytisk: "Mytisk", episk: "Episk", sekssju: "67", utenomjordisk: "Utenomjordisk" };
+  var KATEGORINAVN = { vanlig: "Vanlig", sjelden: "Sjelden", legendarisk: "Legendarisk", mytisk: "Mytisk", episk: "Episk", sekssju: "67", utenomjordisk: "Utenomjordisk", utrolig: "Utrolig" };
 
   function antenneSvg(f) {
     if (f.antenne === "kule") {
@@ -65,6 +65,13 @@
   // "sitter fast" ved oeynene og dreier med i stedet for aa peke rett fram
   // uansett. Fargen paa straalen er oeynefargen deres, akkurat som
   // brystlyset bruker aksentfargen.
+  //
+  // Utrolige roboter gjoer et helt lite triksnummer: hopper og snurrer
+  // rundt (css/.utrolig-hele), og bytter saa om paa hodet og kroppen sin
+  // mens de star stille paa bakken igjen (css/.utrolig-hode/.utrolig-kropp
+  // -- to separate grupper som beveger seg motsatt vei av hverandre). De to
+  // triksene overlapper med vilje ikke i tid: aa bytte plass midt i en
+  // snurr ville bare sett ut som rot, ikke et triks.
   function robotSvg(f) {
     var hodelys = f.blink === "hode"
       ? '<circle cx="28" cy="11" r="2" class="blink-lys" fill="' + f.aksent + '"/>'
@@ -79,6 +86,21 @@
       ansiktSvg(f) +
       hodelys;
 
+    var kroppInnhold =
+      '<rect x="1" y="29" width="6" height="10" rx="3" fill="' + f.kropp + '"' + armVKlasse + '/>' +
+      '<rect x="33" y="29" width="6" height="10" rx="3" fill="' + f.kropp + '"' + armHKlasse + '/>' +
+      '<rect x="6" y="26" width="28" height="18" rx="7" fill="' + f.kropp + '"/>' +
+      '<circle cx="20" cy="35" r="3.6" fill="' + f.aksent + '"' + kroppslysKlasse + '/>' +
+      '<rect x="12" y="44" width="6" height="4" rx="2" fill="' + f.hode + '"/>' +
+      '<rect x="22" y="44" width="6" height="4" rx="2" fill="' + f.hode + '"/>';
+
+    if (f.kategori === "utrolig") {
+      return '<svg viewBox="0 0 40 48" aria-hidden="true"><g class="utrolig-hele">' +
+        '<g class="utrolig-hode">' + hodeInnhold + '</g>' +
+        '<g class="utrolig-kropp">' + kroppInnhold + '</g>' +
+        '</g></svg>';
+    }
+
     var hode = f.kategori === "utenomjordisk"
       ? '<g class="utenom-hode">' + hodeInnhold +
         '<line x1="15" y1="17.5" x2="3" y2="2" stroke="' + f.oyne + '" stroke-width="2.4" ' +
@@ -89,12 +111,7 @@
 
     return '<svg viewBox="0 0 40 48" aria-hidden="true">' +
       hode +
-      '<rect x="1" y="29" width="6" height="10" rx="3" fill="' + f.kropp + '"' + armVKlasse + '/>' +
-      '<rect x="33" y="29" width="6" height="10" rx="3" fill="' + f.kropp + '"' + armHKlasse + '/>' +
-      '<rect x="6" y="26" width="28" height="18" rx="7" fill="' + f.kropp + '"/>' +
-      '<circle cx="20" cy="35" r="3.6" fill="' + f.aksent + '"' + kroppslysKlasse + '/>' +
-      '<rect x="12" y="44" width="6" height="4" rx="2" fill="' + f.hode + '"/>' +
-      '<rect x="22" y="44" width="6" height="4" rx="2" fill="' + f.hode + '"/>' +
+      kroppInnhold +
       "</svg>";
   }
 

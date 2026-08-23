@@ -438,6 +438,9 @@ button.liten { padding: 6px 12px }
 .vare.utenomjordisk, .figurkort.utenomjordisk { background: #132247 }
 .vare.utenomjordisk .navn, .figurkort.utenomjordisk .navn { color: #fff }
 .vare.utenomjordisk .merke-kategori, .figurkort.utenomjordisk .merke-kategori { color: rgba(255, 255, 255, .5) }
+.vare.utrolig, .figurkort.utrolig { background: #f0791a }
+.vare.utrolig .navn, .figurkort.utrolig .navn { color: #fff }
+.vare.utrolig .merke-kategori, .figurkort.utrolig .merke-kategori { color: rgba(255, 255, 255, .65) }
 
 /* Sekssju-robotene dytter armene sine opp og ned hele tiden -- css-klassen
    settes direkte i SVG-en fra js/figurer.js sin robotSvg(), ikke her, saa
@@ -470,6 +473,31 @@ button.liten { padding: 6px 12px }
   28%, 32%, 68%, 72% { opacity: 1 }
 }
 .utenom-laser { opacity: 0; animation: utenomlaser 4.5s ease-in-out infinite }
+
+/* Utrolige roboter hopper og snurrer rundt, og bytter saa om paa hodet og
+   kroppen sin mens de star stille paa bakken igjen -- klassene settes i
+   figurer.js sin robotSvg(), se forklaringen der. Hoppet/snurren (0-32%)
+   og byttet (45-90%) overlapper med vilje ikke i tid, saa de to triksene
+   ikke krasjer inn i hverandre. */
+@keyframes utroligHopp {
+  0%, 12% { transform: translateY(0) rotate(0deg) }
+  22% { transform: translateY(-9px) rotate(180deg) }
+  32%, 100% { transform: translateY(0) rotate(360deg) }
+}
+.utrolig-hele {
+  transform-origin: 20px 24px;
+  animation: utroligHopp 6s ease-in-out infinite;
+}
+@keyframes utroligHodeBytte {
+  0%, 45%, 90%, 100% { transform: translateY(0) }
+  60%, 75% { transform: translateY(24px) }
+}
+@keyframes utroligKroppBytte {
+  0%, 45%, 90%, 100% { transform: translateY(0) }
+  60%, 75% { transform: translateY(-24px) }
+}
+.utrolig-hode { animation: utroligHodeBytte 6s ease-in-out infinite }
+.utrolig-kropp { animation: utroligKroppBytte 6s ease-in-out infinite }
 
 /* Kategorinavnet var foerst et bokstav-merke i hjoernet, men "Legendarisk"
    er for langt til det -- en liten etikett oeverst paa kortet i stedet. */
