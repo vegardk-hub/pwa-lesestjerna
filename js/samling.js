@@ -65,12 +65,28 @@
     }
   }
 
+  // Knappen som gjoer roboten til hans personlige ikon -- se hus.js, som
+  // eier selve lagringen og alt som viser den valgte roboten andre steder
+  // (huskortet, "bytt spiller", "Ola sin robot"). Tegnes paa nytt etter
+  // hvert trykk, saa teksten alltid stemmer med hva som faktisk er valgt.
+  function tegnVelgKnapp(v) {
+    var knapp = $("#velgSomMin");
+    var erValgt = Lagring.valgtRobot() === v.id;
+    knapp.textContent = erValgt ? "✓ Dette er min robot" : "Velg som min robot";
+    knapp.classList.toggle("valgt", erValgt);
+    knapp.onclick = function () {
+      Hus.velgRobot(erValgt ? null : v.id);
+      tegnVelgKnapp(v);
+    };
+  }
+
   function visDetalj(v) {
     var ikon = $("#samlingDetaljIkon");
     ikon.innerHTML = Figurer.svg(v.id);
     ikon.classList.toggle("glitch", v.kategori === "episk");
     ikon.onclick = function () { reager(v); };
     $("#samlingDetaljNavn").textContent = v.navn;
+    tegnVelgKnapp(v);
     $("#samlingListe").hidden = true;
     $("#samlingTom").hidden = true;
     $("#samlingDetalj").hidden = false;

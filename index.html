@@ -11,7 +11,7 @@
 
 <header>
   <h1>Lesestjerna</h1>
-  <span id="versjon">v33</span>
+  <span id="versjon">v34</span>
   <button id="tilbake" hidden>Tilbake</button>
   <button id="byttSpiller" hidden></button>
   <div id="stjerner" hidden></div>
@@ -120,11 +120,17 @@
 
 <section id="robotvalg" hidden>
   <h2 id="robotvalgTittel"></h2>
-  <p class="und liten">Velg en av robotene dine som skal være ikonet ditt i spillet.</p>
-  <p class="und liten" id="robotvalgTom">Du eier ingen roboter ennå — kjøp noen i butikken.</p>
-  <div id="robotvalgListe"></div>
+  <p class="und liten" id="robotvalgTom">
+    Du har ikke valgt noen personlig robot ennå. Gå inn i Samlingen og trykk
+    «Velg som min robot» på den du liker best.
+  </p>
+  <div id="robotvalgVisning" hidden>
+    <div id="robotvalgIkon"></div>
+    <h3 id="robotvalgNavn"></h3>
+    <p class="und" id="robotvalgMoro"></p>
+  </div>
   <div class="rad">
-    <button id="glemRobotvalg" class="liten">Bruk forbokstav i stedet</button>
+    <button id="glemRobotvalg" class="liten" hidden>Bruk forbokstav i stedet</button>
     <button id="lukkRobotvalg" class="stor hoved">Lukk</button>
   </div>
 </section>
@@ -142,6 +148,9 @@
     <div id="samlingDetaljIkon" title="Trykk for å høre lyden"></div>
     <h3 id="samlingDetaljNavn"></h3>
     <p class="und liten" id="samlingDetaljHint">Trykk på roboten for å høre lyden igjen.</p>
+    <div class="rad">
+      <button id="velgSomMin" type="button"></button>
+    </div>
     <div id="samlingOpptak" hidden>
       <div class="rad">
         <button id="taOpp">🔴 Ta opp (10 sek)</button>

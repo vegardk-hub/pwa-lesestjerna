@@ -184,48 +184,46 @@
     $("#hus").hidden = false;
   };
 
-  /* ---------- Ola sin robot: velg en av de eide som sitt eget ikon ----------
-   * Bare roboter han faktisk eier kan velges -- lista bygges fra s.eide,
-   * akkurat som i butikken og samlingen. Den valgte faar en gronn ramme,
-   * samme knep som "eid"-rammen i butikken. */
+  /* ---------- Ola sin robot: viser den han har valgt som sitt eget ikon ----------
+   * Selve valget skjer ikke lenger her -- det gjøres inne i Samlingen, på
+   * "Velg som min robot" for hver enkelt robot han eier (se samling.js, som
+   * kaller Hus.velgRobot). Denne siden er bare en liten scene som viser den
+   * store versjonen av roboten hans, sammen med en morsom setning om ham
+   * (moro-feltet i data/figurer.json, ett per robot). */
 
   var paaRobotValgt = null; // settes av app.js: robotvalget er endret
 
+  // Kalt herfra (glemRobotvalg) og fra samling.js -- flytter aldri skjerm
+  // selv, den som kaller den styrer det selv etterpaa om noedvendig.
   function velgRobot(figurId) {
     Lagring.settValgtRobot(figurId);
     tegn();                          // huskortet skal vise den nye roboten med en gang
     if (paaRobotValgt) paaRobotValgt(); // ...og det samme skal "bytt spiller" i header
-    apneRobotvalg();                 // tegn lista paa nytt saa den groenne rammen flytter seg
   }
 
-  function apneRobotvalg() {
+  function tegnRobotvalg() {
     var s = Lagring.aktiv();
     if (!s) return;
     $("#robotvalgTittel").textContent = s.navn + " sin robot";
 
-    var liste = $("#robotvalgListe");
-    liste.textContent = "";
-    (s.eide || []).forEach(function (e) {
-      var v = Figurer.finn(e.ting);
-      if (!v) return;
-      var kort = lag("figurkort " + v.kategori + (v.id === s.valgtRobot ? " valgt" : ""), "button");
-      kort.type = "button";
-      var merke = lag("merke-kategori");
-      merke.textContent = Figurer.kategorinavn(v.kategori);
-      var ikon = lag("figur-ikon");
-      ikon.innerHTML = Figurer.svg(v.id);
-      var navn = lag("navn"); navn.textContent = v.navn;
-      kort.append(merke, ikon, navn);
-      kort.onclick = function () { velgRobot(v.id); };
-      liste.append(kort);
-    });
-    $("#robotvalgTom").hidden = (s.eide || []).length > 0;
+    var valgt = Lagring.valgtRobot() && Figurer.finn(Lagring.valgtRobot());
+    $("#robotvalgTom").hidden = !!valgt;
+    $("#robotvalgVisning").hidden = !valgt;
+    $("#glemRobotvalg").hidden = !valgt;
+    if (valgt) {
+      $("#robotvalgIkon").innerHTML = Figurer.svg(valgt.id);
+      $("#robotvalgNavn").textContent = valgt.navn;
+      $("#robotvalgMoro").textContent = valgt.moro || "";
+    }
+  }
 
+  function apneRobotvalg() {
+    tegnRobotvalg();
     $("#hus").hidden = true;
     $("#robotvalg").hidden = false;
   }
 
-  $("#glemRobotvalg").onclick = function () { velgRobot(null); };
+  $("#glemRobotvalg").onclick = function () { velgRobot(null); tegnRobotvalg(); };
 
   $("#lukkRobotvalg").onclick = function () {
     $("#robotvalg").hidden = true;
@@ -237,6 +235,7 @@
     apneBoka: apneBoka,
     apneLest: apneLest,
     apneRobotvalg: apneRobotvalg,
+    velgRobot: velgRobot,
     naarLestValgt: function (fn) { paaLestValgt = fn; },
     naarRobotValgt: function (fn) { paaRobotValgt = fn; }
   };
