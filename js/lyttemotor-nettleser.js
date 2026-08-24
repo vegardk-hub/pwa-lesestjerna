@@ -27,6 +27,7 @@
   };
 
   var gj = null; // den aktive gjenkjenneren -- null naar vi ikke lytter
+  var friskPuls = null; // proaktiv friskmelding, se start()
 
   function start(hooks) {
     var g = new Gjenkjenner();
@@ -40,7 +41,10 @@
     // koster ingenting og gir matchingen flere sjanser aa treffe med.
     g.maxAlternatives = 5;
 
+    var sistHoert = Date.now();
+
     g.onresult = function (e) {
+      sistHoert = Date.now();
       for (var i = e.resultIndex; i < e.results.length; i++) {
         var r = e.results[i];
         var kandidater = [];
@@ -81,11 +85,27 @@
 
     gj = g;
     try { g.start(); } catch (err) { /* allerede i gang */ }
+
+    // Nettleseren (saerlig Safari/iPad) stopper gjenkjenneren av seg selv
+    // etter bare noen faa sekunders stillhet ("no-speech"). Staar han og
+    // tenker paa et vanskelig ord og sier det akkurat idet den timer ut, faller
+    // selve forsoket midt i overgangen mellom den gamle og den nye oekten --
+    // og blir aldri hoert, uansett hvor tydelig han sier det. Ved aa friske
+    // den opp selv, litt foer den naturlige grensa, staar den alltid klar og
+    // fullt vaaken naar han endelig sier ordet.
+    friskPuls = setInterval(function () {
+      if (gj !== g) { clearInterval(friskPuls); return; }
+      if (!global.Stemme.snakker() && Date.now() - sistHoert > 3000) {
+        sistHoert = Date.now();
+        try { g.abort(); } catch (err) { /* alt stoppet */ }
+      }
+    }, 500);
   }
 
   function stopp() {
     var g = gj;
     gj = null;
+    if (friskPuls) { clearInterval(friskPuls); friskPuls = null; }
     if (g) {
       g.onend = null;
       g.onresult = null;
