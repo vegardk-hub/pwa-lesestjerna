@@ -19,6 +19,9 @@
  *   utrolig      -- hopper og snurrer rundt, og bytter saa om paa hodet og
  *                   kroppen sin (css/.utrolig-hele/-hode/-kropp), blinkende
  *                   lys, og trykk gir en frase med robotstemme
+ *   uknuselig    -- en aura av ild/vann/lyn/vind rundt roboten, ut fra dens
+ *                   "kraft"-felt (css/.kraft-ild/-vann/-lyn/-vind), blinkende
+ *                   lys, og trykk gir en frase med robotstemme
  *
  * Frasen (reager() under) knyttes til at figuren HAR en frase i
  * data/figurer.json, ikke til en bestemt kategori -- i dag er det

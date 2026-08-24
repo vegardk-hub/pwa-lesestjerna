@@ -19,7 +19,7 @@
   // Teksten paa kortet i butikken og samlingen -- se BAKGRUNNSFARGE i
   // styles.css (.vare/.figurkort + kategorinavnet som klasse) for selve
   // fargen. Ukjent/manglende kategori telles som vanlig.
-  var KATEGORINAVN = { vanlig: "Vanlig", sjelden: "Sjelden", legendarisk: "Legendarisk", mytisk: "Mytisk", episk: "Episk", sekssju: "67", utenomjordisk: "Utenomjordisk", utrolig: "Utrolig" };
+  var KATEGORINAVN = { vanlig: "Vanlig", sjelden: "Sjelden", legendarisk: "Legendarisk", mytisk: "Mytisk", episk: "Episk", sekssju: "67", utenomjordisk: "Utenomjordisk", utrolig: "Utrolig", uknuselig: "Uknuselig" };
 
   function antenneSvg(f) {
     if (f.antenne === "kule") {
@@ -46,6 +46,73 @@
     // "firkant"
     return '<rect x="13.5" y="15.5" width="4.5" height="4.5" rx=".8" fill="' + f.oyne + '"/>' +
            '<rect x="22" y="15.5" width="4.5" height="4.5" rx=".8" fill="' + f.oyne + '"/>';
+  }
+
+  // De tre punktene en kraft-aura tegnes ut fra: over hodet, og ved hver
+  // skulder -- samme tre steder for alle fire kreftene, saa de ser ut som
+  // varianter av samme idé, ikke fire helt urelaterte pyntedetaljer.
+  var KRAFTPUNKT = [
+    { x: 20, y: 3, s: 1 },
+    { x: 3, y: 27, s: .72 },
+    { x: 37, y: 27, s: .72 }
+  ];
+
+  // Bittesmaa flammer -- tre sirkler oppaa hverandre (moerk-lys-lysest) gir
+  // en glo uten aa maatte tegne en presis flammesilhuett.
+  function flammeDel(cx, cy, r, klasse) {
+    return '<g class="kraft-del ' + klasse + '">' +
+      '<circle cx="' + cx + '" cy="' + (cy + r * .4) + '" r="' + r + '" fill="#ff7a1a"/>' +
+      '<circle cx="' + cx + '" cy="' + (cy - r * .15) + '" r="' + (r * .62) + '" fill="#ffab3d"/>' +
+      '<circle cx="' + cx + '" cy="' + (cy - r * .65) + '" r="' + (r * .33) + '" fill="#ffe17a"/>' +
+      '</g>';
+  }
+
+  // En dråpeform (spiss opp, rund ned), til dryppende vanndraaper.
+  function dropeDel(cx, cy, r, klasse) {
+    var d = "M" + cx + "," + (cy - r * 1.4) +
+      "C" + (cx + r * .9) + "," + (cy - r * .5) + " " + (cx + r * .9) + "," + (cy + r * .5) + " " + cx + "," + (cy + r) +
+      "C" + (cx - r * .9) + "," + (cy + r * .5) + " " + (cx - r * .9) + "," + (cy - r * .5) + " " + cx + "," + (cy - r * 1.4) + "Z";
+    return '<path class="kraft-del ' + klasse + '" d="' + d + '" fill="#3ec6e0"/>';
+  }
+
+  // Et lite lyn -- en sikksakk-silhuett regnet ut fra faste punkter, saa
+  // formen alltid blir riktig uansett hvor stor eller hvor den plasseres.
+  function lynDel(cx, cy, s, klasse) {
+    var p = [[2, -7], [-2, 1], [1, 1], [-3, 9], [4, -1], [1, -1]];
+    var d = "M" + p.map(function (pt) {
+      return (cx + pt[0] * s) + "," + (cy + pt[1] * s);
+    }).join(" L") + "Z";
+    return '<path class="kraft-del ' + klasse + '" d="' + d + '" fill="#fff275"/>';
+  }
+
+  // En buet vindstrek, som glir forbi roboten.
+  function vindDel(cx, cy, lengde, klasse) {
+    var d = "M" + (cx - lengde / 2) + "," + cy +
+      "Q" + cx + "," + (cy - lengde * .45) + " " + (cx + lengde / 2) + "," + cy;
+    return '<path class="kraft-del ' + klasse + '" d="' + d + '" fill="none" ' +
+      'stroke="#e8f4ff" stroke-width="1.8" stroke-linecap="round" opacity=".85"/>';
+  }
+
+  // Uknuselige roboter har hver sin kraft -- ild, vann, lyn eller vind --
+  // tegnet som en liten aura av tre deler rundt roboten (KRAFTPUNKT over).
+  // css/.kraft-ild/-vann/-lyn/-vind gjoer selve bevegelsen: flammene flakker
+  // i storrelse, draapene faller og forsvinner, lynet blinker ujevnt av og
+  // paa, vindstrekene glir forbi. Alle tre delene bruker samme animasjon,
+  // bare med litt ulik animation-delay, saa de ikke beveger seg i takt.
+  var KRAFTBYGGERE = {
+    ild: function (p, klasse) { return flammeDel(p.x, p.y, 4 * p.s, klasse); },
+    vann: function (p, klasse) { return dropeDel(p.x, p.y, 3.2 * p.s, klasse); },
+    lyn: function (p, klasse) { return lynDel(p.x, p.y, 1.3 * p.s, klasse); },
+    vind: function (p, klasse) { return vindDel(p.x, p.y, 11 * p.s, klasse); }
+  };
+
+  function kraftSvg(kraft) {
+    var bygg = KRAFTBYGGERE[kraft];
+    if (!bygg) return "";
+    var bokstav = ["a", "b", "c"];
+    return '<g class="kraft kraft-' + kraft + '">' +
+      KRAFTPUNKT.map(function (p, i) { return bygg(p, "kraft-del-" + bokstav[i]); }).join("") +
+      "</g>";
   }
 
   // Sjeldne, legendariske og sekssju-roboter har et blinkende lys paa hodet
@@ -112,6 +179,7 @@
     return '<svg viewBox="0 0 40 48" aria-hidden="true">' +
       hode +
       kroppInnhold +
+      kraftSvg(f.kraft) +
       "</svg>";
   }
 
