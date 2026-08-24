@@ -42,7 +42,9 @@
   function TOM_FORELDRE() {
     // pin: en firesifret kode Vegard setter selv, ikke noe ekte sikkerhet --
     // bare nok til at et barn ikke skrur paa hjelpeknappen ved et uhell.
-    return { pin: null, lesForMeg: false, godkjennVoksen: false };
+    // lyttemotor: id-en til motoren som skal hoere paa lesingen (se
+    // Stemme.lyttemotorer i stemme.js) -- null betyr "standardmotoren".
+    return { pin: null, lesForMeg: false, godkjennVoksen: false, lyttemotor: null };
   }
 
   function les() {
@@ -58,6 +60,8 @@
     if (!data.spillere) data = ferskt();
     // Lagring fra foer foreldrekontrollen fantes mangler denne noekkelen.
     if (!data.foreldre) data.foreldre = TOM_FORELDRE();
+    // Lagring fra foer lyttemotor-valget fantes mangler dette feltet.
+    if (data.foreldre.lyttemotor === undefined) data.foreldre.lyttemotor = null;
     // Lagring fra foer opptaksfunksjonen fantes mangler denne paa spillerne.
     data.spillere.forEach(function (s) {
       if (!s.opptak) s.opptak = {};
@@ -177,6 +181,8 @@
     settLesForMeg: function (paa) { les().foreldre.lesForMeg = !!paa; lagre(); },
     godkjennVoksenPaa: function () { return !!les().foreldre.godkjennVoksen; },
     settGodkjennVoksen: function (paa) { les().foreldre.godkjennVoksen = !!paa; lagre(); },
+    lyttemotor: function () { return les().foreldre.lyttemotor; },
+    settLyttemotor: function (id) { les().foreldre.lyttemotor = id || null; lagre(); },
 
     /* ---------- Opptak til mytiske roboter ---------- */
 

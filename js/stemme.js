@@ -1,13 +1,18 @@
 /* Stemme og oere for Lesestjerna.
  *
- * Samler de to Web Speech-delene paa ett sted, fordi de ikke kan brukes
+ * Samler talen og lyttingen paa ett sted, fordi de ikke kan brukes
  * uavhengig av hverandre: staar mikrofonen paa mens Finn leser, hoerer
  * gjenkjenneren paa Finn og tror gutten leste ordene.
+ *
+ * Lyttingen (Oeret, nederst) er ikke lenger bare Web Speech API -- den er et
+ * tynt lag ("lytter" under) oppaa hvilken som helst registrert lyttemotor
+ * (js/lyttemotor-*.js), valgt i Foreldrekontroll og lagret i Lagring. Resten
+ * av appen (lesing.js) kjenner bare "lytter" sitt grensesnitt
+ * (start/stopp/paaResultat/paaFeil/paaTilstand/stoettes/vil) og bryr seg
+ * aldri om hvilken motor som faktisk hoerer etter.
  */
 (function (global) {
   "use strict";
-
-  var Gjenkjenner = global.SpeechRecognition || global.webkitSpeechRecognition;
 
   /* ---------- Stemmen ---------- */
 
@@ -69,79 +74,59 @@
 
   /* ---------- Oeret ---------- */
 
+  // Registeret over lyttemotorer. Hver motor (js/lyttemotor-*.js) melder seg
+  // paa her ved oppstart -- "nettleser" (Web Speech API) er standard og i
+  // dag den eneste, men flere kan komme senere. Rekkefoelgen de melder seg
+  // paa i (motorRekkefolge) er ogsaa rekkefoelgen de vises i, i
+  // Foreldrekontroll.
+  var motorer = {};
+  var motorRekkefolge = [];
+
+  function registrerMotor(m) {
+    motorer[m.id] = m;
+    motorRekkefolge.push(m.id);
+  }
+
+  // Den lagrede id-en (se Lagring.lyttemotor) hvis den peker paa en motor
+  // som faktisk finnes, ellers den foerste registrerte -- aldri en id som
+  // ikke finnes, selv om lagringen skulle peke paa en motor som ble fjernet.
+  function gjeldendeMotorId() {
+    var valgt = global.Lagring && Lagring.lyttemotor();
+    return (valgt && motorer[valgt]) ? valgt : motorRekkefolge[0];
+  }
+
+  function gjeldendeMotor() {
+    return motorer[gjeldendeMotorId()] || { stoettes: false, start: function () {}, stopp: function () {} };
+  }
+
+  // "lytter" er selve grensesnittet resten av appen (lesing.js) snakker med
+  // -- akkurat de samme feltene som foer motorene fantes. Den vet ingenting
+  // om HVORDAN en motor hoerer etter, bare at den kan start()es, stopp()es,
+  // og at den melder fra via de tre hookene under.
   var lytter = {
-    vil: false,          // vil vi lytte? gjenkjenneren stopper av seg selv titt og ofte
-    gj: null,
+    vil: false,          // vil vi lytte? motoren stopper ofte av seg selv
     paaResultat: null,   // (kandidater, endelig) -- kandidater er en liste med tolkninger
     paaFeil: null,       // (kode, forklaring)
     paaTilstand: null,   // (lytter?)
 
-    stoettes: !!Gjenkjenner,
-
     start: function () {
-      if (!Gjenkjenner || this.vil || snakker) return;
+      if (!gjeldendeMotor().stoettes || this.vil || snakker) return;
       var meg = this;
-      var gj = new Gjenkjenner();
-      gj.lang = "nb-NO";
-      gj.continuous = true;
-      gj.interimResults = true;
-      // Gjenkjenneren kan foreslaa flere tolkninger av det samme lydklippet,
-      // rangert etter hvor sikker den er. Foer spurte vi bare om den beste,
-      // men paa en barnestemme er den riktige teksten titt og ofte nummer to
-      // eller tre paa lista i stedet for nummer en. Aa spoerre om flere
-      // koster ingenting og gir matchingen flere sjanser aa treffe med.
-      gj.maxAlternatives = 5;
-
-      gj.onresult = function (e) {
-        for (var i = e.resultIndex; i < e.results.length; i++) {
-          var r = e.results[i];
-          var kandidater = [];
-          for (var k = 0; k < r.length; k++) {
-            var t = r[k].transcript.trim();
-            // Gjenkjenneren sender av og til et tomt endelig resultat naar den
-            // runder av. Slippes det gjennom, nulles framgangen paa slutten av
-            // hver eneste setning.
-            if (t) kandidater.push(t);
-          }
-          if (kandidater.length && meg.paaResultat) meg.paaResultat(kandidater, r.isFinal);
-        }
-      };
-
-      gj.onerror = function (e) {
-        // "no-speech" og "aborted" er hverdagslige: den ga seg fordi det var
-        // stille, eller fordi vi stoppet den selv. Ingen grunn til aa uroe.
-        if (e.error === "no-speech" || e.error === "aborted") return;
-        if (meg.paaFeil) meg.paaFeil(e.error, FORKLARING[e.error] || e.error);
-        if (e.error === "not-allowed" || e.error === "language-not-supported") {
-          meg.vil = false;
-          meg.melde();
-        }
-      };
-
-      gj.onend = function () {
-        // Kommer stadig vekk av seg selv. Start paa nytt saa lenge vi vil lytte.
-        if (meg.vil && !snakker) {
-          try { gj.start(); } catch (e) { /* allerede i gang */ }
-        } else {
-          meg.melde();
-        }
-      };
-
-      this.gj = gj;
       this.vil = true;
-      try { gj.start(); } catch (e) { /* allerede i gang */ }
+      gjeldendeMotor().start({
+        resultat: function (kandidater, endelig) { if (meg.paaResultat) meg.paaResultat(kandidater, endelig); },
+        feil: function (kode, forklaring) { if (meg.paaFeil) meg.paaFeil(kode, forklaring); },
+        // Motoren sier ifra her naar den har gitt opp for godt paa egen
+        // haand (t.d. mikrofonen ble sperret) -- da maa "vil" ned med den,
+        // ellers ville knappen staatt fast paa "lytter" for alltid.
+        tilstand: function (paa) { if (!paa) { meg.vil = false; meg.melde(); } }
+      });
       this.melde();
     },
 
     stopp: function () {
       this.vil = false;
-      if (this.gj) {
-        var gj = this.gj;
-        this.gj = null;
-        gj.onend = null;
-        gj.onresult = null;
-        try { gj.abort(); } catch (e) { /* alt stoppet */ }
-      }
+      gjeldendeMotor().stopp();
       this.melde();
     },
 
@@ -149,14 +134,9 @@
       if (this.paaTilstand) this.paaTilstand(this.vil);
     }
   };
-
-  var FORKLARING = {
-    "not-allowed": "Mikrofonen er sperret. Trykk på hengelåsen i adresselinjen og slipp den inn.",
-    "audio-capture": "Finner ingen mikrofon.",
-    "network": "Lyttingen trenger nett, og nettet svarte ikke.",
-    "language-not-supported": "Denne nettleseren kan ikke norsk. Prøv Edge.",
-    "service-not-allowed": "Nettleseren ville ikke bruke taletjenesten."
-  };
+  // Egen getter, ikke et vanlig felt -- "stoettes" maa alltid svare for den
+  // motoren som er valgt NAA, ikke den som var valgt da lytter ble bygget.
+  Object.defineProperty(lytter, "stoettes", { get: function () { return gjeldendeMotor().stoettes; } });
 
   global.Stemme = {
     norske: norske,
@@ -165,6 +145,24 @@
     stille: stille,
     snakker: function () { return snakker; },
     lytter: lytter,
-    erEdge: /\bEdg\//.test(navigator.userAgent)
+    erEdge: /\bEdg\//.test(navigator.userAgent),
+
+    // Til js/lyttemotor-*.js (registrer) og Foreldrekontroll (resten) --
+    // se forklaringen paa "motorer" over.
+    lyttemotorer: {
+      registrer: registrerMotor,
+      alle: function () { return motorRekkefolge.map(function (id) { return motorer[id]; }); },
+      gjeldende: gjeldendeMotorId,
+      // Bytter motor. Lytter han akkurat naa, stoppes den gamle motoren
+      // foerst -- appen starter ikke den nye automatisk, det er opp til den
+      // som ba om byttet (Foreldrekontroll er uansett ikke tilgjengelig fra
+      // lesevisningen, saa dette treffer i praksis aldri en pagaaende oekt).
+      velg: function (id) {
+        if (!motorer[id]) return false;
+        if (lytter.vil) lytter.stopp();
+        Lagring.settLyttemotor(id);
+        return true;
+      }
+    }
   };
 })(window);

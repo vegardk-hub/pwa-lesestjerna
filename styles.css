@@ -168,6 +168,18 @@ button.liten { padding: 6px 12px }
   font-size: 15.5px; cursor: pointer;
 }
 .veksle input { width: 18px; height: 18px }
+#foreldreInnstillinger .veksle { margin-bottom: 16px }
+
+/* Vises bare naar mer enn én lyttemotor faktisk finnes aa velge mellom --
+   se foreldre.js. Med bare standardmotoren registrert er det ikke noe
+   valg, og da skal det heller ikke se ut som ett. */
+#lyttemotorValg { margin-bottom: 18px }
+#lyttemotorValg label { display: block; margin-bottom: 6px }
+#lyttemotorVelger {
+  width: 100%; padding: 10px 12px; font-size: 15px;
+  border: 1.5px solid var(--strek); border-radius: 10px;
+  background: #fff; color: var(--blekk);
+}
 
 /* ---------- Huset ----------
    Fire kort: gaa ut og les, boka, butikken, samlingen. "Gaa ut og les" er

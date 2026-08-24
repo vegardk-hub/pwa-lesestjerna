@@ -38,7 +38,33 @@
     $("#foreldreInnstillinger").hidden = false;
     $("#lesForMegVeksle").checked = Lagring.lesForMegPaa();
     $("#godkjennVoksenVeksle").checked = Lagring.godkjennVoksenPaa();
+    tegnLyttemotorValg();
   }
+
+  // Bare noe aa velge mellom naar det faktisk finnes mer enn standard-
+  // motoren -- med bare én registrert motor (situasjonen i dag) er det
+  // ikke noe valg, og skal ikke se ut som ett heller. Tegnes paa nytt hver
+  // gang panelet aapnes, saa den alltid viser den faktisk valgte motoren.
+  function tegnLyttemotorValg() {
+    var motorer = Stemme.lyttemotorer.alle();
+    var boks = $("#lyttemotorValg");
+    boks.hidden = motorer.length < 2;
+    if (boks.hidden) return;
+
+    var velger = $("#lyttemotorVelger");
+    velger.textContent = "";
+    motorer.forEach(function (m) {
+      var o = document.createElement("option");
+      o.value = m.id;
+      o.textContent = m.navn + (m.stoettes ? "" : " (støttes ikke i denne nettleseren)");
+      velger.append(o);
+    });
+    velger.value = Stemme.lyttemotorer.gjeldende();
+  }
+
+  $("#lyttemotorVelger").onchange = function () {
+    Stemme.lyttemotorer.velg(this.value);
+  };
 
   $("#foreldreLaasOpp").onclick = function () {
     var kode = $("#foreldrePin").value.trim();
