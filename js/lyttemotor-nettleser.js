@@ -26,10 +26,25 @@
     "service-not-allowed": "Nettleseren ville ikke bruke taletjenesten."
   };
 
-  var gj = null; // den aktive gjenkjenneren -- null naar vi ikke lytter
-  var friskPuls = null; // proaktiv friskmelding, se start()
+  // Nettleseren (saerlig Safari/iPad) stopper gjenkjenneren av seg selv etter
+  // faa sekunders stillhet ("no-speech"). Staar han og tenker paa et
+  // vanskelig ord og sier det akkurat idet den timer ut, havner selve
+  // forsoket midt i overgangen mellom den gamle og den nye oekten -- og blir
+  // aldri hoert, uansett hvor tydelig han sier det.
+  //
+  // Foerste forsoek paa aa fikse dette (v52) proevde aa gjenbruke SAMME
+  // gjenkjenner-objekt: kalle abort() paa den, og la dens egen onend starte
+  // den paa nytt. Det var ikke til aa stole paa -- iOS Safari fyrer ikke
+  // alltid av "end" etter abort(), saa restarten kunne utebli helt. Naa
+  // lages det i stedet et HELT NYTT gjenkjenner-objekt hver gang, uavhengig
+  // av om den gamle faktisk rekker aa avslutte seg selv foerst -- vi venter
+  // ikke paa noe fra den gamle, bare bytter den ut.
+  var STILLE_GRENSE = 2500;
 
-  function start(hooks) {
+  var oekt = null;      // { g, sistHoert, puls } -- null naar vi ikke lytter
+  var aktivHooks = null;
+
+  function lagGjenkjenner() {
     var g = new Gjenkjenner();
     g.lang = "nb-NO";
     g.continuous = true;
@@ -41,10 +56,8 @@
     // koster ingenting og gir matchingen flere sjanser aa treffe med.
     g.maxAlternatives = 5;
 
-    var sistHoert = Date.now();
-
     g.onresult = function (e) {
-      sistHoert = Date.now();
+      if (oekt && oekt.g === g) oekt.sistHoert = Date.now();
       for (var i = e.resultIndex; i < e.results.length; i++) {
         var r = e.results[i];
         var kandidater = [];
@@ -55,62 +68,77 @@
           // hver eneste setning.
           if (t) kandidater.push(t);
         }
-        if (kandidater.length) hooks.resultat(kandidater, r.isFinal);
+        if (kandidater.length) aktivHooks.resultat(kandidater, r.isFinal);
       }
     };
 
     g.onerror = function (e) {
       // "no-speech" og "aborted" er hverdagslige: den ga seg fordi det var
-      // stille, eller fordi vi stoppet den selv. Ingen grunn til aa uroe.
+      // stille, eller fordi vi stoppet den selv (eller byttet den ut, se
+      // friskn() under). Ingen grunn til aa uroe.
       if (e.error === "no-speech" || e.error === "aborted") return;
-      hooks.feil(e.error, FORKLARING[e.error] || e.error);
+      aktivHooks.feil(e.error, FORKLARING[e.error] || e.error);
       // Disse to gir den seg aldri selv fra -- vi maa si ifra at vi har
       // sluttet aa proeve, ellers ville stemme.js sin "vil" staa fast paa
       // true for alltid.
       if (e.error === "not-allowed" || e.error === "language-not-supported") {
-        hooks.tilstand(false);
+        stopp();
+        aktivHooks.tilstand(false);
       }
     };
 
     g.onend = function () {
       // Kommer stadig vekk av seg selv -- nettleseren stopper den med jevne
-      // mellomrom paa egen haand. Start den paa nytt saa lenge det fortsatt
-      // er DENNE gjenkjenneren som er den aktive (stopp() nuller gj foerst,
-      // saa en sen onend fra en gjenkjenner vi selv har forlatt gjoer da
-      // ingenting), og Finn ikke er i ferd med aa lese noe hoeyt.
-      if (gj === g && !global.Stemme.snakker()) {
-        try { g.start(); } catch (err) { /* allerede i gang */ }
-      }
+      // mellomrom paa egen haand. Friskn opp saa lenge det fortsatt er DENNE
+      // gjenkjenneren som er den aktive (en sen onend fra en vi selv alt har
+      // byttet ut skal ikke gjenopplive noe), og Finn ikke er i ferd med aa
+      // lese noe hoeyt.
+      if (oekt && oekt.g === g && !global.Stemme.snakker()) friskn();
     };
 
-    gj = g;
-    try { g.start(); } catch (err) { /* allerede i gang */ }
+    return g;
+  }
 
-    // Nettleseren (saerlig Safari/iPad) stopper gjenkjenneren av seg selv
-    // etter bare noen faa sekunders stillhet ("no-speech"). Staar han og
-    // tenker paa et vanskelig ord og sier det akkurat idet den timer ut, faller
-    // selve forsoket midt i overgangen mellom den gamle og den nye oekten --
-    // og blir aldri hoert, uansett hvor tydelig han sier det. Ved aa friske
-    // den opp selv, litt foer den naturlige grensa, staar den alltid klar og
-    // fullt vaaken naar han endelig sier ordet.
-    friskPuls = setInterval(function () {
-      if (gj !== g) { clearInterval(friskPuls); return; }
-      if (!global.Stemme.snakker() && Date.now() - sistHoert > 3000) {
-        sistHoert = Date.now();
-        try { g.abort(); } catch (err) { /* alt stoppet */ }
-      }
-    }, 500);
+  // Bytter ut den aktive gjenkjenneren med en helt ny. Brukes baade naar
+  // nettleseren selv gir den opp (onend over) og proaktivt naar det har
+  // vaert stille en liten stund (pulsen i start() under) -- se forklaringen
+  // paa STILLE_GRENSE over for hvorfor.
+  function friskn() {
+    if (!oekt) return;
+    var gammel = oekt.g;
+    gammel.onend = null;
+    gammel.onresult = null;
+    gammel.onerror = null;
+    try { gammel.abort(); } catch (e) { /* alt stoppet */ }
+
+    var g = lagGjenkjenner();
+    oekt.g = g;
+    oekt.sistHoert = Date.now();
+    try { g.start(); } catch (e) { /* alt i gang */ }
+  }
+
+  function start(hooks) {
+    stopp();
+    aktivHooks = hooks;
+    var g = lagGjenkjenner();
+    oekt = { g: g, sistHoert: Date.now(), puls: null };
+    try { g.start(); } catch (e) { /* alt i gang */ }
+
+    oekt.puls = setInterval(function () {
+      if (!oekt) return;
+      if (!global.Stemme.snakker() && Date.now() - oekt.sistHoert > STILLE_GRENSE) friskn();
+    }, 400);
   }
 
   function stopp() {
-    var g = gj;
-    gj = null;
-    if (friskPuls) { clearInterval(friskPuls); friskPuls = null; }
-    if (g) {
-      g.onend = null;
-      g.onresult = null;
-      try { g.abort(); } catch (err) { /* alt stoppet */ }
-    }
+    if (!oekt) return;
+    var o = oekt;
+    oekt = null;
+    clearInterval(o.puls);
+    o.g.onend = null;
+    o.g.onresult = null;
+    o.g.onerror = null;
+    try { o.g.abort(); } catch (e) { /* alt stoppet */ }
   }
 
   global.Stemme.lyttemotorer.registrer({
