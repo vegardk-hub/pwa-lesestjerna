@@ -676,7 +676,6 @@ button.liten { padding: 6px 12px }
   98% { transform: translate(2px, 0); filter: none }
 }
 .vare.episk .figur-ikon, .figurkort.episk .figur-ikon,
-.vare.transformer .figur-ikon, .figurkort.transformer .figur-ikon,
 #samlingDetaljIkon.glitch, #robotvalgIkon.glitch {
   animation: glitch 2.4s infinite;
 }
@@ -865,6 +864,325 @@ button.liten { padding: 6px 12px }
   0%, 20%   { x: 26.8px; y: 0.5px;  width: 2.2px; height: 6px; rx: 1.1px }
   32%, 68%  { x: 35px;   y: 31.5px; width: 5px;   height: 3px; rx: 1.5px }
   80%, 100% { x: 26.8px; y: 0.5px;  width: 2.2px; height: 6px; rx: 1.1px }
+}
+
+/* ---------- Skinnar: sanntids-morf til tog ----------
+   Samme oppskrift som Vroom (samme ansikt/antenne-stil), bare andre
+   maal -- foererkabinen og vinduet er begge vanlige rektangler her, ingen
+   clip-path-trapes trengs. Begge beina smelter sammen til det midterste
+   av tre hjul (samme "flere deler til identisk sted"-knep som eksospotta),
+   armene blir de to ytre hjulene, og antennepiggene smelter sammen til
+   pipa paa taket. */
+.morph-tog-hode {
+  x: 9px; y: 8px; width: 22px; height: 16px; rx: 6px;
+  animation: morphTogHode 5s ease-in-out infinite;
+}
+@keyframes morphTogHode {
+  0%, 20%   { x: 9px; y: 8px;  width: 22px; height: 16px; rx: 6px }
+  32%, 68%  { x: 6px; y: 10px; width: 11px; height: 10px; rx: 2.5px }
+  80%, 100% { x: 9px; y: 8px;  width: 22px; height: 16px; rx: 6px }
+}
+.morph-tog-oyne {
+  x: 12.5px; y: 15.5px; width: 15px; height: 5px; rx: 2.5px;
+  animation: morphTogOyne 5s ease-in-out infinite;
+}
+@keyframes morphTogOyne {
+  0%, 20%   { x: 12.5px; y: 15.5px;  width: 15px;  height: 5px; rx: 2.5px }
+  32%, 68%  { x: 8.3px;  y: 12.6px;  width: 6.4px; height: 5px; rx: .8px }
+  80%, 100% { x: 12.5px; y: 15.5px;  width: 15px;  height: 5px; rx: 2.5px }
+}
+.morph-tog-kropp {
+  x: 6px; y: 26px; width: 28px; height: 18px; rx: 7px;
+  animation: morphTogKropp 5s ease-in-out infinite;
+}
+@keyframes morphTogKropp {
+  0%, 20%   { x: 6px; y: 26px; width: 28px; height: 18px; rx: 7px }
+  32%, 68%  { x: 4px; y: 19px; width: 30px; height: 18px; rx: 4px }
+  80%, 100% { x: 6px; y: 26px; width: 28px; height: 18px; rx: 7px }
+}
+.morph-tog-arm-v {
+  x: 1px; y: 29px; width: 6px; height: 10px; rx: 3px;
+  animation: morphTogArmV 5s ease-in-out infinite;
+}
+@keyframes morphTogArmV {
+  0%, 20%   { x: 1px;   y: 29px;   width: 6px;   height: 10px;  rx: 3px }
+  32%, 68%  { x: 7.4px; y: 35.4px; width: 7.2px; height: 7.2px; rx: 3.6px }
+  80%, 100% { x: 1px;   y: 29px;   width: 6px;   height: 10px;  rx: 3px }
+}
+.morph-tog-arm-h {
+  x: 33px; y: 29px; width: 6px; height: 10px; rx: 3px;
+  animation: morphTogArmH 5s ease-in-out infinite;
+}
+@keyframes morphTogArmH {
+  0%, 20%   { x: 33px;   y: 29px;   width: 6px;   height: 10px;  rx: 3px }
+  32%, 68%  { x: 25.4px; y: 35.4px; width: 7.2px; height: 7.2px; rx: 3.6px }
+  80%, 100% { x: 33px;   y: 29px;   width: 6px;   height: 10px;  rx: 3px }
+}
+.morph-tog-bein-v {
+  x: 12px; y: 44px; width: 6px; height: 4px; rx: 2px;
+  animation: morphTogBeinV 5s ease-in-out infinite;
+}
+@keyframes morphTogBeinV {
+  0%, 20%   { x: 12px;   y: 44px;   width: 6px;   height: 4px;   rx: 2px }
+  32%, 68%  { x: 16.4px; y: 35.4px; width: 7.2px; height: 7.2px; rx: 3.6px }
+  80%, 100% { x: 12px;   y: 44px;   width: 6px;   height: 4px;   rx: 2px }
+}
+.morph-tog-bein-h {
+  x: 22px; y: 44px; width: 6px; height: 4px; rx: 2px;
+  animation: morphTogBeinH 5s ease-in-out infinite;
+}
+@keyframes morphTogBeinH {
+  0%, 20%   { x: 22px;   y: 44px;   width: 6px;   height: 4px;   rx: 2px }
+  32%, 68%  { x: 16.4px; y: 35.4px; width: 7.2px; height: 7.2px; rx: 3.6px }
+  80%, 100% { x: 22px;   y: 44px;   width: 6px;   height: 4px;   rx: 2px }
+}
+.morph-tog-antenne-v {
+  x: 11px; y: 0.5px; width: 2.2px; height: 6px; rx: 1.1px;
+  animation: morphTogAntenneV 5s ease-in-out infinite;
+}
+@keyframes morphTogAntenneV {
+  0%, 20%   { x: 11px; y: .5px; width: 2.2px; height: 6px; rx: 1.1px }
+  32%, 68%  { x: 25px; y: 6px;  width: 4.4px; height: 9px; rx: 1.2px }
+  80%, 100% { x: 11px; y: .5px; width: 2.2px; height: 6px; rx: 1.1px }
+}
+.morph-tog-antenne-h {
+  x: 26.8px; y: 0.5px; width: 2.2px; height: 6px; rx: 1.1px;
+  animation: morphTogAntenneH 5s ease-in-out infinite;
+}
+@keyframes morphTogAntenneH {
+  0%, 20%   { x: 26.8px; y: .5px; width: 2.2px; height: 6px; rx: 1.1px }
+  32%, 68%  { x: 25px;   y: 6px;  width: 4.4px; height: 9px; rx: 1.2px }
+  80%, 100% { x: 26.8px; y: .5px; width: 2.2px; height: 6px; rx: 1.1px }
+}
+
+/* ---------- Jetto: sanntids-morf til fly ----------
+   "Rund"-ansiktet (to oeyne) smelter sammen til ETT cockpit-vindu, akkurat
+   som eksospotta paa Vroom -- bare med to sirkler i stedet for to
+   rektangler. Vingene klippes til en spiss trekant med clip-path (en vinge
+   er ikke et rektangel), halen bak er begge beina smeltet sammen, og
+   selve antenneballen krymper til et propellnav paa nesa -- stanga den
+   satt paa toner bare bort. */
+.morph-fly-hode {
+  x: 9px; y: 8px; width: 22px; height: 16px; rx: 6px;
+  animation: morphFlyHode 5s ease-in-out infinite;
+}
+@keyframes morphFlyHode {
+  0%, 20%   { x: 9px; y: 8px;  width: 22px; height: 16px; rx: 6px }
+  32%, 68%  { x: 1px; y: 23px; width: 6px;  height: 6px;  rx: 3px }
+  80%, 100% { x: 9px; y: 8px;  width: 22px; height: 16px; rx: 6px }
+}
+.morph-fly-oye-v {
+  cx: 16px; cy: 18px; r: 2.4px;
+  animation: morphFlyOyeV 5s ease-in-out infinite;
+}
+@keyframes morphFlyOyeV {
+  0%, 20%   { cx: 16px; cy: 18px; r: 2.4px }
+  32%, 68%  { cx: 9px;  cy: 26px; r: 2.2px }
+  80%, 100% { cx: 16px; cy: 18px; r: 2.4px }
+}
+.morph-fly-oye-h {
+  cx: 24px; cy: 18px; r: 2.4px;
+  animation: morphFlyOyeH 5s ease-in-out infinite;
+}
+@keyframes morphFlyOyeH {
+  0%, 20%   { cx: 24px; cy: 18px; r: 2.4px }
+  32%, 68%  { cx: 9px;  cy: 26px; r: 2.2px }
+  80%, 100% { cx: 24px; cy: 18px; r: 2.4px }
+}
+.morph-fly-kropp {
+  x: 6px; y: 26px; width: 28px; height: 18px; rx: 7px;
+  animation: morphFlyKropp 5s ease-in-out infinite;
+}
+@keyframes morphFlyKropp {
+  0%, 20%   { x: 6px; y: 26px;   width: 28px; height: 18px; rx: 7px }
+  32%, 68%  { x: 3px; y: 22.5px; width: 32px; height: 7px;  rx: 3.5px }
+  80%, 100% { x: 6px; y: 26px;   width: 28px; height: 18px; rx: 7px }
+}
+.morph-fly-vinge-v {
+  x: 1px; y: 29px; width: 6px; height: 10px; rx: 3px;
+  clip-path: none;
+  animation: morphFlyVingeV 5s ease-in-out infinite;
+}
+@keyframes morphFlyVingeV {
+  0%, 20% {
+    x: 1px; y: 29px; width: 6px; height: 10px; rx: 3px;
+    clip-path: none;
+  }
+  26% {
+    x: 1px; y: 29px; width: 6px; height: 10px; rx: 0px;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+  32%, 68% {
+    x: 10px; y: 10px; width: 14px; height: 14px; rx: 0px;
+    clip-path: polygon(0% 0%, 100% 90%, 55% 100%, 55% 100%);
+  }
+  74% {
+    x: 1px; y: 29px; width: 6px; height: 10px; rx: 0px;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+  80%, 100% {
+    x: 1px; y: 29px; width: 6px; height: 10px; rx: 3px;
+    clip-path: none;
+  }
+}
+.morph-fly-vinge-h {
+  x: 33px; y: 29px; width: 6px; height: 10px; rx: 3px;
+  clip-path: none;
+  animation: morphFlyVingeH 5s ease-in-out infinite;
+}
+@keyframes morphFlyVingeH {
+  0%, 20% {
+    x: 33px; y: 29px; width: 6px; height: 10px; rx: 3px;
+    clip-path: none;
+  }
+  26% {
+    x: 33px; y: 29px; width: 6px; height: 10px; rx: 0px;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+  32%, 68% {
+    x: 16px; y: 10px; width: 14px; height: 14px; rx: 0px;
+    clip-path: polygon(100% 0%, 0% 90%, 45% 100%, 45% 100%);
+  }
+  74% {
+    x: 33px; y: 29px; width: 6px; height: 10px; rx: 0px;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+  80%, 100% {
+    x: 33px; y: 29px; width: 6px; height: 10px; rx: 3px;
+    clip-path: none;
+  }
+}
+.morph-fly-hale-v {
+  x: 12px; y: 44px; width: 6px; height: 4px; rx: 2px;
+  clip-path: none;
+  animation: morphFlyHaleV 5s ease-in-out infinite;
+}
+@keyframes morphFlyHaleV {
+  0%, 20% {
+    x: 12px; y: 44px; width: 6px; height: 4px; rx: 2px;
+    clip-path: none;
+  }
+  26% {
+    x: 12px; y: 44px; width: 6px; height: 4px; rx: 0px;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+  32%, 68% {
+    x: 28px; y: 12px; width: 8px; height: 11px; rx: 0px;
+    clip-path: polygon(20% 100%, 100% 100%, 60% 0%, 60% 0%);
+  }
+  74% {
+    x: 12px; y: 44px; width: 6px; height: 4px; rx: 0px;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+  80%, 100% {
+    x: 12px; y: 44px; width: 6px; height: 4px; rx: 2px;
+    clip-path: none;
+  }
+}
+.morph-fly-hale-h {
+  x: 22px; y: 44px; width: 6px; height: 4px; rx: 2px;
+  clip-path: none;
+  animation: morphFlyHaleH 5s ease-in-out infinite;
+}
+@keyframes morphFlyHaleH {
+  0%, 20% {
+    x: 22px; y: 44px; width: 6px; height: 4px; rx: 2px;
+    clip-path: none;
+  }
+  26% {
+    x: 22px; y: 44px; width: 6px; height: 4px; rx: 0px;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+  32%, 68% {
+    x: 28px; y: 12px; width: 8px; height: 11px; rx: 0px;
+    clip-path: polygon(20% 100%, 100% 100%, 60% 0%, 60% 0%);
+  }
+  74% {
+    x: 22px; y: 44px; width: 6px; height: 4px; rx: 0px;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+  80%, 100% {
+    x: 22px; y: 44px; width: 6px; height: 4px; rx: 2px;
+    clip-path: none;
+  }
+}
+.morph-fly-propell {
+  cx: 20px; cy: 3px; r: 3px;
+  animation: morphFlyPropell 5s ease-in-out infinite;
+}
+@keyframes morphFlyPropell {
+  0%, 20%   { cx: 20px; cy: 3px;  r: 3px }
+  32%, 68%  { cx: 2px;  cy: 26px; r: 1.8px }
+  80%, 100% { cx: 20px; cy: 3px;  r: 3px }
+}
+
+/* ---------- Skvalp: sanntids-morf til baat ----------
+   "Firkant"-ansiktet (to oeyne) smelter sammen til ETT vindu i lugaren.
+   Armene blir aarer rett ut av skroget, antennestanga blir masta (den
+   satt paa "skaalen" -- streken -- toner bare bort, sammen med beina, som
+   ikke har noen naturlig bildel her). */
+.morph-baat-hode {
+  x: 9px; y: 8px; width: 22px; height: 16px; rx: 6px;
+  animation: morphBaatHode 5s ease-in-out infinite;
+}
+@keyframes morphBaatHode {
+  0%, 20%   { x: 9px;  y: 8px;  width: 22px; height: 16px; rx: 6px }
+  32%, 68%  { x: 14px; y: 16px; width: 13px; height: 10px; rx: 2.5px }
+  80%, 100% { x: 9px;  y: 8px;  width: 22px; height: 16px; rx: 6px }
+}
+.morph-baat-oye-v {
+  x: 13.5px; y: 15.5px; width: 4.5px; height: 4.5px; rx: .8px;
+  animation: morphBaatOyeV 5s ease-in-out infinite;
+}
+@keyframes morphBaatOyeV {
+  0%, 20%   { x: 13.5px; y: 15.5px; width: 4.5px; height: 4.5px; rx: .8px }
+  32%, 68%  { x: 17px;   y: 19px;   width: 7px;   height: 4.5px; rx: 1px }
+  80%, 100% { x: 13.5px; y: 15.5px; width: 4.5px; height: 4.5px; rx: .8px }
+}
+.morph-baat-oye-h {
+  x: 22px; y: 15.5px; width: 4.5px; height: 4.5px; rx: .8px;
+  animation: morphBaatOyeH 5s ease-in-out infinite;
+}
+@keyframes morphBaatOyeH {
+  0%, 20%   { x: 22px; y: 15.5px; width: 4.5px; height: 4.5px; rx: .8px }
+  32%, 68%  { x: 17px; y: 19px;   width: 7px;   height: 4.5px; rx: 1px }
+  80%, 100% { x: 22px; y: 15.5px; width: 4.5px; height: 4.5px; rx: .8px }
+}
+.morph-baat-kropp {
+  x: 6px; y: 26px; width: 28px; height: 18px; rx: 7px;
+  animation: morphBaatKropp 5s ease-in-out infinite;
+}
+@keyframes morphBaatKropp {
+  0%, 20%   { x: 6px; y: 26px; width: 28px; height: 18px; rx: 7px }
+  32%, 68%  { x: 3px; y: 28px; width: 33px; height: 8px;  rx: 4px }
+  80%, 100% { x: 6px; y: 26px; width: 28px; height: 18px; rx: 7px }
+}
+.morph-baat-are-v {
+  x: 1px; y: 29px; width: 6px; height: 10px; rx: 3px;
+  animation: morphBaatAreV 5s ease-in-out infinite;
+}
+@keyframes morphBaatAreV {
+  0%, 20%   { x: 1px;  y: 29px; width: 6px;   height: 10px;  rx: 3px }
+  32%, 68%  { x: -8px; y: 30px; width: 16px;  height: 2.2px; rx: 1.1px }
+  80%, 100% { x: 1px;  y: 29px; width: 6px;   height: 10px;  rx: 3px }
+}
+.morph-baat-are-h {
+  x: 33px; y: 29px; width: 6px; height: 10px; rx: 3px;
+  animation: morphBaatAreH 5s ease-in-out infinite;
+}
+@keyframes morphBaatAreH {
+  0%, 20%   { x: 33px; y: 29px; width: 6px;  height: 10px;  rx: 3px }
+  32%, 68%  { x: 32px; y: 30px; width: 16px; height: 2.2px; rx: 1.1px }
+  80%, 100% { x: 33px; y: 29px; width: 6px;  height: 10px;  rx: 3px }
+}
+.morph-baat-mast {
+  x: 19.25px; y: 4px; width: 1.5px; height: 6px; rx: .75px;
+  animation: morphBaatMast 5s ease-in-out infinite;
+}
+@keyframes morphBaatMast {
+  0%, 20%   { x: 19.25px; y: 4px; width: 1.5px; height: 6px; rx: .75px }
+  32%, 68%  { x: 19.25px; y: 7px; width: 1.5px; height: 9px; rx: 0px }
+  80%, 100% { x: 19.25px; y: 4px; width: 1.5px; height: 6px; rx: .75px }
 }
 
 /* ---------- Samlingen ---------- */

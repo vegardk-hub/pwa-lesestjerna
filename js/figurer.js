@@ -229,16 +229,106 @@
       '</svg>';
   }
 
-  // Andre transformere (fly/baat/tog) krymper seg fortsatt bort og vokser
-  // fram som kjoeretoeyet sitt, og saa tilbake igjen -- css/.transformer-robot
-  // og .transformer-kjoretoy ligger paa noeyaktig samme sted, med motsatt
-  // fase, saa naar den ene forsvinner dukker den andre opp. Selve
-  // flikkingen (css/.glitch) er den samme som de episke robotene bruker,
-  // satt paa fra samling.js siden den ligger paa selve ikon-elementet, ikke
-  // inni SVG-en -- se der.
+  // Skinnar (tog) bruker akkurat samme ansikt/antenne-stil som Vroom
+  // (visir + pigger), saa den samme oppskriften gjenbrukes rett av --
+  // ingen clip-path-trapes trengs her, toget sin førerkabin og vindu er
+  // begge vanlige, ikke-skraastilte rektangler. De to antennepiggene
+  // smelter sammen til pipa (samme knep som eksospotta paa Vroom), og
+  // begge beina smelter sammen til det midterste av tre hjul -- de to
+  // armene blir de to ytre hjulene. Se @keyframes morphTog* i styles.css.
+  function togMorphSvg(f) {
+    var hjulFarge = f.armer || f.kropp;
+    var navFarge = f.bein || f.hode;
+    var kroppslysKlasse = "morph-fade" + (f.blink === "kropp" ? " blink-lys" : "");
+    var hodelys = f.blink === "hode"
+      ? '<circle class="morph-fade blink-lys" cx="28" cy="11" r="2" fill="' + f.aksent + '"/>'
+      : "";
+    return '<svg viewBox="0 0 40 48" aria-hidden="true" class="morph-bil">' +
+      hodelys +
+      '<rect class="morph-tog-hode" fill="' + f.hode + '"/>' +
+      '<rect class="morph-tog-oyne" fill="' + f.oyne + '"/>' +
+      '<rect class="morph-tog-kropp" fill="' + f.kropp + '"/>' +
+      '<circle class="' + kroppslysKlasse + '" cx="20" cy="35" r="3.6" fill="' + f.aksent + '"/>' +
+      '<rect class="morph-tog-arm-v" fill="' + hjulFarge + '"/>' +
+      '<rect class="morph-tog-arm-h" fill="' + hjulFarge + '"/>' +
+      '<rect class="morph-tog-bein-v" fill="' + navFarge + '"/>' +
+      '<rect class="morph-tog-bein-h" fill="' + navFarge + '"/>' +
+      '<rect class="morph-tog-antenne-v" fill="' + f.hode + '"/>' +
+      '<rect class="morph-tog-antenne-h" fill="' + f.hode + '"/>' +
+      '</svg>';
+  }
+
+  // Jetto (fly): "rund"-ansiktet (to oeyne) smelter sammen til ETT
+  // cockpit-vindu foran i flykroppen -- samme "flere deler til identisk
+  // sted"-knep som eksospotta paa Vroom, bare med to sirkler i stedet for
+  // to rektangler. Armene blir vingene (klippet til en spiss trekant med
+  // clip-path, siden en vinge ikke er et rektangel), beina smelter sammen
+  // til halefinnen bak, og selve antenneballen krymper til et
+  // propellnav paa nesa -- stanga den satt paa toner bare bort, den har
+  // ingen egen bildel aa bli.
+  function flyMorphSvg(f) {
+    var vingeFarge = f.armer || f.kropp;
+    var haleFarge = f.bein || f.hode;
+    var kroppslysKlasse = "morph-fade" + (f.blink === "kropp" ? " blink-lys" : "");
+    var hodelys = f.blink === "hode"
+      ? '<circle class="morph-fade blink-lys" cx="28" cy="11" r="2" fill="' + f.aksent + '"/>'
+      : "";
+    return '<svg viewBox="0 0 40 48" aria-hidden="true" class="morph-bil">' +
+      '<line class="morph-fade" x1="20" y1="4" x2="20" y2="10" stroke="' + f.hode + '" stroke-width="2"/>' +
+      hodelys +
+      '<circle class="morph-fly-propell" fill="' + f.aksent + '"/>' +
+      '<rect class="morph-fly-hode" fill="' + f.hode + '"/>' +
+      '<circle class="morph-fly-oye-v" fill="' + f.oyne + '"/>' +
+      '<circle class="morph-fly-oye-h" fill="' + f.oyne + '"/>' +
+      '<rect class="morph-fly-kropp" fill="' + f.kropp + '"/>' +
+      '<circle class="' + kroppslysKlasse + '" cx="20" cy="35" r="3.6" fill="' + f.aksent + '"/>' +
+      '<rect class="morph-fly-vinge-v" fill="' + vingeFarge + '"/>' +
+      '<rect class="morph-fly-vinge-h" fill="' + vingeFarge + '"/>' +
+      '<rect class="morph-fly-hale-v" fill="' + haleFarge + '"/>' +
+      '<rect class="morph-fly-hale-h" fill="' + haleFarge + '"/>' +
+      '</svg>';
+  }
+
+  // Skvalp (baat): "firkant"-ansiktet (to oeyne) smelter sammen til ETT
+  // vindu i lugaren, akkurat som vinduet til Jetto -- bare med to
+  // firkanter i stedet for to sirkler. Armene blir aarer som stikker rett
+  // ut av skroget. Antennestanga (skaal-stilen) blir masta, mens selve
+  // "skaalen" -- streken den bar -- bare toner bort, sammen med beina
+  // (ingen naturlig bildel for dem her).
+  function baatMorphSvg(f) {
+    var aareFarge = f.armer || f.kropp;
+    var kroppslysKlasse = "morph-fade" + (f.blink === "kropp" ? " blink-lys" : "");
+    var hodelys = f.blink === "hode"
+      ? '<circle class="morph-fade blink-lys" cx="28" cy="11" r="2" fill="' + f.aksent + '"/>'
+      : "";
+    return '<svg viewBox="0 0 40 48" aria-hidden="true" class="morph-bil">' +
+      '<path class="morph-fade" d="M14 4a6 3 0 0 1 12 0" fill="none" stroke="' + f.aksent + '" stroke-width="2"/>' +
+      hodelys +
+      '<rect class="morph-baat-mast" fill="' + f.kropp + '"/>' +
+      '<rect class="morph-baat-hode" fill="' + f.hode + '"/>' +
+      '<rect class="morph-baat-oye-v" fill="' + f.oyne + '"/>' +
+      '<rect class="morph-baat-oye-h" fill="' + f.oyne + '"/>' +
+      '<rect class="morph-baat-kropp" fill="' + f.kropp + '"/>' +
+      '<circle class="' + kroppslysKlasse + '" cx="20" cy="35" r="3.6" fill="' + f.aksent + '"/>' +
+      '<rect class="morph-baat-are-v" fill="' + aareFarge + '"/>' +
+      '<rect class="morph-baat-are-h" fill="' + aareFarge + '"/>' +
+      '<rect class="morph-fade" x="12" y="44" width="6" height="4" rx="2" fill="' + (f.bein || f.hode) + '"/>' +
+      '<rect class="morph-fade" x="22" y="44" width="6" height="4" rx="2" fill="' + (f.bein || f.hode) + '"/>' +
+      '</svg>';
+  }
+
   function robotSvg(f) {
     if (f.kategori === "transformer" && f.kjoretoy === "bil" && f.ansikt === "visir") {
       return bilMorphSvg(f);
+    }
+    if (f.kategori === "transformer" && f.kjoretoy === "tog" && f.ansikt === "visir") {
+      return togMorphSvg(f);
+    }
+    if (f.kategori === "transformer" && f.kjoretoy === "fly" && f.ansikt === "rund") {
+      return flyMorphSvg(f);
+    }
+    if (f.kategori === "transformer" && f.kjoretoy === "baat" && f.ansikt === "firkant") {
+      return baatMorphSvg(f);
     }
 
     var hodelys = f.blink === "hode"

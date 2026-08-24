@@ -105,13 +105,11 @@
   // samme oppførsel.
   function visStor(v, els) {
     els.ikon.innerHTML = Figurer.svg(v.id);
-    // Bil-transformere (Vroom) morfer na i sanntid i stedet for aa bytte
-    // -- se bilMorphSvg() i figurer.js -- og skal ikke i tillegg flimre og
-    // fargeskifte oppaa den rolige forvandlingen, det ville bare forstyrret
-    // den. Andre transformere (fly/baat/tog) bruker fortsatt den gamle
-    // bytte-fade-oppfoerselen, og glitcher fortsatt som foer.
-    var erBilMorf = v.kategori === "transformer" && v.kjoretoy === "bil" && v.ansikt === "visir";
-    els.ikon.classList.toggle("glitch", v.kategori === "episk" || (v.kategori === "transformer" && !erBilMorf));
+    // Alle transformerne (bil/tog/fly/baat) morfer na i sanntid i stedet
+    // for aa bytte -- se *MorphSvg() i figurer.js -- og skal ikke i
+    // tillegg flimre og fargeskifte oppaa den rolige forvandlingen, det
+    // ville bare forstyrret den. Bare de episke skyggerobotene glitcher na.
+    els.ikon.classList.toggle("glitch", v.kategori === "episk");
     els.ikon.onclick = function () { reager(v); };
 
     if (v.kategori === "mytisk") {
