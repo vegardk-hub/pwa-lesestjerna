@@ -11,7 +11,7 @@
 
 <header>
   <h1>Lesestjerna</h1>
-  <span id="versjon">v47</span>
+  <span id="versjon">v48</span>
   <button id="tilbake" hidden>Tilbake</button>
   <button id="byttSpiller" hidden></button>
   <div id="stjerner" hidden></div>
@@ -64,18 +64,6 @@
         Lyttemotor -- hvem som hører etter når han leser
       </label>
       <select id="lyttemotorVelger"></select>
-    </div>
-    <div id="azureValg" hidden>
-      <label for="azureNokkelFelt" class="und liten">
-        Azure-nøkkel, til lyttemotoren «Microsoft Azure»
-      </label>
-      <input type="password" id="azureNokkelFelt" autocomplete="off" spellcheck="false">
-      <label for="azureRegionFelt" class="und liten">Azure-region (f.eks. «westeurope»)</label>
-      <input type="text" id="azureRegionFelt" autocomplete="off" spellcheck="false">
-      <p class="und liten">
-        Krever en egen Tale-ressurs i din Azure-konto. Nøkkelen ligger bare
-        på denne enheten, akkurat som firesifret-koden over.
-      </p>
     </div>
     <div class="rad">
       <button id="lukkForeldre" class="stor hoved">Lukk</button>
@@ -249,7 +237,6 @@
 <script src="js/stemme.js"></script>
 <script src="js/lyttemotor-nettleser.js"></script>
 <script src="js/lyttemotor-whisper.js"></script>
-<script src="js/lyttemotor-azure.js"></script>
 <script src="js/lagring.js"></script>
 <script src="js/spill.js"></script>
 <script src="js/bank.js"></script>

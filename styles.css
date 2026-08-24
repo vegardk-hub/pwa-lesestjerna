@@ -181,18 +181,6 @@ button.liten { padding: 6px 12px }
   background: #fff; color: var(--blekk);
 }
 
-/* Vises bare naar Azure-motoren faktisk er registrert -- se foreldre.js.
-   Samme felt-stil som lyttemotor-velgeren over. */
-#azureValg { margin-bottom: 18px }
-#azureValg label { display: block; margin-bottom: 6px; margin-top: 14px }
-#azureValg label:first-child { margin-top: 0 }
-#azureValg input {
-  width: 100%; padding: 10px 12px; font-size: 15px;
-  border: 1.5px solid var(--strek); border-radius: 10px;
-  background: #fff; color: var(--blekk);
-}
-#azureValg p { margin: 10px 0 0 }
-
 /* ---------- Huset ----------
    Fire kort: gaa ut og les, boka, butikken, samlingen. "Gaa ut og les" er
    hovedhandlingen og ser slik ut (moerk bakgrunn, stor), de tre andre er

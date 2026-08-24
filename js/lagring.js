@@ -44,13 +44,7 @@
     // bare nok til at et barn ikke skrur paa hjelpeknappen ved et uhell.
     // lyttemotor: id-en til motoren som skal hoere paa lesingen (se
     // Stemme.lyttemotorer i stemme.js) -- null betyr "standardmotoren".
-    // azureNokkel/azureRegion: til js/lyttemotor-azure.js -- Vegard sin
-    // egen Azure-taleressurs, skrevet inn i Foreldrekontroll. Ligger bare
-    // paa denne enheten, akkurat som pin-koden.
-    return {
-      pin: null, lesForMeg: false, godkjennVoksen: false, lyttemotor: null,
-      azureNokkel: null, azureRegion: null
-    };
+    return { pin: null, lesForMeg: false, godkjennVoksen: false, lyttemotor: null };
   }
 
   function les() {
@@ -68,8 +62,12 @@
     if (!data.foreldre) data.foreldre = TOM_FORELDRE();
     // Lagring fra foer lyttemotor-valget fantes mangler dette feltet.
     if (data.foreldre.lyttemotor === undefined) data.foreldre.lyttemotor = null;
-    if (data.foreldre.azureNokkel === undefined) data.foreldre.azureNokkel = null;
-    if (data.foreldre.azureRegion === undefined) data.foreldre.azureRegion = null;
+    // Azure-motoren (og noekkelen/regionen den trengte) er fjernet igjen --
+    // kostet penger aa bruke. Rydder bort eventuelle rester av den fra
+    // lagringen, saa ingen noekkel blir liggende uten grunn.
+    if (data.foreldre.azureNokkel !== undefined) delete data.foreldre.azureNokkel;
+    if (data.foreldre.azureRegion !== undefined) delete data.foreldre.azureRegion;
+    if (data.foreldre.lyttemotor === "azure") data.foreldre.lyttemotor = null;
     // Lagring fra foer opptaksfunksjonen fantes mangler denne paa spillerne.
     data.spillere.forEach(function (s) {
       if (!s.opptak) s.opptak = {};
@@ -191,10 +189,6 @@
     settGodkjennVoksen: function (paa) { les().foreldre.godkjennVoksen = !!paa; lagre(); },
     lyttemotor: function () { return les().foreldre.lyttemotor; },
     settLyttemotor: function (id) { les().foreldre.lyttemotor = id || null; lagre(); },
-    azureNokkel: function () { return les().foreldre.azureNokkel; },
-    settAzureNokkel: function (v) { les().foreldre.azureNokkel = (v || "").trim() || null; lagre(); },
-    azureRegion: function () { return les().foreldre.azureRegion; },
-    settAzureRegion: function (v) { les().foreldre.azureRegion = (v || "").trim() || null; lagre(); },
 
     /* ---------- Opptak til mytiske roboter ---------- */
 

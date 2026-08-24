@@ -114,11 +114,7 @@
     // som ikke trenger det (som nettleseren) kaller den aldri.
     paaStatus: null,     // (tekst)
 
-    // "tekst" er valgfri -- den faktiske teksten han skal lese, raa (ikke
-    // delt i ord). De fleste motorer bryr seg ikke om den (de gjenkjenner
-    // hva som helst), men en motor som vurderer opp mot en fasit (t.d.
-    // js/lyttemotor-azure.js) trenger aa vite den paa forhaand.
-    start: function (tekst) {
+    start: function () {
       if (!gjeldendeMotor().stoettes || this.vil || snakker) return;
       var meg = this;
       this.vil = true;
@@ -130,7 +126,7 @@
         // haand (t.d. mikrofonen ble sperret) -- da maa "vil" ned med den,
         // ellers ville knappen staatt fast paa "lytter" for alltid.
         tilstand: function (paa) { if (!paa) { meg.vil = false; meg.melde(); } }
-      }, tekst);
+      });
       this.melde();
     },
 
