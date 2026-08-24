@@ -707,6 +707,142 @@ button.liten { padding: 6px 12px }
   animation: transformKjoretoy 5s ease-in-out infinite;
 }
 
+/* ---------- Vroom: sanntids-morf i stedet for bytte-fade ----------
+   Hver kroppsdel ER bildelen -- rett foran oeynene glir/flater/runder den
+   seg om, i stedet for at hele roboten forsvinner og bilen dukker opp et
+   annet sted. Samme 5-sekunders takt og faseinndeling som de andre
+   transformerne (0-20% robot, 20-32% forvandler seg, 32-68% bil, 68-80%
+   forvandler tilbake, 80-100% robot), saa den fremdeles kjennes igjen som
+   "en av dem" -- se bilMorphSvg() i js/figurer.js for hvilken del som er
+   hvilken.
+
+   x/y/width/height/rx er satt som vanlige (ikke-animerte) egenskaper her
+   ogsaa, ikke bare i @keyframes -- det er robotformen (0%), saa en
+   nettleser uten stoette for aa CSS-animere disse SVG-egenskapene viser i
+   det minste roboten stille i stedet for aa tegne ingenting. */
+.morph-bil .morph-fade { animation: morphFade 5s ease-in-out infinite }
+@keyframes morphFade {
+  0%, 20% { opacity: 1 }
+  26%, 74% { opacity: 0 }
+  80%, 100% { opacity: 1 }
+}
+
+.morph-bil .morph-arm-v {
+  x: 1px; y: 29px; width: 6px; height: 10px; rx: 3px;
+  animation: morphArmV 5s ease-in-out infinite;
+}
+@keyframes morphArmV {
+  0%, 20%   { x: 1px;   y: 29px;   width: 6px;   height: 10px;  rx: 3px }
+  32%, 68%  { x: 7.8px; y: 32.8px; width: 8.4px; height: 8.4px; rx: 4.2px }
+  80%, 100% { x: 1px;   y: 29px;   width: 6px;   height: 10px;  rx: 3px }
+}
+
+.morph-bil .morph-arm-h {
+  x: 33px; y: 29px; width: 6px; height: 10px; rx: 3px;
+  animation: morphArmH 5s ease-in-out infinite;
+}
+@keyframes morphArmH {
+  0%, 20%   { x: 33px;   y: 29px;   width: 6px;   height: 10px;  rx: 3px }
+  32%, 68%  { x: 23.8px; y: 32.8px; width: 8.4px; height: 8.4px; rx: 4.2px }
+  80%, 100% { x: 33px;   y: 29px;   width: 6px;   height: 10px;  rx: 3px }
+}
+
+.morph-bil .morph-bein-v {
+  x: 12px; y: 44px; width: 6px; height: 4px; rx: 2px;
+  animation: morphBeinV 5s ease-in-out infinite;
+}
+@keyframes morphBeinV {
+  0%, 20%   { x: 12px;   y: 44px;   width: 6px;   height: 4px;   rx: 2px }
+  32%, 68%  { x: 10.4px; y: 35.4px; width: 3.2px; height: 3.2px; rx: 1.6px }
+  80%, 100% { x: 12px;   y: 44px;   width: 6px;   height: 4px;   rx: 2px }
+}
+
+.morph-bil .morph-bein-h {
+  x: 22px; y: 44px; width: 6px; height: 4px; rx: 2px;
+  animation: morphBeinH 5s ease-in-out infinite;
+}
+@keyframes morphBeinH {
+  0%, 20%   { x: 22px;   y: 44px;   width: 6px;   height: 4px;   rx: 2px }
+  32%, 68%  { x: 26.4px; y: 35.4px; width: 3.2px; height: 3.2px; rx: 1.6px }
+  80%, 100% { x: 22px;   y: 44px;   width: 6px;   height: 4px;   rx: 2px }
+}
+
+.morph-bil .morph-kropp {
+  x: 6px; y: 26px; width: 28px; height: 18px; rx: 7px;
+  animation: morphKropp 5s ease-in-out infinite;
+}
+@keyframes morphKropp {
+  0%, 20%   { x: 6px; y: 26px; width: 28px; height: 18px; rx: 7px }
+  32%, 68%  { x: 4px; y: 26px; width: 32px; height: 10px; rx: 3px }
+  80%, 100% { x: 6px; y: 26px; width: 28px; height: 18px; rx: 7px }
+}
+
+/* Hodet kan ikke bare endre stoerrelse -- det skal bli TRAPESFORMET (taket
+   paa bilen), en form et rektangel ikke kan naa med bare x/y/width/height/
+   rx. Losningen er en clip-path (samme antall hjoernepunkter i alle
+   posisjoner, saa nettleseren kan glide mellom dem): "none" i hvilefasen
+   (rx alene runder hjoernene, som paa den vanlige robotformen), et
+   rektangel-formet polygon rett foer/etter forvandlingen (ser identisk ut
+   som "none", bare klart til aa glide videre), og til slutt selve
+   trapeset. */
+.morph-bil .morph-hode {
+  x: 9px; y: 8px; width: 22px; height: 16px; rx: 6px;
+  clip-path: none;
+  animation: morphHode 5s ease-in-out infinite;
+}
+@keyframes morphHode {
+  0%, 20% {
+    x: 9px; y: 8px; width: 22px; height: 16px; rx: 6px;
+    clip-path: none;
+  }
+  26% {
+    x: 9px; y: 8px; width: 22px; height: 16px; rx: 0px;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+  32%, 68% {
+    x: 10px; y: 18px; width: 20px; height: 8px; rx: 0px;
+    clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+  }
+  74% {
+    x: 9px; y: 8px; width: 22px; height: 16px; rx: 0px;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+  80%, 100% {
+    x: 9px; y: 8px; width: 22px; height: 16px; rx: 6px;
+    clip-path: none;
+  }
+}
+
+/* Visiret (blaatt) vokser til vinduet inni trapeset -- samme clip-path-knep
+   som hodet over. */
+.morph-bil .morph-oyne {
+  x: 12.5px; y: 15.5px; width: 15px; height: 5px; rx: 2.5px;
+  clip-path: none;
+  animation: morphOyne 5s ease-in-out infinite;
+}
+@keyframes morphOyne {
+  0%, 20% {
+    x: 12.5px; y: 15.5px; width: 15px; height: 5px; rx: 2.5px;
+    clip-path: none;
+  }
+  26% {
+    x: 12.5px; y: 15.5px; width: 15px; height: 5px; rx: 0px;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+  32%, 68% {
+    x: 13px; y: 19.5px; width: 14px; height: 6.5px; rx: 0px;
+    clip-path: polygon(17.9% 0%, 82.1% 0%, 100% 100%, 0% 100%);
+  }
+  74% {
+    x: 12.5px; y: 15.5px; width: 15px; height: 5px; rx: 0px;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+  80%, 100% {
+    x: 12.5px; y: 15.5px; width: 15px; height: 5px; rx: 2.5px;
+    clip-path: none;
+  }
+}
+
 /* ---------- Samlingen ---------- */
 
 #samling { padding: 30px 20px 60px; max-width: 780px; margin: 0 auto; width: 100% }

@@ -183,13 +183,54 @@
   // triksene overlapper med vilje ikke i tid: aa bytte plass midt i en
   // snurr ville bare sett ut som rot, ikke et triks.
   //
-  // Transformere krymper seg bort og vokser fram som kjoeretoeyet sitt, og
-  // saa tilbake igjen -- css/.transformer-robot og .transformer-kjoretoy
-  // ligger paa noeyaktig samme sted, med motsatt fase, saa naar den ene
-  // forsvinner dukker den andre opp. Selve flikkingen (css/.glitch) er den
-  // samme som de episke robotene bruker, satt paa fra samling.js siden den
-  // ligger paa selve ikon-elementet, ikke inni SVG-en -- se der.
+  // Bil-transformere (i dag bare Vroom) morfer i sanntid i stedet for aa
+  // bytte mellom to skjulte kopier -- hver kroppsdel ER bildelen, rett foran
+  // oeynene: armene glir ned og runder seg til dekk, beina blir navene inni
+  // dekkene, kroppen klemmes flatere til bilkroppen, og hodet flater ut til
+  // taket mens ansiktet vokser til vinduet inni det. Formen paa hver del
+  // (posisjon, storrelse, avrunding, og for hode/oeyne ogsaa en clip-path
+  // som skjaerer til trapesform) animeres direkte -- se @keyframes morph*
+  // i styles.css. Krever at nettleseren stoetter x/y/width/height/rx som
+  // CSS-animerbare egenskaper paa SVG-figurer (Chrome/Safari stoetter
+  // dette, men eldre nettlesere viser bare robotformen stille -- se
+  // grunnverdiene i .morph-bil sine CSS-regler).
+  //
+  // Bare "visir"-ansikt er stoettet her (Vroom sitt) -- et rundt eller
+  // firkantet ansikt ville trengt sin egen vindu-morf. Andre bil-
+  // transformere faller tilbake til den vanlige bytte-fade-oppfoerselen til
+  // det evt. bygges.
+  function bilMorphSvg(f) {
+    var armFarge = f.armer || f.kropp;
+    var beinFarge = f.bein || f.hode;
+    var kroppslysKlasse = "morph-fade" + (f.blink === "kropp" ? " blink-lys" : "");
+    var hodelys = f.blink === "hode"
+      ? '<circle class="morph-fade blink-lys" cx="28" cy="11" r="2" fill="' + f.aksent + '"/>'
+      : "";
+    return '<svg viewBox="0 0 40 48" aria-hidden="true" class="morph-bil">' +
+      '<g class="morph-fade">' + antenneSvg(f) + hodelys + '</g>' +
+      '<rect class="morph-arm-v" fill="' + armFarge + '"/>' +
+      '<rect class="morph-arm-h" fill="' + armFarge + '"/>' +
+      '<rect class="morph-kropp" fill="' + f.kropp + '"/>' +
+      '<circle class="' + kroppslysKlasse + '" cx="20" cy="35" r="3.6" fill="' + f.aksent + '"/>' +
+      '<rect class="morph-bein-v" fill="' + beinFarge + '"/>' +
+      '<rect class="morph-bein-h" fill="' + beinFarge + '"/>' +
+      '<rect class="morph-hode" fill="' + f.hode + '"/>' +
+      '<rect class="morph-oyne" fill="' + f.oyne + '"/>' +
+      '</svg>';
+  }
+
+  // Andre transformere (fly/baat/tog) krymper seg fortsatt bort og vokser
+  // fram som kjoeretoeyet sitt, og saa tilbake igjen -- css/.transformer-robot
+  // og .transformer-kjoretoy ligger paa noeyaktig samme sted, med motsatt
+  // fase, saa naar den ene forsvinner dukker den andre opp. Selve
+  // flikkingen (css/.glitch) er den samme som de episke robotene bruker,
+  // satt paa fra samling.js siden den ligger paa selve ikon-elementet, ikke
+  // inni SVG-en -- se der.
   function robotSvg(f) {
+    if (f.kategori === "transformer" && f.kjoretoy === "bil" && f.ansikt === "visir") {
+      return bilMorphSvg(f);
+    }
+
     var hodelys = f.blink === "hode"
       ? '<circle cx="28" cy="11" r="2" class="blink-lys" fill="' + f.aksent + '"/>'
       : "";
@@ -203,13 +244,19 @@
       ansiktSvg(f) +
       hodelys;
 
+    // armer/bein: valgfrie -- de fleste roboter setter dem aldri, og arver da
+    // den gamle oppfoerselen (armer i kroppsfargen, bein i hodefargen)
+    // akkurat som foer disse feltene fantes. Vroom er foerste robot som
+    // skiller dem ut, se bilMorphSvg() under.
+    var armFarge = f.armer || f.kropp;
+    var beinFarge = f.bein || f.hode;
     var kroppInnhold =
-      '<rect x="1" y="29" width="6" height="10" rx="3" fill="' + f.kropp + '"' + armVKlasse + '/>' +
-      '<rect x="33" y="29" width="6" height="10" rx="3" fill="' + f.kropp + '"' + armHKlasse + '/>' +
+      '<rect x="1" y="29" width="6" height="10" rx="3" fill="' + armFarge + '"' + armVKlasse + '/>' +
+      '<rect x="33" y="29" width="6" height="10" rx="3" fill="' + armFarge + '"' + armHKlasse + '/>' +
       '<rect x="6" y="26" width="28" height="18" rx="7" fill="' + f.kropp + '"/>' +
       '<circle cx="20" cy="35" r="3.6" fill="' + f.aksent + '"' + kroppslysKlasse + '/>' +
-      '<rect x="12" y="44" width="6" height="4" rx="2" fill="' + f.hode + '"/>' +
-      '<rect x="22" y="44" width="6" height="4" rx="2" fill="' + f.hode + '"/>';
+      '<rect x="12" y="44" width="6" height="4" rx="2" fill="' + beinFarge + '"/>' +
+      '<rect x="22" y="44" width="6" height="4" rx="2" fill="' + beinFarge + '"/>';
 
     if (f.kategori === "utrolig") {
       return '<svg viewBox="0 0 40 48" aria-hidden="true"><g class="utrolig-hele">' +

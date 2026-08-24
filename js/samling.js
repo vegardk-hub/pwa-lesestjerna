@@ -105,7 +105,13 @@
   // samme oppførsel.
   function visStor(v, els) {
     els.ikon.innerHTML = Figurer.svg(v.id);
-    els.ikon.classList.toggle("glitch", v.kategori === "episk" || v.kategori === "transformer");
+    // Bil-transformere (Vroom) morfer na i sanntid i stedet for aa bytte
+    // -- se bilMorphSvg() i figurer.js -- og skal ikke i tillegg flimre og
+    // fargeskifte oppaa den rolige forvandlingen, det ville bare forstyrret
+    // den. Andre transformere (fly/baat/tog) bruker fortsatt den gamle
+    // bytte-fade-oppfoerselen, og glitcher fortsatt som foer.
+    var erBilMorf = v.kategori === "transformer" && v.kjoretoy === "bil" && v.ansikt === "visir";
+    els.ikon.classList.toggle("glitch", v.kategori === "episk" || (v.kategori === "transformer" && !erBilMorf));
     els.ikon.onclick = function () { reager(v); };
 
     if (v.kategori === "mytisk") {
