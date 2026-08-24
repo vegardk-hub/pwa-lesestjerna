@@ -137,8 +137,71 @@
     // et tall her ville uansett vaere foreldet med det samme.
     k.disabled = e.antall === 0;
     k.setAttribute("aria-label", e.navn);
-    k.onclick = function () { if (paaValgt) paaValgt(e.id); };
+    // Har han en personlig robot (se hus.js), reiser den bort til prikken
+    // foerst -- se reiseTilSone(). Ingen robot valgt, ingen reise: da
+    // skjer overgangen til lesingen med en gang, som foer.
+    k.onclick = function () {
+      var valgtId = Lagring.valgtRobot();
+      var valgt = valgtId && Figurer.finn(valgtId);
+      if (valgt) reiseTilSone(valgt, e.id);
+      else if (paaValgt) paaValgt(e.id);
+    };
     return k;
+  }
+
+  /* Roboten glir fra hjemmepunktet og bort til prikken han valgte, hopper
+   * inn i den, og sier ifra med en pling -- foerst da byttes bildet til
+   * selve teksten. Hele reisen er lagt opp til aa vare rundt tre sekunder:
+   * 2,2 sekund glidning (css/#reiseRobot sin transition) + et halvt
+   * sekunds hopp (css/.hopper) + en liten pause saa han faktisk faar sett
+   * at den landet.
+   *
+   * Elementet er ett og samme, gjenbrukt hver gang -- ikke en ny kopi per
+   * reise -- og ligger fast i markeringen (index.html), ikke bygget her i
+   * tegn(), siden det skal overleve akkurat denne ene reisen uten aa bli
+   * tømt og gjenoppbygd midt i.
+   */
+  function reiseTilSone(valgt, emneId) {
+    var robot = $("#reiseRobot");
+    if (!robot) { if (paaValgt) paaValgt(emneId); return; }
+
+    var start = SONER.hjem;
+    var maal = SONER[emneId] || { x: 0.5, y: 0.5 };
+
+    // Ingen kan starte en ny reise oppaa denne -- laases opp igjen naar
+    // roboten er framme (eller om noe gikk galt underveis, se nederst).
+    var alleSoner = Array.prototype.slice.call(document.querySelectorAll(".sone"));
+    var varDisabled = alleSoner.map(function (s) { return s.disabled; });
+    alleSoner.forEach(function (s) { s.disabled = true; });
+
+    // Den faste badgen ved hjem (se hjemPin()) forsvinner mens kopien er
+    // underveis -- ellers ser det ut som to roboter paa én gang.
+    var badge = document.querySelector(".sone.hjem .robotmerke");
+    if (badge) badge.style.visibility = "hidden";
+
+    robot.innerHTML = Figurer.svg(valgt.id);
+    robot.classList.remove("hopper");
+    robot.style.transition = "none";
+    robot.style.left = (100 * start.x) + "%";
+    robot.style.top = (100 * start.y) + "%";
+    robot.hidden = false;
+    void robot.offsetWidth; // tving reflow, saa transition under faktisk glir
+    robot.style.transition = "";
+    robot.style.left = (100 * maal.x) + "%";
+    robot.style.top = (100 * maal.y) + "%";
+
+    setTimeout(function () {
+      robot.classList.add("hopper");
+      Robotlyd.pling();
+    }, 2200);
+
+    setTimeout(function () {
+      robot.hidden = true;
+      robot.classList.remove("hopper");
+      alleSoner.forEach(function (s, i) { s.disabled = varDisabled[i]; });
+      if (badge) badge.style.visibility = "";
+      if (paaValgt) paaValgt(emneId);
+    }, 3000);
   }
 
   /* Hjemme er ikke et emne fra tekstbanken -- det er huset spilleren eier, og

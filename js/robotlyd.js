@@ -1,5 +1,6 @@
 /* Robotlydene: en liten, morsom lyd som passer navnet, når han trykker på en
- * robot i samlingen sin.
+ * robot i samlingen sin -- pluss én lyd til (pling, under) som ikke hører
+ * til noen bestemt robot.
  *
  * Ingen lydfiler her -- alt er syntetisert med Web Audio API, bygget av noen
  * få byggeklosser (tone, sveip, støy, knirk). Det gjør at en ny robot bare
@@ -251,6 +252,19 @@
       try {
         var c = faaKontekst();
         if (c) oppskrift(c, c.currentTime);
+      } catch (e) { /* stille */ }
+    },
+
+    // Ikke knyttet til noen bestemt robot -- en liten, fornøyd "pling" naar
+    // foelgesvennen lander i ikonet han valgte paa verdenskartet (se
+    // verden.js sin reiseTilSone()).
+    pling: function () {
+      try {
+        var c = faaKontekst();
+        if (!c) return;
+        var t = c.currentTime;
+        tone(c, t, 1050, .12, "sine", .22);
+        tone(c, t + .09, 1570, .18, "sine", .2);
       } catch (e) { /* stille */ }
     },
 
