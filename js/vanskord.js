@@ -76,31 +76,28 @@
   // Bare foerste gang et ord godkjennes gir mynt -- uten "!o.ferdig"-sjekken
   // kunne et ord som av en eller annen grunn ble meldt ferdig to ganger gitt
   // dobbel betaling.
+  //
+  // Ordet fjernes fra selve boka (Lagring.fjernVanskeligeOrd) med det samme
+  // -- ikke foerst naar han trykker "Ferdig" nederst. Han kan jo like gjerne
+  // gaa ut igjen med den vanlige "Tilbake" oeverst, og fjerningen skal skje
+  // uansett hvordan han forlater skjermen. Snubler han i det samme ordet
+  // igjen senere i en vanlig tekst, havner det bare tilbake i boka av seg
+  // selv (fangVanskeligeOrd() i js/lesing.js).
   function merkFerdig(ord) {
     var funnet = settOrd.find(function (o) { return o.ord === ord; });
     if (funnet && !funnet.ferdig) {
       funnet.ferdig = true;
       poengSamlet += MYNT_PER_ORD;
+      Lagring.fjernVanskeligeOrd([ord]);
     }
     tegn();
   }
 
-  // Kalt fra app.js naar han trykker "Ferdig". Gir fra seg summen og
+  // Kalt fra app.js naar han trykker "Ferdig". Gir fra seg mynt-summen og
   // nullstiller selv -- ingen sjanse for aa hente den samme summen to ganger.
-  // De ordene han fikk groenne her er ikke vanskelige for ham lenger, saa de
-  // fjernes samtidig fra selve boka (Lagring.fjernVanskeligeOrd) -- ikke bare
-  // fra denne oekta sitt sett. Snubler han i det samme ordet igjen i en tekst
-  // senere, havner det bare tilbake der av seg selv.
   function hentUtMynter() {
     var n = poengSamlet;
     poengSamlet = 0;
-
-    var ferdigeOrd = settOrd.filter(function (o) { return o.ferdig; }).map(function (o) { return o.ord; });
-    if (ferdigeOrd.length) {
-      Lagring.fjernVanskeligeOrd(ferdigeOrd);
-      settOrd = settOrd.filter(function (o) { return !o.ferdig; });
-    }
-
     return n;
   }
 
