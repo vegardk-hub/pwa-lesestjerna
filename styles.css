@@ -13,6 +13,15 @@
 
 * { box-sizing: border-box }
 
+/* iPad (og andre nettbrett) tolker to raske trykk rett etter hverandre --
+   f.eks. et trykk paa en knapp rett etter et trykk et annet sted -- som et
+   dobbelttrykk, og zoomer inn. "user-scalable=no" i viewport-taggen hjelper
+   ikke alene (Safari overstyrer den utenfor "Legg til på Hjem-skjerm"), saa
+   touch-action her er det som faktisk stopper dobbelttrykk-zoom, uansett
+   hvordan siden er aapnet. Vanlig tofinger-klyp-zoom (som iOS uansett
+   krever av hensyn til tilgjengelighet) roeres ikke. */
+html { touch-action: manipulation }
+
 body {
   margin: 0;
   background: #fff;
