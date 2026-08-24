@@ -179,9 +179,19 @@
   // nok (faa bokstaver unna) skal telle likevel. Korte ord holdes utenfor:
   // "en" er bare to bokstaver fra de fleste andre smaa ord, og ville truffet
   // altfor mye feil.
+  //
+  // Terskelen er satt raus med vilje: han som bruker appen er 8 aar, ikke en
+  // voksen som leser tydelig i et stille rom, og maalet er aa maale at han
+  // leser -- ikke aa kreve bokstavrett gjengivelse fra en gjenkjenner som i
+  // beste fall gjetter. Whisper-motoren har det ekstra tungt her: den faar
+  // bare ÉN tolkning per frase (se js/lyttemotor-whisper.js), mens
+  // nettlesermotoren spoer om fem alternativer og har flere sjanser å treffe
+  // med -- saa den ene tolkningen maa faa lov til aa bomme mer og fortsatt
+  // telle.
   function likTNok(a, b) {
-    if (a.length < 4 || b.length < 4) return a === b;
-    var tillatt = (a.length > 7 || b.length > 7) ? 2 : 1;
+    if (a.length < 3 || b.length < 3) return a === b;
+    var lengde = Math.max(a.length, b.length);
+    var tillatt = lengde > 7 ? 3 : (lengde > 4 ? 2 : 1);
     return avstand(a, b, tillatt + 1) <= tillatt;
   }
 
