@@ -136,14 +136,23 @@
     $("#bokaBunn").textContent = linjer.join(" · ");
 
     // Boka legges over huskortene, ikke under dem. Han aapner den bare
-    // herfra, saa veien tilbake er alltid den samme.
+    // herfra, saa veien tilbake er alltid den samme. "Lukk" ligger fast i
+    // topplinja (se index.html/styles.css) i stedet for nederst i boka --
+    // samme knep som #lukkButikk i js/butikk.js -- saa han slipper aa
+    // rulle forbi alle tallene for aa finne veien ut igjen. "Bytt spiller"
+    // skjules imens -- ellers kunne han trykke den i stedet og la "Lukk"
+    // bli hengende igjen synlig oeverst paa en helt annen skjerm etterpaa.
     $("#hus").hidden = true;
     $("#boka").hidden = false;
+    $("#lukkBoka").hidden = false;
+    $("#byttSpiller").hidden = true;
   }
 
   $("#lukkBoka").onclick = function () {
     $("#boka").hidden = true;
+    $("#lukkBoka").hidden = true;
     $("#hus").hidden = false;
+    if (Lagring.aktiv()) $("#byttSpiller").hidden = false;
   };
 
   /* ---------- Ola sin bok: alt han har lest, til å lese om igjen ----------

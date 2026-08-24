@@ -464,6 +464,11 @@ button.liten { padding: 6px 12px }
 #butikkHeader b { color: var(--gul) }
 #lukkButikk { font-size: 14.5px; padding: 6px 12px; margin-left: auto }
 
+/* Samme knep som #lukkButikk over -- se js/hus.js. Ligger fast oeverst i
+   topplinja i stedet for nederst i selve boka, saa han slipper aa rulle
+   forbi tallene for aa finne veien ut igjen. */
+#lukkBoka { font-size: 14.5px; padding: 6px 12px; margin-left: auto }
+
 #butikkListe {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
