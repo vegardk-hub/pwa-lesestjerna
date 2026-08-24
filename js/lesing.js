@@ -20,6 +20,7 @@
 
   /* ---------- Tilstand ---------- */
 
+  var raaTekst = "";     // hele teksten slik den kom inn, til Stemme.lytter.start()
   var ord = [];          // flat liste over alle ordene i hele teksten
   var setninger = [];    // { ordFra, ordTil, el, ferdig }
   var basis = 0;         // hvor langt endelige resultater har foert oss
@@ -37,6 +38,7 @@
   /* ---------- Bygge teksten ---------- */
 
   function bygg(raatekst, vanskelige) {
+    raaTekst = raatekst;
     var vansk = {};
     (vanskelige || []).forEach(function (o) {
       var r = Tekst.reint(o);
@@ -453,7 +455,7 @@
       Stemme.lytter.stopp();
     } else {
       sistFramgang = Date.now();
-      Stemme.lytter.start();
+      Stemme.lytter.start(raaTekst);
     }
   };
 
@@ -525,7 +527,7 @@
       // gang, se paaTilstand i stemme.js. Stoetter ikke nettleseren lytting i
       // det hele tatt, blir han staaende med en forklaring i stedet.
       if (Stemme.lytter.stoettes) {
-        Stemme.lytter.start();
+        Stemme.lytter.start(oppgave.tekst);
       } else {
         beskjed("Denne nettleseren kan ikke lytte. Prøv en annen nettleser.", true);
       }

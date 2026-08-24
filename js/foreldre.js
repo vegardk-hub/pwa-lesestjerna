@@ -39,7 +39,23 @@
     $("#lesForMegVeksle").checked = Lagring.lesForMegPaa();
     $("#godkjennVoksenVeksle").checked = Lagring.godkjennVoksenPaa();
     tegnLyttemotorValg();
+    tegnAzureValg();
   }
+
+  // Bare noe aa fylle ut naar Azure-motoren faktisk er registrert -- se
+  // js/lyttemotor-azure.js. Vises uansett hvilken motor som er valgt naa,
+  // saa han kan fylle ut noekkelen foer han bytter til den.
+  function tegnAzureValg() {
+    var finnes = Stemme.lyttemotorer.alle().some(function (m) { return m.id === "azure"; });
+    var boks = $("#azureValg");
+    boks.hidden = !finnes;
+    if (boks.hidden) return;
+    $("#azureNokkelFelt").value = Lagring.azureNokkel() || "";
+    $("#azureRegionFelt").value = Lagring.azureRegion() || "";
+  }
+
+  $("#azureNokkelFelt").onchange = function () { Lagring.settAzureNokkel(this.value); };
+  $("#azureRegionFelt").onchange = function () { Lagring.settAzureRegion(this.value); };
 
   // Bare noe aa velge mellom naar det faktisk finnes mer enn standard-
   // motoren -- med bare én registrert motor (situasjonen i dag) er det
