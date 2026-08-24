@@ -363,8 +363,10 @@
    * aldri fanger kan sperre resten av teksten for alltid. "Leseflyt" (se
    * Lagring.lesestil) skal ikke kunne stoppe opp slik: har han lest seg helt
    * fram til den siste setningen, og det saa har vaert stille en liten
-   * stund, regnes teksten som ferdig -- uansett hvor mange ord underveis som
-   * ikke ble fanget opp.
+   * stund, regnes TEKSTEN som ferdig (eller han trykker "Ferdig lest" selv,
+   * se app.js) -- men BETALINGEN foelger fortsatt bare de ordene som faktisk
+   * ble groenne, se resultat(). Uten det ville "trykk ferdig med det samme"
+   * vaert en gratis vei til full pott.
    */
 
   function naaddSlutten() {
@@ -409,14 +411,21 @@
       else if (o.truffet) lest++;
     });
     return {
-      // I leseflyt betales det for hele teksten naar den er ferdig, ikke
-      // bare de ordene som faktisk ble fanget opp -- det er selve poenget
-      // med den lesestilen (se fullforFlyt() over).
-      ord: erFlyt ? ord.length : lest,
+      // Betaling foelger de ordene han faktisk fikk groenne, i begge
+      // lesestiler -- ogsaa i leseflyt. Trykker han "Ferdig lest" (eller
+      // stillheten runder av teksten selv) uten aa ha lest noe som helst,
+      // skal det ikke gi noe -- ellers ville det vaert altfor lett aa
+      // jukse seg til mynter. Full pott krever at ALLE ordene er groenne;
+      // faerre gir tilsvarende mindre.
+      ord: lest,
       hoppetOver: hoppet,      // ord som lyste uten aa bli lest
       setninger: stjerner,
       ordTotalt: ord.length,
-      fullfoert: peker >= ord.length
+      // "Fullfoert" (som gir en ekstra bonus, se Spill.betal) skal bare
+      // bety at han faktisk fikk ALT groent -- i leseflyt holder det ikke
+      // at oekta bare er over (fullforFlyt() setter alltid peker til enden,
+      // uansett hvor mye som faktisk ble lest).
+      fullfoert: erFlyt ? (ord.length > 0 && lest === ord.length) : peker >= ord.length
     };
   }
 
