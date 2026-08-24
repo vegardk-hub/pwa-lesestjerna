@@ -212,8 +212,9 @@
       return (s && s.vanskeligeOrd) || [];
     },
     // Tar imot en liste (kan vaere flere paa én gang, fra én leseokt) --
-    // lagrer bare én gang, ikke ett kall per ord. Dobbeltord filtreres bort,
-    // ordene forsvinner aldri av seg selv (se js/vanskord.js).
+    // lagrer bare én gang, ikke ett kall per ord. Dobbeltord filtreres bort.
+    // Fjernes ikke av seg selv -- se fjernVanskeligeOrd() under, kalt naar
+    // han faktisk oever seg opp igjennom dem i js/vanskord.js.
     leggTilVanskeligeOrd: function (nyeOrd) {
       var s = aktiv();
       if (!s || !nyeOrd || !nyeOrd.length) return;
@@ -223,6 +224,17 @@
         if (o && s.vanskeligeOrd.indexOf(o) === -1) { s.vanskeligeOrd.push(o); lagt = true; }
       });
       if (lagt) lagre();
+    },
+    // Kalt naar han har lest et ord riktig nok ganger til at js/vanskord.js
+    // regner det som oevd ferdig -- da har det ikke lenger noe i boka aa
+    // gjoere. Snubler han i det samme ordet igjen i en tekst senere, havner
+    // det bare tilbake der av seg selv (fangVanskeligeOrd() i js/lesing.js).
+    fjernVanskeligeOrd: function (ordListe) {
+      var s = aktiv();
+      if (!s || !s.vanskeligeOrd || !ordListe || !ordListe.length) return;
+      var foer = s.vanskeligeOrd.length;
+      s.vanskeligeOrd = s.vanskeligeOrd.filter(function (o) { return ordListe.indexOf(o) === -1; });
+      if (s.vanskeligeOrd.length !== foer) lagre();
     },
 
     /* ---------- Opptak til mytiske roboter ---------- */

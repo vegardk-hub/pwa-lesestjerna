@@ -87,9 +87,20 @@
 
   // Kalt fra app.js naar han trykker "Ferdig". Gir fra seg summen og
   // nullstiller selv -- ingen sjanse for aa hente den samme summen to ganger.
+  // De ordene han fikk groenne her er ikke vanskelige for ham lenger, saa de
+  // fjernes samtidig fra selve boka (Lagring.fjernVanskeligeOrd) -- ikke bare
+  // fra denne oekta sitt sett. Snubler han i det samme ordet igjen i en tekst
+  // senere, havner det bare tilbake der av seg selv.
   function hentUtMynter() {
     var n = poengSamlet;
     poengSamlet = 0;
+
+    var ferdigeOrd = settOrd.filter(function (o) { return o.ferdig; }).map(function (o) { return o.ord; });
+    if (ferdigeOrd.length) {
+      Lagring.fjernVanskeligeOrd(ferdigeOrd);
+      settOrd = settOrd.filter(function (o) { return !o.ferdig; });
+    }
+
     return n;
   }
 
