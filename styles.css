@@ -230,6 +230,7 @@ button.liten { padding: 6px 12px }
 .huskort.samling .huskort-ikon { color: #6a4b9c }
 .huskort.robotvalg .huskort-ikon { color: var(--gul) }
 .huskort.vanskord .huskort-ikon { color: #3d6fb4 }
+.huskort.frilesing .huskort-ikon { color: #c2660e }
 
 /* "Gå ut og les" viser selve verdenskartet som bakgrunn -- uten prikkene,
    de kommer bare til syne naar han faktisk er inne paa kartet -- saa kortet
@@ -452,6 +453,19 @@ button.liten { padding: 6px 12px }
   background: var(--grønbakk); color: var(--grøn); border-color: var(--grøn);
 }
 #vanskord .rad { margin-top: 28px }
+
+/* ---------- Les fritt ---------- */
+
+#friLesing {
+  padding: 30px 20px 60px; max-width: 620px; margin: 0 auto; width: 100%;
+  text-align: center;
+}
+#friLesing h2 { font-size: 22px; margin: 0 0 8px; font-weight: 650 }
+#friLesing .rad { justify-content: center; margin-top: 24px }
+#friLesingBeskjed { color: var(--dus); font-size: 14.5px; min-height: 1.5em; margin: 14px 0 0 }
+#friLesingBeskjed.feil { color: #b3261e }
+#friLesingTall { font-size: 21px; font-weight: 650; color: var(--grøn); margin: 0 }
+#friLesingEkstra { margin: 6px 0 0 }
 
 /* ---------- Butikken ---------- */
 

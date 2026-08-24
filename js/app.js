@@ -42,6 +42,7 @@
     $("#hus").hidden = hvilken !== "hus";
     $("#verden").hidden = hvilken !== "verden";
     $("#vanskord").hidden = hvilken !== "vanskord";
+    $("#friLesing").hidden = hvilken !== "frilesing";
     $("#lesing").hidden = hvilken !== "lesing";
     $("#ferdig").hidden = hvilken !== "ferdig";
     $("#verktoy").hidden = hvilken !== "lesing";
@@ -111,6 +112,7 @@
 
   function tilVerden() {
     Lesing.stopp();
+    FriLesing.stopp();
     naa = null;
     Verden.tegn();
     vis("verden");
@@ -118,6 +120,7 @@
 
   function tilHus() {
     Lesing.stopp();
+    FriLesing.stopp();
     naa = null;
     sisteEmne = null;
     Hus.tegn();
@@ -126,9 +129,16 @@
 
   function tilVanskord() {
     Lesing.stopp();
+    FriLesing.stopp();
     naa = null;
     Vanskord.apne();
     vis("vanskord");
+  }
+
+  function tilFriLesing() {
+    Lesing.stopp();
+    vis("frilesing");
+    FriLesing.start();
   }
 
   /* ---------- Lesing ---------- */
@@ -261,6 +271,7 @@
 
   $("#byttSpiller").onclick = function () {
     Lesing.stopp();
+    FriLesing.stopp();
     Spillere.tegn();
     vis("spillere");
   };
@@ -284,6 +295,8 @@
   $("#apneSamling").onclick = Samling.apne;
   $("#apneRobotvalg").onclick = Hus.apneRobotvalg;
   $("#apneVanskord").onclick = tilVanskord;
+  $("#apneFriLesing").onclick = tilFriLesing;
+  $("#friLesingHjem").onclick = tilHus;
   $("#apneForeldre").onclick = Foreldre.apne;
 
   // Hvert godkjent vanskelig ord er verdt to mynter, samlet opp i vanskord.js

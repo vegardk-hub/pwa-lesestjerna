@@ -30,7 +30,13 @@
     vanskord: '<rect fill="currentColor" x="8" y="6" width="32" height="36" rx="4"/>' +
       '<path d="M14 15 Q19 11 24 15 T34 15" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/>' +
       '<path d="M14 23 Q19 19 24 23 T34 23" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/>' +
-      '<path d="M14 31 Q19 27 24 31 T34 31" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/>'
+      '<path d="M14 31 Q19 27 24 31 T34 31" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/>',
+    // En mikrofon -- til "Lese fritt", der det ikke er en bestemt tekst aa
+    // vise, bare oeret som lytter.
+    frilesing: '<rect fill="currentColor" x="18" y="6" width="12" height="23" rx="6"/>' +
+      '<path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" d="M12 22a12 12 0 0 0 24 0"/>' +
+      '<line x1="24" y1="34" x2="24" y2="42" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>' +
+      '<line x1="16" y1="42" x2="32" y2="42" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>'
   };
 
   function settIkon(kort, ikon) {
@@ -44,6 +50,7 @@
   settIkon("apneSamling", "samling");
   settIkon("apneRobotvalg", "robot");
   settIkon("apneVanskord", "vanskord");
+  settIkon("apneFriLesing", "frilesing");
 
   /* ---------- Huset ---------- */
 

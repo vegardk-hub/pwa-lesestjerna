@@ -581,6 +581,12 @@
   // "hopp over ordet" selv. Det skal aldri skje paa forste eller andre forsok
   // — bare naar det er tydelig at han faktisk proever, om og om igjen, uten aa
   // komme videre.
+  //
+  // Hookene settes her, i en egen funksjon, i stedet for bare en gang ved
+  // sideinnlasting: js/frilesing.js laaner det samme Stemme.lytter-
+  // grensesnittet naar han leser fritt, og trenger dermed aa kunne ta
+  // hookene tilbake naar en VANLIG leseokt starter igjen etterpaa.
+  function kobleTilStemme() {
   Stemme.lytter.paaResultat = function (kandidater, endelig) {
     if (!ord.length) return;
     if (!endelig) { match(kandidater[0], false); return; }
@@ -614,6 +620,7 @@
     k.textContent = paa ? "Jeg hører etter \u2026" : "Trykk her, så hører jeg etter";
     if (paa) beskjed("Les høyt, du.");
   };
+  }
 
   /* ---------- Utsida ---------- */
 
@@ -621,6 +628,7 @@
     /* oppgave: { tekst, vanskeligeOrd }   kroker: { ferdig(resultat) } */
     start: function (oppgave, k) {
       kroker = k || {};
+      kobleTilStemme();
       bygg(oppgave.tekst, oppgave.vanskeligeOrd);
       // Lytteren starter na med det samme -- han skal ikke maatte trykke en
       // egen knapp foerst for hver eneste tekst eller hvert eneste ord.

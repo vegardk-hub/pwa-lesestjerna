@@ -99,6 +99,41 @@
     Lagring.lagre();
   }
 
+  /* Betaler for "Lese fritt" (js/frilesing.js) -- han leser hoeyt fra hva
+   * han vil, ingen bestemt tekst aa matche mot, saa ingen setninger og
+   * ingen stjerner. Ordene teller likevel mot boeker og level, akkurat som
+   * vanlig lesing (samme MYNT_PER_ORD) -- det er nettopp poenget, en annen
+   * vei til de samme belønningene, ikke en snarvei utenom dem. */
+  function betalFriLesing(antallOrd) {
+    var s = meg();
+    if (!s || !antallOrd) return { mynter: 0, nyeBoker: 0, level: level(s) };
+
+    s.okter++;
+    var mynter = antallOrd * MYNT_PER_ORD;
+    var foerLevel = level(s);
+
+    s.mynter += mynter;
+    s.mynterTjent += mynter;
+    s.ord += antallOrd;
+
+    var dag = Lagring.idag();
+    s.dager[dag] = (s.dager[dag] || 0) + antallOrd;
+    s.sistBrukt = dag;
+
+    var nyeBoker = 0;
+    while (s.ord >= bokKrav(s.boker + 1)) { s.boker++; nyeBoker++; }
+
+    Lagring.lagre();
+
+    return {
+      mynter: mynter,
+      nyeBoker: nyeBoker,
+      level: level(s),
+      steg: level(s) - foerLevel,
+      tilNesteBok: tilNesteBok(s)
+    };
+  }
+
   /* ---------- Butikken ---------- */
 
   function kjop(ting, pris) {
@@ -139,6 +174,7 @@
     bokKrav: bokKrav,
     tilNesteBok: tilNesteBok,
     betal: betal,
+    betalFriLesing: betalFriLesing,
     kjop: kjop,
     tjenMynter: tjenMynter,
     statistikk: statistikk,
