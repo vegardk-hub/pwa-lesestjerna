@@ -39,6 +39,15 @@
   // lages det i stedet et HELT NYTT gjenkjenner-objekt hver gang, uavhengig
   // av om den gamle faktisk rekker aa avslutte seg selv foerst -- vi venter
   // ikke paa noe fra den gamle, bare bytter den ut.
+  //
+  // v53 hadde en alvorlig feil her: den proaktive friskningen (under) fornyet
+  // "sistHoert" hver gang den friska opp, saa er han stille lenge -- ser paa
+  // et bilde, tenker, har appen liggende aapen -- ble en HELT NY gjenkjenner
+  // laget hvert 2,5 sekund, i det uendelige, saa lenge stillheten varte. Over
+  // tid tapper det etter alt aa dømme en eller annen ressurs (lyd-oekten?)
+  // paa iOS, og gjenkjenningen sluttet aa virke helt. Na skjer den proaktive
+  // friskningen bare ÉN gang per stillhetsperiode -- se "frisknet" paa
+  // oekten under, som bare nullstilles naar han faktisk blir hoert igjen.
   var STILLE_GRENSE = 2500;
 
   var oekt = null;      // { g, sistHoert, puls } -- null naar vi ikke lytter
@@ -57,7 +66,12 @@
     g.maxAlternatives = 5;
 
     g.onresult = function (e) {
-      if (oekt && oekt.g === g) oekt.sistHoert = Date.now();
+      if (oekt && oekt.g === g) {
+        oekt.sistHoert = Date.now();
+        // Han er hoert igjen -- naeste gang det blir stille en stund
+        // fortjener en ny sjanse til én proaktiv friskning, se STILLE_GRENSE.
+        oekt.frisknet = false;
+      }
       for (var i = e.resultIndex; i < e.results.length; i++) {
         var r = e.results[i];
         var kandidater = [];
@@ -121,12 +135,19 @@
     stopp();
     aktivHooks = hooks;
     var g = lagGjenkjenner();
-    oekt = { g: g, sistHoert: Date.now(), puls: null };
+    // frisknet: har den proaktive friskningen alt brukt sjansen sin for
+    // DENNE stillhetsperioden? Uten denne ville en lang pause (han ser paa
+    // et bilde, tenker, har bare appen liggende aapen) faatt en helt ny
+    // gjenkjenner hvert 2,5 sekund i det uendelige -- se forklaringen over.
+    oekt = { g: g, sistHoert: Date.now(), puls: null, frisknet: false };
     try { g.start(); } catch (e) { /* alt i gang */ }
 
     oekt.puls = setInterval(function () {
-      if (!oekt) return;
-      if (!global.Stemme.snakker() && Date.now() - oekt.sistHoert > STILLE_GRENSE) friskn();
+      if (!oekt || oekt.frisknet || global.Stemme.snakker()) return;
+      if (Date.now() - oekt.sistHoert > STILLE_GRENSE) {
+        oekt.frisknet = true;
+        friskn();
+      }
     }, 400);
   }
 
