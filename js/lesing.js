@@ -499,6 +499,11 @@
 
   Stemme.lytter.paaFeil = function (kode, forklaring) { beskjed(forklaring, true); };
 
+  // Framdriftsmelding, ikke en feil -- t.d. "Laster ned lyttemotoren ..."
+  // fra js/lyttemotor-whisper.js foerste gang den brukes. Samme melding-
+  // linje som alt annet her, bare uten den roede feil-stilen.
+  Stemme.lytter.paaStatus = function (tekst) { beskjed(tekst, false); };
+
   Stemme.lytter.paaTilstand = function (paa) {
     var k = $("#mikrofon");
     k.classList.toggle("lytter", paa);

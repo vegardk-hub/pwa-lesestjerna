@@ -108,6 +108,11 @@
     paaResultat: null,   // (kandidater, endelig) -- kandidater er en liste med tolkninger
     paaFeil: null,       // (kode, forklaring)
     paaTilstand: null,   // (lytter?)
+    // Valgfri, korte framdriftsmeldinger som ikke er feil -- i dag bare
+    // brukt av motorer som maa laste ned noe foer de kan starte (t.d.
+    // js/lyttemotor-whisper.js sin "Laster ned lyttemotoren ..."). Motorer
+    // som ikke trenger det (som nettleseren) kaller den aldri.
+    paaStatus: null,     // (tekst)
 
     start: function () {
       if (!gjeldendeMotor().stoettes || this.vil || snakker) return;
@@ -116,6 +121,7 @@
       gjeldendeMotor().start({
         resultat: function (kandidater, endelig) { if (meg.paaResultat) meg.paaResultat(kandidater, endelig); },
         feil: function (kode, forklaring) { if (meg.paaFeil) meg.paaFeil(kode, forklaring); },
+        status: function (tekst) { if (meg.paaStatus) meg.paaStatus(tekst); },
         // Motoren sier ifra her naar den har gitt opp for godt paa egen
         // haand (t.d. mikrofonen ble sperret) -- da maa "vil" ned med den,
         // ellers ville knappen staatt fast paa "lytter" for alltid.
