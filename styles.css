@@ -843,6 +843,30 @@ button.liten { padding: 6px 12px }
   }
 }
 
+/* De to antennepiggene glir ned og smelter sammen til én sort eksospotte
+   bak paa bilen -- begge animerer til NOEYAKTIG samme x/y/width/height/rx,
+   saa de dekker hverandre helt og blir umulige aa skille fra ett og samme
+   objekt naar de moetes. */
+.morph-bil .morph-antenne-v {
+  x: 11px; y: 0.5px; width: 2.2px; height: 6px; rx: 1.1px;
+  animation: morphAntenneV 5s ease-in-out infinite;
+}
+@keyframes morphAntenneV {
+  0%, 20%   { x: 11px; y: 0.5px;  width: 2.2px; height: 6px; rx: 1.1px }
+  32%, 68%  { x: 35px; y: 31.5px; width: 5px;   height: 3px; rx: 1.5px }
+  80%, 100% { x: 11px; y: 0.5px;  width: 2.2px; height: 6px; rx: 1.1px }
+}
+
+.morph-bil .morph-antenne-h {
+  x: 26.8px; y: 0.5px; width: 2.2px; height: 6px; rx: 1.1px;
+  animation: morphAntenneH 5s ease-in-out infinite;
+}
+@keyframes morphAntenneH {
+  0%, 20%   { x: 26.8px; y: 0.5px;  width: 2.2px; height: 6px; rx: 1.1px }
+  32%, 68%  { x: 35px;   y: 31.5px; width: 5px;   height: 3px; rx: 1.5px }
+  80%, 100% { x: 26.8px; y: 0.5px;  width: 2.2px; height: 6px; rx: 1.1px }
+}
+
 /* ---------- Samlingen ---------- */
 
 #samling { padding: 30px 20px 60px; max-width: 780px; margin: 0 auto; width: 100% }

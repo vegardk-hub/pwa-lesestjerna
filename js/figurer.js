@@ -186,14 +186,22 @@
   // Bil-transformere (i dag bare Vroom) morfer i sanntid i stedet for aa
   // bytte mellom to skjulte kopier -- hver kroppsdel ER bildelen, rett foran
   // oeynene: armene glir ned og runder seg til dekk, beina blir navene inni
-  // dekkene, kroppen klemmes flatere til bilkroppen, og hodet flater ut til
-  // taket mens ansiktet vokser til vinduet inni det. Formen paa hver del
-  // (posisjon, storrelse, avrunding, og for hode/oeyne ogsaa en clip-path
-  // som skjaerer til trapesform) animeres direkte -- se @keyframes morph*
-  // i styles.css. Krever at nettleseren stoetter x/y/width/height/rx som
-  // CSS-animerbare egenskaper paa SVG-figurer (Chrome/Safari stoetter
-  // dette, men eldre nettlesere viser bare robotformen stille -- se
-  // grunnverdiene i .morph-bil sine CSS-regler).
+  // dekkene, kroppen klemmes flatere til bilkroppen, hodet flater ut til
+  // taket mens ansiktet vokser til vinduet inni det, og de to antenne-
+  // piggene paa hodet glir ned og smelter sammen til én sort eksospotte
+  // bak paa bilen -- de animerer begge til NOEYAKTIG samme posisjon og
+  // storrelse, saa de to blir ett og samme synlige objekt naar de moetes.
+  // Formen paa hver del (posisjon, storrelse, avrunding, og for hode/oeyne
+  // ogsaa en clip-path som skjaerer til trapesform) animeres direkte -- se
+  // @keyframes morph* i styles.css. Krever at nettleseren stoetter
+  // x/y/width/height/rx som CSS-animerbare egenskaper paa SVG-figurer
+  // (Chrome/Safari stoetter dette, men eldre nettlesere viser bare
+  // robotformen stille -- se grunnverdiene i .morph-bil sine CSS-regler).
+  //
+  // Antennen tegnes her som to tynne, rette pigger (ikke de vinklede
+  // linjene antenneSvg() lager for "pigger"-stilen andre steder) -- rette
+  // rektangler er det som faktisk kan CSS-animeres til en annen posisjon
+  // og storrelse, en vinklet linje kan ikke det paa samme vis.
   //
   // Bare "visir"-ansikt er stoettet her (Vroom sitt) -- et rundt eller
   // firkantet ansikt ville trengt sin egen vindu-morf. Andre bil-
@@ -207,15 +215,17 @@
       ? '<circle class="morph-fade blink-lys" cx="28" cy="11" r="2" fill="' + f.aksent + '"/>'
       : "";
     return '<svg viewBox="0 0 40 48" aria-hidden="true" class="morph-bil">' +
-      '<g class="morph-fade">' + antenneSvg(f) + hodelys + '</g>' +
-      '<rect class="morph-arm-v" fill="' + armFarge + '"/>' +
-      '<rect class="morph-arm-h" fill="' + armFarge + '"/>' +
-      '<rect class="morph-kropp" fill="' + f.kropp + '"/>' +
-      '<circle class="' + kroppslysKlasse + '" cx="20" cy="35" r="3.6" fill="' + f.aksent + '"/>' +
-      '<rect class="morph-bein-v" fill="' + beinFarge + '"/>' +
-      '<rect class="morph-bein-h" fill="' + beinFarge + '"/>' +
+      hodelys +
       '<rect class="morph-hode" fill="' + f.hode + '"/>' +
       '<rect class="morph-oyne" fill="' + f.oyne + '"/>' +
+      '<rect class="morph-kropp" fill="' + f.kropp + '"/>' +
+      '<circle class="' + kroppslysKlasse + '" cx="20" cy="35" r="3.6" fill="' + f.aksent + '"/>' +
+      '<rect class="morph-arm-v" fill="' + armFarge + '"/>' +
+      '<rect class="morph-arm-h" fill="' + armFarge + '"/>' +
+      '<rect class="morph-bein-v" fill="' + beinFarge + '"/>' +
+      '<rect class="morph-bein-h" fill="' + beinFarge + '"/>' +
+      '<rect class="morph-antenne-v" fill="' + f.hode + '"/>' +
+      '<rect class="morph-antenne-h" fill="' + f.hode + '"/>' +
       '</svg>';
   }
 
