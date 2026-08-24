@@ -795,6 +795,10 @@ main {
 .ord.truffet { background: var(--grønbakk); color: var(--grøn) }
 .ord.naa { box-shadow: 0 0 0 2.5px var(--gul); background: #fffaf0 }
 .ord.venter { animation: puls 1.4s ease-in-out infinite }
+/* I leseflyt er det ingen vits i aa vise hvilket ord han "staar paa" -- det
+   holder at ord lyser groent etter hvert som han leser, se js/lesing.js. */
+#tekst.leseflyt .ord.naa { box-shadow: none; background: none }
+#tekst.leseflyt .ord.venter { animation: none; box-shadow: none }
 @keyframes puls {
   0%, 100% { box-shadow: 0 0 0 2.5px var(--gul) }
   50% { box-shadow: 0 0 0 7px rgba(240, 162, 2, .3) }

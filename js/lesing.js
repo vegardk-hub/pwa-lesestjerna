@@ -106,6 +106,10 @@
     meldtFerdig = false; forsoktPeker = -1; forsokUtenFramgang = 0;
     lengstTruffet = -1; sistTreff = 0;
     erFlyt = !!(global.Lagring && Lagring.lesestil() === "leseflyt");
+    // I leseflyt er det ordet han staar paa ("naa") og pulsen naar han staar
+    // fast ("venter") ikke i bruk -- det holder at ord lyser groent etter
+    // hvert som han leser, se styles.css.
+    boks.classList.toggle("leseflyt", erFlyt);
     // Mikrofonen startes na med det samme (se start()), ikke ved et trykk
     // paa knappen -- den satte foer i gang klokka for "staar du fast?".
     // Uten denne linja ville den klokka fortsatt staa paa forrige oekt, og

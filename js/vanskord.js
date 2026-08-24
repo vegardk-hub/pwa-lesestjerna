@@ -9,8 +9,8 @@
  * lesingen lånes fra lesing.js (app.js kobler det sammen, se
  * naarOrdValgt/merkFerdig), akkurat som vanlig lesing, bare med teksten satt
  * til det ene ordet. Godkjent, og ordet får et hakk og du er tilbake her for
- * å velge et nytt. "Nye 20 ord" bytter ut hele settet, uten å røre det han
- * alt har samlet opp -- se poengSamlet under.
+ * å velge et nytt. Er hele settet øvd ferdig, hentes et nytt automatisk --
+ * se apne() under -- uten å røre det han alt har samlet opp i poengSamlet.
  *
  * Hvert godkjent ord er verdt to mynter, men betales ikke ut med en gang --
  * det bygger seg opp i poengSamlet til han trykker "Ferdig", som henter ut
@@ -93,14 +93,15 @@
     return n;
   }
 
-  // Foerste gang: lager et sett. Senere kall (tilbake fra et ord) tegner
-  // bare det som alt finnes, saa fremgangen ikke nullstilles ved et uhell.
+  // Foerste gang, eller naar alt i settet alt er oevd ferdig: lager et nytt.
+  // Ellers (tilbake fra et enkelt ord han fortsatt holder paa med) tegner
+  // den bare det som alt finnes, saa fremgangen ikke nullstilles ved et
+  // uhell.
   function apne() {
-    if (!settOrd.length) nyttSett();
+    var alleFerdig = settOrd.length && settOrd.every(function (o) { return o.ferdig; });
+    if (!settOrd.length || alleFerdig) nyttSett();
     else tegn();
   }
-
-  $("#nyttOrdsett").onclick = nyttSett;
 
   global.Vanskord = {
     apne: apne,
