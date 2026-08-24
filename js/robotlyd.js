@@ -235,12 +235,38 @@
       sveip(c, t, 260, 55, .5, "sawtooth", .25);
       stoy(c, t + .45, .15, 1200, .18);
       tone(c, t + .5, 45, .4, "square", .2);
-    }
+    },
 
     // Sekssju-robotene (doot, vippo, seksju) har med vilje ingen oppskrift
     // her. De skal bare si frasen sin ("Six seven!") med robotstemme, ikke
     // ogsaa en syntetisert lyd attpaa -- Robotlyd.spill() nedenfor gjoer da
     // ingenting for dem, helt stille, se reager() i samling.js.
+
+    /* ---------- Transformere ----------
+     * Motsatt av sekssju: disse har med vilje INGEN frase, bare lyden av
+     * det de forvandler seg til -- en robotstemme som sier "bil" ville bare
+     * forstyrre. */
+    vroom: function (c, t) {
+      // En bilmotor som gasses opp.
+      sveip(c, t, 90, 220, .35, "sawtooth", .26);
+      stoy(c, t, .12, 800, .12);
+    },
+    jetto: function (c, t) {
+      // Jetmotor: en lang, susende oppsveip med stoey under.
+      sveip(c, t, 300, 1500, .7, "sawtooth", .16);
+      stoy(c, t, .9, 3200, .16);
+    },
+    skvalp: function (c, t) {
+      // Baatmotor: en rytmisk, duttrende dieselputring.
+      for (var i = 0; i < 5; i++) tone(c, t + i * .11, 70, .08, "square", .24);
+    },
+    skinnar: function (c, t) {
+      // Togtut: to samklingende toner, som et ekte lokomotivfloeyte-signal.
+      tone(c, t, 440, .55, "sawtooth", .2);
+      tone(c, t, 554, .55, "sawtooth", .15);
+      tone(c, t + .6, 440, .35, "sawtooth", .18);
+      tone(c, t + .6, 554, .35, "sawtooth", .13);
+    }
   };
 
   global.Robotlyd = {

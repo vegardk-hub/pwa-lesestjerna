@@ -489,6 +489,19 @@ button.liten { padding: 6px 12px }
 .vare.uknuselig .navn, .figurkort.uknuselig .navn { color: #fff }
 .vare.uknuselig .merke-kategori, .figurkort.uknuselig .merke-kategori { color: rgba(255, 255, 255, .55) }
 
+/* Regnbuestriper -- eneste kategori med en flerfarget bakgrunn, saa teksten
+   faar en solid moerk skygge i stedet for en enkelt kontrastfarge, siden
+   den ellers ville landet paa alt fra lys gul til moerk indigo avhengig av
+   hvor paa kortet den star. */
+.vare.transformer, .figurkort.transformer {
+  background: linear-gradient(135deg,
+    #ff3b3b, #ff9a1f 20%, #ffe14d 38%, #3ecf5e 55%, #3d9bf0 72%, #6a5acd 88%, #b452d9);
+}
+.vare.transformer .navn, .figurkort.transformer .navn,
+.vare.transformer .merke-kategori, .figurkort.transformer .merke-kategori {
+  color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,.6);
+}
+
 /* Sekssju-robotene dytter armene sine opp og ned hele tiden -- css-klassen
    settes direkte i SVG-en fra js/figurer.js sin robotSvg(), ikke her, saa
    den virker uansett hvor roboten vises (butikk, samling, storvisning).
@@ -617,8 +630,35 @@ button.liten { padding: 6px 12px }
   98% { transform: translate(2px, 0); filter: none }
 }
 .vare.episk .figur-ikon, .figurkort.episk .figur-ikon,
+.vare.transformer .figur-ikon, .figurkort.transformer .figur-ikon,
 #samlingDetaljIkon.glitch, #robotvalgIkon.glitch {
   animation: glitch 2.4s infinite;
+}
+
+/* Transformerne krymper seg bort og vokser fram som kjoeretoeyet sitt, og
+   saa tilbake igjen -- de to gruppene (satt i figurer.js sin robotSvg())
+   ligger paa noeyaktig samme sted med motsatt fase, saa naar den ene
+   forsvinner (32-68%) dukker den andre opp der. */
+@keyframes transformRobot {
+  0%, 20% { opacity: 1; transform: scale(1) }
+  32% { opacity: 0; transform: scale(.1) }
+  68% { opacity: 0; transform: scale(.1) }
+  80%, 100% { opacity: 1; transform: scale(1) }
+}
+@keyframes transformKjoretoy {
+  0%, 20% { opacity: 0; transform: scale(.1) }
+  32% { opacity: 0; transform: scale(.1) }
+  50% { opacity: 1; transform: scale(1) }
+  68% { opacity: 1; transform: scale(1) }
+  80%, 100% { opacity: 0; transform: scale(.1) }
+}
+.transformer-robot {
+  transform-origin: 20px 24px;
+  animation: transformRobot 5s ease-in-out infinite;
+}
+.transformer-kjoretoy {
+  transform-origin: 20px 24px;
+  animation: transformKjoretoy 5s ease-in-out infinite;
 }
 
 /* ---------- Samlingen ---------- */

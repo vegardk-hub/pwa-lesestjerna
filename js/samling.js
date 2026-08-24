@@ -22,6 +22,10 @@
  *   uknuselig    -- en aura av ild/vann/lyn/vind rundt roboten, ut fra dens
  *                   "kraft"-felt (css/.kraft-ild/-vann/-lyn/-vind), blinkende
  *                   lys, og trykk gir en frase med robotstemme
+ *   transformer  -- glitcher som episk (css/.glitch), og forvandler seg om
+ *                   til kjoeretoeyet sitt og tilbake igjen (css/.transformer-
+ *                   robot/-kjoretoy, ut fra "kjoretoy"-feltet). Trykk gir
+ *                   lyden av kjoeretoeyet (Robotlyd.spill), ingen frase.
  *
  * Frasen (reager() under) knyttes til at figuren HAR en frase i
  * data/figurer.json, ikke til en bestemt kategori -- i dag er det
@@ -94,13 +98,14 @@
   }
 
   // Kobler en robot til et sett DOM-elementer: ikonet reagerer med lyd/frase
-  // ved trykk (og glitcher om den er episk), og mytiske roboter faar
-  // opptaksknappene sine i stedet. "els" er { ikon, hint, opptakBoks, opptak:
-  // { taOpp, spillAv, status } } -- se visDetalj under og tegnRobotvalg i
-  // hus.js, som begge bruker denne til å vise akkurat samme oppførsel.
+  // ved trykk (og glitcher om den er episk eller transformer), og mytiske
+  // roboter faar opptaksknappene sine i stedet. "els" er { ikon, hint,
+  // opptakBoks, opptak: { taOpp, spillAv, status } } -- se visDetalj under
+  // og tegnRobotvalg i hus.js, som begge bruker denne til å vise akkurat
+  // samme oppførsel.
   function visStor(v, els) {
     els.ikon.innerHTML = Figurer.svg(v.id);
-    els.ikon.classList.toggle("glitch", v.kategori === "episk");
+    els.ikon.classList.toggle("glitch", v.kategori === "episk" || v.kategori === "transformer");
     els.ikon.onclick = function () { reager(v); };
 
     if (v.kategori === "mytisk") {

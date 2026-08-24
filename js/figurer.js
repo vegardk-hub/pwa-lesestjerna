@@ -19,7 +19,7 @@
   // Teksten paa kortet i butikken og samlingen -- se BAKGRUNNSFARGE i
   // styles.css (.vare/.figurkort + kategorinavnet som klasse) for selve
   // fargen. Ukjent/manglende kategori telles som vanlig.
-  var KATEGORINAVN = { vanlig: "Vanlig", sjelden: "Sjelden", legendarisk: "Legendarisk", mytisk: "Mytisk", episk: "Episk", sekssju: "67", utenomjordisk: "Utenomjordisk", utrolig: "Utrolig", uknuselig: "Uknuselig" };
+  var KATEGORINAVN = { vanlig: "Vanlig", sjelden: "Sjelden", legendarisk: "Legendarisk", mytisk: "Mytisk", episk: "Episk", sekssju: "67", utenomjordisk: "Utenomjordisk", utrolig: "Utrolig", uknuselig: "Uknuselig", transformer: "Transformer" };
 
   function antenneSvg(f) {
     if (f.antenne === "kule") {
@@ -115,6 +115,49 @@
       "</g>";
   }
 
+  // De fire kjoeretoeyene transformerne blir til. Samme 40x48-flate som
+  // roboten selv, saa de to formene kan ligge oppaa hverandre og bytteplass
+  // uten aa hoppe i storrelse. Farget etter roboten sin: karosseriet er
+  // kroppsfargen, vinduene er oeyefargen -- samme figur, to skikkelser.
+  var KJORETOY = {
+    bil: function (f) {
+      return '<rect x="4" y="26" width="32" height="10" rx="3" fill="' + f.kropp + '"/>' +
+        '<path d="M10 26 L14 18 L26 18 L30 26 Z" fill="' + f.kropp + '"/>' +
+        '<path d="M15.5 19.5 L24.5 19.5 L27 26 L13 26 Z" fill="' + f.oyne + '"/>' +
+        '<circle cx="12" cy="37" r="4.2" fill="#20242a"/>' +
+        '<circle cx="28" cy="37" r="4.2" fill="#20242a"/>' +
+        '<circle cx="12" cy="37" r="1.6" fill="#8a919c"/>' +
+        '<circle cx="28" cy="37" r="1.6" fill="#8a919c"/>';
+    },
+    fly: function (f) {
+      return '<ellipse cx="19" cy="26" rx="18" ry="4.2" fill="' + f.kropp + '"/>' +
+        '<path d="M17 22.5 L8 10 L19 21.5 Z" fill="' + f.kropp + '"/>' +
+        '<path d="M12 28 L2 34 L13 29.5 Z" fill="' + f.kropp + '"/>' +
+        '<path d="M33 22.5 L40 15 L35.5 25.5 Z" fill="' + f.kropp + '"/>' +
+        '<circle cx="9" cy="26" r="2.3" fill="' + f.oyne + '"/>';
+    },
+    baat: function (f) {
+      return '<path d="M3 33 Q19.5 43 36 33 L31 26 L8 26 Z" fill="' + f.kropp + '"/>' +
+        '<rect x="14" y="16" width="13" height="10" rx="2.5" fill="' + f.kropp + '"/>' +
+        '<rect x="17" y="19" width="7" height="4.5" rx="1" fill="' + f.oyne + '"/>' +
+        '<line x1="20" y1="16" x2="20" y2="7" stroke="' + f.kropp + '" stroke-width="2.2" stroke-linecap="round"/>';
+    },
+    tog: function (f) {
+      return '<rect x="4" y="19" width="30" height="18" rx="4" fill="' + f.kropp + '"/>' +
+        '<rect x="6" y="10" width="11" height="10" rx="2.5" fill="' + f.kropp + '"/>' +
+        '<rect x="8.3" y="12.6" width="6.4" height="5" rx=".8" fill="' + f.oyne + '"/>' +
+        '<rect x="25" y="6" width="4.4" height="9" rx="1.2" fill="' + f.kropp + '"/>' +
+        '<circle cx="11" cy="39" r="3.6" fill="#20242a"/>' +
+        '<circle cx="20" cy="39" r="3.6" fill="#20242a"/>' +
+        '<circle cx="29" cy="39" r="3.6" fill="#20242a"/>';
+    }
+  };
+
+  function kjoretoySvg(f) {
+    var bygg = KJORETOY[f.kjoretoy];
+    return bygg ? bygg(f) : "";
+  }
+
   // Sjeldne, legendariske og sekssju-roboter har et blinkende lys paa hodet
   // eller kroppen -- css/.blink-lys gjoer selve blinkingen (en enkel opacity-
   // animasjon), her legges bare klassen paa riktig sted. Kroppslyset er det
@@ -139,6 +182,13 @@
   // -- to separate grupper som beveger seg motsatt vei av hverandre). De to
   // triksene overlapper med vilje ikke i tid: aa bytte plass midt i en
   // snurr ville bare sett ut som rot, ikke et triks.
+  //
+  // Transformere krymper seg bort og vokser fram som kjoeretoeyet sitt, og
+  // saa tilbake igjen -- css/.transformer-robot og .transformer-kjoretoy
+  // ligger paa noeyaktig samme sted, med motsatt fase, saa naar den ene
+  // forsvinner dukker den andre opp. Selve flikkingen (css/.glitch) er den
+  // samme som de episke robotene bruker, satt paa fra samling.js siden den
+  // ligger paa selve ikon-elementet, ikke inni SVG-en -- se der.
   function robotSvg(f) {
     var hodelys = f.blink === "hode"
       ? '<circle cx="28" cy="11" r="2" class="blink-lys" fill="' + f.aksent + '"/>'
@@ -166,6 +216,13 @@
         '<g class="utrolig-hode">' + hodeInnhold + '</g>' +
         '<g class="utrolig-kropp">' + kroppInnhold + '</g>' +
         '</g></svg>';
+    }
+
+    if (f.kategori === "transformer") {
+      return '<svg viewBox="0 0 40 48" aria-hidden="true">' +
+        '<g class="transformer-robot">' + hodeInnhold + kroppInnhold + '</g>' +
+        '<g class="transformer-kjoretoy">' + kjoretoySvg(f) + '</g>' +
+        '</svg>';
     }
 
     var hode = f.kategori === "utenomjordisk"
