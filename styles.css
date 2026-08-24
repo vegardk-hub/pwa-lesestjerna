@@ -206,12 +206,24 @@ button.liten { padding: 6px 12px }
 .huskort.robotvalg .huskort-ikon { color: var(--gul) }
 .huskort.vanskord .huskort-ikon { color: #3d6fb4 }
 
+/* "Gå ut og les" viser selve verdenskartet som bakgrunn -- uten prikkene,
+   de kommer bare til syne naar han faktisk er inne paa kartet -- saa kortet
+   selv frister med stedet han skal til. Et moerkt lag oppaa bildet holder
+   den hvite/gule teksten lesbar uansett hvor lyst kartet er der teksten
+   havner. */
 .huskort.hoved {
-  background: var(--blekk); border-color: var(--blekk);
+  background:
+    linear-gradient(rgba(15, 17, 20, .55), rgba(15, 17, 20, .55)),
+    url("img/verden-kart.jpg") center / cover no-repeat;
+  border-color: var(--blekk);
 }
-.huskort.hoved:hover:not(:disabled) { background: #333b44 }
-.huskort.hoved .huskort-ikon { color: var(--gul) }
-.huskort.hoved .huskort-navn { color: #fff; font-size: 17px }
+.huskort.hoved:hover:not(:disabled) {
+  background:
+    linear-gradient(rgba(15, 17, 20, .4), rgba(15, 17, 20, .4)),
+    url("img/verden-kart.jpg") center / cover no-repeat;
+}
+.huskort.hoved .huskort-ikon { color: var(--gul); filter: drop-shadow(0 1px 3px rgba(0,0,0,.5)) }
+.huskort.hoved .huskort-navn { color: #fff; font-size: 17px; text-shadow: 0 1px 3px rgba(0,0,0,.5) }
 
 /* ---------- Boka paa bordet ---------- */
 
