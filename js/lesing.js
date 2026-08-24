@@ -365,17 +365,10 @@
   /* ---------- Tegne ---------- */
 
   function tegn() {
-    var naaSetning = peker < ord.length ? ord[peker].s : setninger.length - 1;
-
     ord.forEach(function (o, i) {
       o.el.classList.toggle("truffet", o.truffet);
       o.el.classList.toggle("naa", i === peker);
       if (i !== peker) o.el.classList.remove("venter");
-    });
-
-    setninger.forEach(function (s, i) {
-      s.el.classList.toggle("gjort", s.ferdig && i !== naaSetning);
-      s.el.classList.toggle("senere", !s.ferdig && i > naaSetning);
     });
 
     // Bare rull naar han faktisk har flyttet seg. Gjenkjenneren sender to

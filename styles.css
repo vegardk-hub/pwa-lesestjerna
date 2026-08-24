@@ -776,9 +776,7 @@ main {
 }
 .avsnitt { margin: 0 0 1.5em; font-size: 30px; line-height: 1.85 }
 
-.setning { border-radius: 8px; transition: opacity .25s }
-.setning.gjort { opacity: .38 }
-.setning.senere { opacity: .38 }
+.setning { border-radius: 8px }
 
 .ord {
   padding: 2px 4px;
