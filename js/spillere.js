@@ -30,6 +30,29 @@
       ? "Alle tre plassene er i bruk."
       : (Lagring.MAKS - alle.length) + " plass" +
         (Lagring.MAKS - alle.length > 1 ? "er" : "") + " ledig.";
+
+    tegnSistKopi();
+  }
+
+  // Stille paaminnelse, ikke et varsel -- localStorage er skjoert (tommer
+  // nettleseren seg, er maaneder med lesing borte), men appen skal ikke
+  // mase. Bare en dato ved siden av knappen, oppdatert hver gang skjermen
+  // tegnes og med det samme han faktisk tar en kopi.
+  function tegnSistKopi() {
+    var iso = Lagring.sistSikkerhetskopi();
+    $("#sistKopi").textContent = iso ? "Sist sikkerhetskopiert " + sidenTekst(iso) + "."
+                                      : "Ingen sikkerhetskopi lagd ennå.";
+  }
+
+  function sidenTekst(iso) {
+    var dager = Math.floor((Date.now() - new Date(iso).getTime()) / 86400000);
+    if (dager <= 0) return "i dag";
+    if (dager === 1) return "i går";
+    if (dager < 14) return "for " + dager + " dager siden";
+    var uker = Math.floor(dager / 7);
+    if (uker < 8) return "for " + uker + " uker siden";
+    var maaneder = Math.floor(dager / 30);
+    return "for " + maaneder + (maaneder === 1 ? " måned siden" : " måneder siden");
   }
 
   function kort(s, erAktiv) {
@@ -125,6 +148,7 @@
     if (!Lagring.spillere().length) { kopibeskjed("Det er ingenting å kopiere ennå."); return; }
     Lagring.eksport();
     kopibeskjed("Kopien er lastet ned. Legg den et sted den ikke forsvinner.");
+    tegnSistKopi();
   };
 
   $("#hentInn").onclick = function () { $("#filvelger").click(); };

@@ -56,6 +56,7 @@
     // hengende igjen synlig oeverst paa en helt annen skjerm etterpaa.
     $("#lukkBoka").hidden = true;
     $("#lukkLestBok").hidden = true;
+    $("#lukkSamling").hidden = true;
 
     // Begge disse er avslaatt som standard -- se foreldre.js. Satt hver
     // gang, ikke bare ved oppstart, i tilfelle en forelder endrer dem mens

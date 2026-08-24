@@ -469,6 +469,7 @@ button.liten { padding: 6px 12px }
    forbi tallene for aa finne veien ut igjen. */
 #lukkBoka { font-size: 14.5px; padding: 6px 12px; margin-left: auto }
 #lukkLestBok { font-size: 14.5px; padding: 6px 12px; margin-left: auto }
+#lukkSamling { font-size: 14.5px; padding: 6px 12px; margin-left: auto }
 
 #butikkListe {
   display: grid;

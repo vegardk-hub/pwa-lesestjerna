@@ -41,7 +41,12 @@
   var data = null;
 
   function ferskt() {
-    return { versjon: 1, aktiv: null, spillere: [], papirkurv: [], foreldre: TOM_FORELDRE() };
+    return {
+      versjon: 1, aktiv: null, spillere: [], papirkurv: [], foreldre: TOM_FORELDRE(),
+      // Naar en sikkerhetskopi sist ble lastet ned (se eksport() under) --
+      // ikke knyttet til noen bestemt spiller, det gjelder hele fila.
+      sistSikkerhetskopi: null
+    };
   }
 
   function TOM_FORELDRE() {
@@ -73,6 +78,8 @@
     if (data.foreldre.lyttemotor === undefined) data.foreldre.lyttemotor = null;
     // Lagring fra foer lesestil-valget fantes mangler dette feltet.
     if (data.foreldre.lesestil === undefined) data.foreldre.lesestil = null;
+    // Lagring fra foer sikkerhetskopi-datoen ble husket mangler dette feltet.
+    if (data.sistSikkerhetskopi === undefined) data.sistSikkerhetskopi = null;
     // Azure-motoren (og noekkelen/regionen den trengte) er fjernet igjen --
     // kostet penger aa bruke. Rydder bort eventuelle rester av den fra
     // lagringen, saa ingen noekkel blir liggende uten grunn.
@@ -271,6 +278,11 @@
     /* ---------- Sikkerhetskopi ---------- */
 
     eksport: function () {
+      // Datoen skrives foer selve kopien lages, saa den ogsaa staar riktig
+      // i akkurat den fila som lastes ned -- ikke bare i det som blir
+      // liggende igjen i nettleseren.
+      les().sistSikkerhetskopi = new Date().toISOString();
+      lagre();
       var blob = new Blob([JSON.stringify(les(), null, 2)],
                           { type: "application/json" });
       var a = document.createElement("a");
@@ -279,6 +291,8 @@
       a.click();
       setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
     },
+
+    sistSikkerhetskopi: function () { return les().sistSikkerhetskopi; },
 
     /* Legger spillerne fra fila til dem som alt finnes. Samme id blir
      * overskrevet, saa den samme kopien kan hentes inn to ganger uten aa lage

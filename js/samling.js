@@ -197,6 +197,13 @@
     $("#samlingDetalj").hidden = true;
     $("#hus").hidden = true;
     $("#samling").hidden = false;
+    // "Lukk" ligger fast i topplinja (se index.html/styles.css), samme knep
+    // som #lukkButikk/#lukkBoka/#lukkLestBok -- saa han slipper aa rulle
+    // forbi en lang samling for aa finne veien ut igjen. "Bytt spiller"
+    // skjules imens -- ellers kunne han trykket den i stedet og latt
+    // "Lukk" bli hengende igjen synlig paa en annen skjerm etterpaa.
+    $("#lukkSamling").hidden = false;
+    $("#byttSpiller").hidden = true;
   }
 
   $("#lukkSamlingDetalj").onclick = lukkDetalj;
@@ -204,7 +211,9 @@
   $("#lukkSamling").onclick = function () {
     Opptak.stopp();
     $("#samling").hidden = true;
+    $("#lukkSamling").hidden = true;
     $("#hus").hidden = false;
+    if (Lagring.aktiv()) $("#byttSpiller").hidden = false;
   };
 
   global.Samling = {

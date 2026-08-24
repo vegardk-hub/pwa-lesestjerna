@@ -11,7 +11,7 @@
 
 <header>
   <h1>Lesestjerna</h1>
-  <span id="versjon">v65</span>
+  <span id="versjon">v66</span>
   <button id="tilbake" hidden>Tilbake</button>
   <button id="byttSpiller" hidden></button>
   <div id="stjerner" hidden></div>
@@ -20,6 +20,7 @@
   <button id="lukkButikk" hidden>Lukk butikken</button>
   <button id="lukkBoka" hidden>Lukk</button>
   <button id="lukkLestBok" hidden>Lukk</button>
+  <button id="lukkSamling" hidden>Lukk</button>
 </header>
 
 <section id="velgSpiller">
@@ -31,6 +32,7 @@
     <button id="hentInn">Hent inn sikkerhetskopi</button>
     <input type="file" id="filvelger" accept="application/json,.json" hidden>
   </div>
+  <p class="und liten" id="sistKopi"></p>
   <p class="und liten" id="kopibeskjed"></p>
   <div class="rad">
     <button id="apneForeldre" class="liten">Foreldrekontroll</button>
@@ -180,9 +182,6 @@
     <div class="rad">
       <button id="lukkSamlingDetalj">Tilbake til samlingen</button>
     </div>
-  </div>
-  <div class="rad">
-    <button id="lukkSamling" class="stor hoved">Lukk samlingen</button>
   </div>
 </section>
 
