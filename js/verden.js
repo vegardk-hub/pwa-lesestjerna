@@ -151,10 +151,10 @@
 
   /* Roboten glir fra hjemmepunktet og bort til prikken han valgte, hopper
    * inn i den, og sier ifra med en pling -- foerst da byttes bildet til
-   * selve teksten. Hele reisen er lagt opp til aa vare rundt tre sekunder:
-   * 2,2 sekund glidning (css/#reiseRobot sin transition) + et halvt
-   * sekunds hopp (css/.hopper) + en liten pause saa han faktisk faar sett
-   * at den landet.
+   * selve teksten. Hele reisen er lagt opp til aa vare rundt halvannet
+   * sekund: 1,1 sekund glidning (css/#reiseRobot sin transition) + et
+   * kvart sekunds hopp (css/.hopper) + en liten pause saa han faktisk faar
+   * sett at den landet.
    *
    * Elementet er ett og samme, gjenbrukt hver gang -- ikke en ny kopi per
    * reise -- og ligger fast i markeringen (index.html), ikke bygget her i
@@ -193,7 +193,7 @@
     setTimeout(function () {
       robot.classList.add("hopper");
       Robotlyd.pling();
-    }, 2200);
+    }, 1100);
 
     setTimeout(function () {
       robot.hidden = true;
@@ -201,7 +201,7 @@
       alleSoner.forEach(function (s, i) { s.disabled = varDisabled[i]; });
       if (badge) badge.style.visibility = "";
       if (paaValgt) paaValgt(emneId);
-    }, 3000);
+    }, 1500);
   }
 
   /* Hjemme er ikke et emne fra tekstbanken -- det er huset spilleren eier, og
