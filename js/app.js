@@ -57,6 +57,15 @@
       $("#lesForMeg").hidden = !Lagring.lesForMegPaa();
       $("#godkjennHele").hidden = !Lagring.godkjennVoksenPaa();
 
+      // I leseflyt gir det ikke mening aa hoppe over ETT ord -- se
+      // styles.css/js/lesing.js, det er ikke lenger noe "dette ordet naa" aa
+      // hoppe forbi. I stedet faar han en tydelig, groenn knapp for aa si
+      // fra selv at HELE teksten er ferdig, i tillegg til at appen ogsaa
+      // gjoer det av seg selv etter en stund med stillhet (uendret).
+      var flyt = Lagring.lesestil() === "leseflyt";
+      $("#hoppOver").hidden = flyt;
+      $("#ferdigLest").hidden = !flyt;
+
       // Roboten han har valgt (se hus.js) blir med som en liten foelgesvenn
       // ved siden av stjernene, og blunker naar han faar en ny -- se
       // reagerLesRobot(), kalt av lesing.js sitt "stjerne"-hook i les().

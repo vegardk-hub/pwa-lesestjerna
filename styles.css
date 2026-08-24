@@ -93,6 +93,11 @@ button.hoved { background: var(--blekk); color: #fff; border-color: var(--blekk)
 button.hoved:hover:not(:disabled) { background: #333b44 }
 button.lytter { background: #b3261e; border-color: #b3261e; color: #fff }
 button.lytter:hover { background: #c8332a }
+/* I leseflyt: tydelig, groenn -- like stor som mikrofonknappen ved siden av
+   (som lyser roed mens den lytter), saa den er lett aa finne naar han selv
+   mener teksten er ferdiglest. Se js/app.js og #hoppOver/#ferdigLest der. */
+button.ferdiglest { background: var(--grøn); border-color: var(--grøn); color: #fff }
+button.ferdiglest:hover:not(:disabled) { background: #256640 }
 
 /* ---------- Hvem leser ---------- */
 

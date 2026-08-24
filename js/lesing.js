@@ -522,6 +522,13 @@
 
   $("#godkjennHele").onclick = godkjennHele;
 
+  // I leseflyt: han bestemmer selv naar teksten er ferdig, i stedet for aa
+  // maatte vente paa stillhet-sjekken i passPaa(). Samme avrunding som den
+  // gjoer av seg selv -- bare kalt med det samme i stedet for etter en pause.
+  $("#ferdigLest").onclick = function () {
+    if (ord.length) fullforFlyt();
+  };
+
   $("#lesForMeg").onclick = function () {
     if (!ord.length) return;
     var s = naaSetning();
@@ -625,6 +632,10 @@
     beskjed: beskjed,
     resultat: resultat,
     godkjennHele: godkjennHele,
+
+    // Til proeving i konsollen, akkurat som match() under -- selve knappen
+    // ("Ferdig lest", bare synlig i leseflyt) er koblet direkte nedenfor.
+    fullforFlyt: fullforFlyt,
 
     // Slipper matchingen til i konsollen, saa den kan proeves uten mikrofon.
     match: match,
