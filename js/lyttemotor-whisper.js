@@ -32,7 +32,8 @@
   // faktisk fortsatt fungerer foerst.
   var CDN = "https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.7.6";
 
-  var TERSKEL = 0.02;          // lydstyrke over dette regnes som "han snakker"
+  var MIN_TERSKEL = 0.008;     // aldri mer folsom enn dette, selv i et helt stille rom
+  var KALIBRERING_MS = 600;    // saa lenge lyttes det paa bakgrunnsstoyen foer vi starter
   var PAUSE_MS = 700;          // saa lenge stillhet foer en frase regnes ferdig
   var MAKS_OPPTAK_MS = 12000;  // sikkerhetsnett -- ingen frase tas opp evig
 
@@ -113,16 +114,13 @@
     var analyser = ctx.createAnalyser();
     analyser.fftSize = 512;
     kilde.connect(analyser);
-    var buffer = new Uint8Array(analyser.frequencyBinCount);
+    var buffer = new Uint8Array(analyser.fftSize);
 
     var mimeType = ["audio/webm", "audio/ogg", "audio/mp4"].find(function (t) {
       return global.MediaRecorder.isTypeSupported && global.MediaRecorder.isTypeSupported(t);
     });
     var recorder = new global.MediaRecorder(stream, mimeType ? { mimeType: mimeType } : undefined);
     var biter = [];
-    var tilstand = "stille";
-    var sisteLyd = 0;
-    var startTid = 0;
     var koe = Promise.resolve(); // transkriberer én frase av gangen, i rekkefoelge
 
     recorder.ondataavailable = function (e) { if (e.data.size > 0) biter.push(e.data); };
@@ -134,31 +132,69 @@
       koe = koe.then(function () { return transkriberBit(blob, transkriber, hooks); });
     };
 
-    var puls = setInterval(function () {
+    // Mange nettlesere (spesielt Safari/iPad) starter en ny AudioContext i
+    // "suspendert" tilstand -- uten aa vekke den her ville analyser-noden
+    // aldri faatt levende lyddata, og lydstyrke() ville alltid gitt null
+    // uansett hvor hoeyt han snakket. Dette var aarsaken til at INGENTING
+    // ble oppfattet foerste gang denne motoren ble proevd.
+    ctx.resume().then(function () {
       if (oekt.avbrutt) return;
-      var v = lydstyrke(analyser, buffer);
-      var naa = Date.now();
-      if (v > TERSKEL) {
-        sisteLyd = naa;
-        if (tilstand === "stille") {
-          tilstand = "snakker";
-          startTid = naa;
-          try { recorder.start(); } catch (e) { /* alt i gang */ }
-        } else if (naa - startTid > MAKS_OPPTAK_MS) {
-          recorder.stop();
-          startTid = naa;
-          try { recorder.start(); } catch (e) { /* alt i gang */ }
-        }
-      } else if (tilstand === "snakker" && naa - sisteLyd > PAUSE_MS) {
-        tilstand = "stille";
-        recorder.stop();
-      }
-    }, 150);
+      startVadLoop(oekt, analyser, buffer, recorder, hooks);
+    });
 
     oekt.stream = stream;
     oekt.ctx = ctx;
     oekt.recorder = recorder;
-    oekt.puls = puls;
+  }
+
+  // Lytter paa bakgrunnsstoeyen et lite oeyeblikk foerst, og setter terskelen
+  // for "han snakker" godt over den -- se MIN_TERSKEL. En fast, gjettet
+  // terskel ville enten vaert altfor doev (stille rom) eller altfor
+  // folsom (stoeyende rom), og det er ingen maate aa vite hvilket paa
+  // forhaand.
+  function startVadLoop(oekt, analyser, buffer, recorder, hooks) {
+    hooks.status("Lytter etter stemmen din …");
+    var maalinger = [];
+    var kalStart = Date.now();
+    var kalPuls = setInterval(function () {
+      if (oekt.avbrutt) { clearInterval(kalPuls); return; }
+      maalinger.push(lydstyrke(analyser, buffer));
+      if (Date.now() - kalStart < KALIBRERING_MS) return;
+      clearInterval(kalPuls);
+
+      var snitt = maalinger.reduce(function (a, b) { return a + b; }, 0) / maalinger.length;
+      var terskel = Math.max(MIN_TERSKEL, snitt * 2.5 + 0.004);
+      hooks.status("");
+
+      var tilstand = "stille";
+      var sisteLyd = 0;
+      var startTid = 0;
+
+      var puls = setInterval(function () {
+        if (oekt.avbrutt) return;
+        var v = lydstyrke(analyser, buffer);
+        var naa = Date.now();
+        if (v > terskel) {
+          sisteLyd = naa;
+          if (tilstand === "stille") {
+            tilstand = "snakker";
+            startTid = naa;
+            try { recorder.start(); } catch (e) { /* alt i gang */ }
+          } else if (naa - startTid > MAKS_OPPTAK_MS) {
+            recorder.stop();
+            startTid = naa;
+            try { recorder.start(); } catch (e) { /* alt i gang */ }
+          }
+        } else if (tilstand === "snakker" && naa - sisteLyd > PAUSE_MS) {
+          tilstand = "stille";
+          recorder.stop();
+        }
+      }, 150);
+
+      oekt.puls = puls;
+    }, 50);
+
+    oekt.kalPuls = kalPuls;
   }
 
   function transkriberBit(blob, transkriber, hooks) {
@@ -180,6 +216,7 @@
     var oekt = aktivOekt;
     aktivOekt = null;
     oekt.avbrutt = true;
+    if (oekt.kalPuls) clearInterval(oekt.kalPuls);
     if (oekt.puls) clearInterval(oekt.puls);
     if (oekt.recorder) {
       oekt.recorder.ondataavailable = null;
