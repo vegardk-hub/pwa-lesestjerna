@@ -1,7 +1,9 @@
-/* Vanskelige ord: et sted å øve seg på enkeltord gjenkjenneren ofte sliter
- * med -- de samme ordene som står merket "vanskeligeOrd" på tekstene i
- * data/tekster.json, plukket ut av Bank.vanskeligeOrd() (tallord er filtrert
- * bort der, se den fila -- de er bare vanskelige i en lang rekke, ikke alene).
+/* Vanskelige ord: et sted å øve seg på enkeltord han selv har hengt seg opp
+ * i mens han leser -- ikke en ferdig, felles liste lenger, men hans egen,
+ * personlige bok (Lagring.vanskeligeOrd()), bygd opp av js/lesing.js sin
+ * fangVanskeligeOrd() hver gang et ord på fem bokstaver eller mer ikke ble
+ * hørt riktig i en tekst. Boka starter blank for en ny spiller og fylles på
+ * etter hvert som han leser.
  *
  * Tjue ord om gangen, valgt tilfeldig. Trykk på et for å øve på det -- selve
  * lesingen lånes fra lesing.js (app.js kobler det sammen, se
@@ -37,7 +39,7 @@
   }
 
   function nyttSett() {
-    var alle = Bank.vanskeligeOrd();
+    var alle = Lagring.vanskeligeOrd();
     settOrd = stokk(alle).slice(0, Math.min(MAKS, alle.length))
       .map(function (o) { return { ord: o, ferdig: false }; });
     tegn();

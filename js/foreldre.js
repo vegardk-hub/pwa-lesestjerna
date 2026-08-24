@@ -1,6 +1,7 @@
 /* Foreldrekontroll: en firesifret kode som styrer et par innstillinger i
- * lesevisningen -- i dag om knappen "Les den for meg" skal vises, og om
- * knappen "Godkjenn hele teksten" (for en voksen som lytter selv) skal vises.
+ * lesevisningen -- i dag om knappen "Les den for meg" skal vises, om
+ * knappen "Godkjenn hele teksten" (for en voksen som lytter selv) skal
+ * vises, og hvilken lesestil som brukes (se Lagring.lesestil, js/lesing.js).
  *
  * Koden er ikke ekte sikkerhet -- den ligger i klartekst i localStorage som
  * alt annet i appen. Poenget er bare at et barn ikke skal kunne skru på
@@ -39,6 +40,7 @@
     $("#lesForMegVeksle").checked = Lagring.lesForMegPaa();
     $("#godkjennVoksenVeksle").checked = Lagring.godkjennVoksenPaa();
     tegnLyttemotorValg();
+    $("#lesestilVelger").value = Lagring.lesestil() || "presis";
   }
 
   // Bare noe aa velge mellom naar det faktisk finnes mer enn standard-
@@ -64,6 +66,10 @@
 
   $("#lyttemotorVelger").onchange = function () {
     Stemme.lyttemotorer.velg(this.value);
+  };
+
+  $("#lesestilVelger").onchange = function () {
+    Lagring.settLesestil(this.value);
   };
 
   $("#foreldreLaasOpp").onclick = function () {

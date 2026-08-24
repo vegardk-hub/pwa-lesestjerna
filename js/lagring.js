@@ -30,7 +30,12 @@
     eide: [],           // { ting, pris } -- roboter kjøpt fra butikken
     dager: {},          // "2026-08-21": 34 — ord per dag, til boka paa bordet
     opptak: {},         // { robotId: dataURL } -- egne opptak til mytiske roboter
-    valgtRobot: null    // figur-id -- roboten han har valgt som sitt eget ikon
+    valgtRobot: null,   // figur-id -- roboten han har valgt som sitt eget ikon
+    // Ord HAN personlig har hengt seg opp i mens han leser -- ikke en
+    // ferdig, felles liste (den fantes foer, se js/bank.js), men bygd opp
+    // fra bunnen av egen lesing. Se leggTilVanskeligeOrd() under og
+    // js/lesing.js sin fangVanskeligeOrd().
+    vanskeligeOrd: []
   };
 
   var data = null;
@@ -44,7 +49,11 @@
     // bare nok til at et barn ikke skrur paa hjelpeknappen ved et uhell.
     // lyttemotor: id-en til motoren som skal hoere paa lesingen (se
     // Stemme.lyttemotorer i stemme.js) -- null betyr "standardmotoren".
-    return { pin: null, lesForMeg: false, godkjennVoksen: false, lyttemotor: null };
+    // lesestil: "presis" (hvert ord maa gjenkjennes) eller "leseflyt" (hele
+    // teksten telles ferdig og betales naar han har lest seg gjennom den,
+    // uansett hvor mange ord som ikke ble fanget opp) -- null betyr
+    // "presis", se js/lesing.js.
+    return { pin: null, lesForMeg: false, godkjennVoksen: false, lyttemotor: null, lesestil: null };
   }
 
   function les() {
@@ -62,6 +71,8 @@
     if (!data.foreldre) data.foreldre = TOM_FORELDRE();
     // Lagring fra foer lyttemotor-valget fantes mangler dette feltet.
     if (data.foreldre.lyttemotor === undefined) data.foreldre.lyttemotor = null;
+    // Lagring fra foer lesestil-valget fantes mangler dette feltet.
+    if (data.foreldre.lesestil === undefined) data.foreldre.lesestil = null;
     // Azure-motoren (og noekkelen/regionen den trengte) er fjernet igjen --
     // kostet penger aa bruke. Rydder bort eventuelle rester av den fra
     // lagringen, saa ingen noekkel blir liggende uten grunn.
@@ -72,6 +83,8 @@
     data.spillere.forEach(function (s) {
       if (!s.opptak) s.opptak = {};
       if (s.valgtRobot === undefined) s.valgtRobot = null;
+      // Lagring fra foer den personlige vanskelig-ord-boka fantes.
+      if (!s.vanskeligeOrd) s.vanskeligeOrd = [];
       // Lagring fra foer denne telleren fantes: vi kan ikke vite hvor mye
       // som er brukt i butikken tidligere, saa det han har staaende naa er
       // det beste gulvet vi har -- bedre enn aa starte paa null og late som
@@ -120,7 +133,7 @@
       laget: idag(),
       sistBrukt: idag(),
       // Objektene i TOM_SPILLER er delte referanser om vi ikke lager nye.
-      tekster: [], eide: [], dager: {}, opptak: {}
+      tekster: [], eide: [], dager: {}, opptak: {}, vanskeligeOrd: []
     });
     d.spillere.push(s);
     d.aktiv = s.id;
@@ -189,6 +202,28 @@
     settGodkjennVoksen: function (paa) { les().foreldre.godkjennVoksen = !!paa; lagre(); },
     lyttemotor: function () { return les().foreldre.lyttemotor; },
     settLyttemotor: function (id) { les().foreldre.lyttemotor = id || null; lagre(); },
+    lesestil: function () { return les().foreldre.lesestil; },
+    settLesestil: function (id) { les().foreldre.lesestil = id || null; lagre(); },
+
+    /* ---------- Personlig vanskelig-ord-bok ---------- */
+
+    vanskeligeOrd: function () {
+      var s = aktiv();
+      return (s && s.vanskeligeOrd) || [];
+    },
+    // Tar imot en liste (kan vaere flere paa én gang, fra én leseokt) --
+    // lagrer bare én gang, ikke ett kall per ord. Dobbeltord filtreres bort,
+    // ordene forsvinner aldri av seg selv (se js/vanskord.js).
+    leggTilVanskeligeOrd: function (nyeOrd) {
+      var s = aktiv();
+      if (!s || !nyeOrd || !nyeOrd.length) return;
+      if (!s.vanskeligeOrd) s.vanskeligeOrd = [];
+      var lagt = false;
+      nyeOrd.forEach(function (o) {
+        if (o && s.vanskeligeOrd.indexOf(o) === -1) { s.vanskeligeOrd.push(o); lagt = true; }
+      });
+      if (lagt) lagre();
+    },
 
     /* ---------- Opptak til mytiske roboter ---------- */
 

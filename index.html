@@ -11,7 +11,7 @@
 
 <header>
   <h1>Lesestjerna</h1>
-  <span id="versjon">v53</span>
+  <span id="versjon">v54</span>
   <button id="tilbake" hidden>Tilbake</button>
   <button id="byttSpiller" hidden></button>
   <div id="stjerner" hidden></div>
@@ -64,6 +64,15 @@
         Lyttemotor -- hvem som hører etter når han leser
       </label>
       <select id="lyttemotorVelger"></select>
+    </div>
+    <div id="lesestilValg">
+      <label for="lesestilVelger" class="und liten">
+        Lesestil
+      </label>
+      <select id="lesestilVelger">
+        <option value="presis">Presis uttalelse -- hvert ord må høres for å telle</option>
+        <option value="leseflyt">Leseflyt -- hele teksten telles ferdig når han har lest seg gjennom den</option>
+      </select>
     </div>
     <div class="rad">
       <button id="lukkForeldre" class="stor hoved">Lukk</button>

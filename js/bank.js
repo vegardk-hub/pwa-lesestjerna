@@ -140,23 +140,6 @@
     neste: neste,
     finn: function (id) { return etterId[id] || null; },
     erLest: function (id) { return lest().indexOf(id) !== -1; },
-    feil: function () { return problemer.slice(); },
-
-    /* Alle "vanskeligeOrd" fra alle tekster, samlet og ryddet -- til
-     * js/vanskord.js. Tallord (og "og" mellom to av dem) er tatt bort: de er
-     * bare vanskelige naar de staar sammen i en lang rekke ("to tusen fire
-     * hundre og sekstini"), ikke som enkeltord alene. Dupliserte ord (mange
-     * tekster deler "Kina" eller "Egypt") telles bare én gang. */
-    vanskeligeOrd: function () {
-      var sett = {};
-      tekster.forEach(function (t) {
-        (t.vanskeligeOrd || []).forEach(function (o) {
-          var rein = Tekst.reint(o);
-          if (!rein || rein === "og" || Tekst.erTallord(rein)) return;
-          if (!sett[rein]) sett[rein] = o;
-        });
-      });
-      return Object.keys(sett).map(function (k) { return sett[k]; });
-    }
+    feil: function () { return problemer.slice(); }
   };
 })(window);

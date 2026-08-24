@@ -16,6 +16,7 @@
   var sisteEmne = null;  // hvor "Les en til" skal hente neste fra
   var lesFraVanskord = false; // sant naar lesingen kom fra "Vanskelige ord",
                               // saa "tilbake" og fullfoert foerer dit igjen
+  var ferdigAutoTimer = null; // i leseflyt: naeste tekst etter tre sekunder, se ferdig()
 
   // Roboter uten en fast frase (bare de legendariske har det, se
   // data/figurer.json) faar en av disse i stedet, saa alle -- ikke bare fem
@@ -31,6 +32,12 @@
   }
 
   function vis(hvilken) {
+    // Uansett hvor vi skal -- ogsaa til "ferdig" selv, se ferdig() -- skal
+    // en overgang som var planlagt fra en TIDLIGERE ferdig-skjerm avlyses.
+    // Ellers kunne leseflyt sin automatiske "neste tekst" komme brasende inn
+    // over noe han alt har navigert videre til paa egen haand.
+    if (ferdigAutoTimer) { clearTimeout(ferdigAutoTimer); ferdigAutoTimer = null; }
+
     $("#velgSpiller").hidden = hvilken !== "spillere";
     $("#hus").hidden = hvilken !== "hus";
     $("#verden").hidden = hvilken !== "verden";
@@ -188,6 +195,18 @@
     }
 
     vis("ferdig");
+
+    // Leseflyt er en sammenhengende lesesloeyfe -- i stedet for aa vente paa
+    // et trykk paa "Les en til", dukker neste tekst opp av seg selv etter et
+    // par sekunder, saa han kan lese videre i eget tempo. Bare naar
+    // "ferdig" faktisk kom fra en vanlig tekst (ikke fra vanskord-oeving,
+    // som aldri viser denne skjermen i det hele tatt uansett).
+    if (Lagring.lesestil() === "leseflyt") {
+      ferdigAutoTimer = setTimeout(function () {
+        ferdigAutoTimer = null;
+        lesFraEmne(sisteEmne);
+      }, 3000);
+    }
   }
 
   // Roboten hans kommenterer teksten som akkurat ble lest -- stille, bare en

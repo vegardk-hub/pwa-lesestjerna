@@ -181,6 +181,14 @@ button.liten { padding: 6px 12px }
   background: #fff; color: var(--blekk);
 }
 
+#lesestilValg { margin-bottom: 18px }
+#lesestilValg label { display: block; margin-bottom: 6px }
+#lesestilVelger {
+  width: 100%; padding: 10px 12px; font-size: 15px;
+  border: 1.5px solid var(--strek); border-radius: 10px;
+  background: #fff; color: var(--blekk);
+}
+
 /* ---------- Huset ----------
    Fire kort: gaa ut og les, boka, butikken, samlingen. "Gaa ut og les" er
    hovedhandlingen og ser slik ut (moerk bakgrunn, stor), de tre andre er

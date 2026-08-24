@@ -18,6 +18,11 @@
 
   var $ = function (v) { return document.querySelector(v); };
 
+  // Hvor lenge det maa vaere stille EITER han har naadd den siste setningen
+  // foer "leseflyt" regner teksten som ferdiglest -- se naaddSlutten() og
+  // fullforFlyt() under.
+  var FLYT_STILLE_MS = 3000;
+
   /* ---------- Tilstand ---------- */
 
   var ord = [];          // flat liste over alle ordene i hele teksten
@@ -33,6 +38,14 @@
   var meldtFerdig = false;
   var forsoktPeker = -1; // hvilket ord de siste mislykkede forsokene gjaldt
   var forsokUtenFramgang = 0;
+  // "Leseflyt" -- se Lagring.lesestil(). I motsetning til "presis uttalelse"
+  // skal ikke ett ord gjenkjenneren aldri fanger kunne stanse hele teksten:
+  // den skal telles ferdig naar han har lest seg gjennom den, ikke naar
+  // hvert eneste ord er bekreftet. lengstTruffet og sistTreff (under) er
+  // bare i bruk i denne modusen.
+  var erFlyt = false;
+  var lengstTruffet = -1; // hoeyeste ord-indeks som noensinne er blitt truffet
+  var sistTreff = 0;      // sist et ord ble truffet, uansett hvor i teksten
 
   /* ---------- Bygge teksten ---------- */
 
@@ -91,6 +104,8 @@
 
     basis = 0; peker = 0; midlertidige = []; stjerner = 0; sistRullet = -1;
     meldtFerdig = false; forsoktPeker = -1; forsokUtenFramgang = 0;
+    lengstTruffet = -1; sistTreff = 0;
+    erFlyt = !!(global.Lagring && Lagring.lesestil() === "leseflyt");
     // Mikrofonen startes na med det samme (se start()), ikke ved et trykk
     // paa knappen -- den satte foer i gang klokka for "staar du fast?".
     // Uten denne linja ville den klokka fortsatt staa paa forrige oekt, og
@@ -240,6 +255,8 @@
             if (!ord[k].truffet) {
               ord[k].truffet = true;
               if (!endelig) midlertidige.push(k);
+              if (k > lengstTruffet) lengstTruffet = k;
+              sistTreff = Date.now();
             }
           }
           i = g.til;
@@ -249,6 +266,8 @@
           if (!ord[j].truffet) {
             ord[j].truffet = true;
             if (!endelig) midlertidige.push(j);
+            if (j > lengstTruffet) lengstTruffet = j;
+            sistTreff = Date.now();
           }
           i = j + 1;
           return;
@@ -333,6 +352,38 @@
     return ord.length;
   }
 
+  /* ---------- Leseflyt ----------
+   *
+   * "Presis uttalelse" krever at hvert eneste ord blir hoert for aa telle --
+   * riktig for aa trene uttale, men ett ord gjenkjenneren rett og slett
+   * aldri fanger kan sperre resten av teksten for alltid. "Leseflyt" (se
+   * Lagring.lesestil) skal ikke kunne stoppe opp slik: har han lest seg helt
+   * fram til den siste setningen, og det saa har vaert stille en liten
+   * stund, regnes teksten som ferdig -- uansett hvor mange ord underveis som
+   * ikke ble fanget opp.
+   */
+
+  function naaddSlutten() {
+    if (!setninger.length) return false;
+    return lengstTruffet >= setninger[setninger.length - 1].ordFra;
+  }
+
+  // Runder av resten av teksten paa samme maate som godkjennHele() -- men
+  // ordene som faktisk ikke ble hoert merkes "hoppet", ikke "truffet uten
+  // videre", saa de likevel fanges opp av fangVanskeligeOrd() under.
+  function fullforFlyt() {
+    setninger.forEach(function (s) {
+      if (!s.ferdig) { s.ferdig = true; giStjerne(); }
+    });
+    ord.forEach(function (o) {
+      if (!o.truffet) { o.truffet = true; o.hoppet = true; }
+    });
+    midlertidige = [];
+    basis = ord.length;
+    peker = ord.length;
+    tegn();
+  }
+
   function giStjerne() {
     stjerner++;
     var el = $("#stjerner");
@@ -354,12 +405,32 @@
       else if (o.truffet) lest++;
     });
     return {
-      ord: lest,               // ord han faktisk leste hoegt
+      // I leseflyt betales det for hele teksten naar den er ferdig, ikke
+      // bare de ordene som faktisk ble fanget opp -- det er selve poenget
+      // med den lesestilen (se fullforFlyt() over).
+      ord: erFlyt ? ord.length : lest,
       hoppetOver: hoppet,      // ord som lyste uten aa bli lest
       setninger: stjerner,
       ordTotalt: ord.length,
       fullfoert: peker >= ord.length
     };
+  }
+
+  /* Ord paa fem bokstaver eller mer som IKKE ble hoert -- bare "lyst" fordi
+   * han hoppet over det, gjenkjenneren ga opp etter fem forsoek, eller
+   * leseflyt rundet av resten av teksten -- samles opp og legges i hans
+   * personlige vanskelig-ord-bok (se Lagring.leggTilVanskeligeOrd() og
+   * js/vanskord.js, som na oever paa akkurat denne boka). Korte ord ("og",
+   * "er", "i", "de") er naturlig for et barn aa kunne, og skal ikke havne
+   * her -- fem bokstaver er raust nok til aa luke dem bort uten en egen
+   * unntaksliste. */
+  function fangVanskeligeOrd() {
+    if (!global.Lagring || !global.Lagring.aktiv()) return;
+    var funnet = [];
+    ord.forEach(function (o) {
+      if (o.hoppet && o.rein.length >= 5 && funnet.indexOf(o.rein) === -1) funnet.push(o.rein);
+    });
+    if (funnet.length) Lagring.leggTilVanskeligeOrd(funnet);
   }
 
   /* ---------- Tegne ---------- */
@@ -381,6 +452,7 @@
     } else if (!meldtFerdig && ord.length) {
       meldtFerdig = true;
       var r = resultat();
+      fangVanskeligeOrd();
       Stemme.lytter.stopp();
       clearInterval(venteur);
       if (kroker.ferdig) kroker.ferdig(r);
@@ -398,6 +470,10 @@
     clearInterval(venteur);
     venteur = setInterval(function () {
       if (!Stemme.lytter.vil || Stemme.snakker() || peker >= ord.length) return;
+      if (erFlyt && naaddSlutten() && Date.now() - sistTreff > FLYT_STILLE_MS) {
+        fullforFlyt();
+        return;
+      }
       var fastFoer = ord[peker].el.classList.contains("venter");
       var fast = Date.now() - sistFramgang > 7000;
       ord[peker].el.classList.toggle("venter", fast);
