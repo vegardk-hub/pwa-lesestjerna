@@ -49,6 +49,13 @@
     $("#boka").hidden = true;
     $("#lestBok").hidden = true;
     $("#robotvalg").hidden = true;
+    // Sikkerhetsnett for de faste "Lukk"-knappene i topplinja (hus.js) --
+    // velger han en tekst rett fra "Ola sin bok" i stedet for aa trykke
+    // "Lukk" foerst, havner han her paa vei til lesevisningen uten aa ha
+    // gaatt innom lukk-knappenes egne handlers. Uten dette kunne "Lukk" blitt
+    // hengende igjen synlig oeverst paa en helt annen skjerm etterpaa.
+    $("#lukkBoka").hidden = true;
+    $("#lukkLestBok").hidden = true;
 
     // Begge disse er avslaatt som standard -- se foreldre.js. Satt hver
     // gang, ikke bare ved oppstart, i tilfelle en forelder endrer dem mens

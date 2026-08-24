@@ -184,13 +184,22 @@
     });
     $("#lestBokTom").hidden = tekster.length > 0;
 
+    // "Lukk" ligger fast i topplinja (se index.html/styles.css), samme knep
+    // som #lukkButikk/#lukkBoka -- saa han slipper aa rulle forbi en lang
+    // liste med tekster for aa finne veien ut igjen. "Bytt spiller" skjules
+    // imens, av samme grunn som der: ellers kunne "Lukk" blitt hengende
+    // igjen synlig paa en annen skjerm etterpaa.
     $("#hus").hidden = true;
     $("#lestBok").hidden = false;
+    $("#lukkLestBok").hidden = false;
+    $("#byttSpiller").hidden = true;
   }
 
   $("#lukkLestBok").onclick = function () {
     $("#lestBok").hidden = true;
+    $("#lukkLestBok").hidden = true;
     $("#hus").hidden = false;
+    if (Lagring.aktiv()) $("#byttSpiller").hidden = false;
   };
 
   /* ---------- Ola sin robot: viser den han har valgt som sitt eget ikon ----------
