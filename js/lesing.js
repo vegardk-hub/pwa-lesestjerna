@@ -375,11 +375,15 @@
   }
 
   // Runder av resten av teksten paa samme maate som godkjennHele() -- men
-  // ordene som faktisk ikke ble hoert merkes "hoppet", ikke "truffet uten
+  // stjerner deles bare ut til setninger han faktisk fikk lest ferdig
+  // (setningFerdig(), samme sjekk som presis uttalelse bruker) FOeR resten
+  // tvangsfullfoeres under -- ellers ville en setning han ikke rakk aa lese
+  // et eneste ord av faatt stjerne likevel, bare fordi oekta var over.
+  // Ordene som faktisk ikke ble hoert merkes "hoppet", ikke "truffet uten
   // videre", saa de likevel fanges opp av fangVanskeligeOrd() under.
   function fullforFlyt() {
     setninger.forEach(function (s) {
-      if (!s.ferdig) { s.ferdig = true; giStjerne(); }
+      if (!s.ferdig && setningFerdig(s)) { s.ferdig = true; giStjerne(); }
     });
     ord.forEach(function (o) {
       if (!o.truffet) { o.truffet = true; o.hoppet = true; }
