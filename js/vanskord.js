@@ -25,6 +25,7 @@
   var MAKS = 20;
 
   var settOrd = [];      // [{ ord, ferdig }]
+  var settSpillerId = undefined; // hvilken spiller settOrd hoerer til, se apne()
   var poengSamlet = 0;   // mynter siden forrige uthenting -- to per godkjent ord
   var MYNT_PER_ORD = 2;
   var paaValgt = null;   // settes av app.js: et ord er valgt for øvelse
@@ -101,11 +102,22 @@
     return n;
   }
 
-  // Foerste gang, eller naar alt i settet alt er oevd ferdig: lager et nytt.
-  // Ellers (tilbake fra et enkelt ord han fortsatt holder paa med) tegner
-  // den bare det som alt finnes, saa fremgangen ikke nullstilles ved et
-  // uhell.
+  // Foerste gang, naar alt i settet alt er oevd ferdig, ELLER naar det er en
+  // annen spiller enn sist (settOrd og poengSamlet er bare vanlige
+  // JS-variabler i denne fila -- uten denne sjekken ville en fersk spiller
+  // arvet en annen spillers ord og mynter, siden ingenting ellers nullstiller
+  // dem naar man bytter): lager et nytt sett. Ellers (tilbake fra et enkelt
+  // ord han fortsatt holder paa med) tegner den bare det som alt finnes, saa
+  // fremgangen ikke nullstilles ved et uhell.
   function apne() {
+    var aktiv = Lagring.aktiv();
+    var aktivId = aktiv && aktiv.id;
+    if (aktivId !== settSpillerId) {
+      settSpillerId = aktivId;
+      poengSamlet = 0;
+      nyttSett();
+      return;
+    }
     var alleFerdig = settOrd.length && settOrd.every(function (o) { return o.ferdig; });
     if (!settOrd.length || alleFerdig) nyttSett();
     else tegn();
