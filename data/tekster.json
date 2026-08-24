@@ -54,6 +54,11 @@
       "id": "vitser",
       "navn": "Vitser og humor",
       "under": "Korte vitser som skal få deg til å le"
+    },
+    {
+      "id": "rekorder",
+      "navn": "Verdensrekorder",
+      "under": "Spektakulære rekorder fra hele verden"
     }
   ],
   "tekster": [
@@ -2360,6 +2365,458 @@
       "tekst": "Hvorfor var månen alltid så rolig? Fordi den visste at den uansett skulle bli full igjen om ikke så lenge. I mellomtiden bare lyste den fornøyd på alle som så opp.",
       "vanskeligeOrd": [],
       "emoji": "🌙"
+    },
+    {
+      "id": "rekord-everest",
+      "emne": "rekorder",
+      "tittel": "Mount Everest",
+      "niva": 1,
+      "tekst": "Mount Everest er jordas høyeste fjell, med toppen nesten ni tusen meter over havet. Det tar de fleste klatrere over en måned å nå toppen og komme trygt ned igjen. På toppen er det så lite luft å puste i at mange klatrere må bruke oksygenflasker.",
+      "vanskeligeOrd": [
+        "ni",
+        "tusen"
+      ],
+      "emoji": "🏔️"
+    },
+    {
+      "id": "rekord-marianergropen",
+      "emne": "rekorder",
+      "tittel": "Marianergropen",
+      "niva": 2,
+      "tekst": "Marianergropen i Stillehavet er det dypeste stedet i alle jordas hav, over ti tusen meter under havoverflaten. Der nede er det stummende mørkt og iskaldt, og trykket er så høyt at det ville knust en vanlig ubåt. Likevel finnes det merkelige fisker og dyr som lever akkurat der.",
+      "vanskeligeOrd": [
+        "ti",
+        "tusen"
+      ],
+      "emoji": "🕳️"
+    },
+    {
+      "id": "rekord-nilen",
+      "emne": "rekorder",
+      "tittel": "Nilen",
+      "niva": 1,
+      "tekst": "Nilen i Afrika regnes som jordas lengste elv, og renner over seks tusen kilometer gjennom flere land. Den har vært viktig for mennesker i tusenvis av år, helt siden det gamle Egypt. Uten Nilen ville store deler av ørkenen rundt vært umulig å bo i.",
+      "vanskeligeOrd": [
+        "seks",
+        "tusen"
+      ],
+      "emoji": "🏞️"
+    },
+    {
+      "id": "rekord-sahara",
+      "emne": "rekorder",
+      "tittel": "Sahara",
+      "niva": 1,
+      "tekst": "Sahara i Afrika er jordas største varme ørken, nesten like stor som hele USA. Om dagen kan det bli glovarmt, mens det om natten faktisk kan bli kaldt nok til frost. Under sanden ligger det store mengder vann, langt der nede i berggrunnen.",
+      "vanskeligeOrd": [],
+      "emoji": "🏜️"
+    },
+    {
+      "id": "rekord-vostok",
+      "emne": "rekorder",
+      "tittel": "Den kaldeste plassen på jorda",
+      "niva": 2,
+      "tekst": "På forskningsstasjonen Vostok i Antarktis ble det en gang målt nesten nitti minusgrader, den kaldeste temperaturen som er registrert på jorda. Det er så kaldt at pusten din ville fryse til is før den rakk å forsvinne i lufta. Selv om det er sommer der nede, må forskerne kle seg som om de skal til månen.",
+      "vanskeligeOrd": [
+        "nitti"
+      ],
+      "emoji": "🥶"
+    },
+    {
+      "id": "rekord-deathvalley",
+      "emne": "rekorder",
+      "tittel": "Den varmeste plassen på jorda",
+      "niva": 2,
+      "tekst": "I Death Valley i USA ble det målt over femtiseks grader, den høyeste temperaturen som noensinne er registrert på jorda. Navnet betyr «dødsdalen», og det er lett å forstå hvorfor når bakken kan bli varm nok til å steke et egg. Likevel bor det både dyr og planter der, godt tilpasset heten.",
+      "vanskeligeOrd": [
+        "femtiseks"
+      ],
+      "emoji": "🔥"
+    },
+    {
+      "id": "rekord-angelfalls",
+      "emne": "rekorder",
+      "tittel": "Angel Falls",
+      "niva": 1,
+      "tekst": "Angel Falls i Venezuela er jordas høyeste foss, og vannet stuper nesten tusen meter ned fra toppen av et fjell. Fossen ligger så langt inne i jungelen at den i lang tid var nesten ukjent for omverdenen. Vannet faller så langt at mye av det blir til tåke før det når bunnen.",
+      "vanskeligeOrd": [
+        "tusen"
+      ],
+      "emoji": "💦"
+    },
+    {
+      "id": "rekord-kaspihavet",
+      "emne": "rekorder",
+      "tittel": "Kaspihavet",
+      "niva": 1,
+      "tekst": "Kaspihavet mellom Europa og Asia er jordas største innsjø, mye større enn hele Norge. Selv om det heter «hav», er det egentlig en kjempestor innsjø uten forbindelse til verdenshavene. Det bor både sel og andre dyr der, langt fra noe ekte hav.",
+      "vanskeligeOrd": [],
+      "emoji": "🌊"
+    },
+    {
+      "id": "rekord-mawsynram",
+      "emne": "rekorder",
+      "tittel": "Den våteste plassen på jorda",
+      "niva": 2,
+      "tekst": "Landsbyen Mawsynram i India er det våteste stedet på jorda, med nesten tolv meter regn i løpet av et vanlig år. Til sammenligning får de fleste steder i Norge under to meter regn årlig. Innbyggerne lager egne regnfrakker av bambus og gress for å holde seg tørre.",
+      "vanskeligeOrd": [
+        "tolv",
+        "to"
+      ],
+      "emoji": "🌧️"
+    },
+    {
+      "id": "rekord-catatumbo",
+      "emne": "rekorder",
+      "tittel": "Stedet med mest lyn",
+      "niva": 2,
+      "tekst": "Ved Catatumbo-elva i Venezuela lyner det så mye at stedet har verdensrekorden for flest lynnedslag. Noen netter kan det telles over tusen lyn i timen, nesten uten stopp. Fenomenet har vart så lenge at gamle sjøfolk brukte lyset som et slags fyrtårn.",
+      "vanskeligeOrd": [
+        "tusen"
+      ],
+      "emoji": "⚡"
+    },
+    {
+      "id": "rekord-wadlow",
+      "emne": "rekorder",
+      "tittel": "Verdens høyeste person",
+      "niva": 2,
+      "tekst": "Amerikaneren Robert Wadlow er den høyeste personen som noensinne er målt, hele to meter og syttito centimeter høy. Han fortsatte å vokse hele livet på grunn av en sjelden sykdom. Skoene hans var så store at de måtte lages spesielt til ham.",
+      "vanskeligeOrd": [
+        "to",
+        "syttito"
+      ],
+      "emoji": "📏"
+    },
+    {
+      "id": "rekord-dangi",
+      "emne": "rekorder",
+      "tittel": "Verdens korteste person",
+      "niva": 1,
+      "tekst": "Nepaleseren Chandra Bahadur Dangi holder rekorden som verdens korteste voksne person, bare femtifire centimeter høy. Han levde et langt liv i en liten fjellandsby, der han sydde klær for å tjene til livets opphold. Rekorden hans står fortsatt uslått.",
+      "vanskeligeOrd": [
+        "femtifire"
+      ],
+      "emoji": "🤏"
+    },
+    {
+      "id": "rekord-calment",
+      "emne": "rekorder",
+      "tittel": "Verdens eldste person",
+      "niva": 2,
+      "tekst": "Franske Jeanne Calment ble hundre og tjueto år gammel, den høyeste alderen noe menneske noensinne er bekreftet å ha nådd. Hun husket å ha møtt maleren Vincent van Gogh da hun var ung jente. Ingen andre mennesker har klart å bli like gamle som henne.",
+      "vanskeligeOrd": [
+        "hundre",
+        "og",
+        "tjueto"
+      ],
+      "emoji": "🎂"
+    },
+    {
+      "id": "rekord-bolt",
+      "emne": "rekorder",
+      "tittel": "Verdens raskeste mann",
+      "niva": 1,
+      "tekst": "Jamaicanske Usain Bolt sprintet hundre meter på under ti sekunder, raskere enn noe annet menneske er målt til. Farten hans var så stor at han rakk å vinke til publikum rett før mållinjen. Rekorden hans har stått i mange år uten at noen har klart å slå den.",
+      "vanskeligeOrd": [
+        "hundre",
+        "ti"
+      ],
+      "emoji": "🏃"
+    },
+    {
+      "id": "rekord-vandrefalk",
+      "emne": "rekorder",
+      "tittel": "Verdens raskeste dyr",
+      "niva": 1,
+      "tekst": "Vandrefalken er det raskeste dyret på jorda, og kan stupe mot byttet sitt i over tre hundre kilometer i timen. Ingen annen skapning i naturen kommer i nærheten av den farten. Vingene er formet akkurat riktig for å gjøre fuglen om til en levende pil.",
+      "vanskeligeOrd": [
+        "tre",
+        "hundre"
+      ],
+      "emoji": "🦅"
+    },
+    {
+      "id": "rekord-gepard",
+      "emne": "rekorder",
+      "tittel": "Verdens raskeste landdyr",
+      "niva": 1,
+      "tekst": "Geparden er det raskeste dyret på land, og kan løpe i over hundre kilometer i timen på kort avstand. Den klarer likevel ikke å holde farten lenge, og blir fort sliten. Til gjengjeld er den så rask at nesten ingen bytte klarer å unnslippe det første spurten.",
+      "vanskeligeOrd": [
+        "hundre"
+      ],
+      "emoji": "🐆"
+    },
+    {
+      "id": "rekord-blahval",
+      "emne": "rekorder",
+      "tittel": "Verdens største dyr",
+      "niva": 1,
+      "tekst": "Blåhvalen er det største dyret som noensinne har levd på jorda, større enn selv de eldste dinosaurene. Den kan bli over tretti meter lang, og hjertet alene veier like mye som en liten bil. Likevel lever den nesten bare av bittesmå krepsdyr.",
+      "vanskeligeOrd": [
+        "tretti"
+      ],
+      "emoji": "🐋"
+    },
+    {
+      "id": "rekord-sjiraff",
+      "emne": "rekorder",
+      "tittel": "Verdens høyeste dyr",
+      "niva": 1,
+      "tekst": "Sjiraffen er verdens høyeste dyr, og kan strekke seg opp mot seks meter over bakken. Selv nakken alene kan være over to meter lang, men den har akkurat like mange nakkevirvler som deg. Den lange halsen gjør at den kan spise blader ingen andre dyr når opp til.",
+      "vanskeligeOrd": [
+        "seks",
+        "to"
+      ],
+      "emoji": "🦒"
+    },
+    {
+      "id": "rekord-jonathan",
+      "emne": "rekorder",
+      "tittel": "Verdens eldste kjente dyr",
+      "niva": 1,
+      "tekst": "Skilpadden Jonathan er det eldste kjente landdyret i verden, og er over hundre og nitti år gammel. Han ble født lenge før biler og fly fantes, og lever fortsatt i dag. Skilpadder blir generelt svært gamle, men ingen andre har kommet i nærheten av Jonathans alder.",
+      "vanskeligeOrd": [
+        "hundre",
+        "og",
+        "nitti"
+      ],
+      "emoji": "🐢"
+    },
+    {
+      "id": "rekord-mokkbille",
+      "emne": "rekorder",
+      "tittel": "Verdens sterkeste dyr",
+      "niva": 2,
+      "tekst": "Møkkbillen er det sterkeste dyret på jorda i forhold til sin egen kroppsvekt, og kan dra en last over tusen ganger tyngre enn seg selv. Det tilsvarer at et menneske skulle dratt seks fulle busser på en gang. Den bruker all denne styrken til å rulle rundt kuler av møkk den skal spise eller legge egg i.",
+      "vanskeligeOrd": [
+        "tusen",
+        "seks"
+      ],
+      "emoji": "💪"
+    },
+    {
+      "id": "rekord-loppe",
+      "emne": "rekorder",
+      "tittel": "Verdens beste hopper",
+      "niva": 1,
+      "tekst": "Loppen er en av naturens beste hoppere sammenlignet med sin egen størrelse, og kan hoppe over hundre ganger sin egen kroppshøyde. Det tilsvarer at et menneske skulle hoppet over en skyskraper. Kraften kommer fra en slags innebygd fjær i beina, ikke fra musklene alene.",
+      "vanskeligeOrd": [
+        "hundre"
+      ],
+      "emoji": "🦗"
+    },
+    {
+      "id": "rekord-nebbhval",
+      "emne": "rekorder",
+      "tittel": "Verdens dypeste dykker",
+      "niva": 2,
+      "tekst": "En nebbhval kalt Cuviers nebbhval holder rekorden for dypeste dykk hos noe pattedyr, nesten tre tusen meter ned i havet. Den kan holde pusten i nesten fire timer under ett eneste dykk. Der nede er det helt mørkt og iskaldt, men hvalen finner likevel maten sin.",
+      "vanskeligeOrd": [
+        "tre",
+        "tusen",
+        "fire"
+      ],
+      "emoji": "🐳"
+    },
+    {
+      "id": "rekord-boksmanet",
+      "emne": "rekorder",
+      "tittel": "Verdens giftigste dyr",
+      "niva": 2,
+      "tekst": "Boksmaneten regnes som et av verdens giftigste dyr, og giften kan i verste fall drepe et menneske på bare noen få minutter. Den lever i varmt vann utenfor Australia og andre steder i Asia, og har lange, usynlige tentakler. Heldigvis finnes det i dag god beskyttelse og behandling mot stikkene.",
+      "vanskeligeOrd": [],
+      "emoji": "🫀"
+    },
+    {
+      "id": "rekord-struts",
+      "emne": "rekorder",
+      "tittel": "Verdens største egg",
+      "niva": 2,
+      "tekst": "Strutsen legger det største egget av alle levende fugler, og ett eneste egg kan veie over en kilo og en halv. Det tilsvarer omtrent like mye som tjuefire vanlige hønseegg til sammen. Skallet er så sterkt at en voksen person faktisk kan stå oppå det uten at det knuser.",
+      "vanskeligeOrd": [
+        "halv",
+        "tjuefire"
+      ],
+      "emoji": "🥚"
+    },
+    {
+      "id": "rekord-stripesnipe",
+      "emne": "rekorder",
+      "tittel": "Verdens lengste flukt uten stopp",
+      "niva": 2,
+      "tekst": "Stripesnipen er en fugl som holder rekorden for lengste flukt uten en eneste pause, over tretten tusen kilometer i strekk. Turen går helt fra Alaska til New Zealand, over det åpne havet. Under hele flyturen verken spiser, drikker eller lander fuglen.",
+      "vanskeligeOrd": [
+        "tretten",
+        "tusen"
+      ],
+      "emoji": "🐦"
+    },
+    {
+      "id": "rekord-hyperion",
+      "emne": "rekorder",
+      "tittel": "Verdens høyeste tre",
+      "niva": 2,
+      "tekst": "Et sequoiatre i California, kalt Hyperion, er det høyeste treet i verden, og strekker seg over hundre og seksten meter opp mot himmelen. Det er høyere enn de fleste bygninger i en by. For å beskytte treet holder forskerne den nøyaktige plasseringen hemmelig.",
+      "vanskeligeOrd": [
+        "hundre",
+        "og",
+        "seksten"
+      ],
+      "emoji": "🌲"
+    },
+    {
+      "id": "rekord-eldstetre",
+      "emne": "rekorder",
+      "tittel": "Verdens eldste tre",
+      "niva": 2,
+      "tekst": "En furu i California, kalt Methusalem, regnes som et av verdens eldste enkeltstående trær, og er nesten fem tusen år gammel. Den var altså allerede en gammel plante da de egyptiske pyramidene ble bygget. Akkurat hvor treet står, holdes hemmelig for å beskytte det mot skadeverk.",
+      "vanskeligeOrd": [
+        "fem",
+        "tusen"
+      ],
+      "emoji": "🌳"
+    },
+    {
+      "id": "rekord-rafflesia",
+      "emne": "rekorder",
+      "tittel": "Verdens største blomst",
+      "niva": 2,
+      "tekst": "Rafflesia er verdens største enkeltblomst, og kan bli over en meter i diameter. Den lukter som råttent kjøtt for å lokke til seg fluer som sprer pollenet videre. Blomsten har verken rot, stengel eller blader, og lever som en snylter på andre planter.",
+      "vanskeligeOrd": [],
+      "emoji": "🌺"
+    },
+    {
+      "id": "rekord-gresskar",
+      "emne": "rekorder",
+      "tittel": "Verdens tyngste gresskar",
+      "niva": 1,
+      "tekst": "Det tyngste gresskaret som noensinne er dyrket, veide nesten tretten hundre kilo, mer enn en liten bil. Gresskaret ble dyrket av en gartner som brukte hele sommeren på å passe på det. Slike kjempegresskar dyrkes gjerne til egne konkurranser rundt om i verden.",
+      "vanskeligeOrd": [
+        "tretten",
+        "hundre"
+      ],
+      "emoji": "🎃"
+    },
+    {
+      "id": "rekord-bambus",
+      "emne": "rekorder",
+      "tittel": "Verdens raskest voksende plante",
+      "niva": 1,
+      "tekst": "Bambus er den raskest voksende planten i verden, og enkelte arter kan vokse nesten en meter på et eneste døgn. Det går an å nesten se planten vokse med det blotte øyet om man har tålmodighet. Til tross for at den vokser som en plante, er bambus egentlig et slags gress.",
+      "vanskeligeOrd": [],
+      "emoji": "🎋"
+    },
+    {
+      "id": "rekord-poljakov",
+      "emne": "rekorder",
+      "tittel": "Lengste tid i verdensrommet på én gang",
+      "niva": 3,
+      "tekst": "Den russiske romfareren Valeri Poljakov holder rekorden for lengste sammenhengende opphold i verdensrommet, over fire hundre dager på rad. Han rakk å reise rundt jorda over sju tusen ganger under den ene turen. Da han landet, ville han gå selv i stedet for å bli båret, for å vise at kroppen fortsatt fungerte.",
+      "vanskeligeOrd": [
+        "fire",
+        "hundre",
+        "sju",
+        "tusen"
+      ],
+      "emoji": "🧑‍🚀"
+    },
+    {
+      "id": "rekord-andesfjellene",
+      "emne": "rekorder",
+      "tittel": "Verdens lengste fjellkjede",
+      "niva": 2,
+      "tekst": "Andesfjellene i Sør-Amerika er verdens lengste fjellkjede, og strekker seg over sju tusen kilometer langs hele kontinentet. Det ville tatt flere måneder å gå hele veien til fots. Fjellkjeden går gjennom sju forskjellige land, fra det varme nord til det kalde sør.",
+      "vanskeligeOrd": [
+        "sju",
+        "tusen"
+      ],
+      "emoji": "⛰️"
+    },
+    {
+      "id": "rekord-isbre",
+      "emne": "rekorder",
+      "tittel": "Verdens største isbre",
+      "niva": 2,
+      "tekst": "Lambert-Fisher-isbreen i Antarktis er verdens største isbre, og strekker seg over fire hundre kilometer i lengde. Den beveger seg sakte, men sikkert mot havet hvert eneste år. Om all isen i denne ene isbreen skulle smelte, ville havnivået i verden stige merkbart.",
+      "vanskeligeOrd": [
+        "fire",
+        "hundre"
+      ],
+      "emoji": "🧊"
+    },
+    {
+      "id": "rekord-tornado",
+      "emne": "rekorder",
+      "tittel": "Sterkeste vind noen har målt",
+      "niva": 2,
+      "tekst": "Under en tornado i den amerikanske delstaten Oklahoma ble det målt vindkast på over fem hundre kilometer i timen, den sterkeste vinden som noensinne er registrert nær bakken. En slik vind kan løfte hus og biler som om de var leker. Forskerne bruker spesielle radarer for å måle slike ekstreme vindkast trygt på avstand.",
+      "vanskeligeOrd": [
+        "fem",
+        "hundre"
+      ],
+      "emoji": "🌪️"
+    },
+    {
+      "id": "rekord-kjempeblekksprut",
+      "emne": "rekorder",
+      "tittel": "Verdens største øyne",
+      "niva": 2,
+      "tekst": "Kjempeblekkspruten har de største øynene i hele dyreriket, nesten like store som en fotball. De enorme øynene hjelper den å oppdage farer som spermhvaler langt nede i det mørke dypet. Selve dyret kan for øvrig bli mange meter langt og veie like mye som en liten bil.",
+      "vanskeligeOrd": [],
+      "emoji": "🦑"
+    },
+    {
+      "id": "rekord-kjempesopp",
+      "emne": "rekorder",
+      "tittel": "Verdens største levende organisme",
+      "niva": 3,
+      "tekst": "I en skog i den amerikanske delstaten Oregon lever verdens største kjente levende organisme, en soppart som brer seg under bakken. Den dekker et område nesten like stort som tre tusen fotballbaner. Soppen kan være flere tusen år gammel, og det meste av den er skjult under jorda.",
+      "vanskeligeOrd": [
+        "tre",
+        "tusen"
+      ],
+      "emoji": "🍄"
+    },
+    {
+      "id": "rekord-humlflaggermus",
+      "emne": "rekorder",
+      "tittel": "Verdens minste pattedyr",
+      "niva": 1,
+      "tekst": "Humlflaggermusen er trolig verdens minste pattedyr, og veier omtrent like lite som en binders. Den er så liten at den får plass på en voksen tommelfinger. Til tross for den bitte lille kroppen kan den likevel fly og finne mat om natten akkurat som andre flaggermus.",
+      "vanskeligeOrd": [],
+      "emoji": "🦇"
+    },
+    {
+      "id": "rekord-goliatbille",
+      "emne": "rekorder",
+      "tittel": "Verdens tyngste insekt",
+      "niva": 1,
+      "tekst": "Den afrikanske goliatbillen er det tyngste insektet i verden, og kan veie over sytti gram. Det tilsvarer omtrent vekten av et lite eple. Larvene til billen kan faktisk bli enda tyngre enn de voksne billene selv.",
+      "vanskeligeOrd": [
+        "sytti"
+      ],
+      "emoji": "🪲"
+    },
+    {
+      "id": "rekord-edderkoppsilke",
+      "emne": "rekorder",
+      "tittel": "Verdens sterkeste edderkoppsilke",
+      "niva": 3,
+      "tekst": "Darwins barkedderkopp lager både verdens største spindelvev og verdens sterkeste edderkoppsilke, sterkere enn stål av samme tykkelse. Trådene kan spenne over hele tjuefem meter, ofte rett over elver. Selve edderkoppen som lager alt dette er ikke større enn en liten knapp.",
+      "vanskeligeOrd": [
+        "tjuefem"
+      ],
+      "emoji": "🕸️"
+    },
+    {
+      "id": "rekord-vatikanstaten",
+      "emne": "rekorder",
+      "tittel": "Verdens minste land",
+      "niva": 2,
+      "tekst": "Vatikanstaten i Roma er verdens minste selvstendige land, så lite at man kan gå rundt hele landet på under en time. Likevel har landet sitt eget postvesen, sin egen radio og til og med sitt eget lille jernbanespor. Paven er statsoverhode i dette bitte lille landet.",
+      "vanskeligeOrd": [],
+      "emoji": "🇻🇦"
     }
   ]
 }

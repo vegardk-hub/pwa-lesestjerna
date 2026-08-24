@@ -7,10 +7,11 @@
  * sammen. Skal en sone flyttes, er det tallene der det skjer.
  *
  * Emnene er skolefag-bredde, ikke steder: ting og krefter, alt som lever,
- * mennesker og tanker, oppfinnelser -- og vitser, som ikke er et skolefag,
- * men et sted han kan ta en pause og le litt mellom de andre. Bildet passer
- * likevel fint -- det er stort nok til aa romme alle fem uten aa se ut som
- * en meny.
+ * mennesker og tanker, oppfinnelser -- vitser, som ikke er et skolefag, men
+ * et sted han kan ta en pause og le litt mellom de andre -- og verdens-
+ * rekorder, som er litt av begge deler: ekte fakta, men valgt for aa vaere
+ * spektakulaere, ikke laereboklige. Bildet passer likevel fint -- det er
+ * stort nok til aa romme alle seks uten aa se ut som en meny.
  *
  * Hjemme-punktet er ikke et emne fra tekstbanken -- det foerer alltid rett
  * tilbake til huset (Hus.tegn).
@@ -24,19 +25,21 @@
   var $ = function (v) { return document.querySelector(v); };
 
   // Brøkdel av kartets bredde/hoeyde (0..1), ikke piksler -- da flytter
-  // punktene seg riktig med kortet uansett hvor bredt det vises. Seks
-  // punkter: fire i en symmetrisk diamant, hjem midt i, og vitser som en
-  // sjette topp-prikk over de to oeverste. To paa samme rad staar alltid
-  // paa hver sin halvdel av bildet (0.56 fra hverandre), saa selv paa det
-  // smaleste kortet er det god avstand -- ellers klumper lappene seg fort
-  // sammen naar kortet vises smalt (mobil).
+  // punktene seg riktig med kortet uansett hvor bredt det vises. Sju
+  // punkter: fire i en symmetrisk diamant, hjem midt i, vitser som en topp-
+  // prikk over de to oeverste, og rekorder som motstykket rett under de to
+  // nederste. To paa samme rad staar alltid paa hver sin halvdel av bildet
+  // (0.56 fra hverandre), saa selv paa det smaleste kortet er det god
+  // avstand -- ellers klumper lappene seg fort sammen naar kortet vises
+  // smalt (mobil).
   var SONER = {
     vitser:       { x: 0.50, y: 0.13 },
     oppfinnelser: { x: 0.22, y: 0.26 },
     folk:         { x: 0.78, y: 0.26 },
     hjem:         { x: 0.50, y: 0.54 },
     liv:          { x: 0.22, y: 0.78 },
-    krefter:      { x: 0.78, y: 0.78 }
+    krefter:      { x: 0.78, y: 0.78 },
+    rekorder:     { x: 0.50, y: 0.91 }
   };
 
   var FARGER = {
@@ -45,6 +48,7 @@
     oppfinnelser: "#b3651e",
     liv: "#2f7d4f",
     vitser: "#d99a00",
+    rekorder: "#1d6fa8",
     hjem: "#c46a2f"
   };
   var RESERVE = "#6b727a";
@@ -58,7 +62,8 @@
     folk: "Mennesker",
     oppfinnelser: "Oppfinnelser",
     liv: "Alt som lever",
-    vitser: "Vitser"
+    vitser: "Vitser",
+    rekorder: "Rekorder"
   };
 
   /* Ett lite ikon per emne i prikken paa kartet. */
@@ -84,6 +89,12 @@
     vitser: '<circle cx="8" cy="10" r="1.6"/><circle cx="16" cy="10" r="1.6"/>' +
             '<path d="M6.5 13.5c1.6 3.4 4 5 5.5 5s3.9-1.6 5.5-5" fill="none" ' +
             'stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
+    // Verdensrekorder: en pokal.
+    rekorder: '<path d="M7 4h10v5a5 5 0 0 1-10 0V4Z"/>' +
+              '<path d="M7 5H4v1.5A3.5 3.5 0 0 0 7.3 10" fill="none" stroke="currentColor" stroke-width="1.6"/>' +
+              '<path d="M17 5h3v1.5A3.5 3.5 0 0 1 16.7 10" fill="none" stroke="currentColor" stroke-width="1.6"/>' +
+              '<rect x="10.5" y="13.5" width="3" height="4" fill="currentColor"/>' +
+              '<rect x="7.5" y="18" width="9" height="2.2" rx="1.1" fill="currentColor"/>',
     hjem: '<path d="M3 12 12 4l9 8"/><path d="M5 10.5V21h14V10.5"/><path d="M9.5 21v-7h5v7"/>'
   };
 
