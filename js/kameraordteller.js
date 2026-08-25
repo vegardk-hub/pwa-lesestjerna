@@ -52,8 +52,27 @@
   // tekst, og ekstra piksler bare gjoer det tregere aa behandle.
   var MAKS_BREDDE = 1600;
 
-  // Sjaneterskel -- se maalSkarphet() under for hva tallet faktisk maaler.
-  var SKARPHET_GRENSE = 18;
+  // Skarphetsgrense -- se maalSkarphet() under for hva tallet faktisk
+  // maaler. FORSTE forsoek (18) var kalibrert mot tett, stor syntetisk
+  // tekst paa et lite lerret -- helt urealistisk mot en ekte bokside: et
+  // fotografert oppslag har mye tom marg og mellomrom mellom linjene (som
+  // ikke gir noen kant i det hele tatt og drar gjennomsnittet ned), pluss
+  // at JPEG-komprimering og selve nedskaleringen fra kameraets ekte
+  // oppløsning til MAKS_BREDDE begge glatter ut skarpheten litt i seg
+  // selv -- helt uavhengig av om han faktisk holdt stille. Vegard
+  // rapporterte at INGEN bilder ble godkjent selv med et krystallklart
+  // bilde, noe som bekrefter at 18 var alt for strengt.
+  //
+  // Ny grense satt lavt med vilje, testet mot en mer realistisk simulering
+  // (hel "side" med liten skrift og mye marg, nedskalert 3x og JPEG-
+  // komprimert -- se samtalen dette ble justert i): et skarpt, realistisk
+  // behandlet bilde landet rundt 20-25, svak/knapt merkbar uskarphet rundt
+  // 15-18, og foerst tydelig, aapenbar uskarphet falt under 8-10. Grensa
+  // her ligger godt under det skarpe omraadet med vilje -- det er langt
+  // verre aa avvise et godt bilde enn aa slippe gjennom et lett uskarpt
+  // ett, siden selve ordtellingen (se behandleBilde()) uansett taaler noe
+  // stoey i gjenkjenningen.
+  var SKARPHET_GRENSE = 6;
 
   var lastingBibliotek = null;
   var totalOrd = 0;
