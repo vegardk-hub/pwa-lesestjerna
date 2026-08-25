@@ -43,6 +43,7 @@
     $("#verden").hidden = hvilken !== "verden";
     $("#vanskord").hidden = hvilken !== "vanskord";
     $("#friLesing").hidden = hvilken !== "frilesing";
+    $("#kameraOrdteller").hidden = hvilken !== "kameraordteller";
     $("#lesing").hidden = hvilken !== "lesing";
     $("#ferdig").hidden = hvilken !== "ferdig";
     $("#verktoy").hidden = hvilken !== "lesing";
@@ -113,6 +114,7 @@
   function tilVerden() {
     Lesing.stopp();
     FriLesing.stopp();
+    KameraOrdteller.stopp();
     naa = null;
     Verden.tegn();
     vis("verden");
@@ -121,6 +123,7 @@
   function tilHus() {
     Lesing.stopp();
     FriLesing.stopp();
+    KameraOrdteller.stopp();
     naa = null;
     sisteEmne = null;
     Hus.tegn();
@@ -130,6 +133,7 @@
   function tilVanskord() {
     Lesing.stopp();
     FriLesing.stopp();
+    KameraOrdteller.stopp();
     naa = null;
     Vanskord.apne();
     vis("vanskord");
@@ -139,6 +143,13 @@
     Lesing.stopp();
     vis("frilesing");
     FriLesing.start();
+  }
+
+  function tilKameraOrdteller() {
+    Lesing.stopp();
+    FriLesing.stopp();
+    vis("kameraordteller");
+    KameraOrdteller.start();
   }
 
   /* ---------- Lesing ---------- */
@@ -272,6 +283,7 @@
   $("#byttSpiller").onclick = function () {
     Lesing.stopp();
     FriLesing.stopp();
+    KameraOrdteller.stopp();
     Spillere.tegn();
     vis("spillere");
   };
@@ -297,6 +309,8 @@
   $("#apneVanskord").onclick = tilVanskord;
   $("#apneFriLesing").onclick = tilFriLesing;
   $("#friLesingHjem").onclick = tilHus;
+  $("#apneKameraOrdteller").onclick = tilKameraOrdteller;
+  $("#kameraHjem").onclick = tilHus;
   $("#apneForeldre").onclick = Foreldre.apne;
 
   // Hvert godkjent vanskelig ord er verdt to mynter, samlet opp i vanskord.js

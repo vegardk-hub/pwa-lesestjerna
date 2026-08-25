@@ -29,7 +29,7 @@
   <p class="und" id="plassbeskjed"></p>
   <div class="rad">
     <button id="sikkerhetskopi">Lag sikkerhetskopi</button>
-    <span id="versjon" class="versjonboks">v71</span>
+    <span id="versjon" class="versjonboks">v72</span>
     <button id="hentInn">Hent inn sikkerhetskopi</button>
     <input type="file" id="filvelger" accept="application/json,.json" hidden>
   </div>
@@ -120,6 +120,10 @@
     <button type="button" id="apneFriLesing" class="huskort frilesing">
       <span class="huskort-ikon"></span>
       <span class="huskort-navn">Lese fritt</span>
+    </button>
+    <button type="button" id="apneKameraOrdteller" class="huskort kamera">
+      <span class="huskort-ikon"></span>
+      <span class="huskort-navn">Kameraordteller</span>
     </button>
   </div>
 </section>
@@ -228,6 +232,28 @@
   </div>
 </section>
 
+<section id="kameraOrdteller" hidden>
+  <h2>Kameraordteller</h2>
+  <div id="kameraFoer">
+    <p class="und">Ta et bilde av en side du har lest -- jeg teller ordene på bildet! Hold nettbrettet eller telefonen stille et lite øyeblikk, så bildet blir skarpt.</p>
+    <p id="kameraBeskjed"></p>
+    <div class="rad">
+      <button id="kameraTaBilde" class="stor ferdiglest">📷 Ta bilde</button>
+      <input type="file" id="kameraInput" accept="image/*" capture="environment" hidden>
+    </div>
+    <div class="rad">
+      <button id="kameraFerdig" class="stor hoved">Ferdig</button>
+    </div>
+  </div>
+  <div id="kameraEtter" hidden>
+    <p id="kameraTall"></p>
+    <p class="und" id="kameraEkstra"></p>
+    <div class="rad">
+      <button id="kameraHjem" class="stor hoved">Hjem til huset</button>
+    </div>
+  </div>
+</section>
+
 <section id="ferdig" hidden>
   <h2 id="ferdigTittel"></h2>
   <p id="ferdigTall"></p>
@@ -279,6 +305,7 @@
 <script src="js/hus.js"></script>
 <script src="js/vanskord.js"></script>
 <script src="js/frilesing.js"></script>
+<script src="js/kameraordteller.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>
