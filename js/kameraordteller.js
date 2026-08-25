@@ -140,6 +140,45 @@
     return Math.sqrt(Math.max(0, sumKvadrat / n - snitt * snitt));
   }
 
+  // Minste konfidens (0-100, Tesseract sitt eget maal paa hvor sikker den
+  // er paa akkurat dette ordet) foer vi stoler paa et gjenkjent "ord" --
+  // en flekk, en skygge eller kanten paa et bilde gir titt og ofte et kort,
+  // useriost tegn tilbake med lav konfidens. AA telle den rene tekststrengen
+  // (tekst.split(/\s+/)) ville talt akkurat slikt stoey som ekte ord.
+  var MIN_KONFIDENS = 35;
+
+  // Teller ordene Tesseract fant, ut fra den STRUKTURERTE ordlista
+  // (resultat.data.words) i stedet for aa dele opp raatekststrengen paa
+  // mellomrom. To grunner:
+  //
+  // 1. Lav-konfidens-stoey (se MIN_KONFIDENS over) filtreres bort.
+  //
+  // 2. Ord orddelt ved linjeskift i en trykt bok ("lange vei-" / "en" for
+  //    "veien") kommer tilbake som TO egne ord i teksten, og ville blitt
+  //    talt som to i stedet for ett -- en kjent, vanlig kilde til at
+  //    tellingen blir litt for hoey. Et ord som slutter paa bindestrek
+  //    hoerer nesten alltid sammen med det som kommer rett etter, saa det
+  //    telles ikke for seg selv -- fortsettelsen etterpaa teller i stedet,
+  //    som om de to var ett ord.
+  //
+  // Gjoer tellingen mer noeyaktig, men ikke perfekt -- et ord OCR-en rett og
+  // slett ikke fanger opp i det hele tatt (falmet skrift, en side som
+  // krummer seg naer ryggen) gir ingen tekst og kan ikke telles med her.
+  function tellOrd(resultat) {
+    var raa = (resultat && resultat.data && resultat.data.words) || [];
+    var ord = raa.filter(function (w) {
+      var t = (w.text || "").trim();
+      return t && /[a-zA-ZæøåÆØÅ0-9]/.test(t) && w.confidence >= MIN_KONFIDENS;
+    });
+
+    var antall = 0;
+    for (var i = 0; i < ord.length; i++) {
+      if (/-$/.test(ord[i].text) && i + 1 < ord.length) continue;
+      antall++;
+    }
+    return antall;
+  }
+
   function behandleBilde(file) {
     if (behandler) return;
     behandler = true;
@@ -165,8 +204,7 @@
         beskjed("Leser ordene i bildet …");
         return Tesseract.recognize(canvas, SPRAK);
       }).then(function (resultat) {
-        var tekst = (resultat && resultat.data && resultat.data.text) || "";
-        var ord = tekst.trim().split(/\s+/).filter(Boolean).length;
+        var ord = tellOrd(resultat);
         totalOrd += ord;
         behandler = false;
         beskjed(ord
@@ -229,8 +267,9 @@
   global.KameraOrdteller = {
     start: start,
     stopp: stopp,
-    // Til proeving i konsollen, uten et ekte kamera -- se maalSkarphet()
-    // over, som ellers ikke kan testes uten et ekte, tatt bilde.
-    _maalSkarphet: maalSkarphet
+    // Til proeving i konsollen, uten et ekte kamera -- se maalSkarphet()/
+    // tellOrd() over, som ellers ikke kan testes uten et ekte, tatt bilde.
+    _maalSkarphet: maalSkarphet,
+    _tellOrd: tellOrd
   };
 })(window);
