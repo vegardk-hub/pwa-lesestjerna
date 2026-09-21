@@ -59,6 +59,8 @@
     $("#lukkBoka").hidden = true;
     $("#lukkLestBok").hidden = true;
     $("#lukkSamling").hidden = true;
+    $("#jobb").hidden = true;
+    $("#lukkJobb").hidden = true;
 
     // Begge disse er avslaatt som standard -- se foreldre.js. Satt hver
     // gang, ikke bare ved oppstart, i tilfelle en forelder endrer dem mens
@@ -278,6 +280,9 @@
   Verden.naarHjem(tilHus);
   Hus.naarLestValgt(lesSpesifikk);
   Hus.naarRobotValgt(tegnSpillerknapp);
+  // Henter han mynter i fabrikken, skal tallet i topplinja stemme med det
+  // samme -- ikke foerst neste gang en skjerm byttes.
+  Jobb.naarEndret(tegnSpillerknapp);
   Vanskord.naarOrdValgt(lesVanskeligOrd);
 
   $("#byttSpiller").onclick = function () {
@@ -305,6 +310,7 @@
   $("#apneLest").onclick = Hus.apneLest;
   $("#apneButikk").onclick = Butikk.apne;
   $("#apneSamling").onclick = Samling.apne;
+  $("#apneJobb").onclick = Jobb.apne;
   $("#apneRobotvalg").onclick = Hus.apneRobotvalg;
   $("#apneVanskord").onclick = tilVanskord;
   $("#apneFriLesing").onclick = tilFriLesing;

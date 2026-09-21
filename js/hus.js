@@ -41,7 +41,13 @@
     kamera: '<rect fill="currentColor" x="6" y="14" width="36" height="26" rx="5"/>' +
       '<rect fill="currentColor" x="17" y="8" width="10" height="7" rx="2"/>' +
       '<circle cx="24" cy="27" r="8" fill="#fff"/>' +
-      '<circle cx="24" cy="27" r="5.2" fill="currentColor"/>'
+      '<circle cx="24" cy="27" r="5.2" fill="currentColor"/>',
+    // En fabrikk med to piper -- til "Jobb", der robotene staar og jobber.
+    jobb: '<path fill="currentColor" d="M6 42V22l11 7v-7l11 7V16h2a2 2 0 0 1 2 2v3h6a2 2 0 0 1 2 2v19Z"/>' +
+      '<rect fill="currentColor" x="9" y="8" width="5" height="12" rx="1.2"/>' +
+      '<rect fill="#fff" opacity=".8" x="12" y="33" width="4.5" height="6" rx="1"/>' +
+      '<rect fill="#fff" opacity=".8" x="22" y="33" width="4.5" height="6" rx="1"/>' +
+      '<rect fill="#fff" opacity=".8" x="32" y="33" width="4.5" height="6" rx="1"/>'
   };
 
   function settIkon(kort, ikon) {
@@ -53,6 +59,7 @@
   settIkon("apneLest", "lest");
   settIkon("apneButikk", "butikk");
   settIkon("apneSamling", "samling");
+  settIkon("apneJobb", "jobb");
   settIkon("apneRobotvalg", "robot");
   settIkon("apneVanskord", "vanskord");
   settIkon("apneFriLesing", "frilesing");

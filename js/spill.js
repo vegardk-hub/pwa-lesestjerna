@@ -141,8 +141,87 @@
     if (!s || s.mynter < pris) return false;
     s.mynter -= pris;
     s.eide.push({ ting: ting, pris: pris });
+    // Roboten begynner aa jobbe (se under) i det oeyeblikket han kjoeper
+    // den -- ikke foerste gang han aapner fabrikken. Ellers kunne en robot
+    // kjoept i dag staa stille i en uke fordi han ikke gikk innom.
+    if (!s.jobb) s.jobb = {};
+    s.jobb[ting] = Date.now();
     Lagring.lagre();
     return true;
+  }
+
+  /* ---------- Robotfabrikken ----------
+   *
+   * Robotene han eier staar og jobber mens appen er lukket, og legger opp
+   * mynter han henter ut ved aa trykke paa hver enkelt av dem (js/jobb.js).
+   *
+   * To tak, begge bestemt av Vegard:
+   *   - en robot tjener aldri mer enn en FEMDEL av det den kostet, og
+   *   - den slutter aa tjene etter ETT DOEGN.
+   *
+   * Til sammen betyr det at en robot tjener seg selv inn paa fem doegn om
+   * han henter hver dag -- og at det ikke gaar an aa la appen ligge en
+   * maaned og komme tilbake til en formue. Fabrikken er en grunn til aa
+   * komme innom, ikke en erstatning for aa lese.
+   *
+   * Myntene gaar rett i lomma, som de vanskelige ordene (tjenMynter over):
+   * de teller IKKE som "ord lest" og gir ingen boeker eller level. Lesing
+   * skal vaere den eneste veien dit.
+   */
+
+  var JOBB_MAKS_MS = 24 * 60 * 60 * 1000;
+  var JOBB_ANDEL = .20;
+
+  /* Hva roboten har staaende akkurat naa. `pris` er det han faktisk betalte
+   * (se s.eide), ikke dagens katalogpris -- de er like i dag, men det er
+   * hans eget kjoep dette skal regnes av. */
+  function jobbStatus(figurId, pris) {
+    var s = meg();
+    if (!s) return null;
+    if (!s.jobb) s.jobb = {};
+
+    // Mangler starttiden helt, er det en robot som kom inn utenom kjoep --
+    // t.d. fra en sikkerhetskopi tatt foer fabrikken fantes. Da begynner
+    // den aa tjene naa, i stedet for aa gi full pott med det samme.
+    if (!s.jobb[figurId]) { s.jobb[figurId] = Date.now(); Lagring.lagre(); }
+
+    var maks = Math.floor(pris * JOBB_ANDEL);
+    var andel = Math.min(1, Math.max(0, Date.now() - s.jobb[figurId]) / JOBB_MAKS_MS);
+    return {
+      mynter: Math.floor(maks * andel),
+      maks: maks,
+      andel: andel,
+      full: andel >= 1
+    };
+  }
+
+  /* Henter ut det roboten har staaende, og setter den i gang igjen.
+   *
+   * Starttiden flyttes fram med noeyaktig den tiden han faktisk fikk betalt
+   * for -- ikke helt til naa. Ellers ville brøkdelen som ikke ble en hel
+   * mynt (seks mynter opptjent av et tak paa ti gir 6, ikke 6,4) gaa tapt
+   * hver eneste gang han henter, og den som henter ofte ville tjent mindre
+   * enn den som venter.
+   *
+   * En FULL robot er unntaket, og det maa den vaere: har den staatt i to
+   * doegn, er bare det foerste betalt (taket), og aa forskyve starttiden
+   * med det ene betalte doegnet ville latt det andre bli staaende som
+   * oppspart tid -- roboten ville vaert full paa nytt i samme oeyeblikk, og
+   * han kunne hentet full pott om og om igjen. Da maa klokka begynne helt
+   * paa nytt fra naa. */
+  function hentJobb(figurId, pris) {
+    var s = meg();
+    if (!s) return 0;
+    var st = jobbStatus(figurId, pris);
+    if (!st || st.mynter <= 0) return 0;
+
+    s.mynter += st.mynter;
+    s.mynterTjent += st.mynter;
+    s.jobb[figurId] = st.full
+      ? Date.now()
+      : s.jobb[figurId] + (st.mynter / st.maks) * JOBB_MAKS_MS;
+    Lagring.lagre();
+    return st.mynter;
   }
 
   /* ---------- Boka paa bordet ---------- */
@@ -177,8 +256,12 @@
     betalFriLesing: betalFriLesing,
     kjop: kjop,
     tjenMynter: tjenMynter,
+    jobbStatus: jobbStatus,
+    hentJobb: hentJobb,
     statistikk: statistikk,
     MYNT_PER_ORD: MYNT_PER_ORD,
-    FULLFOERT_BONUS: FULLFOERT_BONUS
+    FULLFOERT_BONUS: FULLFOERT_BONUS,
+    JOBB_TIMER: JOBB_MAKS_MS / 3600000,
+    JOBB_ANDEL: JOBB_ANDEL
   };
 })(window);

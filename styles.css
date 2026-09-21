@@ -244,6 +244,7 @@ button.liten { padding: 6px 12px }
 .huskort.vanskord .huskort-ikon { color: #3d6fb4 }
 .huskort.frilesing .huskort-ikon { color: #c2660e }
 .huskort.kamera .huskort-ikon { color: #c2367a }
+.huskort.jobb .huskort-ikon { color: #0f766e }
 
 /* "Gå ut og les" viser selve verdenskartet som bakgrunn -- uten prikkene,
    de kommer bare til syne naar han faktisk er inne paa kartet -- saa kortet
@@ -1352,3 +1353,164 @@ footer .rad { margin: 0; justify-content: center }
   min-height: 1.5em;
 }
 #beskjed.feil { color: #b3261e }
+
+/* ---------- Robotfabrikken ----------
+   Robotene han eier staar og jobber mens appen er lukket, og legger opp
+   mynter han henter ved aa trykke paa dem (js/jobb.js).
+
+   Hallen har en enkel scene: en dus vegg som gaar ned i et gulv, og hver
+   robot paa sin egen benk. Robotene beholder sine egne kategori-
+   animasjoner (glitch, forvandling, laserblikk) -- det er HANS roboter som
+   jobber, saa de skal se ut som seg selv her ogsaa. */
+
+#jobb { padding: 30px 20px 60px; max-width: 780px; margin: 0 auto; width: 100% }
+#jobb h2 { font-size: 22px; margin: 0 0 14px; font-weight: 650 }
+#jobbMynter { margin: 0 0 6px; font-size: 19px }
+#jobbMynter b { color: var(--gul); font-size: 24px }
+#jobbHint { margin: 0 0 22px }
+#jobbTom[hidden] { display: none }
+
+#jobbHall {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(132px, 1fr));
+  gap: 14px;
+}
+
+.jobb-plass {
+  position: relative;
+  display: flex; flex-direction: column; align-items: center;
+  border: 1.5px solid var(--strek); border-radius: 16px;
+  padding: 14px 10px 12px;
+  /* Veggen oeverst gaar over i et gulv nederst -- nok til at det leses som
+     et rom roboten staar i, uten et bilde aa laste. */
+  background: linear-gradient(#f7f8fa 0%, #f7f8fa 62%, #e7e2d8 62%, #ded8cb 100%);
+  cursor: pointer;
+  overflow: hidden;
+}
+.jobb-plass:hover { border-color: var(--gul) }
+
+/* Klar til henting: gyllen ramme og en varm glo, saa han ser fra andre
+   enden av hallen hvilke som har noe aa gi. */
+.jobb-plass.har-mynt {
+  border-color: var(--gul);
+  box-shadow: 0 0 0 3px rgba(240, 162, 2, .16);
+}
+
+.jobb-scene {
+  position: relative;
+  display: flex; align-items: flex-end; justify-content: center;
+  gap: 2px;
+  height: 66px;
+}
+.jobb-robot { width: 48px; height: 57px; animation: jobber 1.4s ease-in-out infinite }
+.jobb-robot svg { width: 100%; height: 100%; display: block }
+
+.jobb-verktoy { width: 27px; height: 27px; margin-bottom: 5px }
+.jobb-verktoy svg { width: 100%; height: 100%; display: block; overflow: visible }
+
+/* Roboten boeyer seg smaatt i arbeidstakt. Bevisst liten utslagsvinkel --
+   den skal se ut som den holder paa med noe, ikke som at den vingler. */
+@keyframes jobber {
+  0%, 100% { transform: rotate(-2.5deg) translateY(0) }
+  50%      { transform: rotate(2.5deg) translateY(-2px) }
+}
+
+/* Ett verktoey, én bevegelse -- valgt fast per robot i js/jobb.js. */
+.jobb-verktoy.hammer { animation: slaar 1.4s ease-in-out infinite; transform-origin: 50% 85% }
+@keyframes slaar {
+  0%, 100% { transform: rotate(-14deg) }
+  45%      { transform: rotate(-52deg) }
+  60%      { transform: rotate(-6deg) }
+}
+
+.jobb-verktoy.skrue { animation: snurrer 1.4s linear infinite }
+@keyframes snurrer { to { transform: rotate(360deg) } }
+
+.jobb-verktoy.tannhjul { animation: snurrer 2.6s linear infinite }
+
+.jobb-verktoy.kasse { animation: loefter 1.4s ease-in-out infinite }
+@keyframes loefter {
+  0%, 100% { transform: translateY(0) }
+  50%      { transform: translateY(-9px) }
+}
+
+/* Sveisen staar i ro -- det er gnisten som lever. */
+.jobb-verktoy.sveis .jobb-gnist { animation: gnistrer 1.4s ease-out infinite; transform-origin: 12px 3px }
+@keyframes gnistrer {
+  0%, 100% { opacity: .15; transform: scale(.5) }
+  12%      { opacity: 1;   transform: scale(1.35) }
+  40%      { opacity: .3;  transform: scale(.7) }
+  55%      { opacity: .95; transform: scale(1.1) }
+}
+
+/* Er roboten full, staar alt stille: den har gjort sitt og venter paa ham.
+   Stillheten er hele poenget -- en full robot skal se annerledes ut enn en
+   som fortsatt holder paa. */
+.jobb-plass.full .jobb-robot,
+.jobb-plass.full .jobb-verktoy,
+.jobb-plass.full .jobb-verktoy .jobb-gnist { animation-play-state: paused }
+
+.jobb-benk {
+  width: 78%; height: 7px; border-radius: 3px;
+  background: #b9a582; margin-top: 2px;
+  box-shadow: 0 2px 0 #9c8968;
+}
+
+.jobb-navn {
+  font-weight: 600; font-size: 13.5px; margin-top: 9px;
+  text-align: center; line-height: 1.25;
+}
+
+/* Hvor langt roboten er mot taket sitt. Dette er forklaringen paa hvorfor
+   en full robot slutter aa tjene, uten at han maa lese en regel noe sted. */
+.jobb-stolpe {
+  width: 82%; height: 5px; border-radius: 3px;
+  background: #d8dce1; margin-top: 7px; overflow: hidden;
+}
+.jobb-fyll { display: block; height: 100%; background: var(--grøn); border-radius: 3px }
+.jobb-plass.full .jobb-fyll { background: var(--gul) }
+
+.jobb-under { font-size: 11.5px; color: var(--dus); margin-top: 6px; text-align: center }
+.jobb-plass.har-mynt .jobb-under { color: #a06e2e; font-weight: 600 }
+
+/* Myntboblen henger over roboten. Den finnes bare naar det faktisk er noe
+   aa hente -- en boble som sier "0" ville bare vaert stoey. */
+.jobb-boble {
+  position: absolute; top: 8px; right: 8px; z-index: 2;
+  background: var(--gul); color: #fff;
+  font-size: 12.5px; font-weight: 700;
+  padding: 3px 8px; border-radius: 999px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.25);
+  animation: bobler 1.8s ease-in-out infinite;
+}
+@keyframes bobler {
+  0%, 100% { transform: translateY(0) }
+  50%      { transform: translateY(-3px) }
+}
+
+/* Myntene han nettopp hentet, paa vei opp og ut. */
+.jobb-fly {
+  position: absolute; left: 0; right: 0; top: 34%;
+  text-align: center; pointer-events: none; z-index: 3;
+  font-size: 20px; font-weight: 800; color: var(--gul);
+  text-shadow: 0 1px 3px rgba(0,0,0,.3);
+  animation: flyrOpp .9s ease-out forwards;
+}
+@keyframes flyrOpp {
+  0%   { opacity: 0; transform: translateY(6px) scale(.8) }
+  25%  { opacity: 1; transform: translateY(-4px) scale(1.15) }
+  100% { opacity: 0; transform: translateY(-40px) scale(1) }
+}
+
+/* Moerke kategorier (episk, utenomjordisk, transformer ...) har hvit tekst
+   paa kortene sine ellers i appen. Her staar roboten i en lys fabrikkhall,
+   saa navnet under den maa vaere moerkt uansett kategori -- ellers blir det
+   usynlig. */
+.jobb-plass.episk .jobb-navn, .jobb-plass.utenomjordisk .jobb-navn,
+.jobb-plass.utrolig .jobb-navn, .jobb-plass.uknuselig .jobb-navn,
+.jobb-plass.transformer .jobb-navn, .jobb-plass.sekssju .jobb-navn { color: var(--blekk) }
+
+/* Noen liker ikke bevegelse. Da staar hallen stille -- alt annet virker. */
+@media (prefers-reduced-motion: reduce) {
+  .jobb-robot, .jobb-verktoy, .jobb-verktoy .jobb-gnist, .jobb-boble { animation: none }
+}

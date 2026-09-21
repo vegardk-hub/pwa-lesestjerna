@@ -31,6 +31,9 @@
     dager: {},          // "2026-08-21": 34 — ord per dag, til boka paa bordet
     opptak: {},         // { robotId: dataURL } -- egne opptak til mytiske roboter
     valgtRobot: null,   // figur-id -- roboten han har valgt som sitt eget ikon
+    // { robotId: tidspunkt } -- naar hver robot sist begynte aa tjene opp
+    // mynter i fabrikken (js/jobb.js). Regnestykket ligger i js/spill.js.
+    jobb: {},
     // Ord HAN personlig har hengt seg opp i mens han leser -- ikke en
     // ferdig, felles liste (den fantes foer, se js/bank.js), men bygd opp
     // fra bunnen av egen lesing. Se leggTilVanskeligeOrd() under og
@@ -97,6 +100,18 @@
       // det beste gulvet vi har -- bedre enn aa starte paa null og late som
       // mynter han alt har tjent aldri fantes.
       if (s.mynterTjent === undefined) s.mynterTjent = s.mynter;
+      // Lagring fra foer robotfabrikken fantes. Robotene han alt eide skal
+      // ikke staa paa null foerste gang han aapner den -- da ville
+      // fabrikken vaert tom akkurat naar den er ny og mest spennende. De
+      // regnes i stedet som ferdig oppspart (ett doegn tilbake i tid), saa
+      // det ligger full pott og venter paa ham den foerste gangen. Dette
+      // skjer én gang per spiller: etterpaa finnes s.jobb, og nye roboter
+      // faar starttiden sin av Spill.kjop() i stedet.
+      if (!s.jobb) {
+        s.jobb = {};
+        var jobbStart = Date.now() - 24 * 60 * 60 * 1000;
+        (s.eide || []).forEach(function (e) { s.jobb[e.ting] = jobbStart; });
+      }
     });
     return data;
   }
@@ -140,7 +155,7 @@
       laget: idag(),
       sistBrukt: idag(),
       // Objektene i TOM_SPILLER er delte referanser om vi ikke lager nye.
-      tekster: [], eide: [], dager: {}, opptak: {}, vanskeligeOrd: []
+      tekster: [], eide: [], dager: {}, opptak: {}, vanskeligeOrd: [], jobb: {}
     });
     d.spillere.push(s);
     d.aktiv = s.id;
