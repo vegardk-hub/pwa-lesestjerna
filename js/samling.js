@@ -8,7 +8,7 @@
  *   vanlig       -- trykk gir lyd (Robotlyd.spill)
  *   sjelden      -- samme lyd, pluss blinkende lys (tegnet i figurer.js)
  *   legendarisk  -- blinkende lys, og trykk gir en frase med robotstemme
- *   mytisk       -- ingen lyd/frase -- to knapper for eget opptak i stedet
+ *   mytisk       -- lyden sin, og to knapper for eget opptak i tillegg
  *   episk        -- glitcher hele tiden (css/.glitch), og trykk gir en
  *                   skummel robotlyd
  *   sekssju      -- armene dytter opp og ned hele tiden (css/.arm-vipp),
@@ -71,11 +71,15 @@
     $("#samlingTom").hidden = (s.eide || []).length > 0;
   }
 
-  // Det roboten gjoer naar han trykker paa den -- forskjellig etter
-  // kategori. Mytiske roboter har ingen reaksjon her, de styres av
-  // opptaksknappene i settOppOpptak() i stedet.
+  // Det roboten gjoer naar han trykker paa den: lyden sin, og frasen sin rett
+  // etterpaa om den har en (se data/figurer.json).
+  //
+  // De mytiske hadde lenge en "return" foerst her, fordi de har opptaks-
+  // knappene sine i stedet. Men lyd-oppskriftene deres fantes hele tiden i
+  // js/robotlyd.js -- resultatet var bare at de fem eneste robotene i hele
+  // samlingen som ikke svarte naar han trykte paa dem, var de sjeldneste han
+  // hadde. Opptaket er noe i TILLEGG til lyden, ikke noe som erstatter den.
   function reager(v) {
-    if (v.kategori === "mytisk") return;
     Robotlyd.spill(v.id);
     if (v.frase) {
       setTimeout(function () { Robotlyd.si(v.frase); }, 450);
@@ -112,18 +116,21 @@
     els.ikon.classList.toggle("glitch", v.kategori === "episk");
     els.ikon.onclick = function () { reager(v); };
 
+    // Hintet gjelder na alle -- ogsaa de mytiske, som faktisk har en lyd aa
+    // hoere igjen (se reager() over). Det staar over opptaksboksen deres, saa
+    // det er tydelig at roboten og opptaket er to forskjellige ting.
+    if (els.hint) {
+      els.hint.hidden = false;
+      els.hint.textContent = v.frase
+        ? "Trykk på roboten for å høre den snakke igjen."
+        : "Trykk på roboten for å høre lyden igjen.";
+    }
+
     if (v.kategori === "mytisk") {
-      if (els.hint) els.hint.hidden = true;
       els.opptakBoks.hidden = false;
       settOppOpptak(v, els.opptak);
     } else {
       els.opptakBoks.hidden = true;
-      if (els.hint) {
-        els.hint.hidden = false;
-        els.hint.textContent = v.frase
-          ? "Trykk på roboten for å høre den snakke igjen."
-          : "Trykk på roboten for å høre lyden igjen.";
-      }
     }
 
     reager(v);
