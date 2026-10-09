@@ -155,13 +155,17 @@
    * Robotene han eier staar og jobber mens appen er lukket, og legger opp
    * mynter han henter ut ved aa trykke paa hver enkelt av dem (js/jobb.js).
    *
-   * To tak, begge bestemt av Vegard:
-   *   - en robot tjener aldri mer enn en FEMDEL av det den kostet, og
-   *   - den slutter aa tjene etter ETT DOEGN.
+   * Tre tak, alle bestemt av Vegard:
+   *   - en robot tjener aldri mer enn en FEMDEL av det den kostet,
+   *   - den slutter aa tjene etter ETT DOEGN, og
+   *   - alle robotene til sammen gir aldri mer enn JOBB_TAK_TOTAL (1000)
+   *     mynter i doegnet.
    *
-   * Til sammen betyr det at en robot tjener seg selv inn paa fem doegn om
+   * De to foerste betyr at en robot tjener seg selv inn paa fem doegn om
    * han henter hver dag -- og at det ikke gaar an aa la appen ligge en
-   * maaned og komme tilbake til en formue. Fabrikken er en grunn til aa
+   * maaned og komme tilbake til en formue. Det tredje hindrer at en stor
+   * samling gir en formue hver dag: med alle de 52 robotene ville femdelene
+   * alene blitt ca. 6600 mynter i doegnet. Fabrikken er en grunn til aa
    * komme innom, ikke en erstatning for aa lese.
    *
    * Myntene gaar rett i lomma, som de vanskelige ordene (tjenMynter over):
@@ -171,6 +175,30 @@
 
   var JOBB_MAKS_MS = 24 * 60 * 60 * 1000;
   var JOBB_ANDEL = .20;
+  var JOBB_TAK_TOTAL = 1000;
+
+  /* Faktoren som tilpasser hver robots inntekt til totaltaket.
+   *
+   * Summen av alle femdelene regnes ut, og er den over taket, skaleres HVER
+   * robot ned med samme brokk (taket / summen). Da beholder alle sin plass i
+   * rekkefoelgen: en dyr robot tjener fortsatt mer enn en billig, og ingen
+   * faller helt ut -- noe som ville skjedd om vi bare kuttet de siste i
+   * rekka. Under taket er faktoren 1, og ingenting endres.
+   *
+   * Regnes av det han eier NAA, ikke lagres: kjoeper han en ny robot, faller
+   * de andres andel litt, og selger/mister han en, stiger den. Og hver robots
+   * maks rundes ned, saa summen havner alltid paa eller under taket. */
+  function jobbSkala() {
+    var s = meg();
+    if (!s) return 1;
+    var sett = {}, sum = 0;
+    (s.eide || []).forEach(function (e) {
+      if (sett[e.ting]) return;
+      sett[e.ting] = true;
+      sum += Math.floor(e.pris * JOBB_ANDEL);
+    });
+    return sum > JOBB_TAK_TOTAL ? JOBB_TAK_TOTAL / sum : 1;
+  }
 
   /* Hva roboten har staaende akkurat naa. `pris` er det han faktisk betalte
    * (se s.eide), ikke dagens katalogpris -- de er like i dag, men det er
@@ -185,11 +213,13 @@
     // den aa tjene naa, i stedet for aa gi full pott med det samme.
     if (!s.jobb[figurId]) { s.jobb[figurId] = Date.now(); Lagring.lagre(); }
 
-    var maks = Math.floor(pris * JOBB_ANDEL);
+    var skala = jobbSkala();
+    var maks = Math.floor(Math.floor(pris * JOBB_ANDEL) * skala);
     var andel = Math.min(1, Math.max(0, Date.now() - s.jobb[figurId]) / JOBB_MAKS_MS);
     return {
       mynter: Math.floor(maks * andel),
       maks: maks,
+      skala: skala,
       andel: andel,
       full: andel >= 1
     };
@@ -262,6 +292,7 @@
     MYNT_PER_ORD: MYNT_PER_ORD,
     FULLFOERT_BONUS: FULLFOERT_BONUS,
     JOBB_TIMER: JOBB_MAKS_MS / 3600000,
-    JOBB_ANDEL: JOBB_ANDEL
+    JOBB_ANDEL: JOBB_ANDEL,
+    JOBB_TAK_TOTAL: JOBB_TAK_TOTAL
   };
 })(window);

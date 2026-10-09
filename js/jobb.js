@@ -184,10 +184,11 @@
     var s = Lagring.aktiv();
     if (!s) return;
     var liste = eide();
-    var klar = 0, fulle = 0;
+    var klar = 0, fulle = 0, skala = 1;
     liste.forEach(function (r) {
       var st = Spill.jobbStatus(r.figur.id, r.pris);
       if (!st) return;
+      skala = st.skala;
       klar += st.mynter;
       if (st.full) fulle++;
     });
@@ -205,9 +206,14 @@
         ? "1 er ferdig og venter"
         : fulle + " er ferdige og venter");
     }
-    linjer.push("Hver robot tjener opp til " +
-                Math.round(Spill.JOBB_ANDEL * 100) + " % av det den kostet, på " +
-                Spill.JOBB_TIMER + " timer");
+    // Er samlingen så stor at totaltaket slår inn, er det dét som styrer, og
+    // da stemmer ikke lenger "20 % av prisen" -- si det som det er.
+    linjer.push(skala < 1
+      ? "Fabrikken gir til sammen maks " + Spill.JOBB_TAK_TOTAL +
+        " mynter på " + Spill.JOBB_TIMER + " timer, delt mellom robotene"
+      : "Hver robot tjener opp til " +
+        Math.round(Spill.JOBB_ANDEL * 100) + " % av det den kostet, på " +
+        Spill.JOBB_TIMER + " timer");
     $("#jobbHint").textContent = linjer.join(" · ");
   }
 

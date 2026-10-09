@@ -9,7 +9,7 @@ Lese-PWA for barn: de leser tekster høyt, appen lytter og lyser ordene, og de t
 ## Publisering
 - Repo `vegardk-hub/pwa-lesestjerna`, gren `main`, live: https://vegardk-hub.github.io/pwa-lesestjerna/ (GitHub Pages). Skillen `publiser-pwa` gjør utgivelsen.
 - Ingen service worker (ingen `sw.js`), så det finnes ikke noe cache-navn å bumpe. Nye versjoner når brukeren ved vanlig nettleserlasting av siden.
-- Versjonsnummeret står i `index.html`: `<span id="versjon">` på spillervalg-skjermen («Hvem leser?»), nå `v77`. Øk det ved hver utgivelse.
+- Versjonsnummeret står i `index.html`: `<span id="versjon">` på spillervalg-skjermen («Hvem leser?»), nå `v78`. Øk det ved hver utgivelse.
 - `#versjonHjorne` i topplinja skal stå fast på `v67` (barnets ønske, se commit 9f166e3). Ikke bump den.
 
 ## Struktur
