@@ -46,7 +46,58 @@
     return d;
   }
 
+  /* ---------- Spill alle lydene ----------
+   *
+   * Går gjennom samlingen i rekkefølge: roboten som har ordet får et lysskjær
+   * (.spiller i styles.css), alle de andre dimmes litt, og hver får et fast
+   * tidsrom før neste tar over. Fast tid i stedet for å måle lyden, fordi
+   * oppskriftene i robotlyd.js er skrevet for å holde seg under ca. ett
+   * sekund -- et lite gap i blant er bedre enn at to lyder går i ett.
+   * Bare selve lyden, ikke fraser: de ville ligget oppå neste robots lyd. */
+  var TID_PER_ROBOT = 1200;
+  var spillerNaa = null;   // { timer, kort } mens avspillingen pågår
+
+  function stoppAlle() {
+    if (!spillerNaa) return;
+    clearTimeout(spillerNaa.timer);
+    if (spillerNaa.kort) spillerNaa.kort.classList.remove("spiller");
+    spillerNaa = null;
+    $("#samlingListe").classList.remove("spiller-alle");
+    $("#spillAlle").textContent = "▶ Spill alle lydene";
+    $("#spillAlle").classList.remove("spiller-knapp");
+  }
+
+  function spillAlle() {
+    if (spillerNaa) { stoppAlle(); return; }
+    var kort = Array.prototype.slice.call(
+      $("#samlingListe").querySelectorAll(".figurkort"));
+    if (!kort.length) return;
+
+    $("#samlingListe").classList.add("spiller-alle");
+    $("#spillAlle").textContent = "■ Stopp";
+    $("#spillAlle").classList.add("spiller-knapp");
+    spillerNaa = { timer: null, kort: null };
+
+    var i = 0;
+    (function neste() {
+      if (!spillerNaa) return;
+      if (spillerNaa.kort) spillerNaa.kort.classList.remove("spiller");
+      if (i >= kort.length) { stoppAlle(); return; }
+      var k = kort[i++];
+      spillerNaa.kort = k;
+      k.classList.add("spiller");
+      // Samlingen kan være lang -- roboten som spiller skal holde seg i
+      // synsfeltet, ellers hører han lyden uten å se hvem den kommer fra.
+      if (k.scrollIntoView) k.scrollIntoView({ block: "center", behavior: "smooth" });
+      Robotlyd.spill(k.dataset.id);
+      spillerNaa.timer = setTimeout(neste, TID_PER_ROBOT);
+    })();
+  }
+
+  $("#spillAlle").onclick = spillAlle;
+
   function tegnListe() {
+    stoppAlle();
     var s = Lagring.aktiv();
     if (!s) return;
 
@@ -58,6 +109,7 @@
       if (!v) return;
       var kort = lag("figurkort " + v.kategori, "button");
       kort.type = "button";
+      kort.dataset.id = v.id;
       var merke = lag("merke-kategori");
       merke.textContent = Figurer.kategorinavn(v.kategori);
       var ikon = lag("figur-ikon");
@@ -69,6 +121,7 @@
       liste.append(kort);
     });
     $("#samlingTom").hidden = (s.eide || []).length > 0;
+    $("#spillAlleRad").hidden = !(s.eide || []).length;
   }
 
   // Det roboten gjoer naar han trykker paa den: lyden sin, og frasen sin rett
@@ -137,6 +190,8 @@
   }
 
   function visDetalj(v) {
+    stoppAlle();
+    $("#spillAlleRad").hidden = true;
     $("#samlingDetaljNavn").textContent = v.navn;
     tegnVelgKnapp(v);
     $("#samlingListe").hidden = true;
@@ -220,6 +275,7 @@
   $("#lukkSamlingDetalj").onclick = lukkDetalj;
 
   $("#lukkSamling").onclick = function () {
+    stoppAlle();
     Opptak.stopp();
     $("#samling").hidden = true;
     $("#lukkSamling").hidden = true;

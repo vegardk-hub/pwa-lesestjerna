@@ -1514,3 +1514,45 @@ footer .rad { margin: 0; justify-content: center }
 @media (prefers-reduced-motion: reduce) {
   .jobb-robot, .jobb-verktoy, .jobb-verktoy .jobb-gnist, .jobb-boble { animation: none }
 }
+
+/* ---------- Spill alle lydene (samlingen) ----------
+   Roboten som har ordet lyser opp med et gult skjær og to ringer som sprer
+   seg utover, som lydbølger. De andre dimmes, så det ikke er tvil om hvem
+   lyden kommer fra. Gult fordi det synes mot alle kategorifargene, også de
+   mørke (episk, uknuselig). */
+#spillAlleRad { margin: 0 0 18px }
+#spillAlle.spiller-knapp { background: var(--blekk); color: #fff; border-color: var(--blekk) }
+
+#samlingListe.spiller-alle .figurkort { opacity: .45; transition: opacity .2s }
+#samlingListe.spiller-alle .figurkort.spiller { opacity: 1 }
+
+.figurkort.spiller {
+  z-index: 2;
+  border-color: #ffc400;
+  box-shadow: 0 0 0 4px #ffc400, 0 0 26px 8px rgba(255, 196, 0, .75);
+  animation: kort-lys .6s ease-in-out infinite alternate;
+}
+.figurkort.spiller::before,
+.figurkort.spiller::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  border: 3px solid #ffc400;
+  pointer-events: none;
+  animation: kort-ring 1.2s ease-out infinite;
+}
+.figurkort.spiller::after { animation-delay: .6s }
+
+@keyframes kort-lys {
+  from { transform: scale(1.04) }
+  to   { transform: scale(1.12) }
+}
+@keyframes kort-ring {
+  from { transform: scale(1);   opacity: .9 }
+  to   { transform: scale(1.5); opacity: 0 }
+}
+@media (prefers-reduced-motion: reduce) {
+  .figurkort.spiller { animation: none; transform: scale(1.08) }
+  .figurkort.spiller::before, .figurkort.spiller::after { animation: none; opacity: 0 }
+}
